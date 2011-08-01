@@ -1,0 +1,40 @@
+{% extends "census_template_embed.html" %}
+{% load humanize %}
+{% block headers %}
+<style>
+table tr td{
+		border-bottom:1px black solid;
+}
+table tr.totalpop td{
+		border-bottom: 3px black solid;
+		border-top: 3px black solid;
+		font-weight: bold;
+}
+.totalpop{
+	margin-bottom: 5px;
+}
+</style>
+{% endblock %}
+{% block content %}
+<h1> Census Data for {{state|upper}} Cities</h1>
+<a href="{% url embed-census-index "embed" %}">All States</a> | <a href="{% url embed_list_counties "embed",state %}">{{state|upper}} Counties</a> | <a href="{% url embed_list_cities "embed",state %}">{{state|upper}} Cities</a>
+<table style="width:75%;">
+	<tr><th>City</th><th>2000</th><th>2010</th><th>Change</th><th>Percent of Growth</th></tr>
+	<tr class="totalpop">
+		<td><a href="{%url embed_state_detail "embed",state_data.state %}">{{state_data.state|upper}} Total</a></td>
+		<td>{{state_data.pop2000|apnumber|intcomma}}</td>
+		<td>{{state_data.pop2010|apnumber|intcomma}} </a></td>
+		<td style="background-color:{% if state_data.popchangepercentage < 0 %}#EEA223{%endif%};">{{state_data.popchange|intcomma}}</td>
+		<td style="background-color:{% if state_data.popchangepercentage < 0 %}#EEA223{%endif%};">{{state_data.popchangepercentage|floatformat:2}}%</td>
+	</tr>
+{% for city in cities %}
+	<tr>
+		<td><a href="{% url embed_city_detail "embed",city.state,city.city_name %}">{{city.city_name|cut:"city"|cut:"village"|cut:"town"|cut:"CDP"}}</td>
+		<td>{{city.pop2000|apnumber|intcomma}}</td>
+		<td>{{city.pop2010|apnumber|intcomma}}</td>
+		<td style="background-color:{% if city.popchangepercentage < 0 %}#EEA223{%endif%};">{{city.popchange|intcomma}}</td>
+		<td style="background-color:{% if city.popchangepercentage < 0 %}#EEA223{%endif%};">{{city.popchangepercentage|floatformat:2}}%</td>
+	</tr>
+{% endfor %}
+</table>
+{% endblock %}

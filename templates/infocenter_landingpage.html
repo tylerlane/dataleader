@@ -1,0 +1,29 @@
+{% extends "blank_template.html" %}
+{% block title %}
+InfoCenter Admin
+{% endblock %}
+{% block content %}
+<h2>Info Center Admin</h3>
+<p>
+	<h3>News-Leader.com Tools</h3>
+	<a href="{% url list_pageviews %}">Real-Time Pageviews</a> - A tool to show the most viewed stories on news-leader.com<br />
+	<a href="{% url list_pageviews "big" %}">Real-Time Pageviews (Big Screen Version)</a> - Specialized version of the Real-Time Pageview tracker<br />
+</p>
+<p>
+	<h3>Reverse Pub</h3>
+	<a href="{% url categories_summary %}">Calls Summary</a> - A summary of 911 Calls from 4pm yesterday to 4pm today for Publication Purposes<br />
+	<a href="{% url reversepub_calls %}">911 Calls Reverse Pub</a><br />
+</p>
+<p>
+	<h3>Misc</h3>
+	<a href="{% url census-index %}">Census Landing Page</a><br />
+	<a href="{% url calls-index %}">Springfield Police Calls</a><br />
+	<br />
+	<hr  style="width:200px; float: left; position: relative;"/>
+	<br />
+	<br />
+	<a href="{% url admin:index %}">Django Admin</a><br />
+	<a href="{% url admin:password_change %}">Change Password</a><br />
+</p>
+
+{% endblock %}

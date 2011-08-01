@@ -1,0 +1,11 @@
+{% load humanize %}
+{% if pvs %}
+	<ol>
+		{% for pv in pvs|dictsortreversed:"pageviews"|slice:":15" %}
+			<li>
+				<a href="{% firstof pv.story.long_url pv.story.short_url "http://www.news-leader.com" %}" target="_blank"><b>{{pv.story.headline}}</b></a> - ( {{pv.pageviews|intcomma}} )</li>
+		{% endfor %}
+	</ol>
+{% else %}
+	<div style="margin-left: 0px;padding-left: 0px;margin-top:-10px;padding-top:5px">No Pageviews found within give time period.</div>
+{% endif %}

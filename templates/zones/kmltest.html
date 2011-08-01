@@ -1,0 +1,50 @@
+{% extends "template2.html" %}
+{% block headers %}
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=7" />
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript">
+	//defining my variables
+	var geocoder;
+	var map;
+	var markers = [];
+	var markers2 = {};
+	var home_marker;
+	var circle;
+	var home_infowindow;
+	var search_address = {};
+	var calls_graph = [];
+	var mc;
+	var search;
+	var ctaLayer;
+	var initialLocation;
+	var downtown;
+	var browserSupportFlag =  new Boolean();
+	
+	function initialize() {
+		geocoder = new google.maps.Geocoder();
+		var latlng = new google.maps.LatLng( 37.214393, -93.29318 );
+		var myOptions = {
+			zoom: 10,
+			center: latlng,
+			mapTypeId: google.maps.MapTypeId.ROADMAP
+		}
+		map = new google.maps.Map(document.getElementById("map2"), myOptions);
+		ctaLayer = new google.maps.KmlLayer('http://localhost:8000/zones/kml-output');
+		ctaLayer.setMap( map );
+		
+	}
+</script>
+{% endblock %}
+{% block content %}
+<script type="text/javascript">
+	$(document).ready( function(){
+		initialize();
+	});
+</script>
+<div>
+	<div id="map2">
+	</div>
+</div>
+{% endblock %}

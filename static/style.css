@@ -1,0 +1,468 @@
+body {
+	height:100%; 
+	max-height:100%; 
+	padding:35 0 35 0 ;
+	margin:0; 
+	border:0; 
+	font-family:Arial,Verdana,Helvetica,sans-serif;
+	font-size: 0.9em;
+	background-image:url("images/crimeBgEdge.jpg");
+	background-repeat: repeat-y;
+	background-position: center top;
+	background-color: #636E82;
+}
+#layout{
+	overflow: hidden;
+	margin-left: auto;
+	margin-right: auto;
+	padding-top:  35px;
+	width: 940px;
+}
+#header{
+	position: fixed;
+	background-color: #636E82;
+	top:0;
+	left:0;
+	width:100%;
+	height:35px;
+	z-index: 1;
+}
+
+#crimescene_nl_logo {
+	margin-left: auto;
+	z-index: 20;
+	margin-right: auto;
+	position: fixed;
+	top: 0;
+	margin-top: 3px;
+	text-decoration: none;
+	border: 0;
+}
+#banner_ad_top {
+	position: static;
+	width: 940px;
+	margin-top: 14px;
+	margin-bottom: 14px;
+	margin-left: auto;
+	margin-right: auto;
+	align: center;
+}
+#banner_ad_top #ad{
+	margin-left: 105.5px;
+	margin-right: 105.5px;
+}
+
+#crimescene_banner{
+	background-image: url( "images/crimescene_banner.png" );
+	background-color: #fff02a;
+	background-repeat: repeat-x;
+	width: 939px;
+	height: 61px;
+	position: relative;
+	margin-bottom: 14px;
+}
+#nav_bar{
+	position: relative;
+	float: right;
+	font-size: 20px;
+	font-weight: bold;
+	right: 0;
+	text-align: right;
+	margin-bottom: 10px;
+	display: inline;
+}
+#nav_bar ul {
+	list-style:none;
+	margin:0;
+	padding:0;
+}
+#nav_bar li {
+	float:left;
+	margin:0;
+	padding:0;
+	text-align:center;
+}
+#nav_bar li a {
+	display:block;
+	height:100%;
+	color:#fff02a;
+	text-decoration:none;
+	border-right:1px solid #FFF;
+}
+
+#warrants_nav{
+	position: relative;
+	float: right;
+	font-size: 12px;
+	right: 0;
+	text-align: right;
+	margin-bottom: 10px;
+	display: inline;
+}
+#warrants_nav ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+#warrants_nav li {
+	float: left;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	text-decoration: none;
+	display: block;
+	font-size: 14px;
+}
+#warrants_nav li a {
+	padding: 5px 10px;
+	height: 100%;
+	text-decoration: none;
+}
+
+#left_column{
+	position: relative;
+	background-image: url("images/fingerprint.png");
+	background-repeat: repeat;
+	position: -100 0;
+	overflow: hidden;
+	float: left;
+	width: 179px;
+	margin-right: 21px;
+}
+#main_content{
+	position: relative;
+	float: right;
+	width: 740px;
+	min-height: 400px;
+	padding-bottom: 35px;
+}
+#calls_table{
+	margin-top: 10px;
+	display: table;
+	font-size: 0.8em;
+}
+#calls_header{
+	display: table-header-group;
+	background-color: #636E82;
+	font-weight: bold;
+	text-align: center;
+	color: white;
+	padding: 5px;
+}
+.calls_row1{
+	display: table-row;
+	background-color: #FFFFFF;
+}
+.calls_row2{
+	display: table-row;
+	background-color: #CFC8CA;
+}
+#calls_name{
+	width: 15%;
+	display: table-cell;
+	padding-left: 3px;
+	overflow:hidden;
+}
+#calls_name,#calls_age,#calls_type,#calls_violation,#calls_bond,#calls_warrant_num,#calls_release_cond,#calls_court{
+	display: table-cell;
+	padding-left: 3px;
+	overflow:hidden;	
+}
+#banner_ad_bottom {
+	position: static;
+	width: 940px;
+	margin-top: 14px;
+	margin-bottom: 50px;
+	margin-left: auto;
+	margin-right: auto;
+	align: center;
+}
+#banner_ad_bottom #ad{
+	margin-left: 105.5px;
+	margin-right: 105.5px;
+}
+
+#footer{
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	margin-top: 30px;
+	padding-top:5px;
+	height: 20px;
+	width: 100%;
+	font-size: 12px;
+	color: #FFF;
+	background-color: #636E82;
+}
+
+#seo-links{
+	display:inline;
+	float: center;
+	color: #FFF;
+	margin-left: auto;
+	margin-right: auto;
+}
+#seo-links a, #seo-links a:link{
+	color: #FFF;
+}
+#seo-links ul, #seo-links ul li{
+	list-style: none;
+	display:inline;
+}
+#seo-links p{
+	overflow: hidden;
+	display:inline;
+}
+#map2{
+	width: 500px; 
+	height: 500px; 
+	float: left;
+	margin-right: 10px; 
+	margin-bottom: 10px; 
+	padding: 5px;
+	border:1px solid;
+}
+#controls{
+	height: 550px; 
+	overflow: hidden;
+	font-size: 0.7em;
+}
+.popup_title {
+	font-size:11px; 
+	font-weight:bold; 
+	color:#990000;}
+.popup_cap {
+	font-size:10px; 
+	font-weight:bold;
+}
+.popup_text {
+	font-size:10px; 
+	font-weight:100;
+}
+
+#filter_container{
+	text-align: left;
+	padding: 0px;
+	margin: 0px;
+}
+#filter_container ul{
+	list-style: none;
+}
+/*pagination section */
+div.pagination {
+	padding: 3px;
+	margin: 3px;
+	font-size: 12px;
+	display: block;
+	position: inherit;
+	whitespace: normal;
+
+}
+div.pagination a, div.pagination a:visited {
+	padding: 2px 5px 2px 5px;
+	margin: 2px;
+	border: 1px solid #AAAADD;
+	* zoom: 100%;
+	text-decoration: none; /* no underline */
+	color: #000000;
+	font-weight: normal;
+	display: inline;
+	line-height: 24px;
+}
+div.pagination a:hover, div.pagination a:active {
+	border: 1px solid #000099;
+	color: #000;
+	line-height: 24px;
+
+}
+div.pagination span.current {
+	padding: 2px 5px 2px 5px;
+	margin: 2px;
+	border: 1px solid #636E82;
+	* zoom: 100%;
+	font-weight: bold;
+	background-color: #636E82;
+	color: #FFF;
+	line-height: 24px;
+}
+div.pagination span.disabled {
+	padding: 2px 5px 2px 5px;
+	margin: 2px;
+	border: 1px solid #EEE;
+	* zoom: 100%;
+	color: #DDD;
+	line-height: 24px;
+}
+
+* span.elipses {
+	zoom:100%
+	}
+/*end pagination section */
+
+/* calls detail section */
+#call_detail_container{
+	display: table;
+	width: 100%;
+	font-size: 0.9em;
+}
+#row{
+	display: table-row;
+	text-align: left;
+}
+#row h5{
+	font-weight: bold;
+	text-decoration: underline;
+	color: black;
+	font-size: 0.9em;
+	text-align: left;
+}
+#call_time{
+	width: 20%;
+	display: table-cell;
+	padding-right: 2px;
+}
+#row #address{
+	width: 30%;
+	display: table-cell;
+	font-weight: normal;
+}
+#description{
+	width: 25%;
+	display: table-cell;
+}
+#response{
+	width: 25%;
+	display: table-cell;
+}
+
+div#info { 
+	width:100%; 
+	position:relative; 
+	overflow:hidden; 
+	display:inline;
+	padding: 5px;
+	margin-bottom: 10px;
+}
+div#info .bold{
+	font-weight: bold;
+	font-size: 0.9em;
+}
+
+#crime_line_controls{
+	clear:both;
+	width:500px;
+	height:10px
+}
+#tabs{
+	clear: both;
+	height: 300px; 
+	overflow: auto
+}
+#crime_line_slider{
+	overflow:hidden;
+	vertical-align:center;
+}
+#end_date,#limit,#radius,#start_date,#address{
+	border:0;
+	color:#000000; 
+	font-weight:bold;
+}
+#address{
+	width: 150px;
+}
+#address_error{
+	font-color: red;
+	font-weight: bold;
+}
+#landing-calls{
+	width:460px; 
+	height:320px;
+	float:left;
+	margin-right:5px;
+	margin-left:2px;
+	border-right:1px solid #000000;
+}
+#landing-calls a,#landing-calls a:visited{
+	text-decoration: none;
+	border: 0;
+	font-color: #732C0D;
+	color: #732C0D;
+}
+#landing-calls a img{
+	border-style: none;
+}
+#landing-warrants{
+	width:460px;
+	height:320px;
+	/* border-left:1px solid #000000; */
+	border: none;
+	padding-left:5px;
+	margin-right:5px;
+	overflow:hidden;
+	text-decoration: none;
+}
+#landing-warrants a,#landing-warrants a:visited{
+	text-decoration: none;
+	border: 0;
+	color: #732C0D;
+	font-color: #732C0D;
+}
+#landing-warrants a img{
+	border-style: none;
+}
+#stories{
+	font-size: 13px;
+	float: left;
+	width:740px;
+	border-right:1px solid #000000;
+	margin-right: 5px;
+	padding:3px;
+}
+#crime_stories_title{
+	margin-left: auto;
+	margin-right: auto;
+	font-weight:bold;
+	font-size:1.7em;
+	text-align:left;
+	padding-bottom:3px;
+}
+#story a, #story a:visited{
+	color:#732C0D;
+	font-style: normal;
+	text-decoration: none;
+	font-weight: bold;
+	font-size: 1.4em;
+
+}
+#story-date{
+	font-style: italic;
+	font-size: 0.8em;
+}
+#teasers{
+	overflow:hidden;
+	padding: 3px;
+	border: none;
+}
+#teasers-title{
+	margin-left: auto;
+	margin-right: auto;
+	font-weight:bold;
+	font-size:1.4em;
+	text-align:center;
+	padding-bottom:3px;
+}
+#teasers a,#teasers a:visited{
+	text-decoration: none;
+	color: #732C0D;
+	font-color: #732C0D;
+}
+#teasers a img{
+	border-style: none;
+}
+#top_section{
+	margin-bottom:10px;
+	padding-bottom:7px;
+}

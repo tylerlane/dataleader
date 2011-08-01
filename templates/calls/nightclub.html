@@ -1,0 +1,114 @@
+{% load humanize %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"> 
+	<head> 
+		<!-- BEGIN title --> 
+		<title>News-Leader.com | Data-Leader: Crime</title> 
+		<!-- END title --> 
+		<meta name="description" content="News-Leader.com,Springfield,Missouri,News,local news,headlines,stories,world news,contests" /> 
+		<meta name="keywords" content="" /> 
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+		<meta http-equiv="pragma" content="no-cache"/> 
+		<meta http-equiv="expires" content="0"/> 
+		<meta http-equiv="cache-control" content="no-cache"/> 
+		<link href="{{MEDIA_URL}}/style.css" rel="stylesheet" type="text/css"> 
+		<link href="{{MEDIA_URL}}/redmond/jquery-ui-1.8.custom.css" rel="stylesheet" type="text/css"> 
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script> 
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script> 
+		<script>
+		$(document).ready( function(){
+			//date pickers in the search field.
+			var dates = $('#id_begin_date, #id_end_date').datepicker({
+				defaultDate: "-1d",
+				changeMonth: false,
+				numberOfMonths: 1,
+				dateFormat: 'yy-mm-dd',
+				changeMonth: false,
+				onSelect: function(selectedDate) {
+					var option = this.id == "id_begin_date" ? "minDate" : "maxDate";
+					var instance = $(this).data("datepicker");
+					var date = $.datepicker.parseDate(instance.settings.dateFormat || $.datepicker._defaults.dateFormat, selectedDate, instance.settings);
+					dates.not(this).datepicker("option", option, date);
+				}
+			});
+		});
+		</script>
+		
+	</head> 
+	<body> 
+		<div id="header"> 
+		</div> 
+		<div id="layout"> 
+			<div id="#logo"> 
+				<a href="#"><img id="crimescene_nl_logo" src="{{MEDIA_URL}}/images/crimescene_nl_logo.png" /></a> 
+			</div>
+			<div id="main_page">
+				<h1>Search Night Club Police Calls</h1>
+				<form method="POST" action="{% url nightclub_calls %}" >
+					<table>
+						{% csrf_token %}
+						{{form.as_table}}
+					</table>
+					<input type="submit" value="Search!">
+				</form>
+				<hr />
+				{% if calls %}
+					<style>
+					#calls{
+						display:table;
+					}
+					#headers{
+						display:table-row;
+						font-weight: bold;
+						text-decoration: underline;
+
+					}
+					#call_time,#address,#description,#report_num,#response,#nightclub{
+						display: table-cell;
+						padding-left: 5px;
+						padding-right: 5px;
+					}
+					.row1{
+						display:table-row;
+						background-color: #EAEAEA;
+						padding-bottom: 5px;
+						padding-top: 5px;
+						font-size: .9em;
+					}
+					.row2{
+						display: table-row;
+						background-color: #FFFFFF;
+						padding-bottom: 5px;
+						padding-top: 5px;
+						font-size: .9em;
+					}
+					</style>
+					<div id="calls"
+						<div id="headers">
+							<div id="call_time">Call Time</div>
+							<div id="nightclub">Night Club</div>
+							<div id="address">Address</div>
+							<div id="description">Description</div>
+							<div id="report_num">Report Number</div>
+							<div id="reponse">Response</div>
+						</div>
+					{% for call in calls %}
+						<div class="{% cycle "row1" "row2" %}">
+							<div id="call_time">{{call.call_time|date:"D N jS, Y P"}}</div>
+							<div id="nightclub">{{call.nightclub}}</div>
+							<div id="address">{{call.address}}</div>
+							<div id="description">{{call.description}}</div>
+							<div id="report_num">{{call.report_num}}</div>
+							<div id="response">{{call.response}}</div>
+						</div>
+					{% endfor %}
+					</div>
+					<hr />
+					<div><b>{{calls|length|apnumber|title}}</b> Total Calls</div>
+				{% else %}
+					No Calls!
+				{% endif %}
+			</div>
+		</div>
+	</body>
+</html>

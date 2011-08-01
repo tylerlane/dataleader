@@ -1,0 +1,25 @@
+{% if calls %}
+	<div id="call_detail_container">
+	<div id="row">
+		<div id="call_time"><h5>Call Time</h5></div>
+		<div id="address"><h5>Address</h5></div>
+		<div id="description"><h5>Description</h5></div>
+		<div id="response"><h5>Beat - Response</h5></div>
+	</div>
+	{% for call in calls %}
+		<div id="row">
+			<div id="call_time">{{call.call_time|date:"m-d-y g:i a"}}</div>
+			<div id="address">{{call.address}}</div>
+			<div id="description">{{call.calltype}} - {{call.description}}</div>
+			<div id="response">{{call.beat.name}} - {{call.response}}</div>
+		</div>
+	{% empty %}
+		<div id="row">
+			<div>No Calls matched this search.</div>
+		</div>
+	{% endfor %}
+		<div style="display:table-footer-group">
+			<div style="text-align: center;"><h5>Number of calls: {{ calls|length }}</h5></div>
+		</div>
+	</div>
+{% endif %}

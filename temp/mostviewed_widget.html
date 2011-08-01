@@ -1,0 +1,264 @@
+<div class="mostviewed"> 
+	<h3>Most Viewed Stories</h3> 
+	<style> 
+		#most_viewed_menu {
+			float:left;
+			padding:0px;
+			margin: 0px;
+			list-style-image:none;
+			list-style-position:outside;
+			list-style-type:none;
+			border-top: 1px solid #E2E1C7;
+			border-bottom: 1px solid #E2E1C7;
+		}
+		#most_viewed_menu li{
+			border-right:1px solid #E2E1C7;
+			display:block;
+			float:left;
+			font-weight:bold;
+			padding:0px;
+			text-align:center;
+			margin: 3px 0px;
+		}
+		#most_viewed_menu li a:link, #most_viewed_menu li a:visited{
+			padding: 2px 12px;
+			font-size: 11px;
+			font-weight:normal;
+		}
+		#most_viewed_title {
+			color:#757C89;
+			font-size:11px;
+			font-weight:bold;
+			margin:0pt;
+			padding:0pt;
+			text-transform:uppercase;
+		}
+		#most_viewed_content{
+			padding:4px 0px;
+			font-size:11px;
+		}
+		#most_viewed_content li{
+			padding: 1px 0px;
+		}
+		#most_viewed_content ul{
+			list-style-image:none;
+			list-style-position:outside;
+			list-style-type:none;
+			margin:0px;
+			padding:0px;
+		}
+	</style>
+	<script language="Javascript"> 
+		var currentTab = 0;
+		function SNL_toggleTabs( newTab )
+		{
+			if( currentTab != newTab )
+			{
+				//switch windows
+				document.getElementById( "most_viewed_tab_" + currentTab ).style.display = "none";
+				document.getElementById( "most_viewed_tab_" + newTab ).style.display = "block";
+				//switch bold
+				document.getElementById( "most_viewed_menu_" + currentTab ).style.fontWeight = "normal";
+				document.getElementById( "most_viewed_menu_" + newTab ).style.fontWeight = "bold";
+				//set new currentTab
+				currentTab = newTab;
+			}
+		}
+	</script>
+	<div id="most_viewed_nav_container"> 
+		<ul id="most_viewed_menu"> 
+			<li><a href="javascript:SNL_toggleTabs(0);" id="most_viewed_menu_0" style="font-weight:bold;">Today</a></li> 
+			<li><a href="javascript:SNL_toggleTabs(1);" id="most_viewed_menu_1">Yesterday</a></li> 
+			<li><a href="javascript:SNL_toggleTabs(2);" id="most_viewed_menu_2">Last 7 Days</a></li> 
+			<li style="border:none;"><a href="javascript:SNL_toggleTabs(3);" id="most_viewed_menu_3">Last 30 Days</a></li>
+		</ul> 
+		<br clear="all" /> 
+	</div> 
+	
+	<div id="most_viewed_content"> 
+		<div id="most_viewed_tab_0" style="display:block;">
+			
+				<ul>
+					
+						
+							<li><a href="http://www.news-leader.com/article/20110118/NEWS01/101180349/-1/RSS16"><b>Stolen cars pulled out of Lake Springfield</b></a></li>
+						
+					
+						
+							<li><a href="http://www.news-leader.com/article/2011110118006"><b>Storm system expected to reach Ozarks Wednesday</b></a></li>
+						
+					
+						
+							<li><a href="http://www.news-leader.com/article/2011110118015"><b>Nixa man arrested for allegedly shooting and killing neighbor</b></a></li>
+						
+					
+						
+							<li><a href="http://www.news-leader.com/article/20110118/NEWS12/101180322/-1/RSS16"><b>Branson man pleads guilty to infecting with HIV</b></a></li>
+						
+					
+						
+					
+						
+							<li><a href="http://www.news-leader.com/article/2011110118008"><b>SPS Superintendent Norm Ridder to announce $1 million in cuts</b></a></li>
+						
+					
+						
+							<li><a href="http://www.news-leader.com/article/2011110118016"><b>Vendors around country complain about local business</b></a></li>
+						
+					
+						
+							<li><a href="http://www.news-leader.com/article/20110118/NEWS12/101180335/-1/RSS16"><b>Ozark woman gets probation for shooting</b></a></li>
+						
+					
+						
+							<li><a href="http://www.news-leader.com/article/2011301180007"><b>Neighbor arrested in Nixa man&#39;s shooting death</b></a></li>
+						
+					
+						
+							<li><a href="http://www.news-leader.com/article/2011110118003"><b>Man arrested after Nixa man shot with rifle</b></a></li>
+						
+					
+				</ul>
+			
+		</div>
+		<div id="most_viewed_tab_1" style="display:none;">
+			
+				<ul>
+					
+						
+							<li><a href="http://www.news-leader.com/article/2011101170333"><b>Vehicles discovered in Lake Springfield</b></a></li>
+						
+					
+						
+							<li><a href="http://www.news-leader.com/article/2011101170352"><b>Burn victims moved to Shriners</b></a></li>
+						
+					
+						
+							<li><a href="http://www.news-leader.com/article/2011101170353"><b>Hundreds line route in soldier&#39;s memory</b></a></li>
+						
+					
+						
+							<li><a href="http://www.news-leader.com/article/2011110117015"><b>Police: Both cars pulled from Springfield Lake had been stolen</b></a></li>
+						
+					
+						
+							<li><a href="http://www.news-leader.com/article/2011101170355"><b>Weems leads MSU to ninth straight win</b></a></li>
+						
+					
+						
+							<li><a href="http://www.news-leader.com/article/2011101170344"><b>Christian County Commission considering local use tax</b></a></li>
+						
+					
+						
+							<li><a href="http://www.news-leader.com/article/2011110117016"><b>Bass Pro may build near Lambeau Field, paper reports</b></a></li>
+						
+					
+						
+					
+						
+							<li><a href="http://www.news-leader.com/article/2011101170301"><b>Family is a case study in vaccine, autism link</b></a></li>
+						
+					
+						
+							<li><a href="http://www.news-leader.com/article/2011110116010"><b>Vehicles discovered in Lake Springfield</b></a></li>
+						
+					
+				</ul>
+			
+		</div>
+		<div id="most_viewed_tab_2" style="display:none;">
+			
+				<ul>
+					
+						
+							<li><a href="http://www.news-leader.com/article/2011101120382"><b>Woman&#39;s cause of death unclear, but considered &#39;suspicious&#39;</b></a></li>
+						
+					
+						
+							<li><a href="http://www.news-leader.com/article/2011101130354"><b>Doctor hit with reprimand over two surgeries</b></a></li>
+						
+					
+						
+							<li><a href="http://www.news-leader.com/article/2011110115001"><b>Emergency crews rescue two girls from house fire</b></a></li>
+						
+					
+						
+							<li><a href="http://www.news-leader.com/article/2011101170333"><b>Vehicles discovered in Lake Springfield</b></a></li>
+						
+					
+						
+							<li><a href="http://www.news-leader.com/article/2011101120397"><b>Cattleman fesses up to fib about killing cougar</b></a></li>
+						
+					
+						
+							<li><a href="http://www.news-leader.com/article/20110118/NEWS01/101180349/-1/RSS16"><b>Stolen cars pulled out of Lake Springfield</b></a></li>
+						
+					
+						
+							<li><a href="http://www.news-leader.com/article/2011110116010"><b>Vehicles discovered in Lake Springfield</b></a></li>
+						
+					
+						
+							<li><a href="http://www.news-leader.com/article/2011110112007"><b>Columbia police investigate explicit teen photos</b></a></li>
+						
+					
+						
+							<li><a href="http://www.news-leader.com/article/2011101160336"><b>New police focus: crime hot spots</b></a></li>
+						
+					
+						
+							<li><a href="http://www.news-leader.com/article/2011101140378"><b>Viebrock against road for 60-65 development</b></a></li>
+						
+					
+				</ul>
+			
+		</div>
+		<div id="most_viewed_tab_3" style="display:none;">
+			
+				<ul>
+					
+						
+							<li><a href="http://www.news-leader.com/article/201012120320"><b>Check the facts</b></a></li>
+						
+					
+						
+							<li><a href="http://www.news-leader.com/article/2011110110015"><b>Dead woman found on South Scenic this morning</b></a></li>
+						
+					
+						
+							<li><a href="http://www.news-leader.com/article/2010101231017"><b>Tornadoes kill six in southwest Missouri, northwest Arkansas</b></a></li>
+						
+					
+						
+							<li><a href="http://www.news-leader.com/article/2011110101001"><b>Head-on crash on I-44 kills Springfield man</b></a></li>
+						
+					
+						
+							<li><a href="http://www.news-leader.com/article/20101226/NEWS01/12260338/-1/RSS16"><b>Dead woman was Springfield native</b></a></li>
+						
+					
+						
+							<li><a href="http://www.news-leader.com/article/20101230/NEWS01/12300366/-1/RSS16"><b>Killing unsolved after 40 years</b></a></li>
+						
+					
+						
+							<li><a href="http://www.news-leader.com/article/2010101223013"><b>Man charged in 1982 slaying</b></a></li>
+						
+					
+						
+							<li><a href="http://www.news-leader.com/article/2011101120382"><b>Woman&#39;s cause of death unclear, but considered &#39;suspicious&#39;</b></a></li>
+						
+					
+						
+							<li><a href="http://www.news-leader.com/article/201012220372"><b>Lights out for now at local hotel</b></a></li>
+						
+					
+						
+							<li><a href="http://www.news-leader.com/article/2011101010363"><b>Update: Four storms confirmed as tornadoes</b></a></li>
+						
+					
+				</ul>
+			
+		</div>
+	</div>
+</div>

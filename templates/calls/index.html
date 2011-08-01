@@ -1,0 +1,1005 @@
+{% extends "template2.html" %}
+{% block headers %}
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=7" />
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript" src="{{MEDIA_URL}}/date.js"></script>
+<script type="text/javascript" src="{{MEDIA_URL}}/extendedApi.js"></script>
+<script type="text/javascript" src="{{MEDIA_URL}}/jquery.cookie.js"></script>
+<script type="text/javascript" src="{{MEDIA_URL}}/markerclusterer.js"></script>
+<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+<link href="{{MEDIA_URL}}/ui-lightness/jquery-ui-1.8rc3.custom.css" rel="stylesheet" type="text/css" /> 
+<!--[if IE]><script language="javascript" type="text/javascript" src="{{MEDIA_URL}}/excanvas.js"></script><![endif]-->
+<script type="text/javascript">
+	//loading the piechart.
+	google.load("visualization", "1", {packages:["piechart"]});
+	google.load("visualization", "1", {packages:["barchart"]});
+
+	//defining my variables
+	var geocoder;
+	var map;
+	var markers = [];
+	var markers2 = {};
+	var home_marker;
+	var circle;
+	var home_infowindow;
+	var search_address = {};
+	var calls_graph = [];
+	var mc;
+	var search;
+	
+	var initialLocation;
+	var downtown;
+	var browserSupportFlag =  new Boolean();
+	
+	function initialize() {
+		downtown = new google.maps.LatLng(37.214393, -93.29318 );
+		geocoder = new google.maps.Geocoder();
+		var latlng = new google.maps.LatLng( 37.214393, -93.29318 );
+		var myOptions = {
+			zoom: 12,
+			center: latlng,
+			mapTypeId: google.maps.MapTypeId.ROADMAP,
+			mapTypeControlOptions: {  
+				style: google.maps.MapTypeControlStyle.DROPDOWN_MENU  
+			}
+		}
+		map = new google.maps.Map(document.getElementById("map2"), myOptions);
+		var mcOptions = { gridSize: 30, maxZoom: 14 };
+		mc = new MarkerClusterer( map,mcOptions );
+		
+		// Try W3C Geolocation (Preferred)
+		if( navigator.geolocation )
+		{
+			browserSupportFlag = true;
+			navigator.geolocation.getCurrentPosition( function( position )
+			{
+				initialLocation = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+				if( $.cookie("911_home_location") )
+				{
+					//if the user has a cookie set then we do nothing.
+				}
+				else
+				{
+					//okay so i'm going check for where the browser thinks it is
+					//and for the downtown location so i can see how far away it is
+					//from downtown
+					
+					//console.log("using the browsers geolocation");
+					//if the location is less than 8 miles away, we set the map to center on that
+					if( initialLocation.distanceFrom( downtown ) < 12874.752 )
+					{	
+						//console.log( "setting initial location to  what the browser says");
+						map.setCenter( initialLocation );
+					}
+					else
+					{
+						//console.log( "setting to downtown");
+						map.setCenter( downtown );
+					}
+				}
+				
+			}, function()
+			{
+				handleNoGeolocation( browserSupportFlag );
+			});
+			// Try Google Gears Geolocation
+		}
+		else if( google.gears )
+		{
+			browserSupportFlag = true;
+			var geo = google.gears.factory.create('beta.geolocation');
+			geo.getCurrentPosition( function( position )
+			{
+				initialLocation = new google.maps.LatLng(position.latitude,position.longitude);
+				if( $.cookie("911_home_location") )
+				{
+					//if the user has a cookie set then we do nothing.
+				}
+				else
+				{
+					//okay so i'm going check for where the browser thinks it is
+					//and for the downtown location so i can see how far away it is
+					//from downtown
+					
+					//console.log("using google gears geolocation");
+					//if the marker is less than 8 miles away, we set the map to center on that
+					if( initialLocation.distanceFrom( downtown ) < 12874.752 )
+					{
+						//console.log( "setting the initial location to what the browser says");
+						map.setCenter( initialLocation );
+					}
+					else
+					{
+						//console.log( "setting to downtown");
+						map.setCenter( downtown );
+					}
+				}
+			}, function()
+			{
+				handleNoGeoLocation( browserSupportFlag );
+			});
+			// Browser doesn't support Geolocation
+		} else {
+			browserSupportFlag = false;
+			handleNoGeolocation(browserSupportFlag);
+		}
+		
+		function handleNoGeolocation( errorFlag )
+		{
+			if (errorFlag == true)
+			{
+				//console.log("Geolocation service failed.");
+				initialLocation = downtown;
+			}
+			else
+			{
+				//console.log("Your browser doesn't support geolocation. We've placed you in downtown.");
+				initialLocation = downtown;
+ 			}
+			map.setCenter(initialLocation);
+		}
+	}
+</script>
+{% endblock %}
+{# nav_bar section #}
+{% block nav_bar %}
+<ul>
+	<li><a href="{% url landing_page %}"><img id="home-img" src="{{MEDIA_URL}}/images/home_btn2.png" /></a></li>
+	<li><a href="{% url warrants-index %}"><img id="warrants-img" src="{{MEDIA_URL}}/images/warrants_btn2.png" /></a></li>
+	<li id="active"><a href="{% url calls-index %}"><img id="911-img" src="{{MEDIA_URL}}/images/911_btn1.png" /></a></li>
+</ul>
+{% endblock %}
+{# left column section #}
+{% block left_col_description %}
+<div style="font-family:Arial, Helvetica, sans-serif; font-size:11px;"><strong>Thanks for checking out Springfield 911, the News-Leader's compilation of 911 calls in the Springfield area. Here's a little background to get you started.</strong><br /><br /> 
+<strong>What it is:</strong> When you load the page, the map automatically displays all calls over the past 24 hours, grouped together for easier viewing and displaying more granular data as you zoom in. On the right-hand menu, you'll see options to search and filter the calls. See what happened yesterday, last week, or any time back through the past several years. You can click a marker on the map to center the map on that call, and hover over a marker to see more details about any particular call. We then allow you to sort through our data, find the events that matter to you most, and see how things have changed over time. When you perform a search, a "home" icon will show up at the address you search for. You can drag that icon around the map to move the center of the search radius to a new location
+<br /><br /> 
+<strong>Questions? Comments? Feature suggestions? :</strong>We love them. Found a bug? We want to know. Get in touch with us at <a href="mailto:data@news-leader.com">data@news-leader.com</a>.</div>
+{% endblock %}
+{# main content #}
+{% block content %}
+<script>
+	$(document).ready( function(){
+		//ajax loading stuff. hiding the loading div. setting the contents of it and setting up the ajaxstart/stop callbacks
+		$("#loading").hide();
+		$("#loading").html('Please wait while we load your data...<br /><img src="{{MEDIA_URL}}/images/ajax-loader.gif" />');
+		//hiding my address error div.
+		$("#address_error").hide();
+		$("#loading").ajaxStart(function(){
+			$(this).show();
+			//disabling our controls during the ajax operation
+			$( "#address" ).attr( "disabled", true );
+			$( "#radius" ).attr( "disabled", true );
+			$( "#limit_results" ).attr( "disabled", true );
+			$( "#start_date" ).attr( "disabled", true );
+			$( "#end_date" ).attr( "disabled", true );
+			$( "#search_button").attr( "disabled", true );
+			$( "#clear_search" ).attr( "disabled", true );
+			$( "#cluster_results" ).attr( "disabled", true );
+		});
+		$("#loading").ajaxStop(function(){
+			$(this).hide();
+			//re-enabling all of our stuff now that the ajax operation finished
+			$( "#address" ).removeAttr( "disabled" ); 
+			$( "#radius" ).removeAttr( "disabled" ); 
+			$( "#limit_results" ).removeAttr( "disabled" ); 
+			$( "#start_date" ).removeAttr( "disabled" ); 
+			$( "#end_date" ).removeAttr( "disabled" );
+			$( "#search_button" ).removeAttr( "disabled" );
+			$( "#clear_search" ).removeAttr( "disabled" );
+			$( "#cluster_results" ).removeAttr( "disabled" );
+		});	
+		
+		$("#cluster_results").attr( "checked", false );
+		$("#cluster_results").change( function(){
+			if( search == true )
+			{
+				$("#button_search").click();
+			}
+		});
+		$("input:radio[name=category]").live('change', function(){
+			//console.log( "category changged to " + $(this).val() );
+			if( search == true )
+			{
+				$("#button_search").click();
+			}
+			else
+			{
+				load_latest_calls( $(this).val() );
+			}
+			if( $(this).val() != "all" )
+			{
+				//clicking the details tab
+				$("#calls-details-link").click();
+				$("#calls-summary-link").attr( "disabled", true );
+			}
+			else
+			{
+				$("#calls-summary-link").click();
+				$("#calls-summary-link").attr( "disabled", false );
+			}
+		});
+		//declare all our jquery UI elements
+		//setting my clear search button to a button
+		$("#clear_search").button();
+		
+		//setting my accordion
+		/*$("#accordion").accordion( { 
+						collapsible: true,
+						fillSpace: true,
+						autoHeight: true
+		});
+		*/
+		//search button... duh.
+		$("#button_search").button();
+		
+		//tabs for the bottom section
+		$("#tabs").tabs();
+		
+		//hooking in the details and summary omniture code
+		$("#calls-details-link, #calls-summary-link").click(function(){
+			//omniture stuff!
+			if( typeof( s ) != "undefined" )
+			{
+				s.pageName = "{{omniture_pagename}}" + " - AJAX CALL";
+				s.t();
+			}
+		});
+		
+		//date pickers in the search field.
+		var dates = $('#start_date, #end_date').datepicker({
+			defaultDate: "-1d",
+			maxDate: '+1d',
+			minDate: new Date(2004, 0, 1),
+			changeMonth: true,
+			numberOfMonths: 1,
+			dateFormat: 'mm-dd-yy',
+			changeMonth: false,
+			onSelect: function(selectedDate) {
+				var option = this.id == "start_date" ? "minDate" : "maxDate";
+				var instance = $(this).data("datepicker");
+				var date = $.datepicker.parseDate(instance.settings.dateFormat || $.datepicker._defaults.dateFormat, selectedDate, instance.settings);
+				dates.not(this).datepicker("option", option, date);
+				if( search == true )
+				{
+					$("#button_search").click();
+				}
+			}
+		});
+		
+		//the limit results slider
+		$("#limit_slider" ).slider({
+						value: 75,
+						min: 0,
+						max: 250,
+		});
+		
+		//setting the value of the text to start
+		$("#limit").val( $("#limit_slider").slider( "value" ) );
+		
+		//radius slider
+		$( "#radius_slider" ).slider({
+						value:1,
+						min: 0.1,
+						max: 8,
+						step: 0.1,
+		});
+		
+		
+		//setting the value of the text to start
+		$("#radius").val( $("#radius_slider").slider("value") );
+		
+		
+		$("#crime_line_slider").slider({
+					range: true,
+					min: -2400,
+					max: 0,
+					step: 100,
+					values: [-2400, -2300],
+					slide: function(event, ui) {
+						$("#crime_line_time").val('' + ui.values[0] + ' - $' + ui.values[1]);
+					}
+		});
+		$("#crime_line_time").val('' + $("#crime_line_slider").slider("values", 0) + ' - ' + $("#crime_line_slider").slider("values", 1));
+		//the play button
+		$("#crime_line_button").button({ label: "Play" });
+		
+	
+		function graph( categories )
+		{
+			var data = new google.visualization.DataTable();
+			var count = 0;
+			$.each( categories, function(){
+				data.addColumn('number',categories[count]["name"]);
+				count = count + 1;
+			})
+			data.addRows( 1 );
+			var count = 0
+			$.each( categories, function(){
+				data.setValue(0,count,categories[count]["count"]);
+				count = count + 1;
+			});
+			var chart = new google.visualization.BarChart(document.getElementById('chart'));
+			colors:[ "#DB733C", "#004879","#D43C95","#72122F","#121316","#33A25C","#6B7463","#91989A"]
+			chart.draw(data, {width: 700, height: 250, is3D: true,backgroundColor: {stroke:'black', fill:'#eee', strokeSize: 1}, colors:[ "#DB733C", "#004879","#D43C95","#72122F","#121316","#33A25C","#6B7463","#91989A"],title: 'Call Summary',legendBackgroundColor: "#eee"});
+		}
+		
+		//function to run on my play button click
+		function crime_line_run()
+		{
+			//console.log( "starting crime_line_run()");
+			var slider_start = $("#crime_line_slider").slider("values",0);
+			var slider_end = $("#crime_line_slider").slider("values",1);
+			var min = $('#crime_line_slider').slider('option','min');
+			var max = $('#crime_line_slider').slider('option','max');
+			//console.log( "max = " + max );
+			//console.log( "slider_start = " + slider_start );
+			//console.log( "slider_end = " + slider_end );
+			
+			
+			//okay if they click crime line, we are going to zoom the map out some and then center it on downtown.
+			//using the downtown location i set in in header.html
+			map.setCenter( downtown );
+			//and zoom out to see the whole city
+			map.setZoom( 12 );
+			
+			//if the circle is defined, we remove it.
+			if( typeof circle != "undefined" )
+			{
+				circle.setMap(null);
+			}
+
+			$.get( "{% url calls-crimeline %}", {'start_time': slider_start,'end_time': slider_end}, function( data ){
+					$("#calls").html( data.content );
+					CallsByID = data.CallsByID;
+					activate_calls( mc, CallsByID,false,false );
+					graph( data.categories );
+					$("#summary").html( "Calls Returned by Search: " + markers.length );
+					//set our filter content
+					$("#filter_content").html( data.filter_content);
+					//setting up the details about the map
+					$("#details_content").html( data.details_content );
+					
+					$("#info").html( "Start: <span class='bold'>" + data.from_date + "</span> End: <span class='bold'>" + data.to_date + "</span> Total Calls: <span class='bold'>" + data.total_calls + "</span>" );
+					
+					}, 'json');
+
+			if( slider_end < max )
+			{
+				slider_start = slider_start + 100;
+				slider_end = slider_end + 100;
+				$("#crime_line_slider").slider("values",0,slider_start);
+				$("#crime_line_slider").slider("values",1,slider_end);
+				
+				$("#info").show();
+				//$("#info").html("Testing!!!!!!!!!!!!!!");
+			}
+			else
+			{
+				//triggering the button to pause/stop the interval
+				$("#info").hide();
+				$('#crime_line_button').click();
+			}
+			//console.log( "slider_start = " + slider_start );
+			//console.log( "slider_end = " + slider_end );
+			
+		
+		}
+		//my play button callback
+		var crime_line_interval;
+		$("#crime_line_button").click( function(){
+			
+			var label = $('#crime_line_button').button('option', 'label');
+			if( label == "Play" )
+			{
+				var slider_start = $("#crime_line_slider").slider("values",0);
+				var slider_end = $("#crime_line_slider").slider("values",1);
+				
+				if( slider_start == -100 && slider_end == 0 )
+				{
+					$("#crime_line_slider").slider("values",0,-2400);
+					$("#crime_line_slider").slider("values",1,-2300);
+				}
+				//console.log( "Play clicked.. starting interval" );
+				crime_line_interval = setInterval(crime_line_run, 5000 );
+				$('#crime_line_button').button('option', 'label', "Pause");
+			}
+			else
+			{
+				//console.log( "Pause clicked.. stopping interval" );
+				clearInterval(crime_line_interval);
+				$('#crime_line_button').button('option', 'label', "Play");
+			}
+		});
+		
+		//before we do anything. intialize our google maps
+		initialize();
+		//function to take a list of calls and put them on our map cluster
+		function activate_calls( mc, calls,cluster,fitbounds )
+		{
+			if (typeof cluster == "undefined") {
+				cluster = true;
+			}
+			if( typeof fitbounds == "undefined" ){
+				fitbounds = true;
+			}
+			
+			//clear our markers our first.
+			$.each( markers, function()
+			{
+				//console.log( "removing this marker: " + $(this)[0] );
+				//this will make all the markers NOT attached to a cluster go away.
+				$(this)[0].setMap();
+			});
+			//clearing the markers from our cluster
+			mc.clearMarkers();
+			//making our cluster redraw everything
+			mc.resetViewport();
+			markers = [];
+
+			var bounds = new google.maps.LatLngBounds();
+			$.each( calls, function(){
+				//define our location first
+				myLatLng = new google.maps.LatLng( $(this)[0].lat, $(this)[0].lng );
+				//define our icon
+				//if it matches a specific calltype, we override it.
+				if( $(this)[0].icon != "" )
+				{
+					var image = $(this)[0].icon;
+				}
+				else
+				{
+					var image = '{{MEDIA_URL}}/images/icons/info.png';
+				}
+				
+				//make our marker with our position, map,title and shit
+				var marker = new google.maps.Marker({
+					position: myLatLng,
+					title: $(this).event_num,
+					icon: image
+				});
+				
+				markers.push( marker );
+				bounds.extend( myLatLng );
+				if( cluster == false )
+				{
+					marker.setMap( map );	
+				}
+				
+				//setup our pretty text
+				//var html = '<div class="popup_title">' + $(this)[0].description + '</div>';
+				var html = '<div class="popup_title">' + $(this)[0].calltype_desc + '</div>';
+					html = html + '<div class="popup_text">' + $(this)[0].call_time + '</div>';
+					html = html + '<div class="popup_text">' + $(this)[0].address + '<br />Springfield, MO {{call.zip_code}}</div>';
+					html = html + '<div class="popup_text">' + $(this)[0].beat + ' - ' + $(this)[0].response + '</div>';
+					if(typeof home_marker != "undefined" )
+					{
+						html = html + '<div class="popup_text">Distance from Home: ' + eval( Math.round( ( ( marker.distanceFrom( home_marker ) * 3.2808399 ) * 0.0001893939395 ) * Math.pow( 10, 2 ) ) / Math.pow( 10, 2 ) )  +' Miles</div>';
+					}
+					{% if debug %}
+						//DEBUG - printing out the geocoder so i can see what service we used to get the lat/lng
+						html = html + '<div class="popup_text">geocoder: ' + $(this)[0].geocoder + '</div>';
+					{% endif %}
+				//set the info window to show the pretty text
+				var infowindow = new google.maps.InfoWindow({
+					content: html,
+					//disabling autopan for our info windows. this feels better this way.
+					disableAutoPan: true
+				});
+				infowindow.setPosition(marker.getPosition());
+				//add a listener that shows our pretty info window
+				google.maps.event.addListener( marker, 'mouseover', function() {
+					infowindow.open(map,marker);
+				});
+				
+				google.maps.event.addListener( marker,'mouseout',function(){
+					infowindow.close();
+				});
+				google.maps.event.addListener( marker,'click',function(){
+					map.setCenter(marker.getPosition());
+				});
+			});
+			if( cluster != false )
+			{
+				mc.addMarkers( markers );	
+			}
+			if( fitbounds != false )
+			{
+				map.fitBounds(bounds);
+			}
+		}
+		
+		//going to pull in our calls using the list function. this will give us the last days calls
+		//we are going to set them into a cluster ( 3rd variable ) and refocus the map ( 4th variable )
+		function load_latest_calls( category )
+		{
+			if( typeof category == "undefined" )
+			{
+				var category = "all"
+			}
+			//omniture stuff!
+			if( typeof( s ) != "undefined" )
+			{
+				s.pageName = "{{omniture_pagename}}" + " - AJAX CALL";
+				s.t();
+			}
+			
+			$.get( "{% url calls-list %}",{"category": category}, function( data ){
+					//set our list of calls
+					$("#calls").html( data.content );
+					CallsByID = data.CallsByID;
+					//run our function that puts the calls on the map
+					if( category != "all" )
+					{
+						var cluster = false;
+					}
+					else
+					{
+						var cluster = false;
+					}
+					if( CallsByID.length > 0 )
+					{
+						var fitbounds = true;
+					}
+					else
+					{
+						var fitbounds = false;
+					}
+					activate_calls( mc, CallsByID, cluster, fitbounds );
+					if( typeof home_marker != "undefined" )
+					{
+						map.setCenter( home_marker.getPosition() );
+					}
+					//set our filter content
+					$("#filter_content").html( data.filter_content);
+					//setting up the details about the map
+					$("#details_content").html( data.details_content );
+					//now lets activate our summary tab so the graphs load properly
+					$("#calls-summary-link").click();
+					graph( data.categories );
+					}, 'json');
+		}
+		
+		//executing our function to load the last 100 calls via ajax.
+		load_latest_calls();
+		
+		//function for the search button
+		$('#clear_search').click( function(){
+			//clearing our fields.
+			$( "#address" ).val("");
+			$( "#limit" ).val("75");
+			$( "#radius" ).val("1");
+			//call our function to get our latest calls
+			load_latest_calls();
+			if(typeof circle != "undefined" )
+			{
+				circle.setMap( null );
+				delete circle;
+			}
+			search = false;
+		});
+		function set_location(){
+			//setting the date for 30 days from now.
+			date = new Date();
+			date.setTime( date.getTime() + ( 30 * 24 * 60 * 60 * 1000 ) );
+			if( $.cookie( "911_home_location" ) )
+			{
+				//deleting the cookie.
+				$.cookie( "911_home_location", null, { expires: date, path: '/' } );
+			}
+			$.cookie( "911_home_location", $("#address").val(), { expires: date, path: '/'});
+		}
+		
+		//function to check the cookies
+		function check_cookie()
+		{
+			if( $.cookie( "911_home_location" ) )
+			{
+				$("#address" ).val( $.cookie("911_home_location" ) );
+				//setting our home icon
+				set_home_icon( $("#address").val()  );
+				//console.log( "setting the address field to our cookied home location");
+				if( typeof home_marker != "undefined" )
+				{
+					map.setCenter(home_marker.getPosition());
+				}
+				
+			}
+		}
+		//calling our check_cookie function
+		check_cookie();
+		
+		
+		//callback for the limit slider.
+		//attaching a call back so if it changes it will update our text field also
+		$('#limit_slider').bind('slidechange', function(event, ui){
+			$("#limit").val( $("#limit_slider").slider("value") );
+			if( search == true )
+			{
+				$("#button_search").click();
+			}
+		});
+		
+		//callback from the radius slider
+		//attaching a call back so if it changes it will update our text field also
+		$('#radius_slider').bind('slidechange', function(event, ui) {
+			$("#radius").val( $("#radius_slider").slider("value") );
+			if( search == true )
+			{
+				$("#button_search").click();
+			}
+		});
+		
+		//Functions to make my home marker draggable.
+		function updateMarkerPosition( latLng )
+		{
+			$("#address").val( [
+			latLng.lat(),
+			latLng.lng()
+			].join(', '));
+			//console.log("inside updateMarkerPosition! " + latLng.lat() + " " + latLng.lng() );
+		}
+		
+		function updateMarkerStatus( str )
+		{
+			$("#address").val( str );
+			updateMarkerWindow( str );
+			//console.log( "inside updateMarkerStatus! " + str );
+		}
+		
+		function updateMarkerWindow( str )
+		{
+			var html = '<div class="popup_title">Home</div>';
+				html = html + '<div class="popup_text">' + str + '</div>';
+			home_infowindow.setContent( html )
+		}
+		function geocodePosition( pos )
+		{
+			geocoder.geocode({
+					latLng: pos
+				}, function(responses) {
+					if (responses && responses.length > 0) {
+						updateMarkerAddress(responses[0].formatted_address);
+						//triggering the search if we move our home location.
+						if( search == true )
+						{
+							$("#button_search").click();
+						}
+						
+						//triggering the setting of our location as a cookie
+						set_location();
+					} else {
+						updateMarkerAddress('Cannot determine address at this location.');
+					}
+			});
+			//console.log( "geocoding position = " + pos );
+		}
+		
+		function updateMarkerAddress( str )
+		{
+			$("#address").val( str );
+			updateMarkerWindow( str );
+			//console.log( "inside updateMarkerAddress! " + str );
+		}
+		
+		function set_home_icon( address,delete_circle )
+		{
+			geocoder.geocode( { 'address': address }, function( results, status ){
+				if (status == google.maps.GeocoderStatus.OK)
+				{
+					if( typeof home_marker != "undefined" )
+					{
+						home_marker.setMap( null ) ;
+						delete home_marker;
+					}
+					myLatLng = new google.maps.LatLng( results[0].geometry.location.lat(), results[0].geometry.location.lng() );
+					//define our icon
+					//console.log( "Call # " + $(this)[0].event_num + " - CallType = " + $(this)[0].calltype );
+					//if it matches a specific calltype, we override it.
+					var image = '{{MEDIA_URL}}/images/icons/home2.png';
+					
+					//make our marker with our position, map,title and shit
+					home_marker = new google.maps.Marker({
+						position: myLatLng,
+						title: $(this).event_num,
+						icon: image
+					});
+					bounds = new google.maps.LatLngBounds();
+					bounds.extend( myLatLng );
+					home_marker.setMap( map );
+					home_marker.setDraggable(true);
+					home_marker.setZIndex(1000);
+					home_marker.setTitle = "Drag me!";
+					//setup our pretty text
+					var html = '<div class="popup_title">Home</div>';
+						html = html + '<div class="popup_text">' + address + '</div>';
+						html = html + '<div class="popup_text">You can drag me to a new address</div>';
+					//set the info window to show the pretty text
+					home_infowindow = new google.maps.InfoWindow({
+						content: html
+					});
+					home_infowindow.setPosition(home_marker.getPosition());
+					//add a listener that shows our pretty info window
+					google.maps.event.addListener(home_marker, 'mouseover', function() {
+						home_infowindow.open(map,home_marker);
+					});
+					google.maps.event.addListener(home_marker,'mouseout',function(){
+						home_infowindow.close();
+					});
+					
+					// Add dragging event listeners.
+					google.maps.event.addListener(home_marker, 'dragstart', function() {
+						updateMarkerAddress('Dragging...');
+					});
+
+					google.maps.event.addListener(home_marker, 'drag', function() {
+						updateMarkerStatus('Dragging...');
+						updateMarkerPosition(home_marker.getPosition());
+					});
+
+					google.maps.event.addListener(home_marker, 'dragend', function() {
+						updateMarkerStatus('Drag ended');
+						geocodePosition(home_marker.getPosition());
+					});
+					
+					//double clicking on the home icon will make it center the map on it
+					google.maps.event.addListener( home_marker, 'dblclick', function(){
+						//console.log( "centering map on the home icon");
+						map.setCenter(home_marker.getPosition());
+					});
+				}
+			});
+		}
+		
+		function draw_home_circle( radius )
+		{
+			if( typeof circle == "object" )
+			{
+				circle.setMap(null);
+				circle.unbind( "center" );
+				//delete circle;
+			}
+			if( typeof home_marker != "undefined" )
+			{
+				//console.log( "home_marker != undefined" );
+				//console.log( "radius = " + radius );
+				//converting the radius into KM for the circle
+				radius_in_km = ( radius * 1.609344 );
+				//console.log( "radius in km = " + radius_in_km );
+				// Add a Circle overlay to the map.
+				circle = new google.maps.Circle({
+					map: map,
+					radius: (radius_in_km * 1000) // radius needs to be set in meters
+				});
+				//console.log( "map = " + map );
+				//console.log( "home_marker = " + typeof(home_marker ));
+				// Since Circle and Marker both extend MVCObject, you can bind them
+				// together using MVCObject's bindTo() method.  Here, we're binding
+				// the Circle's center to the Marker's position.
+				// http://code.google.com/apis/maps/documentation/v3/reference.html#MVCObject
+				circle.bindTo('center', home_marker, 'position');
+			}
+
+		}
+		//end radius slider
+		$('#button_search').click( function(){
+			var address = $( "#address" ).val();
+			var limit_results = $( "#limit" ).val();
+			var radius = $( "#radius" ).val();
+			var start_date = $( '#start_date' ).val();
+			var end_date = $( '#end_date' ).val();
+			var category = $( 'input:radio:checked' ).val();
+			var data;
+			//omniture stuff!
+			if( typeof( s ) != "undefined" )
+			{
+				s.pageName = "{{omniture_pagename}}" + " - AJAX CALL";
+				s.t();
+			}
+			//console.log( "address = " + address );
+			if( address != "" )
+			{
+				//if the address string does NOT contain (ie the -1 ) springfield in it, we concatenate it on the end of the address string.
+				if( address.toLowerCase().indexOf("springfield") ==  -1 )
+				{
+					address = address + ", Springfield, MO";
+					$( "#address" ).val( address );
+				}
+				geocoder.geocode( { 'address': address }, function( results, status ){
+					if (status == google.maps.GeocoderStatus.OK)
+					{
+						//clearing and hiding the error tabs.
+						$("#address_error").hide();
+						$("#address_error").val("");
+						var tmpLatLng = new google.maps.LatLng( results[0].geometry.location.lat(), results[0].geometry.location.lng() );
+						//console.log( "address: " + address + ", location: " + results[0].geometry.location );
+						data  = { 	"lat": results[0].geometry.location.lat(),
+									"lng": results[0].geometry.location.lng(),
+									"radius": radius,
+									"limit_results": limit_results,
+									"address": address,
+									"start_date": start_date,
+									"end_date": end_date,
+									"category": category
+								};
+						//setting the location of our search so i can put a point there
+						search_address = {
+									"lat": results[0].geometry.location.lat(),
+									"lng": results[0].geometry.location.lng()
+						};
+						//going to see if the address being searched is the same as the home icon now.
+						if( typeof home_marker != "undefined" )
+						{
+							if( home_marker.getPosition() !=  tmpLatLng )
+							{
+								//if they aren't the same, then we set the home icon and draw our circle.
+								set_home_icon( address );
+								draw_home_circle( radius );
+							}
+						}
+						else
+						{
+							//set the home icon and draw our circle.
+							set_home_icon( address );
+						
+							draw_home_circle( radius );
+						}
+						
+						$.get( "{% url calls-search %}", data, function( data ){
+								//console.log( "fetching calls");
+								$("#calls").html( data.content );
+								CallsByID = data.CallsByID;
+								//if cluster results is checked, we set our cluster boolean to true
+								if( $("#cluster_results").attr("checked") )
+								{
+									cluster = true;
+								}
+								else
+								{
+									cluster = false;
+								}
+								var fitbounds = true;
+								activate_calls( mc, CallsByID, cluster, fitbounds );
+								$( "#summary" ).html( "Calls Returned by Search: " + markers.length );
+								//set our filter content
+								$( "#filter_content" ).html( data.filter_content);
+								//setting up the details about the map
+								$( "#details_content" ).html( data.details_content );
+								
+								//console.log( "categories = " + data.categories );
+								graph( data.categories );
+								if( category != "all" )
+								{
+									$("#calls-details-link").click();
+								}	
+								else
+								{
+									$("#calls-summary-link").click();
+								}
+								//setting the search var to true
+								search = true;
+								//trying to draw a home circle again
+								draw_home_circle( radius );
+								
+							}, 'json');
+						
+							
+					}
+					else
+					{
+						//showing my error div if no address is found.
+						$("#address_error").show();
+						//console.log( "showing our address_error div");
+						$("#address_error").val( "Address not Found! Please try again.");
+					}
+				});
+			}
+			else
+			{
+				//console.log( "No Address to geocode!");
+				data  = { 	"lat": null,
+							"lng": null,
+							"radius": radius,
+							"limit_results": limit_results,
+							"address": address,
+							"start_date": start_date,
+							"end_date": end_date
+						};
+				search_address = {};
+			}
+		});
+		
+		
+	});
+</script>
+<div>
+	<div id="map2">
+	</div>
+	<div id="controls" class="ui-widget ui-corner-all">
+		<div>
+			<div id="loading">
+			</div>
+			<div id="search_controls" class="ui-widget-content" style="padding-left: 3px; padding-right: 3px; padding-top: 1px">
+				<div class="ui-widget-header">Search</div>
+				<div>
+					<label for="address">Address</label><br />
+					<div id="address_error"></div>
+					<textarea id="address" rows="3" cols="20"></textarea>
+					<br />
+					<div>
+						<label for="limit" style="margin-bottom: 5px">Limit Results:&nbsp;&nbsp;<input id="limit" size="3" ></label>
+						<div id="limit_slider"></div>
+					</div>
+					<div>
+						<label for="radius" style="margin-bottom: 5px">Radius:&nbsp;&nbsp;<input type="text" id="radius" size="3" /><label style="color:#000000; font-weight:bold;"> miles</label></label>
+						<div id="radius_slider"></div>
+					</div>
+					<br />
+					<div>
+						<label for="start_date">Start Date:</label>&nbsp;<input name="start_date" id="start_date" size="11" value="{{yesterday|date:"m-d-Y"}}" />
+					</div>
+					<div>
+						<label for="end_date">End Date:&nbsp;&nbsp;</label>&nbsp;<input name="end_date" id="end_date" size="11" value="{{today|date:"m-d-Y"}}" />
+					</div>
+					<div>
+						<label for="cluster_results">Cluster Calls</label>&nbsp;<input type="checkbox" id="cluster_results" name="cluster_results" />
+					</div>
+					<input type="button" id="button_search" value="Search Call" />
+					<input type="button" id="clear_search" value="Reset" />
+				</div>
+				<div id="filter_content" style="padding-top: 5px">
+					<div class="ui-widget-header">Filters</div>
+					<div id="filter_container">
+						Call Categories:<br />
+						{% spaceless %}
+						{% if categories %}
+							<input type="radio" id="category" name="category" value="all" />All<br />
+						{% endif %}
+						{% for category in categories %}
+							<input type="radio" id="category" name="category" value="{{category}}" />{{category}}<br />
+							<!--<li>{{category}}</li>-->
+						{% empty %}
+							<div id="row">
+								<div>No Categories matched this search.</div>
+							</div>
+						{% endfor %}
+						{% endspaceless %}
+					</div>
+				</div>
+				<div id="details" style="padding-top: 5px">
+					<div class="ui-widget-header">Map Details</div>
+					<div id="details_content">
+						{{details_content}}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--<div id="crime_line_controls">
+		<div id="info" class="lightBox"></div>
+		<div>
+			<input type="button" id="crime_line_button" style="float:left;"/>
+			<span style="padding-top:10px;margin-top: 10px;">
+				
+				<div id="crime_line_slider"></div>
+			</span>
+		</div>
+	</div>-->
+	<div id="tabs">
+		<ul>
+			<li><a id="calls-summary-link" href="#charts">Summary</a></li>
+			<li><a id="calls-details-link" href="#calls">Detail</a></li>
+		</ul>
+		<div id="charts">
+			<div id="chart">
+			</div>
+		</div>
+		<div id="calls">
+			{{calls_content}}
+		</div>
+	</div>
+</div>		
+{% endblock %}

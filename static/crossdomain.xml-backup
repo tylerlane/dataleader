@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!DOCTYPE cross-domain-policy SYSTEM "http://www.macromedia.com/xml/dtds/cross-domain-policy.dtd">
+<cross-domain-policy>
+	<allow-access-from domain="www.news-leader.com" secure="false" /> 
+	<allow-access-from domain="news-leader.com" secure="false" />
+	<allow-access-from domain="php.news-leader.com" secure="false" /> 
+	<allow-access-from domain="cmsstage.gdn.news-leader.com" secure="false" />
+	<allow-access-from domain="data.news-leader.com" secure="false" />
+	<allow-access-from domain="data-media.news-leader.com" secure="false" />
+</cross-domain-policy>
+

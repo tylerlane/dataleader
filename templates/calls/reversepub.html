@@ -1,0 +1,68 @@
+{% extends "blank_template.html" %}
+{% block title %}
+InfoCenter Admin: Calls Reverse Pub
+{% endblock %}
+{% block headers %}
+<link href="{{MEDIA_URL}}/redmond/jquery-ui-1.8.custom.css" rel="stylesheet" type="text/css"> 
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script> 
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+<script type="text/javascript" src="{{MEDIA_URL}}/syntaxhighlighter/scripts/shCore.js"></script>
+<script type="text/javascript" src="{{MEDIA_URL}}/syntaxhighlighter/scripts/shBrushPlain.js"></script>
+<link href="{{MEDIA_URL}}/syntaxhighlighter/styles/shCore.css" rel="stylesheet" type="text/css" />
+<link type="text/css" rel="Stylesheet" href="{{MEDIA_URL}}/syntaxhighlighter/styles/shThemeDefault.css"/>
+
+<script>
+$(document).ready( function(){
+	//date pickers in the search field.
+	var dates = $('#id_begin_date, #id_end_date').datepicker({
+		defaultDate: "-1d",
+		changeMonth: false,
+		numberOfMonths: 1,
+		dateFormat: 'yy-mm-dd',
+		changeMonth: false,
+		onSelect: function(selectedDate) {
+			var option = this.id == "id_begin_date" ? "minDate" : "maxDate";
+			var instance = $(this).data("datepicker");
+			var date = $.datepicker.parseDate(instance.settings.dateFormat || $.datepicker._defaults.dateFormat, selectedDate, instance.settings);
+			dates.not(this).datepicker("option", option, date);
+		}
+	});
+});
+
+</script>
+{% endblock %}
+{% block content %}
+<h2>Police Calls - Reverse Pub</h2>
+<form method="POST" action="{% url reversepub_calls %}" >
+	<table>
+		{% csrf_token %}
+		{{form.as_table}}
+	</table>
+	<input type="submit" value="Search!">
+</form>
+{% if calls %}
+	<hr />
+<pre class="brush: text">
+{# i'm having to put the date template tag right after the for loop or i will get extra whitespace. #}
+{% for call in calls %}{% ifchanged call.date %}
+@.LIST Subtopic label:{{call.call_time|date:"N j"}}{% endifchanged %}
+@.LIST Body no indents:{{call.call_time|date:"g:i a"}}, {{call.pretty_address}}, {{call.calltype.description}}{% endfor %}
+</pre>
+	<hr />
+	{{calls|length}} total calls returned
+{% endif %}
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<!-- Finally, to actually run the highlighter, you need to include this JS on your page -->
+<script type="text/javascript">
+	SyntaxHighlighter.config.stripBrs = false;
+	SyntaxHighlighter.config.clipboardSwf = '{{MEDIA_URL}}/syntaxhighlighter/scripts/clipboard.swf';
+	SyntaxHighlighter.config.tagName = "pre";
+	SyntaxHighlighter.all();
+</script>
+{% endblock %}

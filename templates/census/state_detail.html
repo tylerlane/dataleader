@@ -1,0 +1,110 @@
+{% extends "census_template.html" %}
+{% load humanize %}
+{% block headers %}
+<style>
+table tr td{
+		border-bottom:1px black solid;
+}
+table tr.totalpop td{
+		border-bottom: 3px black solid;
+		border-top: 3px black solid;
+		font-weight: bold;
+}
+.totalpop{
+	margin-bottom: 5px;
+}
+</style>
+{% endblock %}
+{% block content %}
+<h1> Census Data for {{state|upper}}</h1>
+<a href="{% url census-index %}">All States</a> | <a href="{% url list_counties state %}">{{state|upper}} Counties</a> | <a href="{% url list_cities state %}">{{state|upper}} Cities</a>  | <a href="http://www.news-leader.com/section/Census">Additional Census Coverage</a>
+<table style="width:75%;">
+	<tr><th>Race</th><th>2000</th><th>2010</th><th>Change</th><th>Percentage</th></tr>
+	<tr class="totalpop">
+		<td>Total Population</td>
+		<td>{{state.pop2000|intcomma|default:"zero"}}</td>
+		<td>{{state.pop2010|intcomma|default:"zero"}}</td>
+		<td style="background-color:{% if state.popchangepercentage < 0 %}#EEA223{%endif%};">{{state.popchange|intcomma|default:"zero"}}</td>
+		<td style="background-color:{% if state.popchangepercentage < 0 %}#EEA223{%endif%};">{{state.popchangepercentage|floatformat:2|default:"0"}}%</td>
+	</tr>
+	<tr>
+		<td>White</td>
+		<td>{{state.popwhite2000|intcomma|default:"zero"}}</td>
+		<td>{{state.popwhite2010|intcomma|default:"zero"}}</td>
+		<td style="background-color:{% if state.whitechangepercentage < 0 %}#EEA223{%endif%};">{{state.whitechange|intcomma|default:"zero"}}</td>
+		<td style="background-color:{% if state.whitechangepercentage < 0 %}#EEA223{%endif%};">{{state.whitechangepercentage|floatformat:2|default:"0"}}%</td>
+	</tr>
+	<tr>
+		<td>Black</td>
+		<td>{{state.popblack2000|intcomma|default:"zero"}}</td>
+		<td>{{state.popblack2010|intcomma|default:"zero"}}</td>
+		<td style="background-color:{% if state.blackchangepercentage < 0 %}#EEA223{%endif%};">{{state.blackchange|intcomma|default:"zero"}}</td>
+		<td style="background-color:{% if state.blackchangepercentage < 0 %}#EEA223{%endif%};">{{state.blackchangepercentage|floatformat:2|default:"0"}}%</td>
+	</tr>
+	<tr>
+		<td>Hispanic</td>
+		<td>{{state.pophisp2000|intcomma|default:"zero"}}</td>
+		<td>{{state.pophisp2010|intcomma|default:"zero"}}</td>
+		<td style="background-color:{% if state.hispchangepercentage < 0 %}#EEA223{%endif%};">{{state.hispchange|intcomma|default:"zero"}}</td>
+		<td style="background-color:{% if state.hispchangepercentage < 0 %}#EEA223{%endif%};">{{state.hispchangepercentage|floatformat:2|default:"0"}}%</td>
+	</tr>
+	<tr>
+		<td>Non-Hispanic</td>
+		<td>{{state.popnonhisp2000|intcomma|default:"zero"}}</td>
+		<td>{{state.popnonhisp2010|intcomma|default:"zero"}}</td>
+		<td style="background-color:{% if state.nonhispchangepercentage < 0 %}#EEA223{%endif%};">{{state.nonhispchange|intcomma|default:"zero"}}</td>
+		<td style="background-color:{% if state.nonhispchangepercentage < 0 %}#EEA223{%endif%};">{{state.nonhispchangepercentage|floatformat:2|default:"0"}}%</td>
+	</tr>
+	<tr>
+		<td>White Non-Hispanic</td>
+		<td>{{state.popwhitenonhisp2000|intcomma|default:"zero"}}</td>
+		<td>{{state.popwhitenonhisp2010|intcomma|default:"zero"}}</td>
+		<td style="background-color:{% if state.whitenonhispchangepercentage < 0 %}#EEA223{%endif%};">{{state.whitenonhispchange|intcomma|default:"zero"}}</td>
+		<td style="background-color:{% if state.whitenonhispchangepercentage < 0 %}#EEA223{%endif%};">{{state.whitenonhispchangepercentage|floatformat:2|default:"0"}}%</td>
+	</tr>
+	<tr>
+		<td>American Indian and Alaska Native</td>
+		<td>{{state.popamind2000|intcomma|default:"zero"}}</td>
+		<td>{{state.popamind2010|intcomma|default:"zero"}}</td>
+		<td style="background-color:{% if state.amindchangepercentage < 0 %}#EEA223{%endif%};">{{state.amindchange|intcomma|default:"zero"}}</td>
+		<td style="background-color:{% if state.amindchangepercentage < 0 %}#EEA223{%endif%};">{{state.amindchangepercentage|floatformat:2|default:"0"}}%</td>
+	</tr>
+	<tr>
+		<td>Asian</td>
+		<td>{{state.popasian2000|intcomma|default:"zero"}}</td>
+		<td>{{state.popasian2010|intcomma|default:"zero"}}</td>
+		<td style="background-color:{% if state.asianchangepercentage < 0 %}#EEA223{%endif%};">{{state.asianchange|intcomma|default:"zero"}}</td>
+		<td style="background-color:{% if state.asianchangepercentage < 0 %}#EEA223{%endif%};">{{state.asianchangepercentage|floatformat:2|default:"0"}}%</td>
+	</tr>
+	<tr>
+		<td>Native Hawaiian and Other Pacific Islander</td>
+		<td>{{state.popnathaw2000|intcomma|default:"zero"}} </a></td>
+		<td>{{state.popnathaw2010|intcomma|default:"zero"}}</td>
+		<td style="background-color:{% if state.nathawchangepercentage < 0 %}#EEA223{%endif%};">{{state.nathawchange|intcomma|default:"zero"}}</td>
+		<td style="background-color:{% if state.nathawchangepercentage < 0 %}#EEA223{%endif%};">{{state.nathawchangepercentage|floatformat:2|default:"0"}}%</td>
+	</tr>
+	<tr>
+		<td>Other</td>
+		<td>{{state.popother2000|intcomma|default:"zero"}}</td>
+		<td>{{state.popother2010|intcomma|default:"zero"}}</td>
+		<td style="background-color:{% if state.otherchangepercentage < 0 %}#EEA223{%endif%};">{{state.otherchange|intcomma|default:"zero"}}</td>
+		<td style="background-color:{% if state.otherchangepercentage < 0 %}#EEA223{%endif%};">{{state.otherchangepercentage|floatformat:2|default:"0"}}%</td>
+	</tr>
+	
+	<tr>
+		<td>Two or More Races</td>
+		<td>{{state.pop2ormore2000|intcomma|default:"zero"}}</td>
+		<td>{{state.pop2ormore2010|intcomma|default:"zero"}}</td>
+		<td style="background-color:{% if state.twoormorechangepercentage < 0 %}#EEA223{%endif%};">{{state.twoormorechange|intcomma|default:"zero"}}</td>
+		<td style="background-color:{% if state.twoormorechangepercentage < 0 %}#EEA223{%endif%};">{{state.twoormorechangepercentage|floatformat:2|default:"0"}}%</td>
+	</tr>
+
+</table>
+{% endblock %}
+
+
+
+
+
+
+

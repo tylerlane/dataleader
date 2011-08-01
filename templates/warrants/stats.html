@@ -1,0 +1,48 @@
+{% extends "template2.html" %}
+{% load humanize %}
+{# nav_bar section #}
+{% block nav_bar %}
+<ul>
+	<li><a href="{% url landing_page %}"><img id="home-img" src="{{MEDIA_URL}}/images/home_btn2.png" /></a></li>
+	<li id="active"><a href="{% url warrants-index %}"><img id="warrants-img" src="{{MEDIA_URL}}/images/warrants_btn1.png" /></a></li>
+	<li><a href="{% url calls-index %}"><img id="911-img" src="{{MEDIA_URL}}/images/911_btn2.png" /></a></li>
+</ul>
+{% endblock %}
+{% block left_col_description %}
+<h3>Warrants</h3>
+<p>
+	This database is updated regularly and contains possible active warrants that are listed by the Greene County Sheriff’s Office and the Springfield Police Department. The News-Leader cannot guarantee the accuracy of this information.</p>
+<br />
+<a id="contact_info_a" href="javascript:void(0)">Contact Info</a>
+<div id="contact_info">
+<p>You can contact the Springfield Police Department at (417) 864-1810.</p>
+ <p>You can contact the Greene County Sheriff's Office at (417) 868-4040.  Information may also be reported to Crime Stoppers at (417) 869-8477 or by submitting information through their <a href="https://www.tipsubmit.com/WebTips.aspx?AgencyID=219">online form</a>.
+</div>
+<br />
+{% endblock %}
+{% block content %}
+	<div>
+		<!-- menu code here. Stole from the Restaurant inspects page. Trying to maintain the same style here.-->
+		<div id="warrants_nav">
+			<ul>
+				<li><a href="{% url warrants-index %}">Browse | </a></li>
+				<li><a href="{% url warrants-search %}">Search | </a></li>
+				<li><a href="{% url warrants-stats %}">Statistics</a></li>
+			</ul>
+		</div>
+		<br />
+	</div>
+	<div align="left">
+			<div style="overflow: hidden">
+				<b>Greene County Warrants</b><br />
+				{% for count in greene_warrant_counts %}
+					{{count.warrant_type}}:	 {{count.dcount|intcomma}} warrants<br />
+				{% endfor %}
+				<hr />
+				<b>Springfield Municipal Warrants</b><br />
+				{% for count in spf_warrant_counts %}
+					{{count.warrant_type}}:	 {{count.dcount|intcomma}} warrants<br />
+				{% endfor %}
+			</div>
+	</div>
+{% endblock %}	

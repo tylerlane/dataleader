@@ -1,0 +1,73 @@
+{% extends "blank_template.html" %}
+{% load humanize %}
+{% block title %}
+InfoCenter Admin: Featured Stories
+{% endblock %}
+{% block headers %}
+<link href="{{MEDIA_URL}}/redmond/jquery-ui-1.8.custom.css" rel="stylesheet" type="text/css"> 
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script> 
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+<style>
+ul li{
+	 list-style-type: none;
+}
+</style>
+{% endblock %}
+{% block content %}
+<script>
+$(document).ready( function(){
+	$("input:checkbox").click( function(){
+		//checking to see how many are checked.
+		var counter = $('input:checkbox').filter(':checked' ).length;
+		//can only allow 2 featured stories
+		if( counter > 2 )
+		{
+			$(this).removeAttr( "checked" );
+		}
+		
+		//change the color of the row on the checked attrib
+		if( $(this).attr( "checked") )
+		{
+			$(this).parent().css({"font-weight": "bold", "background-color": "#FF6633"});
+		}
+		else
+		{
+			$(this).parent().css({"font-weight": "normal", "background-color": "white"});
+		}
+	});
+});
+</script>
+<p />
+<p />
+<h3>Featured Stories Admin</h3>
+{% if message %}
+	<p style="text-">{{message}}</p>
+{% endif %}
+{% if current_features %}
+	Current Featured Stories
+	<ul>
+	{% for story in current_features %}
+		<li><a href="{% firstof story.long_url story.short_url "http://www.news-leader.com" %}" target="_blank"><b>{{story.headline|safe}}</b></a></li>
+	{% endfor %}
+	</ul>
+	<hr />
+{% endif %}
+<p />
+<p />
+Please select up to two stories to feature in the most viewed stories list.
+<form method="post" action="{% url list_featured_stories %}">
+{% csrf_token %}
+<ul>
+
+{% for foo in today_stories|dictsortreversed:"pageviews"|slice:":40" %}
+	<li><input type="checkbox" name="stories" value="{{foo.story.id}}">&nbsp; &nbsp; <a href="{% firstof foo.story.long_url foo.story.short_url "http://www.news-leader.com" %}" target="_blank"><b>{{foo.story.headline|safe}}</b></a></li>
+{% endfor %}
+</ul>
+<input type="submit" value="Save">
+</form>
+<br />
+<br />
+<br />
+<br />
+<br />
+{% endblock %}

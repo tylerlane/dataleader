@@ -1,0 +1,132 @@
+<div class="mostviewed"> 
+	<h3>Most Viewed Stories</h3> 
+	<style> 
+		#most_viewed_menu {
+			float:left;
+			padding:0px;
+			margin: 0px;
+			list-style-image:none;
+			list-style-position:outside;
+			list-style-type:none;
+			border-top: 1px solid #E2E1C7;
+			border-bottom: 1px solid #E2E1C7;
+		}
+		#most_viewed_menu li{
+			border-right:1px solid #E2E1C7;
+			display:block;
+			float:left;
+			font-weight:bold;
+			padding:0px;
+			text-align:center;
+			margin: 3px 0px;
+		}
+		#most_viewed_menu li a:link, #most_viewed_menu li a:visited{
+			padding: 2px 12px;
+			font-size: 11px;
+			font-weight:normal;
+		}
+		#most_viewed_title {
+			color:#757C89;
+			font-size:11px;
+			font-weight:bold;
+			margin:0pt;
+			padding:0pt;
+			text-transform:uppercase;
+		}
+		#most_viewed_content{
+			padding:4px 0px;
+			font-size:11px;
+		}
+		#most_viewed_content li{
+			padding: 1px 0px;
+		}
+		#most_viewed_content ul{
+			list-style-image:none;
+			list-style-position:outside;
+			list-style-type:none;
+			margin:0px;
+			padding:0px;
+		}
+	</style>
+	<script language="Javascript"> 
+		var currentTab = 0;
+		function SNL_toggleTabs( newTab )
+		{
+			if( currentTab != newTab )
+			{
+				//switch windows
+				document.getElementById( "most_viewed_tab_" + currentTab ).style.display = "none";
+				document.getElementById( "most_viewed_tab_" + newTab ).style.display = "block";
+				//switch bold
+				document.getElementById( "most_viewed_menu_" + currentTab ).style.fontWeight = "normal";
+				document.getElementById( "most_viewed_menu_" + newTab ).style.fontWeight = "bold";
+				//set new currentTab
+				currentTab = newTab;
+			}
+		}
+	</script>
+	<div id="most_viewed_nav_container"> 
+		<ul id="most_viewed_menu"> 
+			<li><a href="javascript:SNL_toggleTabs(0);" id="most_viewed_menu_0" style="font-weight:bold;">Today</a></li> 
+			<li><a href="javascript:SNL_toggleTabs(1);" id="most_viewed_menu_1">Yesterday</a></li> 
+			<li><a href="javascript:SNL_toggleTabs(2);" id="most_viewed_menu_2">Last 7 Days</a></li> 
+			<li style="border:none;"><a href="javascript:SNL_toggleTabs(3);" id="most_viewed_menu_3">Last 30 Days</a></li>
+		</ul> 
+		<br clear="all" /> 
+	</div> 
+	
+	<div id="most_viewed_content"> 
+		<div id="most_viewed_tab_0" style="display:block;">
+			{% if today_stories %}
+				<ul>
+					{% for foo in today_stories|dictsortreversed:"pageviews"|slice:":10" %}
+						{% if foo.story.headline|title != "Death Notices"  %}
+							<li><a href="{% firstof foo.story.long_url foo.story.short_url "http://www.news-leader.com" %}"><b>{{foo.story.headline|default:"nothing"}}</b></a></li>
+						{% endif %}
+					{% endfor %}
+				</ul>
+			{% else %}
+				<ul><li>No Stories Found.</li></ul>
+			{% endif %}
+		</div>
+		<div id="most_viewed_tab_1" style="display:none;">
+			{% if yesterday_stories %}
+				<ul>
+					{% for foo in yesterday_stories|dictsortreversed:"pageviews"|slice:":10" %}
+						{% if foo.story.headline|title != "Death Notices"  %}
+							<li><a href="{% firstof foo.story.long_url foo.story.short_url "http://www.news-leader.com" %}"><b>{{foo.story.headline|default:"nothing"}}</b></a></li>
+						{% endif %}
+					{% endfor %}
+				</ul>
+			{% else %}
+				<ul><li>No Stories Found.</li></ul>
+			{% endif %}
+		</div>
+		<div id="most_viewed_tab_2" style="display:none;">
+			{% if week_stories %}
+				<ul>
+					{% for foo in week_stories|dictsortreversed:"pageviews"|slice:":10" %}
+						{% if foo.story.headline|title != "Death Notices"  %}
+							<li><a href="{% firstof foo.story.long_url foo.story.short_url "http://www.news-leader.com" %}"><b>{{foo.story.headline|default:"nothing"}}</b></a></li>
+						{% endif %}
+					{% endfor %}
+				</ul>
+			{% else %}
+				<ul><li>No Stories Found.</li></ul>
+			{% endif %}
+		</div>
+		<div id="most_viewed_tab_3" style="display:none;">
+			{% if month_stories %}
+				<ul>
+					{% for foo in month_stories|dictsortreversed:"pageviews"|slice:":10" %}
+						{% if foo.story.headline|title != "Death Notices"  %}
+							<li><a href="{% firstof foo.story.long_url foo.story.short_url "http://www.news-leader.com" %}"><b>{{foo.story.headline|default:"nothing"}}</b></a></li>
+						{% endif %}
+					{% endfor %}
+				</ul>
+			{% else %}
+				<ul><li>No Stories Found.</li></ul>
+			{% endif %}
+		</div>
+	</div>
+</div>

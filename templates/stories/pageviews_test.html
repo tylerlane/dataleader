@@ -1,0 +1,235 @@
+{% extends "blank_template.html" %}
+{% load humanize %}
+{% block title %}
+InfoCenter Admin: Real-Time Pageviews
+{% endblock %}
+{% block headers %}
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script> 
+<script>
+$(document).ready( function(){
+	$("#loading").hide();
+	$("#loading").ajaxStart( function(){
+		$(this).show();
+	});
+	$("#loading").ajaxStart( function(){
+		$(this).hide();
+	});
+	//box1
+	function refresh_box1()
+	{
+		var box1_val = $("#box1_refresh").val()
+		//console.log( "box1_val = " + box1_val );
+		$.get( "{% url list_pageviews %}",{minutes: box1_val }, function( data ){
+			//console.log( "fetching pageviews");
+			//console.log( "data = " + data );
+			$("#mainbox1_content").html( data );
+			var now1 = new Date();
+			$("#mainbox1_time").html( now1.toString() );
+		});
+	}
+	//setting the interval for box1 to refresh every 5 seconds
+	box1_interval = setInterval( refresh_box1, 5000 );
+	//calling the refresh box1 function to populate the list for the first refresh
+	refresh_box1();
+	
+	//box2
+	function refresh_box2()
+	{
+		var box2_val = $("#box2_refresh").val();
+		//console.log( "box2_val = " + box2_val );
+		$.get( "{% url list_pageviews %}",{minutes: box2_val }, function( data ){
+			//console.log( "fetching pageviews");
+			//console.log( "data = " + data );
+			$("#mainbox2_content").html( data );
+			var now2 = new Date();
+			$("#mainbox2_time").html( now2.toString() );
+		});
+	}
+	//setting the interval for box1 to refresh every 5 seconds
+	box2_interval = setInterval( refresh_box2, 5000 );
+	//calling the refresh box1 function to populate the list for the first refresh
+	refresh_box2();
+	
+	//box3
+	function refresh_box3()
+	{
+		var box3_val = $("#box3_refresh").val();
+		//console.log( "box3_val = " + box3_val );
+		$.get( "{% url list_pageviews %}",{minutes: box3_val }, function( data ){
+			//console.log( "fetching pageviews");
+			//console.log( "data = " + data );
+			$("#mainbox3_content").html( data );
+			var now3 = new Date();
+			$("#mainbox3_time").html( now3.toString() );
+		});
+	}
+	//setting the interval for box1 to refresh every 5 seconds
+	box3_interval = setInterval( refresh_box3, 5000 );
+	//calling the refresh box1 function to populate the list for the first refresh
+	refresh_box3();
+});
+</script>
+<style>
+	ol{
+		margin-left: -3px;
+		padding-left: -3px;
+		margin-top: -10px;
+	}
+
+	li{
+		margin-left:-20px;
+		padding-bottom: 3px;
+	}
+	#topcontainer{
+		font-size: 10px;
+		display: inline;
+	}
+	#mainbox1{
+		border: 1px solid;
+		width: 275px;
+		float: left;
+		margin-right: 5px;
+		padding: 5px;
+		min-height: 425px;
+	}
+
+	#mainbox1_content{
+		min-height: 350px;
+	}
+
+	#mainbox2{
+		border: 1px solid;
+		width: 275px;
+		overflow: hidden;
+		float: left;
+		clear: none;
+		margin-right: 5px;
+		padding: 5px;
+		min-height: 425px;
+	}
+
+	#mainbox2_content{
+		min-height: 350px;
+	}
+
+	#mainbox3{
+		border: 1px solid;
+		width:275px;
+		overflow: hidden;
+		padding: 5px;
+		float:left;
+		min-height: 425px;
+	}
+
+	#mainbox3_content{
+		min-height: 350px;
+	}
+</style>
+{% endblock %}
+{% block content %}
+
+<table id="Table_01" width="901" height="480" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td colspan="11">
+			<img src="images/realTimeDesign_01.jpg" width="900" height="97" alt=""></td>
+		<td>
+			<img src="images/spacer.gif" width="1" height="97" alt=""></td>
+	</tr>
+	<tr>
+		<td rowspan="4">
+			<img src="images/realTimeDesign_02.jpg" width="18" height="383" alt=""></td>
+		<td colspan="3" rowspan="2">
+			<img src="images/realTimeDesign_03.jpg" width="286" height="43" alt=""></td>
+		<td colspan="3" rowspan="2">
+			<img src="images/realTimeDesign_04.jpg" width="291" height="43" alt=""></td>
+		<td colspan="3" rowspan="2">
+			<img src="images/realTimeDesign_05.jpg" width="291" height="43" alt=""></td>
+		<td>
+			<img src="images/realTimeDesign_06.jpg" width="14" height="1" alt=""></td>
+		<td>
+			<img src="images/spacer.gif" width="1" height="1" alt=""></td>
+	</tr>
+	<tr>
+		<td rowspan="3">
+			<img src="images/realTimeDesign_07.jpg" width="14" height="382" alt=""></td>
+		<td>
+			<img src="images/spacer.gif" width="1" height="42" alt=""></td>
+	</tr>
+	<tr>
+		<td>
+			<img src="images/realTimeDesign_08.jpg" width="14" height="1" alt=""></td>
+		<td>
+			<div style="width: 256px; height: 340px; background: white;">
+				<div id="mainbox1_content">
+				</div>
+				<hr />
+				<div id="mainbox1_time" >
+				</div>
+			</div>
+			
+		</td>
+		<td>
+			<img src="images/realTimeDesign_10.jpg" width="16" height="1" alt=""></td>
+		<td>
+			<img src="images/realTimeDesign_11.jpg" width="18" height="1" alt=""></td>
+		<td>
+			<div style="width: 256px; height: 340px; background: white;">
+				<div id="mainbox2_content">
+				</div>
+				<hr />
+				<div id="mainbox2_time">
+				</div>
+			</div>
+		</td>
+		<td>
+			<img src="images/realTimeDesign_13.jpg" width="16" height="1" alt=""></td>
+		<td>
+			<img src="images/realTimeDesign_14.jpg" width="21" height="1" alt=""></td>
+		<td>
+			<div style="width: 256px; height: 340px; background: white;">
+				<div id="mainbox3_content">
+				</div>
+				<hr />
+				<div id="mainbox3_time">
+				</div>
+			</div>
+		</td>
+		<td>
+			<img src="images/realTimeDesign_16.jpg" width="12" height="1" alt=""></td>
+		<td>
+			<img src="images/spacer.gif" width="1" height="1" alt=""></td>
+	</tr>
+</table>
+
+
+<h2>Real-Time Pageviews</h2><div id="loading"><img src="{{MEDIA_URL}}/images/ajax-loader2.gif" /></div>
+<div id="topcontainer">
+	<div id="mainbox1">
+		<div style="display:inline"><h3 style="float: left">Pageviews in the last&nbsp;&nbsp;</h3><input type="text" size="3" name="box1_refresh" value="15" style="float: left;width:20px;height: 15px;margin-top:5px" id="box1_refresh"/> <h3 style="clear: none">&nbsp;&nbsp;Minutes</h3></div>
+		<hr style="clear:both"/><br />
+		<div id="mainbox1_content">
+		</div>
+		<hr />
+		<div id="mainbox1_time" >
+		</div>
+	</div>
+	<div id="mainbox2">
+		<div style="display:inline"><h3 style="float: left">Pageviews in the last&nbsp;&nbsp;</h3><input type="text" size="3" name="box2_refresh" value="30" style="float: left;width:20px;height: 15px;margin-top:5px" id="box2_refresh"/> <h3 style="clear: none">&nbsp;&nbsp;Minutes</h3></div>
+		<hr style="clear:both"/><br />
+		<div id="mainbox2_content">
+		</div>
+		<hr />
+		<div id="mainbox2_time">
+		</div>
+	</div>
+	<div id="mainbox3">
+		<div style="display:inline"><h3 style="float: left">Pageviews in the last&nbsp;&nbsp;</h3><input type="text" size="3" name="box3_refresh" value="60" style="float: left;width:30px;height: 15px;margin-top:5px" id="box3_refresh"/> <h3 style="clear: none">&nbsp;&nbsp;Minutes</h3></div>
+		<hr style="clear:both"/><br />
+		<div id="mainbox3_content">
+		</div>
+		<hr />
+		<div id="mainbox3_time">
+		</div>
+	</div>
+</div>
+{% endblock %}

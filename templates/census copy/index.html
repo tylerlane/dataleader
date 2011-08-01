@@ -1,0 +1,36 @@
+{% extends "census_template.html" %}
+{% load humanize %}
+{% block headers %}
+<style>
+table{
+	widtd: 85%;
+}
+table tr td{
+		border-bottom:1px black solid;
+}
+table tr.totalpop td{
+		border-bottom: 3px black solid;
+		border-top: 3px black solid;
+		font-weight: bold;
+}
+.totalpop{
+	margin-bottom: 5px;
+}
+</style>
+{% endblock %}
+{% block content %}
+<h1>2010 Census</h1>
+<table style="widtd:75%">
+	<tr class="totalpop"><td>State</td><td>2000</td><td>2010</td><td>Change</td><td>Percent Growth</td><td>Detail</td></tr>
+{% for state in states|dictsort:"state" %}
+	<tr>
+		<td><a href="{% url state_detail state.state %}">{{state}}</a></td>
+		<td>{{state.pop2000|apnumber|intcomma}}</td>
+		<td>{{state.pop2010|apnumber|intcomma}}</td>
+		<td>{{state.popchange|apnumber|intcomma}}</td>
+		<td>{{state.popchangepercentage|floatformat:3 }}%</td>
+		<td><a href="{% url list_counties state.state %}">Counties</a> | <a href="{% url list_cities state.state %}">Cities</a>
+	</tr>
+{% endfor %}
+</table>
+{% endblock %}

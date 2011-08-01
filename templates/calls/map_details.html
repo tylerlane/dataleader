@@ -1,0 +1,16 @@
+{% load humanize %}
+<div id="details_container" style="text-align: left;">
+	<b>From</b>: {{from_date|date:"m-d-y g:i a"}}<br />
+	<b>To</b>: {{to_date|date:"m-d-y g:i a"}}<br />
+	{% if address %}
+	<b>Address</b>: {{address}}<br />
+	{% endif %}
+	{% if radius %}
+	<b>Radius</b>: {{radius}} Miles<br />
+	{% endif %}
+	{% if limit_results %}
+	<b>Limit Results</b>: {{limit_results}}<br />
+	{% endif %}
+	<hr />
+	<b>Total Calls</b>: {{total_calls|apnumber}}
+</div>

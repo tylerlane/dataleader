@@ -1,0 +1,56 @@
+{% extends "census_template_embed.html" %}
+{% load humanize %}
+{% block headers %}
+<style>
+table{
+	width: 85%;
+}
+table tr td{
+		border-bottom:1px black solid;
+}
+table tr.totalpop td{
+		border-bottom: 3px black solid;
+		border-top: 3px black solid;
+		font-weight: bold;
+}
+.totalpop{
+	margin-bottom: 5px;
+}
+</style>
+{% endblock %}
+{% block content %}
+<h1>2010 Census</h1>
+<table>
+	<tr class="totalpop">
+		<td>{% if sort_by != "state" %}<a href="{%url embed-census-index "embed" %}?sort_by=state">{% endif %}State{% if sort_by == "state" %}&nbsp;&nbsp;&nbsp; &uarr;{% endif %}{% if sort_by != "state" %}</a>{% endif %}</td>
+		<td>{% if sort_by != "pop2000" %}<a href="{%url embed-census-index "embed" %}?sort_by=pop2000">{% endif %}2000{% if sort_by == "pop2000" %}&nbsp;&nbsp;&nbsp; &darr;{% endif %}{% if sort_by != "pop2000" %}</a>{% endif %}</td>
+		<td>{% if sort_by != "pop2010" %}<a href="{%url embed-census-index "embed" %}?sort_by=pop2010">{% endif %}2010{% if sort_by == "pop2010" %}&nbsp;&nbsp;&nbsp; &darr;{% endif %}{% if sort_by != "pop2010" %}</a>{% endif %}</td>
+		<td>{% if sort_by != "popchange" %}<a href="{%url embed-census-index "embed" %}?sort_by=popchange">{% endif %}Change{% if sort_by == "popchange" %}&nbsp;&nbsp;&bsp; &darr;{% endif %}{% if sort_by != "popchange" %}</a>{% endif %}</td>
+		<td>{% if sort_by != "popchangepercentage" %}<a href="{%url embed-census-index "embed" %}?sort_by=popchangepercentage">{% endif %}Percent Growth{% if sort_by == "popchangepercentage" %}&nbsp;&nbsp;&nbsp; &darr;{% endif %}{% if sort_by != "popchangepercentage" %}</a>{% endif %}</td>
+		<td>Detail</td>
+	</tr>
+{% if sort_by == "state" %}
+	{% for state in states|dictsort:"state" %}
+		<tr>
+			<td><a href="{% url embed_state_detail "embed",state.state %}">{{state}}</a></td>
+			<td>{{state.pop2000|apnumber|intcomma}}</td>
+			<td>{{state.pop2010|apnumber|intcomma}}</td>
+			<td>{{state.popchange|apnumber|intcomma}}</td>
+			<td>{{state.popchangepercentage|floatformat:3 }}%</td>
+			<td><a href="{% url embed_list_counties "embed",state.state %}">Counties</a> | <a href="{% url embed_list_cities  "embed",state.state %}">Cities</a>
+		</tr>
+	{% endfor %}
+{% else %}
+	{% for state in states|dictsortreversed:sort_by %}
+		<tr>
+			<td><a href="{% url embed_state_detail "embed",state.state %}">{{state}}</a></td>
+			<td>{{state.pop2000|apnumber|intcomma}}</td>
+			<td>{{state.pop2010|apnumber|intcomma}}</td>
+			<td>{{state.popchange|apnumber|intcomma}}</td>
+			<td>{{state.popchangepercentage|floatformat:3 }}%</td>
+			<td><a href="{% url embed_list_counties "embed",state.state %}">Counties</a> | <a href="{% url embed_list_cities  "embed",state.state %}">Cities</a>
+		</tr>
+	{% endfor %}
+{% endif %}
+</table>
+{% endblock %}

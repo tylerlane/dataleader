@@ -1,0 +1,165 @@
+	body {
+		margin-left: auto;
+		margin-right: auto;
+	}
+	
+	#contact_form {
+		margin-left: auto;
+		margin-right: auto;
+		float: left;
+		width:600px;
+	}
+	
+	.fieldWrapper {
+		min-height: 40px;
+		border-bottom: solid 1px #CACACA; 
+		padding: 8px 0 8px 0;
+	}
+	
+	input {
+		float: left;
+	}
+	
+	.errorlist {
+		float: left;
+		padding-left: 20px;
+	}
+	
+	.errorlist li {
+		color: red;
+		font-weight: bold;
+		list-style-type: square;
+		margin-left: 20px;
+	}
+	
+	.error {
+		color: red;
+		font-size: 2em;
+		font-weight: bold;
+	}
+	
+	label {
+		font-family: arial;
+		height: 2em;
+		clear: both;
+		width: 90px;
+	}
+	
+	h2 {
+		font-family: arial;
+  }
+  .table-header{
+    font-weight:bold; 
+    font-size: 1.1em;
+    border-bottom:1px dotted grey;
+  }
+  .even{
+    border-bottom:1px solid black;
+    background-color: white;
+    color: black;
+  }
+  .odd{
+    background-color: grey;
+    color: black;
+  }
+table {
+	font: 11px/24px Helvetica, Arial,sans-serif;
+	border-collapse: collapse;
+	width: 85%;
+	}
+
+th {
+	padding: 0 0.5em;
+  text-align: left;
+
+	}
+
+tr.yellow td {
+	border-top: 1px solid #FFC;
+	border-bottom: 1px solid #FFC;
+  background: #446891;
+  font-weight: bold;
+  color: white;
+  font-size: 1.1em;
+	}
+
+td {
+	border-bottom: 1px solid #CCC;
+	padding: 0 0.5em;
+	}
+
+td:first-child {
+	width: 45%;
+	}
+
+td+td {
+	border-left: 1px solid #CCC;
+	text-align: center;
+	}
+
+table.search-table td{
+  border: none;
+}
+
+
+/*pagination section */
+div.pagination {
+	padding: 3px;
+	margin: 3px;
+	font-size: 12px;
+	display: block;
+	position: inherit;
+	whitespace: normal;
+
+}
+div.pagination a, div.pagination a:visited {
+	padding: 2px 5px 2px 5px;
+	margin: 2px;
+	border: 1px solid #AAAADD;
+	* zoom: 100%;
+	text-decoration: none; /* no underline */
+	color: #000000;
+	font-weight: normal;
+	display: inline;
+	line-height: 24px;
+}
+div.pagination a:hover, div.pagination a:active {
+	border: 1px solid #000099;
+	color: #000;
+	line-height: 24px;
+
+}
+div.pagination span.current {
+	padding: 2px 5px 2px 5px;
+	margin: 2px;
+	border: 1px solid #636E82;
+	* zoom: 100%;
+	font-weight: bold;
+	background-color: #636E82;
+	color: #FFF;
+	line-height: 24px;
+}
+div.pagination span.disabled {
+	padding: 2px 5px 2px 5px;
+	margin: 2px;
+	border: 1px solid #EEE;
+	* zoom: 100%;
+	color: #DDD;
+	line-height: 24px;
+}
+
+* span.elipses {
+	zoom:100%
+	}
+    /*end pagination section */
+     .nav-button{
+    border: 1px solid black;
+    background-color: #446891;
+    padding: 5px;
+    }
+    .nav-button a, .nav-button a:visited{
+      color: white;
+      font-weight: bold;
+    }
+
+

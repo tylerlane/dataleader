@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.1">
+  <Document>
+    <name>ZipCode</name>
+    <description>Zip Codes</description>
+    <Style id="#blueLine">
+		<PolyStyle>
+			<color>#3333FF</color>
+			<fill>1</fill>
+			<outline>1</outline>
+		</PolyStyle>
+	</Style> 
+    <Placemark>
+      <name>Blue Line</name>
+      <styleUrl>#blueLine</styleUrl>
+      {{zipcode|safe}}
+    </Placemark>
+  </Document>
+</kml>

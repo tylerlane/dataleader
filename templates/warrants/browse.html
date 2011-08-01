@@ -1,0 +1,104 @@
+{% extends "template2.html" %}
+{# nav_bar section #}
+{% block nav_bar %}
+<ul>
+		<li><a href="{% url landing_page %}"><img id="home-img" src="{{MEDIA_URL}}/images/home_btn2.png" /></a></li>
+	<li id="active"><a href="{% url warrants-index %}"><img id="warrants-img" src="{{MEDIA_URL}}/images/warrants_btn1.png" /></a></li>
+	<li><a href="{% url calls-index %}"><img id="911-img" src="{{MEDIA_URL}}/images/911_btn2.png" /></a></li>
+</ul>
+{% endblock %}
+{% block left_col_description %}
+<h3>Warrants</h3>
+<p>This database is updated regularly and contains possible active warrants that are listed by the Greene County Sheriff’s Office and the Springfield Police Department. The News-Leader cannot guarantee the accuracy of this information.</p>
+<br />
+<a id="contact_info_a" href="javascript:void(0)">[+]Contact Info</a>
+<div id="contact_info">
+<p>You can contact the Springfield Police Department at (417) 864-1810.</p>
+ <p>You can contact the Greene County Sheriff's Office at (417) 868-4040.  Information may also be reported to Crime Stoppers at (417) 869-8477 or by submitting information through their <a href="https://www.tipsubmit.com/WebTips.aspx?AgencyID=219">online form</a>.
+</div>
+<br />
+{% endblock %}
+{% block content %}
+	<div>
+		<!-- menu code here. Stole from the Restaurant inspects page. Trying to maintain the same style here.-->
+		<div id="warrants_nav">
+			<ul>
+				<li><a href="{% url warrants-index %}">Browse | </a></li>
+				<li><a href="{% url warrants-search %}">Search | </a></li>
+				<li><a href="{% url warrants-stats %}">Statistics</a></li>
+			</ul>
+		</div>
+		<br />
+	</div>	
+	<div align="left">
+		<br />
+		<div>By selecting a letter below, all persons with that last name initial will appear in sorted order by the last name.</div>
+		<p />
+		<div class="pagination">
+			{% spaceless %}
+			{% for char in alphabet %}
+				{% if char == letter %}
+					<span class="current">{{char}}</span>
+				{% else %}
+					{# this gives me the link to the warrants browsing for each letter starting @ page 1 #}
+					<a href="{% url warrants-browse char,1 %}">{{char}}</a>
+				{% endif %}
+			{% endfor %}
+			{% endspaceless %}
+		</div>
+		<div id="calls_table">
+			<div id="calls_header">
+				<div id="calls_name">Name</div>
+				<div id="calls_age">Age</div>
+				<!--<div id="calls_type">Type</div>-->
+				<div id="calls_violation">Crime</div>
+				<div id="calls_bond">Bond</div>
+				<!--<div id="calls_warrant_num">Warrant Number</div>-->
+				<div id="calls_release_cond">Release Condition</div>
+				<!--<div id="calls_court">Court</div>-->
+			</div>
+			{% spaceless %}
+			{% for warrant in warrants %}
+				<div class="{% cycle "calls_row1" "calls_row2" %}">
+					<div id="calls_name">{{warrant.name|title}}</div>
+					<div id="calls_age">{{warrant.age}}</div>
+					<!--<div id="calls_type">{{warrant.warrant_type}}</div>-->
+					<div id="calls_violation">{{warrant.violation_desc|title}}</div>
+					<div id="calls_bond">{{warrant.bond}}</div>
+					<!--<div id="calls_warrant_num">{{warrant.warrant_number}}</div>-->
+					<div id="calls_release_cond">
+					{% if warrant.release_cond %}
+						{{warrant.release_cond|title}}
+					{% else %}
+						&nbsp;
+					{% endif %}
+					</div>
+					<!--<div id="calls_court">{{warrant.court}}</div>-->
+				</div>
+			{% endfor %}
+			{% endspaceless %}
+		</div>
+		<div align="center">
+			<div class="pagination">
+				{% if has_previous %}
+					<a href="{% url warrants-browse letter page.previous_page_number  %}">&laquo;prev</a>
+				{% else %}
+					<span class="disabled">&laquo; prev</span>
+				{% endif %}
+				{% for num in page_range %}
+					{% if num == page.number %}
+						<span class="current">{{num}}</span>
+					{% else %}
+						<a href="{% url warrants-browse letter num %}">{{num}}</a>
+					{% endif %}
+				{% endfor %}
+				{% if has_next %}
+					<a href="{% url warrants-browse letter page.next_page_number  %}">next &raquo;</a>
+				{% else %}
+					<span class="disabled">next &raquo;</span>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

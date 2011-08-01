@@ -1,0 +1,119 @@
+{% load humanize %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"> 
+	<head> 
+		<title>InfoCenter Admin: Real-Time Pageviews</title> 
+		<meta name="description" content="News-Leader.com,Springfield,Missouri,News,local news,headlines,stories,world news,contests" /> 
+		<meta name="keywords" content="" /> 
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+		<meta http-equiv="pragma" content="no-cache"/> 
+		<meta http-equiv="expires" content="0"/> 
+		<meta http-equiv="cache-control" content="no-cache"/> 
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+		<script>
+			$(document).ready( function(){
+				$("#loading").hide();
+				$("#loading").ajaxStart( function(){
+					$(this).show();
+				});
+				$("#loading").ajaxStart( function(){
+					$(this).hide();
+				});
+				//box1
+				function refresh_box1()
+				{
+					var box1_val = $("#box1_refresh").val()
+					//console.log( "box1_val = " + box1_val );
+					$.get( "{% url list_pageviews %}",{minutes: box1_val }, function( data ){
+						//console.log( "fetching pageviews");
+						//console.log( "data = " + data );
+						$("#mainbox1_content").html( data );
+						var now1 = new Date();
+						$("#mainbox1_time").html( now1.toString() );
+					});
+				}
+				//setting the interval for box1 to refresh every 5 seconds
+				box1_interval = setInterval( refresh_box1, 5000 );
+				//calling the refresh box1 function to populate the list for the first refresh
+				refresh_box1();
+			});
+		</script>
+		
+		<style>
+			#mainbox-container {
+				display:inline; 
+				width: 70%;
+				float: left;
+				background: white;
+			}
+			
+			body {
+				background: #636E82	;	
+			}
+			#mainbox-container ol {
+				margin: -50px 0 0 25px;
+			}
+			
+			#frontpage-container {
+				float:left; 
+				width:29%; 
+				height:1080px;
+				zoom: 0.75;
+			    -moz-transform: scale(0.85);
+			    -moz-transform-origin: 0 0;
+			    -o-transform: scale(0.75);
+			    -o-transform-origin: 0 0;
+			    -webkit-transform: scale(0.75);
+			    -webkit-transform-origin: 0 0;		
+			}
+			
+			#mainbox1 {
+				border: 1px solid; 
+				float: left;
+				margin-right: 5px;
+				padding: 5px;
+				min-height: 800px;
+			}
+			
+			#mainbox1 h3 {
+				font: black 15pt;
+				margin: 0;
+				padding: 0;
+			}
+			#mainbox1_content ol {
+				clear: both;
+			}
+			#mainbox1_content ol li a {
+				font-size: 2.5em;
+				font-family: sans-serif;
+				font: arial black;
+				text-decoration: none;
+				clear: both;
+			}
+		</style>
+	</head> 
+  <body> 
+    <div>
+<div id="mainbox-container" style="">
+	<div id="mainbox1" style="">
+    	<div style="display:inline">
+			<h3 style="float: left">
+				<div id="loading">
+					<img src="{{MEDIA_URL}}/images/ajax-loader2.gif" />
+				</div>
+				
+				Pageviews in the last 30 Minutes</h3> 
+				<input type="hidden" size="3" name="box1_refresh" value="30" style="" id="box1_refresh"/> 
+	</div>
+	<hr style="clear:both"/><br />
+	<div id="mainbox1_content" style="min-height:750px;font-size:80;"></div>
+	<hr />
+	<div id="mainbox1_time" ></div>
+  </div>
+</div>
+<iframe id="frontpage-container" src="http://www.news-leader.com" style="">
+  <p>Your browser does not support iframes.</p>
+</iframe>
+</div>
+</body>
+<html>

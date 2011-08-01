@@ -1,0 +1,23 @@
+<style>
+#snl_most_viewed_stories ul li{
+	list-style-type: none;
+}
+</style>
+<div id="snl_most_viewed_stories">
+	<ul>
+{% if featured %}
+ 	{% for story in featured %}
+	<li><a href="{% firstof story.long_url story.short_url "http://www.news-leader.com" %}">{{story.headline|safe}}</a></li>
+	{% endfor %}
+{% endif %}
+{% if pvs %}
+	{% for pv in pvs|dictsortreversed:"pageviews"|slice:":8" %}
+	<li><a href="{% firstof pv.story.long_url pv.story.short_url "http://www.news-leader.com" %}">{{pv.story.headline|safe}}</a></li>
+	{% endfor %}
+{% else %}
+	{% for story in stories %}
+	<li><a href="{% firstof story.long_url story.short_url "http://www.news-leader.com" %}">{{story.headline|safe}}</a></li>
+	{% endfor %}
+{% endif %}
+	</ul>
+</div>
