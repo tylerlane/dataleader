@@ -4,11 +4,11 @@ stuff = [ ]
 items = soup.findAll('content_item')
 for item in items:
     try:
-        name = u"%s" % item.children["name"].contents
-        #description = u"%s" % item.children["description"].children["value"].contents
+        name = item.children["name"].contents
+        description = item.children["description"].children["value"].contents
 
         print name
-        #print description
+        print description
     except:
         print "error. skipping record"
 
