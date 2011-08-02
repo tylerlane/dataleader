@@ -110,22 +110,22 @@ def search(request, page=None):
             request.session["searched"] = True
             request.session.modified = True
         if form.is_valid():
+            #shortening the form.cleaned_data to cd
+            #to make the code fit within 79 chars
+            cd = form.cleaned_data
             #NAME
-            if form.cleaned_data["name"] is not None
-            and form.cleaned_data["name"] != "":
-                name_q = Q(name__icontains=form.cleaned_data["name"])
+            if cd["name"] is not None and cd["name"] != "":
+                name_q = Q(name__icontains=cd["name"])
             else:
                 name_q = None
             #address
-            if form.cleaned_data["address"] is not None
-            and form.cleaned_data["address"] != "":
-                address_q = Q(address__icontains=form.cleaned_data["address"])
+            if form.cd["address"] is not None and cd["address"] != "":
+                address_q = Q(address__icontains=cd["address"])
             else:
                 address_q = None
             #CITY
-            if form.cleaned_data["city"] is not None
-            and form.cleaned_data["city"] != "":
-                city_q = Q(city__icontains=form.cleaned_data["city"])
+            if cd["city"] is not None and cd["city"] != "":
+                city_q = Q(city__icontains=cd["city"])
             else:
                 city_q = None
 
