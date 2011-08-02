@@ -1,5 +1,5 @@
 from BeautifulSoup import BeautifulStoneSoup,Tag,NavigableString
-soup = BeautifulStoneSoup(open("/Users/tlane2/Desktop/metromix-export.xml").read(), markupMassage=False)
+soup = BeautifulStoneSoup(open("metromix-export.xml").read(), markupMassage=False)
 stuff = [ ]
 items = soup.findAll('content_item')
 for item in items:
