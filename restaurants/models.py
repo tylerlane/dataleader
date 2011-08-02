@@ -1,7 +1,7 @@
-from django.db import models, IntegrityError
+#from django.db import models, IntegrityError
 #GeoDjango support
 from django.contrib.gis.db import models
-import datetime
+#import datetime
 
 
 # Create your models here
@@ -13,7 +13,7 @@ class Restaurant(models.Model):
     zip_code = models.CharField(max_length=10, blank=True, null=True)
     website = models.URLField(null=True, blank=True)
     phone = models.CharField(max_length=25, blank=True, null=True)
-    last_updated = miodels.DateTimeField("Last Updated", auto_now=False,
+    last_updated = models.DateTimeField("Last Updated", auto_now=False,
             auto_now_add=False, null=True)
     subheadline = models.CharField(max_length=255, blank=True, null=True)
     brief = models.TextField(blank=True, null=True)
