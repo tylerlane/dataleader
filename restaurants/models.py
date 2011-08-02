@@ -20,15 +20,21 @@ class Restaurant(models.Model):
     long_description = models.TextField(blank=True, null=True)
 
     #photo
-    channel = models.CharField(max_length=25)
+    channel = models.CharField(max_length=25, null=True)
+    hours = models.CharField(max_length=100, null=True)
+
     #geocoder stuff
     geocoder = models.CharField(max_length=25, null=True)
     geom = models.PointField(srid=4326, null=True)
 
+    #many to many relationship for cuisines
+    cuisine = models.ManyToManyField("Cuisine")
+    #boolean for open/out of business restaurants
+    active = models.BooleanField(default=True)
     objects = models.GeoManager()
 
     def __unicode__(self):
-        return self.name
+        return u"%s" % self.name
 
     class Meta:
         ordering = ("name", "city", )
@@ -51,3 +57,24 @@ class Inspection(models.Model):
 
     class Meta:
         ordering = ("-date", )
+
+
+class Cuisine(models.Model):
+    name = models.CharField(max_length=50)
+    label = models.CharField(max_length=150)
+
+    def __unicode__(self):
+        return u"%s" % self.name
+
+
+class Detail(models.Model):
+    #detail must belong to a restaurant
+    restaurant = models.ForeignKey('Restaurant')
+    name = models.CharField(max_length=30)
+    value = models.CharField(max_length=250)
+    active = models.BooleanField(default=True)
+    #use this to see if i need to explode the data in value as a list or not
+    comma_delimited = models.BooleanField(default=False)
+
+    def __unicode__(self):
+        return u"%s" % self.name

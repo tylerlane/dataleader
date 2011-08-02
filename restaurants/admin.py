@@ -1,5 +1,5 @@
 from django.contrib.gis import admin
-from models import *
+from models import Restaurant, Inspection, Cuisine, Detail
 
 
 class RestaurantAdmin(admin.OSMGeoAdmin):
@@ -18,5 +18,16 @@ class InspectionAdmin(admin.ModelAdmin):
     list_display = ("restaurant", "date", "reinspection",)
     list_filter = ("critical", "noncritical", "reinspection",)
 
+
+class CuisineAdmin(admin.ModelAdmin):
+    pass
+
+
+class DetailAdmin(admin.ModelAdmin):
+    list_display = ('name', 'value', )
+
+
 admin.site.register(Restaurant, RestaurantAdmin)
 admin.site.register(Inspection, InspectionAdmin)
+admin.site.register(Cuisine, CuisineAdmin)
+admin.site.register(Detail, DetailAdmin)
