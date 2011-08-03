@@ -7,7 +7,7 @@ setup_environ( settings )
 from schools.models import School,District,AYPDetail,AYPSummary
 from lib import bail
 
-rows = csv.reader( open( "AYP_School.csv" ) )
+rows = csv.reader( open( "AYP_School_2011.csv","rU" ), dialect="excel" )
 
 count = 0
 for row in rows:
