@@ -57,6 +57,7 @@ def get_school_ayp_xml( request, district = None, school = None ):
 	chart_string += "<string>2008</string>"
 	chart_string += "<string>2009</string>"
 	chart_string += "<string>2010</string>"
+	chart_string += "<string>2011</string>"
 	chart_string += "</row>"
 	
 	#communication arts
