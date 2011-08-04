@@ -133,6 +133,7 @@ def ayp_xml( request, school_type = None, district = None ):
 	chart_string += "<string>2008</string>"
 	chart_string += "<string>2009</string>"
 	chart_string += "<string>2010</string>"
+	chart_string += "<string>2011</string>"
 	chart_string += "</row>"
 	#now our data
 	if "school_type" in request.GET and request.GET[ "school_type" ]:
