@@ -4,6 +4,7 @@
 2011 MAP results
 {% endblock %}
 {% block headers %}
+<title>2011 Missouri MAP/AYP results</title>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 <script language="javascript">AC_FL_RunContent = 0;</script>
 <script language="javascript"> DetectFlashVer = 0; </script>
@@ -18,10 +19,11 @@ var requiredRevision = 45;
 {% endblock %}
 {% block content %}
 <div style="padding-top: 25px;">
-	<h1>2011 MAP results: <span class="district_name">{{district}}</span></h1>
-	<p>The database below contains MAP results for <span class="district_name">{{district}}</span> schools. Use the drop down menus to change the views, and move your mouse over the dots to see individual results for each school.</p>
+	<h1>2011 MAP/AYP results: <span class="district_name">{{district}}</span></h1>
+	<p>The database below contains MAP/AYP results for <span class="district_name">{{district}}</span> schools. Use the drop down menus to change the views, and move your mouse over the dots to see individual results for each school.</p>
 	<p><h3>2011 Cutoffs</h3>
 		Every year, Adequate Yearly Progress is measured by the percentage of students, overall and in subgroups, that meet a set target. The law requires all schools to reach 100 percent of the targets by 2014.
+		<h4>Targets</h4>
 		<ul>
 			<li>75.5 percent proficient in communication arts.</li>
 			<li>72.5 percent proficient in math.</li>
@@ -41,7 +43,7 @@ var requiredRevision = 45;
 		<h3 style="margin-bottom: 2px">School Comparison</h3>
 		School Type: <select id="school_type"><option value="high">High School</option><option value="middle">Middle School</option><option value="elementary">Elementary School</option></select>
 		Display: <select id="display_type"><option value="comm_arts">Communication Arts</option><option value="math">Mathematics</option><option value="attendance">Attendance</option><option value="graduation" id="graduation">Graduation</select>
-		<span style="padding-left:50px;"><a href="{% url get_schools %}">Click here for School Detail</a></span>
+		<span style="padding-left:50px;">&#149; <a href="{% url get_schools %}">Click for more details on individual schools</a></span>
 	</div>
 <script language="JavaScript" type="text/javascript">
 <!--
@@ -146,7 +148,7 @@ http://www.omniture.com -->
 <script><!--
 /* You may give each page an identifying name, server, and channel on
 the next lines. */
-s.pageName="2010 AYP Charts"
+s.pageName="Missouri AYP Charts"
 s.server=""     // Do Not Alter
 s.channel=""
 s.pageType=""

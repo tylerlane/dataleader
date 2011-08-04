@@ -144,7 +144,7 @@ def ayp_xml( request, school_type = None, district = None ):
             schools = School.objects.filter( district = District.objects.filter( name = "SPRINGFIELD R-XII" ), active= True, school_type=schl_type )
     else:
         schools = School.objects.all( school_type= "high", active= True )
-    for school in schools: 
+    for school in schools:
         details = AYPDetail.objects.filter( school = school ).order_by( 'year' )
         chart_string += "<row>"
         chart_string += "<string>%s</string>" % school.name
@@ -170,6 +170,16 @@ def ayp_xml( request, school_type = None, district = None ):
                 #default to comm_arts
                 chart_string += "<number tooltip=\"%s\">%f</number>" % ( str( school.name ).title(), detail.comm_school_total )
         chart_string += "</row>"
+        #error code to make sure that something is shown
+        if details is None or len( details ) == 0:
+            chart_string +="<row><string>No Data</string>"
+            chart_string +="<number>0</number>"; #2006
+            chart_string +="<number>0</number>"; #2007
+            chart_string +="<number>0</number>"; #2008
+            chart_string +="<number>0</number>"; #2009
+            chart_string +="<number>0</number>"; #2010
+            chart_string +="<number>0</number>"; #2011
+            chart_string +="</row>"
     if "display_type" in request.GET:
         if request.GET["display_type"] == "comm_arts":
             chart_lbl = "Communication Arts"
@@ -181,6 +191,17 @@ def ayp_xml( request, school_type = None, district = None ):
             chart_lbl = "Graduation"
     else:
         chart_lbl = "Communication Arts"
+    #error code to make sure something is shown
+    if schools is None or len( schools ) == 0:
+        chart_string +="<row><string>No School Found</string>"
+        chart_string +="<number>0</number>"; #2006
+        chart_string +="<number>0</number>"; #2007
+        chart_string +="<number>0</number>"; #2008
+        chart_string +="<number>0</number>"; #2009
+        chart_string +="<number>0</number>"; #2010
+        chart_string +="<number>0</number>"; #2011
+        chart_string +="</row>"
+
     chart_string += "</chart_data>"
     chart_string += "<draw><text shadow='high' size='24' x='20' y='-35' width='400' height='75' h_align='center' v_align='bottom'>%s</text></draw>" % chart_lbl
     chart_string += "<legend layout='hide' />"
@@ -206,10 +227,9 @@ def ayp_xml( request, school_type = None, district = None ):
                 max='100'
                 mode='stretch'
                 suffix='%'
-                show_min='false'
+                show_min='true'
                    />"""
     chart_string += "<chart_label position='cursor' />"
     chart_string += "</chart>"
-    
-    
+
     return HttpResponse( chart_string, content_type='application/xml' )

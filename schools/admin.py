@@ -48,13 +48,13 @@ class AYPDetailAdmin( admin.ModelAdmin ):
             }),
         )
     list_filter = ( 'year', 'district', )
-    search_fields = ( 'school.name','district.name', )
+    search_fields = ( 'school','district', )
     list_display = ('school','district','year',)
 
 
 class AYPSummaryAdmin( admin.ModelAdmin ):
     list_filter = ( 'district', )
-    search_fields = ( 'school.name','district.name', )
+    search_fields = ( 'school__name','district__name', )
 
 
 admin.site.register( School, SchoolAdmin )

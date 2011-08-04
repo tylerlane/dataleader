@@ -1,7 +1,7 @@
 {% extends "cobrand_template.html" %}
 {% load humanize %}
 {% block headers %}
-<title>2011 MAP results</title>
+<title>2011 MAP/AYP results</title>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 <script language="javascript">AC_FL_RunContent = 0;</script>
 <script language="javascript"> DetectFlashVer = 0; </script>
@@ -16,8 +16,8 @@ var requiredRevision = 45;
 {% endblock %}
 {% block content %}
 <div style="padding-top: 25px;">
-	<h1>2011 MAP results: {{district}}</h1>
-	<p>The database below contains MAP results for {{district}} schools. Use the drop down menus to change the views, and move your mouse over the dots to see individual results for each school.</p>
+	<h1>2011 MAP/AYP results: {{district}}</h1>
+	<p>The database below contains MAP/AYP results for {{district}} schools. Use the drop down menus to change the views, and move your mouse over the dots to see individual results for each school.</p>
 	<p><h3>2011 Cutoffs</h3>
 		Every year, Adequate Yearly Progress is measured by the percentage of students, overall and in subgroups, that meet a set target. The law requires all schools to reach 100 percent of the targets by 2014.
 		<ul>
@@ -45,7 +45,7 @@ var requiredRevision = 45;
 			{% endfor %}
 			{% endspaceless %}
 			</select>
-		<span style="padding-left:50px;"><a href="{% url display_ayp %}">Click here for School Comparisons</a></span>
+			<span style="padding-left:50px;">&#149; <a href="{% url display_ayp %}">Click to compare school results within districts</a></span>
 	</div>
 <script language="JavaScript" type="text/javascript">
 <!--
@@ -137,7 +137,7 @@ http://www.omniture.com -->
 <script><!--
 /* You may give each page an identifying name, server, and channel on
 the next lines. */
-s.pageName="2010 AYP Charts - School Detail"
+s.pageName="Missouri AYP Charts - School Detail"
 s.server=""     // Do Not Alter
 s.channel=""
 s.pageType=""
