@@ -19,120 +19,124 @@ var requiredRevision = 45;
 {% endblock %}
 {% block content %}
 <div style="padding-top: 25px;">
-	<h1>2011 MAP/AYP results: <span class="district_name">{{district}}</span></h1>
-	<p>The database below contains MAP/AYP results for <span class="district_name">{{district}}</span> schools. Use the drop down menus to change the views, and move your mouse over the dots to see individual results for each school.</p>
-	<p><h3>2011 Cutoffs</h3>
-		Every year, Adequate Yearly Progress is measured by the percentage of students, overall and in subgroups, that meet a set target. The law requires all schools to reach 100 percent of the targets by 2014.
-		<h4>Targets</h4>
-		<ul>
-			<li>75.5 percent proficient in communication arts.</li>
-			<li>72.5 percent proficient in math.</li>
-			<li>93 percent attendance rate, or improvement, in elementary and middle schools.</li>
-			<li>85 percent graduation rate, or steady improvement, in high schools.</li>
-		</ul>
-	</p>
-	<hr />
-	<div style="margin-bottom: 20px;">
-		School District: <select id="district">
-			{% spaceless %}
-			{% for schl_district in districts %}
-				<option value="{{schl_district.name}}" {% if schl_district.name ==  district %}SELECTED{% endif %}>{{schl_district.name}}</option>
-			{% endfor %}
-			{% endspaceless %}
-			</select>
-		<h3 style="margin-bottom: 2px">School Comparison</h3>
-		School Type: <select id="school_type"><option value="high">High School</option><option value="middle">Middle School</option><option value="elementary">Elementary School</option></select>
-		Display: <select id="display_type"><option value="comm_arts">Communication Arts</option><option value="math">Mathematics</option><option value="attendance">Attendance</option><option value="graduation" id="graduation">Graduation</select>
-		<span style="padding-left:50px;">&#149; <a href="{% url get_schools %}">Click for more details on individual schools</a></span>
-	</div>
+        <h1>2011 MAP/AYP results: <span class="district_name">{{district}}</span></h1>
+        <p>The database below contains MAP/AYP results for <span class="district_name">{{district}}</span> schools. Use the drop down menus to change the views, and move your mouse over the dots to see individual results for each school.</p>
+        <p><h3>2011 Cutoffs</h3>
+                Every year, Adequate Yearly Progress is measured by the percentage of students, overall and in subgroups, that meet a set target. The law requires all schools to reach 100 percent of the targets by 2014.
+                <h4>Targets</h4>
+                <ul>
+                        <li>75.5 percent proficient in communication arts.</li>
+                        <li>72.5 percent proficient in math.</li>
+                        <li>93 percent attendance rate, or improvement, in elementary and middle schools.</li>
+                        <li>85 percent graduation rate, or steady improvement, in high schools.</li>
+                </ul>
+        </p>
+        <hr />
+        <div style="margin-bottom: 20px;">
+                School District: <select id="district">
+                        {% spaceless %}
+                        {% for schl_district in districts %}
+                                <option value="{{schl_district.name}}" {% if schl_district.name ==  district %}SELECTED{% endif %}>{{schl_district.name}}</option>
+                        {% endfor %}
+                        {% endspaceless %}
+                        </select>
+                <h3 style="margin-bottom: 2px">School Comparison</h3>
+                School Type: <select id="school_type"><option value="high">High School</option><option value="middle">Middle School</option><option value="elementary">Elementary School</option></select>
+                Display: <select id="display_type"><option value="comm_arts">Communication Arts</option><option value="math">Mathematics</option><option value="attendance">Attendance</option><option value="graduation" id="graduation">Graduation</select>
+                <span style="padding-left:50px;">&#149; <a href="{% url get_schools %}">Click for more details on individual schools</a></span>
+        </div>
 <script language="JavaScript" type="text/javascript">
 <!--
 if (AC_FL_RunContent == 0 || DetectFlashVer == 0) {
-	alert("This page requires AC_RunActiveContent.js.");
+        alert("This page requires AC_RunActiveContent.js.");
 } else {
-	var hasRightVersion = DetectFlashVer(requiredMajorVersion, requiredMinorVersion, requiredRevision);
-	if(hasRightVersion) { 
-		AC_FL_RunContent(
-			'codebase', 'http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=10,0,45,2',
-			'width', '500',
-			'height', '350',
-			'scale', 'scale',
-			'salign', 'TL',
-			'bgcolor', '#777788',
-			'wmode', 'opaque',
-			'movie', 'charts',
-			'src', 'charts',
-			'FlashVars', 'timeout=10&retry=2&spinning_wheel=true&library_path=charts_library&xml_source={% url ayp_xml %}', 
-			'id', 'my_chart',
-			'name', 'my_chart',
-			'menu', 'true',
-			'allowFullScreen', 'true',
-			'allowScriptAccess','always',
-			'quality', 'high',
-			'align', 'middle',
-			'pluginspage', 'http://www.macromedia.com/go/getflashplayer',
-			'play', 'true',
-			'devicefont', 'false'
-			); 
-	} else { 
-		var alternateContent = 'This content requires the Adobe Flash Player 10. '
-		+ '<u><a href=http://www.macromedia.com/go/getflash/>Get Flash Player 10</a></u>.';
-		document.write(alternateContent); 
-	}
+        var hasRightVersion = DetectFlashVer(requiredMajorVersion, requiredMinorVersion, requiredRevision);
+        if(hasRightVersion) { 
+                AC_FL_RunContent(
+                        'codebase', 'http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=10,0,45,2',
+                        'width', '500',
+                        'height', '350',
+                        'scale', 'scale',
+                        'salign', 'TL',
+                        'bgcolor', '#777788',
+                        'wmode', 'opaque',
+                        'movie', 'charts',
+                        'src', 'charts',
+                        'FlashVars', 'timeout=10&retry=2&spinning_wheel=true&library_path=charts_library&xml_source={% url ayp_xml %}', 
+                        'id', 'my_chart',
+                        'name', 'my_chart',
+                        'menu', 'true',
+                        'allowFullScreen', 'true',
+                        'allowScriptAccess','always',
+                        'quality', 'high',
+                        'align', 'middle',
+                        'pluginspage', 'http://www.macromedia.com/go/getflashplayer',
+                        'play', 'true',
+                        'devicefont', 'false'
+                        ); 
+        } else { 
+                var alternateContent = 'This content requires the Adobe Flash Player 10. '
+                + '<u><a href=http://www.macromedia.com/go/getflash/>Get Flash Player 10</a></u>.';
+                document.write(alternateContent); 
+        }
 }
 
 function update_chart1( school_type,display_type, district )
 {
-	// the update url to download the xml update from
-	url = "{% url ayp_xml  %}?school_type=" + school_type +"&display_type=" + display_type + "&district=" + district;
-	// show a spinning wheel while downloading the update
-	spinning_wheel = true; 
-	// number of seconds to wait before a download times out
-	timeout = 30; 
-	// number of times to try downloading before displaying an error
-	retry = 2; 
-	// the update mode (see the update function)
-	mode = "reset";
-	//update chart
-	document.my_chart.Update_URL( url, spinning_wheel, timeout, retry, mode );   
+        // the update url to download the xml update from
+        url = "{% url ayp_xml  %}?school_type=" + school_type +"&display_type=" + display_type + "&district=" + district;
+        // show a spinning wheel while downloading the update
+        spinning_wheel = true; 
+        // number of seconds to wait before a download times out
+        timeout = 30; 
+        // number of times to try downloading before displaying an error
+        retry = 2; 
+        // the update mode (see the update function)
+        mode = "reset";
+        //update chart
+        document.my_chart.Update_URL( url, spinning_wheel, timeout, retry, mode );   
 }
 
 
 
 $(document).ready( function(){
-	
-	$("#school_type,#display_type,#district").change( function(){
-		if( $("#school_type").val() != "high" )
-		{
-			$("#graduation").attr( "disabled", "disabled" );
-		}
-		else
-		{
-			$("#graduation").removeAttr( "disabled" );
-		}
-		
-		
-		//call my update function
-		update_chart1( $("#school_type").val(), $("#display_type").val(),$("#district").val() );
-		//console.log( "calling update_chart" );
-		
-		
-		$(".district_name").html( $("#district").val() );
-		
-		
-	});
+        
+        $("#school_type,#display_type,#district").change( function(){
+                if( $("#school_type").val() != "high" )
+                {
+                        $("#graduation").attr( "disabled", "disabled" );
+                }
+                else
+                {
+                        $("#graduation").removeAttr( "disabled" );
+                }
+
+                //call my update function
+                update_chart1( $("#school_type").val(), $("#display_type").val(),$("#district").val() );
+                //console.log( "calling update_chart" );
+
+                $(".district_name").html( $("#district").val() );
+
+                var js=document.createElement('script');
+                // assign <script> attributes
+                js.setAttribute('language','javascript');
+                js.setAttribute('src','http://data.news-leader.com/pageview/story/2011080400001/Data AYP' );
+                // append element to document tree & send GET request
+                document.getElementsByTagName('head')[0].appendChild( js );
+
+        });
 
 });
 
 // -->
 </script>
 <noscript>
-	<P>This content requires JavaScript.</P>
+        <P>This content requires JavaScript.</P>
 </noscript>
 </div>
 <hr />
 <div>
-	{% include "schools/related_stories.html" %}
+        {% include "schools/related_stories.html" %}
 </div>
 <script language="javascript" type="text/javascript" src="http://content.gannettonline.com/global/scripts/revsci.js"></script>
 <script type="text/javascript" src="http://js.revsci.net/gateway/gw.js?csid=J06575" charset="ISO-8859-1"></script>
@@ -235,4 +239,12 @@ var s_code=s.t();if(s_code)document.write(s_code)//--></script>
 if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
 //--></script><noscript><img src="http://gntbcstglobal.112.2O7.net/b/ss/gntbcstglobal,gpaper171/1/H.3--NS/0" height="1" width="1" border="0" alt="" /></noscript><!--/DO NOT REMOVE/-->
 <!-- End SiteCatalyst code version: H.3. -->
+<script>
+var js=document.createElement('script');
+// assign <script> attributes
+js.setAttribute('language','javascript');
+js.setAttribute('src','http://data.news-leader.com/pageview/story/2011080400001/Data AYP' );
+// append element to document tree & send GET request
+ document.getElementsByTagName('head')[0].appendChild( js );
+</script>
 {% endblock %}
