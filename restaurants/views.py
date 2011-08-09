@@ -25,7 +25,7 @@ def index(request):
 
     #going to show the last 30 days worth of inspections on the index page
     restaurants = Restaurant.objects.all()
-    days_since_delta = datetime.timedetla(days=int(days_since))
+    days_since_delta = datetime.timedelta(days=int(days_since))
     inspections = Inspection.objects.select_related().filter(
         date__gt=datetime.datetime.today() - days_since_delta)
 
