@@ -1,4 +1,4 @@
-#from django.db import models, IntegrityError
+#from django.db import models
 #GeoDjango support
 from django.contrib.gis.db import models
 #import datetime
@@ -28,7 +28,7 @@ class Restaurant(models.Model):
     geom = models.PointField(srid=4326, null=True)
 
     #many to many relationship for cuisines
-    cuisine = models.ManyToManyField("Cuisine")
+    cuisine = models.ManyToManyField("Cuisine", related_name="Cuisines")
     #boolean for open/out of business restaurants
     active = models.BooleanField(default=True)
     objects = models.GeoManager()
@@ -61,13 +61,15 @@ class Inspection(models.Model):
 
 class Cuisine(models.Model):
     name = models.CharField(max_length=50)
-    label = models.CharField(max_length=150)
+    label = models.CharField(max_length=150, null=True, blank=True)
+
+    objects = models.Manager()
 
     def __unicode__(self):
         return u"%s" % self.name
 
 
-class Detail(models.Model):
+class Attribute(models.Model):
     #detail must belong to a restaurant
     restaurant = models.ForeignKey('Restaurant')
     name = models.CharField(max_length=30)
@@ -75,6 +77,8 @@ class Detail(models.Model):
     active = models.BooleanField(default=True)
     #use this to see if i need to explode the data in value as a list or not
     comma_delimited = models.BooleanField(default=False)
+
+    objects = models.Manager()
 
     def __unicode__(self):
         return u"%s" % self.name

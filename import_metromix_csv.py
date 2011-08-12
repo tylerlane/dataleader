@@ -15,7 +15,7 @@ for row in rows:
   #print "%d %s" % ( count, row )
   if count != 0 and row[4] =="Live":
     #
-    restaurant,rest_created  = Restaurant.objects.get_or_create( name = row[3],address=row[9] )
+    restaurant,rest_created  = Restaurant.objects.get_or_create( name=row[3],address=row[9] )
     if rest_created is True:
       print "Creating Restaurant for %s " % row[3]
       print "%d %s" % ( count, row )
