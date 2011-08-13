@@ -61,7 +61,7 @@ class Inspection(models.Model):
 
 
 class Cuisine(models.Model):
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=50, unique=True)
     label = models.CharField(max_length=150, null=True, blank=True)
 
     objects = models.Manager()
