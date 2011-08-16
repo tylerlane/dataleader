@@ -21,7 +21,7 @@ class Restaurant(models.Model):
     photo_url = models.URLField(blank=True, null=True)
     url = models.URLField(blank=True, null=True)
 
-    channel = models.CharField(max_length=25, null=True, blank=True)
+    #channel = models.CharField(max_length=25, null=True, blank=True)
     hours = models.CharField(max_length=100, null=True)
 
     #geocoder stuff
