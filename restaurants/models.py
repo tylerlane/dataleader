@@ -15,9 +15,7 @@ class Restaurant(models.Model):
     phone = models.CharField(max_length=25, blank=True, null=True)
     last_updated = models.DateTimeField("Last Updated", auto_now=False,
             auto_now_add=False, null=True)
-    subheadline = models.CharField(max_length=255, blank=True, null=True)
-    brief = models.TextField(blank=True, null=True)
-    long_description = models.TextField(blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
 
     #photo
     photo_url = models.URLField(blank=True, null=True)
