@@ -10,11 +10,11 @@ import socket
 
 #seeing which path to use.
 if socket.gethostname() == "2155529.pubip.peer1.net":
-	sys.path.append('/opt/django/data.news-leader.com')
-	g = geocoders.Google('ABQIAAAA2JAd-KesRNeDJwroL49_CxTC4wGmoCeUv8j3n4Pev0Dsu3hwqxS_gg6u4S_FFZd8gO-pLGIZ4Ui7VQ')
+    sys.path.append('/opt/django/data.news-leader.com')
+    g = geocoders.Google('ABQIAAAA2JAd-KesRNeDJwroL49_CxTC4wGmoCeUv8j3n4Pev0Dsu3hwqxS_gg6u4S_FFZd8gO-pLGIZ4Ui7VQ')
 else:
-	sys.path.append('/Users/tlane2/Code/data/trunk')
-	g = geocoders.Google('ABQIAAAA2JAd-KesRNeDJwroL49_CxRMPgAshc9HvuksOF-1hbNeUnHu2RR3TUaykJvxoc7edBwXZYs044EM3w')
+    sys.path.append('/Users/tlane2/Code/data/trunk')
+    g = geocoders.Google('ABQIAAAA2JAd-KesRNeDJwroL49_CxRMPgAshc9HvuksOF-1hbNeUnHu2RR3TUaykJvxoc7edBwXZYs044EM3w')
 
 
 
@@ -22,7 +22,7 @@ else:
 os.environ['DJANGO_SETTINGS_MODULE'] = 'settings'
 from restaurants.models import Restaurant
 
-restaurants = Restaurant.objects.filter(geom__isnull=True).exclude(address__isnull=True,city__isnull=True,state__isnull=True)
+restaurants = Restaurant.objects.filter(geom__isnull=False).exclude(address__isnull=True,city__isnull=True,state__isnull=True)
 count = 0
 for restaurant in restaurants:
   count += 1
@@ -44,7 +44,7 @@ for restaurant in restaurants:
   except ValueError:
     print restaurant.name  + " multiple places!"
 
-  print "Sleeping half a second"
-  time.sleep(0.5)
+  print "Sleeping a second"
+  time.sleep(1)
   print "====="
 

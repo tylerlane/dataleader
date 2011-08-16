@@ -20,7 +20,7 @@ class Restaurant(models.Model):
     long_description = models.TextField(blank=True, null=True)
 
     #photo
-    channel = models.CharField(max_length=25, null=True)
+    channel = models.CharField(max_length=25, null=True, blank=True)
     hours = models.CharField(max_length=100, null=True)
 
     #geocoder stuff

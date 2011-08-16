@@ -7,7 +7,7 @@ class RestaurantAdmin(admin.OSMGeoAdmin):
     field = (None, {"fields": ("address")})
     field = (None, {"geom": ("geom")})
     list_display = ("name", "address", "city")
-    list_filter = ("channel", "city")
+    list_filter = ("city", "cuisine", )
     default_lon = 37.214367
     default_lat = -93.29313
     order_by = ("name", "address")
