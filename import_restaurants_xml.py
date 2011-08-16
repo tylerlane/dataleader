@@ -2,13 +2,15 @@
 from django.core.management import setup_environ
 import settings
 setup_environ( settings )
-
+from django.contrib.gis.geos import fromstr
 from restaurants.models import Restaurant,Cuisine,Attribute
-import datetime
-import time
+#import datetime
+#import time
 from lib import bail
 from BeautifulSoup import BeautifulStoneSoup
-from calls.textutils import *
+from calls.textutils import clean_address
+import sys
+import traceback
 soup = BeautifulStoneSoup(open("metromix-export.xml").read(), markupMassage = False, convertEntities="html")
 items = soup.findAll('content_item')
 restaurants = []
@@ -78,16 +80,17 @@ for item in items:
                 created = None
                 #and stick them into a variable for now
                 cuisine += value.contents[0] + u","
-                #new_cuisine = Cuisine(name=value.contents[0])
-                #new_cuisine.label = value.contents[0]
-                #new_cuisine.save()
-                #print "Creating DB record for cuisine: %s" % value.contents[0]
-                #and we'll stick them into our database.
                 if cuisine not in cuisine2:
                     cuisine2.append(value.contents[0])
 
             if cuisine[-1] == ",":
                 cuisine = cuisine[0:-1]
+        if foo.contents[0] == "hours":
+            value = foo.nextSibling.find("value")
+            if value is not None:
+                hours = value.contents[0]
+            else:
+                hours = None
 
     stuff["name"] = name
     stuff["address"] = address
@@ -99,6 +102,7 @@ for item in items:
     stuff["description"] = description
     stuff["cuisine"] = cuisine
     stuff["cuisine2"] = cuisine2
+    stuff["hours"] = hours
     stuff["lat"] = lat
     stuff["lng"] = lng
     #print stuff
@@ -113,35 +117,44 @@ for restaurant in restaurants:
     try:
         temp_restaurants = Restaurant.objects.filter(name=str(restaurant["name"]))
         for temp_restaurant in temp_restaurants:
-            if clean_address(temp_restaurant.address) == clean_address(restaurant["address"]):
-                temp_restaurant.zip_code = str(restaurant["zip_code"])
-                temp_restaurant.main_phone_number = str(restaurant["main_phone_number"])
-                temp_restaurant.description = str(restaurant["description"])
+            if temp_restaurant.address is not None and restaurant["address"] is not None:
+                print "Address-xml | address-db || %s | %s" % (restaurant["address"], temp_restaurant.address)
+                if clean_address(temp_restaurant.address) == clean_address(restaurant["address"]):
+                    temp_restaurant.zip_code = str(restaurant["zip_code"])
+                    temp_restaurant.phone = str(restaurant["main_phone_number"])
+                    #print "Description = %s" % str( restaurant["description"])
+                    temp_restaurant.long_description = str(restaurant["description"])
+                    temp_restaurant.hours = str(restaurant["hours"])
+                    if stuff["lng"] is not None and stuff["lat"] is not None:
+                        if temp_restaurant.geom is None:
+                            temp_restaurant.geom = fromstr( 'POINT(' + str(stuff["lng"]) + " " + str(stuff["lat"]) +')', srid = 4326 )
+                        temp_restaurant.geocoder = "google"
+                    temp_restaurant.save()
+                    print "saving Restaurant: %s" % temp_restaurant.name
+                    #now to do cuisines
+                    if restaurant["cuisine2"] is not None:
+                        for tmp_cuisine in restaurant["cuisine2"]:
+                            try:
+                                new_cuisine,created = Cuisine.objects.get_or_create(name=str(tmp_cuisine))
+                                new_cuisine.label = str(tmp_cuisine)
+                                new_cuisine.save()
 
-                #now to do cuisines
-                if restaurant["cuisine2"] is not None:
-                    for tmp_cuisine in restaurant["cuisine2"]:
-                        try:
-                            new_cuisine,created = Cuisine.objects.get_or_create(name=str(tmp_cuisine))
-                            new_cuisine.label = str(tmp_cuisine)
-                            new_cuisine.save()
-
-                            #now we associate a cuisine with a restaurant
-                            temp_restaurant.cuisine.add(new_cuisine)
-                        except:
-                            print bail()
-                #now lets save
-                print "saving Restaurant: %s" % temp_restaurant.name
-                temp_restaurant.save()
-                found += 1
+                                #now we associate a cuisine with a restaurant
+                                temp_restaurant.cuisine.add(new_cuisine)
+                            except:
+                                print bail()
+                    #now lets save
+                    print "saving Restaurant: %s" % temp_restaurant.name
+                    temp_restaurant.save()
+                    found += 1
+                else:
+                    not_found += 1
+                    print "Name matches but address doesn't ", not_found
             else:
-                not_found += 1
-                print "Name matches but address doesn't ", not_found
-                print "Address-xml | address-db = %s | %s" % (restaurant["address"], temp_restaurant.address)
+                print "No address!"
     except Restaurant.DoesNotExist:
         not_found +=1
         print "Restaurant not found using Name", not_found
-        #print bail()
 
 print "Restaurants:"
 print "Found: %d" % found
