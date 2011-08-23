@@ -86,7 +86,7 @@ for item in items:
             if cuisine[-1] == ",":
                 cuisine = cuisine[0:-1]
         if foo.contents[0] == "hours":
-            value = foo.nextSibling.find("value")
+            value = foo.nextSibling.find("comment")
             if value is not None:
                 hours = value.contents[0]
             else:
@@ -105,6 +105,7 @@ for item in items:
     stuff["hours"] = hours
     stuff["lat"] = lat
     stuff["lng"] = lng
+    
     #print stuff
     restaurants.append( stuff )
 
@@ -122,13 +123,13 @@ for restaurant in restaurants:
                 if clean_address(temp_restaurant.address) == clean_address(restaurant["address"]):
                     temp_restaurant.zip_code = str(restaurant["zip_code"])
                     temp_restaurant.phone = str(restaurant["main_phone_number"])
-                    #print "Description = %s" % str( restaurant["description"])
                     temp_restaurant.long_description = str(restaurant["description"])
                     temp_restaurant.hours = str(restaurant["hours"])
-                    if stuff["lng"] is not None and stuff["lat"] is not None:
-                        if temp_restaurant.geom is None:
-                            temp_restaurant.geom = fromstr( 'POINT(' + str(stuff["lng"]) + " " + str(stuff["lat"]) +')', srid = 4326 )
-                        temp_restaurant.geocoder = "google"
+                    #not using lat and lng since the accuracy is so horrible.
+                    #if stuff["lng"] is not None and stuff["lat"] is not None:
+                    #    if temp_restaurant.geom is None:
+                    #        temp_restaurant.geom = fromstr( 'POINT(' + str(stuff["lng"]) + " " + str(stuff["lat"]) +')', srid = 4326 )
+                    #    temp_restaurant.geocoder = "google"
                     temp_restaurant.save()
                     print "saving Restaurant: %s" % temp_restaurant.name
                     #now to do cuisines
