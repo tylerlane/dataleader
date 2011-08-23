@@ -16,7 +16,7 @@ from restaurants.forms import SearchForm
 #from calls.textutils import *
 
 #variable for items per page
-ITEMS_PER_PAGE = 50
+ITEMS_PER_PAGE = 25
 
 
 @never_cache
@@ -31,7 +31,7 @@ def index(request):
 
     violations = inspections.order_by('-critical')[:10]
 
-    return render_to_response('restaurants/index.html',
+    return render_to_response('restaurants/landingPage.html',
             {'restaurants': restaurants,
             'inspections': inspections,
             'violations': violations},
@@ -43,7 +43,7 @@ def detail(request, restaurant_id):
     restaurant = Restaurant.objects.get(id=restaurant_id)
     inspections = Inspection.objects.filter(restaurant=restaurant)
 
-    return render_to_response('restaurants/detail.html',
+    return render_to_response('restaurants/insideRestaurant.html',
         {'restaurant': restaurant, 'inspections': inspections},
         context_instance=RequestContext(request))
 
@@ -72,7 +72,7 @@ def browse(request, letter=None, page=None):
     except:
         raise Http404
 
-    return render_to_response('restaurants/browse.html',
+    return render_to_response('restaurants/restaurantListing.html',
             {'restaurants': p.object_list,
             'letter': letter,
             'alphabet': alphabet,

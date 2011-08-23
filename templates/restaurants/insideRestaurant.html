@@ -1,77 +1,54 @@
 {% extends "cobrand_template.html" %}
 {% load humanize %}
 {% block headers %}
-<title>News-Leader.com Restaurant Inspections</title>
-<link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}/restaurants.css">
+<title>News-Leader.com Restaurants</title>
+<link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}/restaurants.css"></link>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link rel="stylesheet" href="{{MEDIA_URL}}/landingPage.css" type="text/css" />
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
-<!-- test -->
 {% endblock %}
 {% block content %}
-<div id="restaurants">
-  <div style="float: right">
-    <span class="nav-button"><a href="{% url restaurants-index %}">Latest Inspections</a></span>
-    <span class="nav-button"><a href="{% url restaurants-browse 'A','1' %}">Browse Restaurants</a></span>
-    <span class="nav-button"><a href="{% url restaurants-search %}">Search</a></span>
-  </div>
-  <h1>Restaurants</h1>
-    <div align="left">
-        <br />
-        <div>By selecting a letter below, all restaurants with that last name initial will appear in sorted order by the last name.</div>
-        <p />
-        <div class="pagination">
-            {% spaceless %}
-            {% for char in alphabet %}
-                {% if char == letter %}
-                    <span class="current">{{char}}</span>
-                {% else %}
-                    {# this gives me the link to the warrants browsing for each letter starting @ page 1 #}
-                    <a href="{% url restaurants-browse char,1 %}">{{char}}</a>
-                {% endif %}
-            {% endfor %}
-            {% endspaceless %}
-        </div>
-  <div style="width:960px;">
-    <table>
-      <tr class="yellow">
-        <td>Restaurant</td>
-        <td>Address</td>
-      </tr>
-      <form method="POST" action="{% url restaurants-confirm-merge %}">
-      {% csrf_token %}
-      {% for restaurant in restaurants %}
-        <tr>
-          <td {% ifchanged restaurant.name %}{% else %}style="background-color: #5CADFF;"{% endifchanged %}><input type="checkbox" name="restaurants" value="{{restaurant.id}}"><a href="{%url restaurant-detail restaurant.id %}">{{restaurant.name}}</a></td>
-          <td>{{restaurant.address|safe}}, {{restaurant.city}}</td>
-        </tr>
-      {% endfor %}
-    </table>
-    <br />
-    <button type="submit" class="search_btn">Merge Restaurants</button>
-    </form>
-    <div align="center">
-        <div class="pagination">
-            {% if has_previous %}
-                <a href="{% url restaurants-browse letter page.previous_page_number  %}">&laquo;prev</a>
-            {% else %}
-                <span class="disabled">&laquo; prev</span>
-            {% endif %}
-            {% for num in page_range %}
-                {% if num == page.number %}
-                    <span class="current">{{num}}</span>
-                {% else %}
-                    <a href="{% url restaurants-browse letter num %}">{{num}}</a>
-                {% endif %}
-            {% endfor %}
-            {% if has_next %}
-                <a href="{% url restaurants-browse letter page.next_page_number  %}">next &raquo;</a>
-            {% else %}
-                <span class="disabled">next &raquo;</span>
-            {% endif %}
-        </div>
+<!-- ImageReady Slices (INSIDE.REST.psd) -->
+<div id="MainContainer">
+    <div id="insideTopHeader_">
+        <img id="insideTopHeader" src="{{MEDIA_URL}}/images/insideTopHeader.gif" width="652" height="33" alt="" />
     </div>
-  </div>
+    <div id="insideRightRail">
+        Right Rail Goes Here
+    </div>
+    <div id="insideLeftGradient_">
+    </div>
+    <div id="insideMainHeader_">
+        <img id="insideMainHeader" src="{{MEDIA_URL}}/images/insideMainHeader.gif" width="375" height="63" alt="" />
+    </div>
+    <div id="insideRightGradient_">
+    </div>
+    <div id="insideMainContent_">
+        <h2>Restaurant Detail</h2>
+        <h3>{{restaurant.name}}</h3>
+        {{restaurant.address}}, {{restaurant.state|default:"MO"}} {{restaurant.zip_code|default:""}}
+        <table>
+        {% for inspection in inspections %}
+            <tr>
+                <td>{{inspection.date|naturalday}}</td>
+                <td>Critical Violations: {{inspection.critical}}</td>
+                <td>Noncritical Violations: {{inspection.noncritical}}</td>
+                <td>{{inspection.notes}}</td>
+            </tr>
+            {% if inspection.critical > 0 %}
+            <tr>
+                <td colspan="4"><b>Details:</b>&nbsp;&nbsp;{{inspection.critical_violations|safe}}</td>
+            </tr>
+            {% endif %}
+        {% endfor %}
+        </table>
+    </div>
+    <div id="insideBottomNav_">
+        <img id="insideBottomNav" src="{{MEDIA_URL}}/images/insideBottomNav.gif" width="652" height="63" alt="" />
+    </div>
 </div>
-{% endblock %}
+<!-- End ImageReady Slices -->
+{% endblock  %}
 {% block omniture %}
     <script language="javascript" type="text/javascript" src="http://content.gannettonline.com/global/scripts/revsci.js"></script> 
     <script type="text/javascript" src="http://js.revsci.net/gateway/gw.js?csid=J06575" charset="ISO-8859-1"></script> 
