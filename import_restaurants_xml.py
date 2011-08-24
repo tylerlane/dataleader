@@ -91,6 +91,8 @@ for item in items:
                 hours = value.contents[0]
             else:
                 hours = None
+        else:
+            hours = None
 
     stuff["name"] = name
     stuff["address"] = address
@@ -105,15 +107,19 @@ for item in items:
     stuff["hours"] = hours
     stuff["lat"] = lat
     stuff["lng"] = lng
-    
+
     #print stuff
     restaurants.append( stuff )
 
 
 found = 0
 not_found = 0
+count = 0
+new_count = 0
 for restaurant in restaurants:
     print restaurant["name"]
+    print restaurant["address"]
+    count += 1
     #now lets try to update our restaurants
     try:
         temp_restaurants = Restaurant.objects.filter(name=str(restaurant["name"]))
@@ -153,10 +159,68 @@ for restaurant in restaurants:
                     print "Name matches but address doesn't ", not_found
             else:
                 print "No address!"
-    except Restaurant.DoesNotExist:
+        if temp_restaurants is None or len( temp_restaurants ) < 1:
+            print "Restaurant not found using Name", not_found
+            #if restaurant not found then we create it
+            new_restaurant = Restaurant()
+            new_restaurant.name = str(restaurant["name"]).strip()
+            new_restaurant.address = str(restaurant["address"]).strip()
+            new_restaurant.city = str(restaurant["city"]).strip()
+            #new_restaurant.state = str(restaurant["state"])
+            #defaulting to MO
+            new_restaurant.state = "MO"
+            new_restaurant.phone = str(restaurant["main_phone_number"]).strip()
+            new_restaurant.zip_code = str(restaurant["zip_code"]).strip()
+            new_restaurant.description = str(restaurant["description"]).strip()
+            new_restaurant.hours = str(restaurant["hours"]).strip()
+            if restaurant["cuisine2"] is not None:
+                for tmp_cuisine in restaurant["cuisine2"]:
+                    try:
+                        new_cuisine,created = Cuisine.objects.get_or_create(name=str(tmp_cuisine))
+                        new_cuisine.label = str(tmp_cuisine)
+                        new_cuisine.save()
+                        #now we associate a cuisine with a restaurant
+                        new_restaurant.cuisine.add(new_cuisine)
+                    except:
+                        print bail()
+            #now lets save
+            print "saving Restaurant: %s" % new_restaurant.name
+            new_restaurant.save()
+            new_count +=1
+
+    except:
         not_found +=1
         print "Restaurant not found using Name", not_found
+        #if restaurant not found then we create it
+        new_restaurant = Restaurant()
+        new_restaurant.name = str(restaurant["name"]).strip()
+        new_restaurant.address = str(restaurant["address"]).strip()
+        new_restaurant.city = str(restaurant["city"]).strip()
+        #new_restaurant.state = str(restaurant["state"])
+        #defaulting to MO
+        new_restaurant.state = "MO"
+        new_restaurant.phone = str(restaurant["main_phone_number"]).strip()
+        new_restaurant.zip_code = str(restaurant["zip_code"]).strip()
+        new_restaurant.description = str(restaurant["description"]).strip()
+        new_restaurant.hours = str(restaurant["hours"]).strip()
+        if restaurant["cuisine2"] is not None:
+            for tmp_cuisine in restaurant["cuisine2"]:
+                try:
+                    new_cuisine,created = Cuisine.objects.get_or_create(name=str(tmp_cuisine))
+                    new_cuisine.label = str(tmp_cuisine)
+                    new_cuisine.save()
+                    #now we associate a cuisine with a restaurant
+                    new_restaurant.cuisine.add(new_cuisine)
+                except:
+                    print bail()
+        #now lets save
+        print "saving Restaurant: %s" % new_restaurant.name
+        new_restaurant.save()
+        new_count +=1
+
 
 print "Restaurants:"
 print "Found: %d" % found
 print "Not Found: %d" % not_found
+print "New Restaurants: %d" % new_count
+print "Total Restaurants: %d" % count
