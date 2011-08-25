@@ -27,6 +27,8 @@
         <h2>Restaurant Detail</h2>
         <h3>{{restaurant.name}}</h3>
         {{restaurant.address}}, {{restaurant.state|default:"MO"}} {{restaurant.zip_code|default:""}}
+        {{restaurant.description|safe|default:""}}
+        <p>{{restaurant.hours|default:""}}</p>
         <table>
         {% for inspection in inspections %}
             <tr>

@@ -29,7 +29,7 @@ class Restaurant(models.Model):
     geom = models.PointField(srid=4326, null=True)
 
     #many to many relationship for cuisines
-    cuisine = models.ManyToManyField("Cuisine", related_name="Cuisines")
+    cuisine = models.ManyToManyField("Cuisine", related_name="Cuisines", null=True)
     #cuisines = models.CharField(max_length=255, blank=True, null=True)
     #boolean for open/out of business restaurants
     active = models.BooleanField(default=True)

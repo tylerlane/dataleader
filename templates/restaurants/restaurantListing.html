@@ -28,9 +28,9 @@
             {% spaceless %}
             {% for char in alphabet %}
                 {% if char == letter %}
-                    <span class="current">{{char}}</span> |
+                    <span class="current">{{char|safe}}</span> |
                 {% else %}
-                    <a href="{% url restaurants-browse char,1 %}">{{char}}</a> 
+                    <a href="{% url restaurants-browse char,1 %}">{{char|safe}}</a> 
                     {% if char != "Z" %}
                     |
                     {% endif %}
@@ -43,6 +43,11 @@
                 <h3 class="restaurantListingName"><a href="{%url restaurant-detail restaurant.id %}">{{restaurant.name}}</a></h3>
                 <p class="restaurantListingInfo">{{restaurant.address}}, {{restaurant.city}}, {{restaurant.state|default:"MO"}} {{restaurant.phone|default:""}}</p>
                 <p class="restauraltListingSummary">{{restaurant.description|default:""|safe}}</p>
+                <p class="restaurantListingSummary">
+                {% for cuisine in restaurants.cuisine %}
+                    {{cuisine.name}}
+                {% endfor %}
+                </p>
             </div>
         {% endfor %}
         <div id="listingPages">

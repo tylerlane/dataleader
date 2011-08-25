@@ -51,7 +51,7 @@ def detail(request, restaurant_id):
 @never_cache
 def browse(request, letter=None, page=None):
     #my alphabet to loop through on the template
-    alphabet = ("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L",
+    alphabet = ("%23", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L",
         "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z")
     #if no letter is set.
     if letter is None:
@@ -61,8 +61,13 @@ def browse(request, letter=None, page=None):
     if page is None:
         #set it to 1
         page = 1
-    #get the restaurants startign with letter
-    restaurants = Restaurant.objects.filter(name__istartswith=letter)
+    if letter != "#":
+        #get the restaurants startign with letter
+        restaurants = Restaurant.objects.select_related().filter(name__istartswith=letter)
+    else:
+        restaurants = Restaurant.objects.select_related().all()
+        for letter in alphabet[1:]:
+            restaurants = restaurants.exclude(name__istartswith=letter)
     restaurants = restaurants.order_by('name')
     #pass to paginator
     pages = Paginator(restaurants, ITEMS_PER_PAGE)
