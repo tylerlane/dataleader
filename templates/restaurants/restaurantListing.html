@@ -44,7 +44,7 @@
                 <p class="restaurantListingInfo">{{restaurant.address}}, {{restaurant.city}}, {{restaurant.state|default:"MO"}} {{restaurant.phone|default:""}}</p>
                 <p class="restauraltListingSummary">{{restaurant.description|default:""|safe}}</p>
                 <p class="restaurantListingSummary">
-                {% for cuisine in restaurants.cuisine %}
+                {% for cuisine in restaurants.cuisine.all %}
                     {{cuisine.name}}
                 {% endfor %}
                 </p>
