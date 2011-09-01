@@ -8,60 +8,55 @@
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
 {% endblock %}
 {% block content %}
+<!-- ImageReady Slices (REST.LISTING.jpg) -->
 <div id="MainContainer">
-    <div id="TopHeader_">
-        <img id="TopHeader" src="{{MEDIA_URL}}/images/TopHeader.gif" width="960" height="33" alt="" />
+    <div id="ListingsTopper_">
+        <img id="ListingsTopper" src="{{MEDIA_URL}}/images/ListingsTopper.gif" width="649" height="35" alt="" />
     </div>
-    <div id="LeftGradientSpacer_">
-        <img id="LeftGradientSpacer" src="{{MEDIA_URL}}/images/gradient1px.jpg" width="107" height="735" alt="" />
+    <div id="ListingsRightRail_">Right rail goes here
     </div>
-    <div id="DineDrinkTitle_">
-        <img id="DineDrinkTitle" src="{{MEDIA_URL}}/images/DineDrinkTitle.gif" width="311" height="45" alt="" />
+    <div id="ListingsLeftGradient_">
     </div>
-    <div id="MouseoverContentWell_">
-        <div id="MouseoverContentContainer_">
-            <img id="InsideTitle" src="{{MEDIA_URL}}/images/InsideTitle.gif" width="169" height="62" alt="" />
+    <div id="ListingsTitle_">
+        <img id="ListingsTitle" src="{{MEDIA_URL}}/images/ListingsTitle.gif" width="517" height="62" alt="" />
+    </div>
+    <div id="ListingsRightGradient_">
+    </div>
+
+    <div id="ListingsContentWell">
+       {% for inspection in inspections %}
+            <div class="restaurantListing">
+                <h3 class="restaurantListingName"><a href="{%url restaurant-detail inspection.restaurant.id %}">{{inspection.restaurant.name}}</a></h3>
+                <p class="restaurantListingInfo">{{inspection.restaurant.address}}, {{inspection.restaurant.city}}, {{inspection.restaurant.state|default:"MO"}} {{inspection.restaurant.phone|default:""}}</p>
+                <p class="restaurantListingSummary"><b>Most Recent Inspection</b>: {{inspection.date|naturalday}}</p>
+                <p class="restaurantListingSummary"><b>Critical Violations</b>: {{inspection.critical|apnumber}}</p>
+            </div>
+        {% endfor %}
+        <div id="listingPages">
+             {% if has_previous %}
+                <a href="{% url restaurants-browse letter page.previous_page_number  %}">&laquo;prev</a>
+            {% else %}
+                <span class="disabled">&laquo; prev</span>
+            {% endif %}
+            {% for num in page_range %}
+                {% if num == page.number %}
+                    <span class="current">{{num}}</span>
+                {% else %}
+                    <a href="{% url restaurants-browse letter num %}">{{num}}</a>
+                {% endif %}
+            {% endfor %}
+            {% if has_next %}
+                <a href="{% url restaurants-browse letter page.next_page_number  %}">next &raquo;</a>
+            {% else %}
+                <span class="disabled">next &raquo;</span>
+            {% endif %}
+
         </div>
     </div>
-    <div id="MenuListing_">
-        <h3>Featured</h3>
-        <h3>Inspections</h3>
-        <h3>Top Rated</h3>
-        <h3>Most Viewed</h3>
-        <!--<h3>Yelp Reviews</h3>-->
-        <h3 class="browse"><a href="{% url restaurants-browse 'A','1' %}">Browse By:</a></h3>
-        <ul>
-            <li>
-                <a href="{% url list_cuisines %}">Cuisine type</a>
-            </li>
-            <li>
-                <a href="{% url restaurants-browse 'A','1' %}">Average price</a>
-            </li>
-            <li>
-                <a href="{% url restaurants-browse 'A','1' %}">Neighborhood</a>
-            </li>
-            <li>
-                <a href="{% url restaurants-browse 'A','1' %}">Health inspections</a>
-            </li>
-            <li>
-                <a href="{% url restaurants-browse 'A','1' %}">Special Features</a>
-            </li>
-            <li>
-                <a href="{% url restaurants-browse 'A','1' %}">Bars</a>
-            </li>
-            <li>
-                <a href="{% url restaurants-browse 'A','1' %}">Specials</a>
-            </li>
-        </ul>
-    </div>
-    <div id="SearchBar_">
-        <img id="SearchBar" src="{{MEDIA_URL}}/images/SearchBar.gif" width="960" height="54" alt="" />
-    </div>
-    <div id="BottomContent_">
-        <img id="BottomContent" src="{{MEDIA_URL}}/images/BottomContent.gif" width="960" height="425" alt="" />
+    <div id="ListingsBottomNav_">
+        <img id="ListingsBottomNav" src="{{MEDIA_URL}}/images/ListingsBottomNav.gif" width="649" height="64" alt="" />
     </div>
 </div>
-<!-- End ImageReady Slices -->
 {% endblock  %}
 {% block omniture %}
     <script language="javascript" type="text/javascript" src="http://content.gannettonline.com/global/scripts/revsci.js"></script> 

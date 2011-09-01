@@ -9,7 +9,7 @@ from django.shortcuts import render_to_response
 #from django.template.loader import render_to_string
 from django.template import RequestContext
 from django.views.decorators.cache import never_cache
-from restaurants.models import Restaurant, Inspection
+from restaurants.models import Restaurant, Inspection,Cuisine,Attribute
 from restaurants.forms import SearchForm
 #import re
 #import simplejson
@@ -21,20 +21,7 @@ ITEMS_PER_PAGE = 25
 
 @never_cache
 def index(request):
-    days_since = request.GET.get('days', 30)
-
-    #going to show the last 30 days worth of inspections on the index page
-    restaurants = Restaurant.objects.all()
-    days_since_delta = datetime.timedelta(days=int(days_since))
-    inspections = Inspection.objects.select_related().filter(
-        date__gt=datetime.datetime.today() - days_since_delta)
-
-    violations = inspections.order_by('-critical')[:10]
-
     return render_to_response('restaurants/landingPage.html',
-            {'restaurants': restaurants,
-            'inspections': inspections,
-            'violations': violations},
             context_instance=RequestContext(request))
 
 
@@ -207,3 +194,40 @@ def merge(request):
     #listings
     letter = main_restaurant.name[0].upper()
     return HttpResponseRedirect('/restaurants/browse/' + letter + '/1')
+
+
+@never_cache
+def list_cuisines(request):
+    cuisines = Cuisine.objects.all()
+
+    return render_to_response('restaurants/listcuisines.html',
+            {'cuisines': cuisines},
+            context_instance=RequestContext(request))
+
+@never_cache
+def list_restaurants_cuisine(request,cuisine):
+    cuisine = Cuisine.objects.get(name=cuisine)
+    restaurants = Restaurant.objects.filter(cuisine = cuisine )
+
+
+    return render_to_response('restaurants/restaurantListing.html',
+            {'restaurants': restaurants},
+            context_instance=RequestContext(request))
+
+@never_cache
+def list_recent_inspections(request):
+    #days_since = request.GET.get('days', 30)
+
+    #going to show the last 30 days worth of inspections on the index page
+    #restaurants = Restaurant.objects.all()
+    #days_since_delta = datetime.timedelta(days=int(days_since))
+    #inspections = Inspection.objects.select_related().filter(
+    #    date__gt=datetime.datetime.today() - days_since_delta)
+
+    #violations = inspections.order_by('-critical')[:10]
+
+    inspections = Inspection.objects.select_related().all().order_by('-date')[:50]
+
+    return render_to_response('restaurants/inspectionListing.html',
+            {'inspections': inspections},
+            context_instance=RequestContext(request))

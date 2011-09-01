@@ -28,6 +28,7 @@
         <h3>{{restaurant.name}}</h3>
         {{restaurant.address}}, {{restaurant.state|default:"MO"}} {{restaurant.zip_code|default:""}}
         {{restaurant.description|safe|default:""}}
+        Cuisine: {% for cuisine in restaurant.cuisine.all %}{{cuisine.name}}{% endfor %}
         <p>{{restaurant.hours|default:""}}</p>
         <table>
         {% for inspection in inspections %}
