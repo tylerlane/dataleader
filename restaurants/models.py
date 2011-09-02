@@ -43,9 +43,9 @@ class Restaurant(models.Model):
         return ('restaurants.views.detail', self.id )
 
 
-
     class Meta:
         ordering = ("name", "city", )
+
 
 class Inspection(models.Model):
     restaurant = models.ForeignKey(Restaurant)
