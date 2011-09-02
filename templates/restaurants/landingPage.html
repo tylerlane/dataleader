@@ -25,34 +25,38 @@
     </div>
     <div id="MenuListing_">
         <h3>Featured</h3>
-        <h3>Inspections</h3>
+        <h3><a href="{% url list_recent_inspections %}">Inspections</a></h3>
         <h3>Top Rated</h3>
         <h3>Most Viewed</h3>
         <!--<h3>Yelp Reviews</h3>-->
-        <h3 class="browse"><a href="{% url restaurants-browse 'A','1' %}">Browse By:</a></h3>
+        <h3 class="browse">Browse By:</h3>
         <ul>
+            <li>
+                <a href="{% url restaurants-browse 'A','1' %}">Name</a>
+            </li>
             <li>
                 <a href="{% url list_cuisines %}">Cuisine type</a>
             </li>
             <li>
-                <a href="{% url restaurants-browse 'A','1' %}">Average price</a>
+                <a href="#">Average price</a>
             </li>
             <li>
-                <a href="{% url restaurants-browse 'A','1' %}">Neighborhood</a>
+                <a href="#">Neighborhood</a>
             </li>
             <li>
-                <a href="{% url restaurants-browse 'A','1' %}">Health inspections</a>
+               <a href="{% url list_recent_inspections %}">Health inspections</a>
             </li>
             <li>
-                <a href="{% url restaurants-browse 'A','1' %}">Special Features</a>
+                <a href="#">Special Features</a>
             </li>
             <li>
-                <a href="{% url restaurants-browse 'A','1' %}">Bars</a>
+                <a href="#">Bars</a>
             </li>
             <li>
-                <a href="{% url restaurants-browse 'A','1' %}">Specials</a>
+                <a href="#">Specials</a>
             </li>
         </ul>
+        <h3><a href="{% url restaurants-search %}">Search</a></h3>
     </div>
     <div id="SearchBar_">
         <img id="SearchBar" src="{{MEDIA_URL}}/images/SearchBar.gif" width="960" height="54" alt="" />

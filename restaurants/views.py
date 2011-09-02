@@ -111,7 +111,7 @@ def search(request, page=None):
             else:
                 name_q = None
             #address
-            if form.cd["address"] is not None and cd["address"] != "":
+            if cd["address"] is not None and cd["address"] != "":
                 address_q = Q(address__icontains=cd["address"])
             else:
                 address_q = None
@@ -151,9 +151,13 @@ def search(request, page=None):
                     'is_last': p == pages.num_pages,
                     'form': form, }
         else:
-            #setting my form
-            form = SearchForm(auto_id=False)
-            content = {'form': form, }
+            #setting form and content to send back tot he page
+            form = SearchForm()
+            content = {'form': form }
+    else:
+        #setting my form
+        form = SearchForm(auto_id=False)
+        content = {'form': form, }
 
     return render_to_response('restaurants/search.html', content,
             context_instance=RequestContext(request))
@@ -168,9 +172,53 @@ def confirm_merge(request):
             {'restaurants': restaurants},
             context_instance=RequestContext(request))
 
-
 @never_cache
 def merge(request):
+    #my alphabet to loop through on the template
+    alphabet = ("%23", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L",
+        "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z")
+    #if no letter is set.
+    if letter is None:
+        #set it to A
+        letter = "A"
+    #if no page is set
+    if page is None:
+        #set it to 1
+        page = 1
+    if letter != "#":
+        #get the restaurants startign with letter
+        restaurants = Restaurant.objects.select_related().filter(name__istartswith=letter)
+    else:
+        restaurants = Restaurant.objects.select_related().all()
+        for letter in alphabet[1:]:
+            restaurants = restaurants.exclude(name__istartswith=letter)
+    restaurants = restaurants.order_by('name')
+    #pass to paginator
+    pages = Paginator(restaurants, ITEMS_PER_PAGE)
+    #get the page from the paginator
+    try:
+        p = pages.page(page)
+    except:
+        raise Http404
+
+    return render_to_response('restaurants/merge.html',
+            {'restaurants': p.object_list,
+            'letter': letter,
+            'alphabet': alphabet,
+            'page_range': pages.page_range,
+            'num_pages': pages.num_pages, 'page': p,
+            'has_pages': pages.num_pages > 1,
+            'has_previous': p.has_previous(),
+            'has_next': p.has_next(),
+            'previous_page': p.previous_page_number(),
+            'next_page': p.next_page_number(),
+            'is_first': p == 1,
+            'is_last': p == pages.num_pages},
+            context_instance=RequestContext(request))
+
+
+@never_cache
+def final_merge(request):
     restaurants_list = request.POST.getlist('restaurants')
     main_restaurant_id = request.POST.get('main_restaurant')
     main_restaurant = Restaurant.objects.get(id=main_restaurant_id)

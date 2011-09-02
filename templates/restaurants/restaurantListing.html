@@ -1,4 +1,5 @@
 {% extends "cobrand_template.html" %}
+{% load unquote %}
 {% load humanize %}
 {% block headers %}
 <title>News-Leader.com Restaurants</title>
@@ -13,7 +14,8 @@
     <div id="ListingsTopper_">
         <img id="ListingsTopper" src="{{MEDIA_URL}}/images/ListingsTopper.gif" width="649" height="35" alt="" />
     </div>
-    <div id="ListingsRightRail_">Right rail goes here
+    <div id="ListingsRightRail_">
+        {% include "restaurants/right_rail.html" %}
     </div>
     <div id="ListingsLeftGradient_">
     </div>
@@ -28,9 +30,9 @@
             {% spaceless %}
             {% for char in alphabet %}
                 {% if char == letter %}
-                    <span class="current">{{char}}</span> |
+                    <span class="current">{{char|unquote}}</span> |
                 {% else %}
-                    <a href="{% url restaurants-browse char,1 %}">{{char|safe}}</a> 
+                    <a href="{% url restaurants-browse char,1 %}">{{char|unquote}}</a> 
                     {% if char != "Z" %}
                     |
                     {% endif %}
@@ -44,9 +46,8 @@
                 <p class="restaurantListingInfo">{{restaurant.address}}, {{restaurant.city}}, {{restaurant.state|default:"MO"}} {{restaurant.phone|default:""}}</p>
                 <p class="restauraltListingSummary">{{restaurant.description|default:""|safe}}</p>
                 {% if restaurant.cuisine.all %}
-                    <p class="restaurantListingSummary"><b>Cuisines:</b> {% for cuisine in restaurant.cuisine.all %}<i>{{cuisine.name}}</i>, {% endfor %}
+                    <p class="restaurantListingSummary"><b>Cuisines:</b> {% for cuisine in restaurant.cuisine.all %}<i>{{cuisine.name}}</i>, {% endfor %}</p>
                 {% endif %}
-                </p>
             </div>
         {% endfor %}
         <div id="listingPages">

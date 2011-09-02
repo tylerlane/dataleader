@@ -1,171 +1,204 @@
 {% extends "cobrand_template.html" %}
+{% load unquote %}
 {% load humanize %}
 {% block headers %}
-<title>News-Leader.com Restaurant Inspections</title>
+<title>News-Leader.com Restaurants</title>
 <link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}/restaurants.css"></link>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link rel="stylesheet" href="{{MEDIA_URL}}/landingPage.css" type="text/css" />
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
 {% endblock %}
 {% block content %}
-<div id="restaurants">
-  <div style="float: right">
-    <span class="nav-button"><a href="{% url restaurants-index %}">Latest Inspections</a></span>
-    <span class="nav-button"><a href="{% url restaurants-browse 'A','1' %}">Browse Restaurants</a></span>
-    <span class="nav-button"><a href="{% url restaurants-search %}">Search</a></span>
-  </div>
-  <h1>Restaurants</h1>
-  <div align="left">
-    	<form action="{% url restaurants-search %}" method="post">
-			<table border="0" class="search_table">
-				{% csrf_token %}
-				{{ form.as_table }}
-			</table>
-            <button type="submit" class="search_btn" >Search</button>
-		</form>
-		<br />
-		<hr />
-		<br />
-		<br />
-        <p />
-        {% if restaurants %}
-        <div style="width:960px;">
-          <table>
-            <tr class="yellow">
-              <td>Restaurant</td>
-              <td>Address</td>
-            </tr>
-            {% for restaurant in restaurants %}
-            <tr>
-              <td><a href="{%url restaurant-detail restaurant.id %}">{{restaurant.name}}</a></td>
-              <td>{{restaurant.address|safe}}, {{restaurant.city}}</td>
-            </tr>
-            {% endfor %}
-          </table>
-
-
-	    <div align="center">
-          <div class="pagination">
-              {% if has_previous %}
-                  <a href="{% url restaurants-search-page page.previous_page_number  %}">&laquo;previous</a>
-              {% else %}
-                  <span class="disabled">&laquo; prev</span>
-              {% endif %}
-              {% for num in page_range %}
-                  {% if num == page.number %}
-                      <span class="current">{{num}}</span>
-                  {% else %}
-                      <a href="{% url restaurants-search-page num %}">{{num}}</a>
-                  {% endif %}
-              {% endfor %}
-              {% if has_next %}
-                  <a href="{% url restaurants-search-page page.next_page_number  %}">next &raquo;</a>
-              {% else %}
-                  <span class="disabled">next &raquo;</span>
-              {% endif %}
-            </div>
-          </div>
-        {% endif %}
-  </div>
+<!-- ImageReady Slices (REST.LISTING.jpg) -->
+<div id="MainContainer">
+    <div id="ListingsTopper_">
+        <img id="ListingsTopper" src="{{MEDIA_URL}}/images/ListingsTopper.gif" width="649" height="35" alt="" />
+    </div>
+    <div id="ListingsRightRail_">
+        {% include "restaurants/right_rail.html" %}
 </div>
-{% endblock %}
+    <div id="ListingsLeftGradient_">
+    </div>
+    <div id="ListingsTitle_">
+        <img id="ListingsTitle" src="{{MEDIA_URL}}/images/ListingsTitle.gif" width="517" height="62" alt="" />
+    </div>
+    <div id="ListingsRightGradient_">
+    </div>
+
+    <div id="ListingsContentWell">
+        <form action="{% url restaurants-search %}" method="post">
+            {% csrf_token %}
+            <div class="fieldWrapper">
+                <div style="margin-bottom: -6px;"><label for="id_name">Name: </label></div><br />
+                {{ form.name }} {{ form.name.errors }}
+            </div>
+            <div class="fieldWrapper">
+                <label for="id_address">Address</label><br />
+                {{ form.address }} {{ form.address.errors }}
+            </div>
+            <div class="fieldWrapper">
+                <label for="id_city">City</label><br />
+                {{ form.city }} {{ form.city.errors }}
+            </div>
+           <button type="submit" style="clear:both;">Search</button>
+        </form>
+        <br />
+        <br />
+        {% if alphabet %}
+        <div id="listingAlphabet">
+            {% spaceless %}
+            {% for char in alphabet %}
+                {% if char == letter %}
+                    <span class="current">{{char|unquote}}</span> |
+                {% else %}
+                    <a href="{% url restaurants-browse char,1 %}">{{char|unquote}}</a> 
+                    {% if char != "Z" %}
+                    |
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+            {% endspaceless %}
+        </div>
+        {% endif %}
+        {% if restaurants %}
+            {% for restaurant in restaurants %}
+                <div class="restaurantListing">
+                    <h3 class="restaurantListingName"><a href="{%url restaurant-detail restaurant.id %}">{{restaurant.name}}</a></h3>
+                    <p class="restaurantListingInfo">{{restaurant.address}}, {{restaurant.city}}, {{restaurant.state|default:"MO"}} {{restaurant.phone|default:""}}</p>
+                    <p class="restauraltListingSummary">{{restaurant.description|default:""|safe}}</p>
+                    {% if restaurant.cuisine.all %}
+                        <p class="restaurantListingSummary"><b>Cuisines:</b> {% for cuisine in restaurant.cuisine.all %}<i>{{cuisine.name}}</i>, {% endfor %}
+                    {% endif %}
+                    </p>
+                </div>
+            {% endfor %}
+            <div id="listingPages">
+                {% if has_previous %}
+                    <a href="{% url restaurants-browse letter page.previous_page_number  %}">&laquo;prev</a>
+                {% else %}
+                    <span class="disabled">&laquo; prev</span>
+                {% endif %}
+                {% for num in page_range %}
+                    {% if num == page.number %}
+                        <span class="current">{{num}}</span>
+                    {% else %}
+                        <a href="{% url restaurants-browse letter num %}">{{num}}</a>
+                    {% endif %}
+                {% endfor %}
+                {% if has_next %}
+                    <a href="{% url restaurants-browse letter page.next_page_number  %}">next &raquo;</a>
+                {% else %}
+                    <span class="disabled">next &raquo;</span>
+                {% endif %}
+
+            </div>
+        {% endif %}
+    </div>
+    <div id="ListingsBottomNav_">
+        <img id="ListingsBottomNav" src="{{MEDIA_URL}}/images/ListingsBottomNav.gif" width="649" height="64" alt="" />
+    </div>
+</div>
+{% endblock  %}
 {% block omniture %}
-	<script language="javascript" type="text/javascript" src="http://content.gannettonline.com/global/scripts/revsci.js"></script> 
-	<script type="text/javascript" src="http://js.revsci.net/gateway/gw.js?csid=J06575" charset="ISO-8859-1"></script> 
-	<script type="text/javascript" language="JavaScript"> 
-	<!--
-	s_account="gpaper171,gntbcstglobal";
-	//--> 
-	</script> 
-	<!-- SiteCatalyst code version: H.3.
-	Copyright 1997-2005 Omniture, Inc. More info available at
-	http://www.omniture.com --> 
-	<script src="http://content.gannettonline.com/global/s_code/s_code.js"></script> 
-	<script><!--
-	/* You may give each page an identifying name, server, and channel on
-	the next lines. */
-  s.pageName="data - restaurants"
+    <script language="javascript" type="text/javascript" src="http://content.gannettonline.com/global/scripts/revsci.js"></script> 
+    <script type="text/javascript" src="http://js.revsci.net/gateway/gw.js?csid=J06575" charset="ISO-8859-1"></script> 
+    <script type="text/javascript" language="JavaScript"> 
+    <!--
+    s_account="gpaper171,gntbcstglobal";
+    //--> 
+    </script> 
+    <!-- SiteCatalyst code version: H.3.
+    Copyright 1997-2005 Omniture, Inc. More info available at
+    http://www.omniture.com --> 
+    <script src="http://content.gannettonline.com/global/s_code/s_code.js"></script> 
+    <script><!--
+    /* You may give each page an identifying name, server, and channel on
+    the next lines. */
+  s.pageName="data - restaurant inspections"
   s.channel=""
-	s.pageType=""
-	s.pageValue=""
-	s.prop1=""
-	s.prop2="data"
-	s.prop3="data"
-	s.prop4=""
-	s.prop5=""
-	s.prop6="news"
-	s.prop7="local_news"
-	s.prop16="article"
-	s.prop25="Springfield:news-leader"
-	s.prop50="Newspaper";
+    s.pageType=""
+    s.pageValue=""
+    s.prop1=""
+    s.prop2="data"
+    s.prop3="data"
+    s.prop4=""
+    s.prop5=""
+    s.prop6="news"
+    s.prop7="local_news"
+    s.prop16="article"
+    s.prop25="Springfield:news-leader"
+    s.prop50="Newspaper";
 
-	var currentTime=new Date();
-	var gciYear = currentTime.getFullYear();
-	DM_addToLoc("zipcode", escape(s.prop30));
-	DM_addToLoc("age", escape((gciYear-s.prop31)));
-	DM_addToLoc("gender", escape(s.prop32));
-	var gci_ssts=OAS_sitepage;
+    var currentTime=new Date();
+    var gciYear = currentTime.getFullYear();
+    DM_addToLoc("zipcode", escape(s.prop30));
+    DM_addToLoc("age", escape((gciYear-s.prop31)));
+    DM_addToLoc("gender", escape(s.prop32));
+    var gci_ssts=OAS_sitepage;
 
-	gci_ssts=gci_ssts.replace(/\/article\.htm.*$/,'');
-	gci_ssts=gci_ssts.replace(/\/front\.htm.*$/,'');
-	gci_ssts=gci_ssts.replace(/\/index\.htm.*$/,'');
-	gci_ssts=gci_ssts.replace(/\@.*$/,'');
-	gci_ssts=gci_ssts.replace(/^.*\.com\//,'');
+    gci_ssts=gci_ssts.replace(/\/article\.htm.*$/,'');
+    gci_ssts=gci_ssts.replace(/\/front\.htm.*$/,'');
+    gci_ssts=gci_ssts.replace(/\/index\.htm.*$/,'');
+    gci_ssts=gci_ssts.replace(/\@.*$/,'');
+    gci_ssts=gci_ssts.replace(/^.*\.com\//,'');
 
-	var gci_tempossts=gci_ssts; 
-	var gci_ossts=gci_tempossts.split("/")
-	gci_ssts=gci_ssts.replace(/\//g,' > ');
-	gci_ssts='newspaper > '+gci_ssts;
+    var gci_tempossts=gci_ssts; 
+    var gci_ossts=gci_tempossts.split("/")
+    gci_ssts=gci_ssts.replace(/\//g,' > ');
+    gci_ssts='newspaper > '+gci_ssts;
 
-	if
-	(  gci_ossts[0] == "life"
-	|| gci_ossts[0] == "money"
-	|| gci_ossts[0] == "news"
-	|| gci_ossts[0] == "sports"
-	|| gci_ossts[0] == "tech"
-	|| gci_ossts[0] == "travel"
-	|| gci_ossts[0] == "weather"
-	|| gci_ossts[0] == "umbrella"
-	)
+    if
+    (  gci_ossts[0] == "life"
+    || gci_ossts[0] == "money"
+    || gci_ossts[0] == "news"
+    || gci_ossts[0] == "sports"
+    || gci_ossts[0] == "tech"
+    || gci_ossts[0] == "travel"
+    || gci_ossts[0] == "weather"
+    || gci_ossts[0] == "umbrella"
+    )
 
-	{
-	  DM_cat(gci_ssts);
-	}
-	else
-	{
-	  DM_cat('newspaper > other');
-	}
+    {
+      DM_cat(gci_ssts);
+    }
+    else
+    {
+      DM_cat('newspaper > other');
+    }
 
-	var gci_osstslen=gci_ossts.length;
-	for(var i=0; i<gci_osstslen; i++) {
-	if(i==0)
-	s.prop17=gci_ossts[i];   // section
-	if(i==1)
-	s.prop18=gci_ossts[i];   // subsection
-	if(i==2)
-	s.prop19=gci_ossts[i];   // topic
-	if(i==3)
-	s.prop20=gci_ossts[i];   // Subtopic
-	}
-	DM_tag();
+    var gci_osstslen=gci_ossts.length;
+    for(var i=0; i<gci_osstslen; i++) {
+    if(i==0)
+    s.prop17=gci_ossts[i];   // section
+    if(i==1)
+    s.prop18=gci_ossts[i];   // subsection
+    if(i==2)
+    s.prop19=gci_ossts[i];   // topic
+    if(i==3)
+    s.prop20=gci_ossts[i];   // Subtopic
+    }
+    DM_tag();
 
-	// sets the RevSci cookie in GCION domain
-	if (rsinetsegs.length > 0)
-	{
-	  if (!RevSci.HasSegmentCookie())
-	  {
-	    RevSci.Rpc.Send(RevSci.RequestUrl(rsinetsegs));
-	    RevSci.Cookie.Set(revsci_Cookie, true);
-	  }
-	}
-	 if(typeof rsinetsegs!='undefined'){s.prop48=(rsinetsegs.join('|')).replace(/J06575_/g,'');}else{s.prop48='no segment';}
+    // sets the RevSci cookie in GCION domain
+    if (rsinetsegs.length > 0)
+    {
+      if (!RevSci.HasSegmentCookie())
+      {
+        RevSci.Rpc.Send(RevSci.RequestUrl(rsinetsegs));
+        RevSci.Cookie.Set(revsci_Cookie, true);
+      }
+    }
+     if(typeof rsinetsegs!='undefined'){s.prop48=(rsinetsegs.join('|')).replace(/J06575_/g,'');}else{s.prop48='no segment';}
 
-	//-->
-	</script> 
+    //-->
+    </script> 
 
-	<script><!--
-	/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
-	var s_code=s.t();if(s_code)document.write(s_code)//--></script> 
-	<script><!--
-	if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
-	//--></script><noscript><img src="http://gntbcstglobal.112.2O7.net/b/ss/gntbcstglobal,gpaper171/1/H.3--NS/0" height="1" width="1" border="0" alt="" /></noscript><!--/DO NOT REMOVE/--> 
-	<!-- End SiteCatalyst code version: H.3. -->
+    <script><!--
+      /************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+        var s_code=s.t();if(s_code)document.write(s_code)//--></script> 
+    <script><!--
+    if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+    //--></script><noscript><img src="http://gntbcstglobal.112.2O7.net/b/ss/gntbcstglobal,gpaper171/1/H.3--NS/0" height="1" width="1" border="0" alt="" /></noscript><!--/DO NOT REMOVE/--> 
+    <!-- End SiteCatalyst code version: H.3. -->
 {% endblock %}
+
