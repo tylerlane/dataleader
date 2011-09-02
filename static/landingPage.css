@@ -204,7 +204,7 @@
 #insideMainContent_ {
     float:left;
     width:375px;
-    height:488px;
+    min-height:488px;
 }
 
 #insideBottomNav_ {

@@ -38,9 +38,14 @@ class Restaurant(models.Model):
     def __unicode__(self):
         return u"%s" % self.name
 
+    @models.permalink
+    def get_absolute_url(self):
+        return ('restaurants.views.detail', self.id )
+
+
+
     class Meta:
         ordering = ("name", "city", )
-
 
 class Inspection(models.Model):
     restaurant = models.ForeignKey(Restaurant)

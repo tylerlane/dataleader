@@ -19,26 +19,37 @@
     <div id="insideLeftGradient_">
     </div>
     <div id="insideMainHeader_">
-        <img id="insideMainHeader" src="{{MEDIA_URL}}/images/insideMainHeader.gif" width="375" height="63" alt="" />
+            <img id="insideMainHeader" src="{{MEDIA_URL}}/images/insideMainHeader.gif" width="375" height="63" alt="" />
     </div>
     <div id="insideRightGradient_">
+        {% if restaurant.geom %}
+            <div style="margin-left: 5px;">
+                <h5 style="color:white;margin-top:25px;">Map</h5>
+                <img src="http://maps.googleapis.com/maps/api/staticmap?zoom=13&size=150x250&scale=1&maptype=roadmap&markers=color:red%7Clabel:A%7C{{restaurant.geom.y}},{{restaurant.geom.x}}&sensor=false" />
+                <div style="color:white;float:left;clear:both;margin-top:5px;">{{restaurant.name}}</div>
+                <div style="color:white;float:left;clear:both;margin-top:5px;">{{restaurant.address}}, {{restaurant.city}} {{restaurant.state}} {{restaurant.zip_code|default_if_none:""}}</div>
+                <div style="color:white;float:left;clear:both:margin-top:5px;">{{restaurant.phone|default_if_none:""}}</div>
+            </div>
+        {% endif %}
     </div>
     <div id="insideMainContent_">
-        <h2>Restaurant Detail</h2>
         <div id="destaurant_detail">
-            <h3>{{restaurant.name}}</h3>
-            {{restaurant.address}}, {{restaurant.state|default:"MO"}} {{restaurant.zip_code|default_if_none:""}}
-            {{restaurant.description|safe|default:""}}<br />
-            {% if restaurant.cuisine.all %}
-                Cuisine: {% for cuisine in restaurant.cuisine.all %}{{cuisine.name}}, {% endfor %}
+            <h2>Restaurant Detail</h2>
+            <h3><a href="{{restaurant.get_absolute_url}}">{{restaurant.name}}</a></h3>
+            <div style="margin-bottom:5px;"><b>Address:</b> {{restaurant.address}}, {{restaurant.city}}, {{restaurant.state|default:"MO"}} {{restaurant.zip_code|default_if_none:""}}</div>
+            {% if restaurant.phone %}
+                <div style="margin-bottom:5px;"><b>Phone:</b> {{restaurant.phone}}</div>
             {% endif %}
-            <p>{{restaurant.hours|default:""}}</p>
-            {% if restaurant.geom %}
-           <img src="http://maps.googleapis.com/maps/api/staticmap?zoom=13&size=250x250&scale=1&maptype=roadmap&markers=color:blue%7Clabel:S%7C{{restaurant.geom.y}},{{restaurant.geom.x}}&sensor=false" />
-           {% endif %}
-        </div>
+            <div>{{restaurant.description|safe|default:""|linebreaksbr}}</div>
+            {% if restaurant.cuisine.all %}
+            <div><b>Cuisine:</b> {% for cuisine in restaurant.cuisine.all %}{% firstof cuisine.label cuisine.name %}, {% endfor %}</div>
+            {% endif %}
+            {% if restaurant.hours %}
+                <div><b>Hours:</b> {{restaurant.hours}}</div>
+            {% endif %}
+                  </div>
         <div id="inspections">
-            <h3>Inspections</h3>
+            <h2>Inspections</h2>
             {% for inspection in inspections %}
                 <p><b>Date:</b>{{inspection.date|naturalday}}</p>
                 <p><i>Critical Violations:</i> {{inspection.critical}}</p>
