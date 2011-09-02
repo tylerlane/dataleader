@@ -9,7 +9,7 @@ urlpatterns = patterns('restaurants.views',
     url(r'^restaurants/cuisine/(?P<cuisine>.*)$','list_restaurants_cuisine',name='list_restaurants_cuisine'),
     url(r'^restaurants/search$','search',name='restaurants-search'),
     url(r'^restaurants/search/(?P<page>\d+)/$','search', name='restaurants-search-page' ),
-    url(r'^restaurants/merge', 'merge', name='restaurants-merge'),
+    url(r'^restaurants/merge/(?P<letter>\#|.*)/(?P<page>\d+)/$','merge', name='restaurants-merge-page' ),
     url(r'^restaurants/confirm-merge','confirm_merge',name='restaurants-confirm-merge' ),
     url(r'^restaurants/final-merge','final_merge', name='restaurants-final-merge'),
     #inspections

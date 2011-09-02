@@ -25,7 +25,10 @@
       {% csrf_token %}
       {% for restaurant in restaurants %}
         <tr>
-            <td><input type="radio" name="main_restaurant" value="{{restaurant.id}}"><a href="{%url restaurant-detail restaurant.id %}">{{restaurant.name}}</a></td>
+            <td><input type="radio" name="main_restaurant" value="{{restaurant.id}}"><a href="{%url restaurant-detail restaurant.id %}">{{restaurant.name}}</a>
+                <br />
+                {{restaurant.description|safe}}
+            </td>
           <td><input type="hidden" name="restaurants" value="{{restaurant.id}}">{{restaurant.address|safe}}, {{restaurant.city}}</td>
         </tr>
       {% endfor %}

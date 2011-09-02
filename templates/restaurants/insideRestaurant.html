@@ -33,6 +33,9 @@
                 Cuisine: {% for cuisine in restaurant.cuisine.all %}{{cuisine.name}}, {% endfor %}
             {% endif %}
             <p>{{restaurant.hours|default:""}}</p>
+            {% if restaurant.geom %}
+           <img src="http://maps.googleapis.com/maps/api/staticmap?zoom=13&size=250x250&scale=1&maptype=roadmap&markers=color:blue%7Clabel:S%7C{{restaurant.geom.y}},{{restaurant.geom.x}}&sensor=false" />
+           {% endif %}
         </div>
         <div id="inspections">
             <h3>Inspections</h3>
