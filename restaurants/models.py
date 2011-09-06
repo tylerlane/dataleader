@@ -89,3 +89,14 @@ class Attribute(models.Model):
 
     def __unicode__(self):
         return u"%s" % self.name
+
+
+class Neighborhood(models.Model):
+    name = models.CharField(max_length=100)
+    active = models.BooleanField(default=True)
+    geom = models.PolygonField(blank=True,null=True)
+
+    objects = models.GeoManager()
+
+    def __unicode__(self):
+        return u"%s" % self.name

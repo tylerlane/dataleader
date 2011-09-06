@@ -9,7 +9,7 @@ from django.shortcuts import render_to_response
 #from django.template.loader import render_to_string
 from django.template import RequestContext
 from django.views.decorators.cache import never_cache
-from restaurants.models import Restaurant, Inspection,Cuisine,Attribute
+from restaurants.models import Restaurant, Inspection,Cuisine,Attribute,Neighborhood
 from restaurants.forms import SearchForm
 #import re
 #import simplejson
@@ -278,4 +278,21 @@ def list_recent_inspections(request):
 
     return render_to_response('restaurants/inspectionListing.html',
             {'inspections': inspections},
+            context_instance=RequestContext(request))
+
+@never_cache
+def list_neighborhoods(request):
+    neighborhoods = Neighborhood.objects.filter(active=True)
+
+    return render_to_response('restaurants/listneighborhoods.html',
+            {'neighborhoods' : neighborhoods },
+            context_instance=RequestContext(request))
+
+@never_cache
+def list_restaurants_neighborhood(request, neighborhood):
+    neighborhood = Neighborhood.objects.get(name=neighborhood)
+    restaurants = Restaurant.objects.filter(geom__within=neighborhood.geom)
+
+    return render_to_response('restaurants/restaurantListing.html',
+            {'restaurants': restaurants},
             context_instance=RequestContext(request))
