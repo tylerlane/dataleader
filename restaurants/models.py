@@ -100,3 +100,17 @@ class Neighborhood(models.Model):
 
     def __unicode__(self):
         return u"%s" % self.name
+
+
+class Featured(models.Model):
+    restaurant = models.ForeignKey('Restaurant')
+    external_url = models.URLField()
+    photo_url = models.URLField()
+    title = models.CharField(max_length=100)
+    summary = models.TextField()
+    date = models.DateTimeField("Inspection Date", auto_now=True,
+            auto_now_add=True)
+    objects = models.GeoManager()
+
+    def __unicode__(self):
+        return u"%s" % self.restaurant.name

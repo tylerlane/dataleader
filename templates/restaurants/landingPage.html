@@ -21,6 +21,16 @@
     <div id="MouseoverContentWell_">
         <div id="MouseoverContentContainer_">
             <img id="InsideTitle" src="{{MEDIA_URL}}/images/InsideTitle.gif" width="169" height="62" alt="" />
+            <br />
+            <div id="featured" style="background:white; text-decoration:none">
+                {% for restaurant in featured %}
+                    <a href="{{restaurant.external_url}}">
+                    <h3>{{restaurant.title}}</h3>
+                    <img src="{{restaurant.photo_url}}" width="250 px" height="250 px" />
+                    {{restaurant.summary}}
+                    </a>
+                {% endfor %}
+            </div>
         </div>
     </div>
     <div id="MenuListing_">

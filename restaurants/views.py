@@ -9,7 +9,7 @@ from django.shortcuts import render_to_response
 #from django.template.loader import render_to_string
 from django.template import RequestContext
 from django.views.decorators.cache import never_cache
-from restaurants.models import Restaurant, Inspection,Cuisine,Attribute,Neighborhood
+from restaurants.models import Restaurant, Inspection,Cuisine,Attribute,Neighborhood,Featured
 from restaurants.forms import SearchForm
 #import re
 #import simplejson
@@ -21,7 +21,9 @@ ITEMS_PER_PAGE = 25
 
 @never_cache
 def index(request):
+    featured = Featured.objects.all()
     return render_to_response('restaurants/landingPage.html',
+            {'featured':featured},
             context_instance=RequestContext(request))
 
 

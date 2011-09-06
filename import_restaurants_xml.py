@@ -50,6 +50,7 @@ for item in items:
     #photo url
     if item.multimedia is not None:
         photo = item.multimedia.image.url.contents[0]
+        #print photo
     else:
         photo = None
     #phone number
@@ -77,6 +78,15 @@ for item in items:
     #and check the parent of them, if the parent is content_item then we have our name
     names = item.findAll('name')
 
+    #list of possible custom fields
+    attr_fields = ["alcohol","parking","noise_level","payment_method","worth_noting","smoking","wheelchair_access","atmosphere","dress_code",
+            "meals_seaved","carry_out","reservations","average_entree_price","specialities","bar_style","music_style","games","cross_streets",
+            "delivery","romance_factor","outdoor_seating","critics_rating", "average_drink_price","cleanliness","internet_access","facilities",
+            "live_music","features","shopping_genre","museum_type","public_transportation","admission_price","audience","seating_capacity",
+            "recreation_facilities","gallery_type","store_type","atm","restaurant_style","seating","shopping_price","food","dance_style",
+            "attractions", "community", "boutique_type", "theatre_genre", "private parties"]
+    #dict to store them
+    attributes = {}
     for foo in names:
         if foo.parent.name == "content_item":
             name = foo.contents[0]
@@ -101,6 +111,21 @@ for item in items:
             else:
                 hours = None
 
+        #now to loop throug our attribute keys and figure out how to put them into the db properly
+        if foo.contents[0] in attr_fields:
+            values = foo.nextSibling.findAll("value")
+            if values is not None:
+                #make a list inside our attributes
+                attributes[foo.contents[0]] = []
+                for value in values:
+                    attributes[foo.contents[0]].append(str( value.contents[0] ) )
+
+            else:
+                comment = foo.nextSibling.find("comment").contents[0]
+                attributes[foo.contents[0]].append(comment)
+
+
+
     stuff["name"] = name
     stuff["address"] = address
     stuff["city"] = city
@@ -119,7 +144,11 @@ for item in items:
     stuff["lng"] = lng
 
     #print stuff
+    stuff["attributes"] = attributes
     restaurants.append( stuff )
+
+    #print stuff
+    #print "===========================\r\n"
 
 found = 0
 not_found = 0
@@ -138,13 +167,9 @@ for restaurant in restaurants:
                     temp_restaurant.zip_code = str(restaurant["zip_code"])[:10]
                     temp_restaurant.phone = str(restaurant["main_phone_number"])
                     temp_restaurant.long_description = str(restaurant["description"])
+                    temp_restaurant.photo_url = str(restaurant["photo"])
                     if restaurant["hours"] is not None:
                         temp_restaurant.hours = str(restaurant["hours"])
-                    #not using lat and lng since the accuracy is so horrible.
-                    #if stuff["lng"] is not None and stuff["lat"] is not None:
-                    #    if temp_restaurant.geom is None:
-                    #        temp_restaurant.geom = fromstr( 'POINT(' + str(stuff["lng"]) + " " + str(stuff["lat"]) +')', srid = 4326 )
-                    #    temp_restaurant.geocoder = "google"
                     temp_restaurant.save()
                     print "saving Restaurant: %s" % temp_restaurant.name
                     #now to do cuisines
@@ -166,6 +191,7 @@ for restaurant in restaurants:
                     temp_restaurant.save()
                     found += 1
                 else:
+                    #if it has a geometery stored in the db.
                     if temp_restaurant.geom is not None:
                         #geocode the restaurant if the addresses don't match.
                         try:
@@ -189,6 +215,8 @@ for restaurant in restaurants:
                                 temp_restaurant.city = str(restaurant["city"])
                                 temp_restaurant.state = str(restaurant["state"])
                                 temp_restaurant.zip_code = str(restaurant["zip_code"])
+                                temp_restaurant.photo_url = str(restaurant["photo"])
+
                                 if restaurant["hours"] is not None:
                                     temp_restaurant.hours = restaurant["hours"]
 
@@ -235,6 +263,7 @@ for restaurant in restaurants:
             new_restaurant.phone = str(restaurant["main_phone_number"])
             new_restaurant.zip_code = str(restaurant["zip_code"])[:10]
             new_restaurant.description = str(restaurant["description"])
+            new_restaurant.photo_url = str( restaurant["photo"])
             new_restaurant.hours = str(restaurant["hours"])
             print "saving Restaurant: %s" % new_restaurant.name
             new_restaurant.save()
@@ -265,3 +294,4 @@ print "Found: %d" % found
 print "Not Found: %d" % not_found
 print "New Restaurants: %d" % new_count
 print "Total Restaurants: %d" % count
+"""
