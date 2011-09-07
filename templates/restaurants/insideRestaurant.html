@@ -47,7 +47,7 @@
             {% if restaurant.hours and restaurant.hours != "None" %}
                 <div><b>Hours:</b> {{restaurant.hours}}</div>
             {% endif %}
-            {% if restaurant.photo_url %}
+            {% if restaurant.photo_url and restaurant.photo_url != "None" %}
                 <img src="{{restaurant.photo_url}}" />
             {% endif %}
         </div>

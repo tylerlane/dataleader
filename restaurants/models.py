@@ -83,7 +83,7 @@ class Cuisine(models.Model):
     objects = models.Manager()
 
     def __unicode__(self):
-        return u"%s" % self.name
+        return u"%s" % self.label
 
 
 class Attribute(models.Model):

@@ -29,7 +29,7 @@ def index(request):
 
 @never_cache
 def detail(request, restaurant_id):
-    restaurant = Restaurant.objects.get(id=restaurant_id)
+    restaurant = Restaurant.objects.select_related().get(id=restaurant_id)
     inspections = Inspection.objects.filter(restaurant=restaurant)
     #pull in our attributes
     restaurant.attributes = Attribute.objects.filter(restaurant=restaurant,active=True)
@@ -39,6 +39,7 @@ def detail(request, restaurant_id):
         attribute.value = " ".join(attribute.value.split("_"))
         if attribute.comma_delimited:
             attribute.value = attribute.value[0:-2]
+
 
 
 
