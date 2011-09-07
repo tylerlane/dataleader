@@ -1,5 +1,5 @@
 # Create your views here
-import datetime
+#import datetime
 #from django.contrib.gis.geos import Point
 #from django.contrib.gis.measure import D
 from django.core.paginator import Paginator
@@ -31,6 +31,16 @@ def index(request):
 def detail(request, restaurant_id):
     restaurant = Restaurant.objects.get(id=restaurant_id)
     inspections = Inspection.objects.filter(restaurant=restaurant)
+    #pull in our attributes
+    restaurant.attributes = Attribute.objects.filter(restaurant=restaurant,active=True)
+    for attribute in restaurant.attributes:
+        #replacing "_" with " "
+        attribute.name = " ".join(attribute.name.split("_"))
+        attribute.value = " ".join(attribute.value.split("_"))
+        if attribute.comma_delimited:
+            attribute.value = attribute.value[0:-2]
+
+
 
     return render_to_response('restaurants/insideRestaurant.html',
         {'restaurant': restaurant, 'inspections': inspections},

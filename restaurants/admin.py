@@ -30,7 +30,8 @@ class CuisineAdmin(admin.ModelAdmin):
 
 
 class AttributeAdmin(admin.ModelAdmin):
-    list_display = ('name', 'value', 'comma_delimited', )
+    list_display = ('name', 'value','restaurant', 'comma_delimited', )
+    list_filter = ('name',)
 
 
 class NeighborhoodAdmin(admin.OSMGeoAdmin):

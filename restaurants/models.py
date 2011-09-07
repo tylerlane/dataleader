@@ -33,6 +33,11 @@ class Restaurant(models.Model):
     #cuisines = models.CharField(max_length=255, blank=True, null=True)
     #boolean for open/out of business restaurants
     active = models.BooleanField(default=True)
+
+    #ratings support
+    rating_sum = models.IntegerField(null=True, blank=True)
+    rating_total_votes = models.IntegerField(null=True, blank=True)
+
     objects = models.GeoManager()
 
     def __unicode__(self):
@@ -41,6 +46,11 @@ class Restaurant(models.Model):
     @models.permalink
     def get_absolute_url(self):
         return ('restaurants.views.detail', self.id )
+
+    def get_rating(self):
+        #returning my rating which is an average of the votes.
+        #avg = sum of votes/totals
+        return round( self.rating_sum / self.rating_total_votes, 1 )
 
 
     class Meta:

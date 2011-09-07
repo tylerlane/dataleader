@@ -33,7 +33,7 @@
         {% endif %}
     </div>
     <div id="insideMainContent_">
-        <div id="destaurant_detail">
+        <div id="restaurant_main">
             <h2>Restaurant Detail</h2>
             <h3><a href="{{restaurant.get_absolute_url}}">{{restaurant.name}}</a></h3>
             <div style="margin-bottom:5px;"><b>Address:</b> {{restaurant.address}}, {{restaurant.city}}, {{restaurant.state|default:"MO"}} {{restaurant.zip_code|default_if_none:""}}</div>
@@ -42,12 +42,23 @@
             {% endif %}
             <div>{{restaurant.description|safe|default:""|linebreaksbr}}</div>
             {% if restaurant.cuisine.all %}
-            <div><b>Cuisine:</b> {% for cuisine in restaurant.cuisine.all %}{% firstof cuisine.label cuisine.name %}, {% endfor %}</div>
+            <div><b>Cuisine:</b> {% for cuisine in restaurant.cuisine.all %}{% firstof cuisine.label|title cuisine.name|title %}{% if forloop.last %}{% else %}, {% endif %}{% endfor %}</div>
             {% endif %}
-            {% if restaurant.hours %}
+            {% if restaurant.hours and restaurant.hours != "None" %}
                 <div><b>Hours:</b> {{restaurant.hours}}</div>
             {% endif %}
-                  </div>
+            {% if restaurant.photo_url %}
+                <img src="{{restaurant.photo_url}}" />
+            {% endif %}
+        </div>
+        <div id="restaurant_detail">
+            {% if restaurant.attributes %}
+                <h2>Inside Details</h2>
+                {% for attribute in restaurant.attributes %}
+                    <b>{{ attribute.name|title }}</b>: {{attribute.value|title}}<br />
+                {% endfor %}
+            {% endif %}
+        </div>
         <div id="inspections">
             <h2>Inspections</h2>
             {% for inspection in inspections %}

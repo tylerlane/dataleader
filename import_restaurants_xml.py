@@ -122,7 +122,8 @@ for item in items:
 
             else:
                 comment = foo.nextSibling.find("comment").contents[0]
-                attributes[foo.contents[0]].append(comment)
+                if comment is not None:
+                    attributes[foo.contents[0]].append(comment)
 
 
 
@@ -173,7 +174,7 @@ for restaurant in restaurants:
                     temp_restaurant.save()
                     print "saving Restaurant: %s" % temp_restaurant.name
                     #now to do cuisines
-                    print "Cuisine: %s" % restaurant["cuisine2"]
+                    #print "Cuisine: %s" % restaurant["cuisine2"]
                     if restaurant["cuisine2"] is not None:
                         for tmp_cuisine in restaurant["cuisine2"]:
                             try:
@@ -189,61 +190,120 @@ for restaurant in restaurants:
                     #now lets save
                     print "saving Restaurant: %s" % temp_restaurant.name
                     temp_restaurant.save()
+
+                    #now we work on adding our attributes
+                    if restaurant["attributes"] is not None:
+                        print "looping through attributes"
+                        for key in restaurant["attributes"].keys():
+                            if len(restaurant["attributes"][key]) > 1:
+                                tmp_attr = ""
+                                for var in restaurant["attributes"][key]:
+                                    tmp_attr += var + ", "
+
+                                comma_delimited = True
+                                new_attribute,created = Attribute.objects.get_or_create( restaurant=temp_restaurant,name=str(key), value=str(tmp_attr), comma_delimited = True)
+                                if created:
+                                    new_attribute.save()
+                                    print "Saving attribute: %s" % key
+                            else:
+                                if restaurant["attributes"][key] is not None:
+                                    try:
+                                        new_attribute,created = Attribute.objects.get_or_create( restaurant=temp_restaurant,name=str(key),value=str(restaurant["attributes"][key][0]), comma_delimited = False)
+                                        if created:
+                                            new_attribute.save()
+                                            print "Saving attribute: %s" % key
+                                    except IndexError:
+                                        print "Empty attribute: %s" % key
+
                     found += 1
                 else:
-                    #if it has a geometery stored in the db.
-                    if temp_restaurant.geom is not None:
-                        #geocode the restaurant if the addresses don't match.
+                    #if it doesn't have a geometery stored in the db.
+                    #we pull one
+                    if temp_restaurant.geom is None:
                         try:
-                            place, ( lat, lng ) = g.geocode( restaurant["address"] + " " + restaurant["city"] + "," + restaurant["state"], exactly_one=True )
-                            new_point = ( lat, lng )
-                            temp_rest_point = (temp_restaurant.geom.y, temp_restaurant.geom.x)
-                            d = geopy_distance( temp_rest_point, new_point )
-                            new_point =  geos.fromstr( 'POINT(' + str(lng)+ " " + str(lat) +')', srid = 4326 )
-                            #temp_restaurant.geom.transform(32610)
-                            #new_point.transform(32610)
-
-                            #distance = new_point.distance(temp_restaurant.geom)
-                            #distance = D( distance).ft
-
-                            print "Distance between addresses: %s miles" % str(d.miles)
-                            if d.miles >= 0.1:
-                                #if its less than 0.1 miles i'm going assume it is the same restaurant with the same name
-                                temp_restaurant.name = str(restaurant["name"])
-                                temp_restaurant.description = str(restaurant["description"])
-                                temp_restaurant.address = str(restaurant["address"])
-                                temp_restaurant.city = str(restaurant["city"])
-                                temp_restaurant.state = str(restaurant["state"])
-                                temp_restaurant.zip_code = str(restaurant["zip_code"])
-                                temp_restaurant.photo_url = str(restaurant["photo"])
-
-                                if restaurant["hours"] is not None:
-                                    temp_restaurant.hours = restaurant["hours"]
-
-                                print "saving restaurant: %s" % temp_restaurant.name
-                                temp_restaurant.save()
-                                print "Cuisine: %s" % restaurant["cuisine2"]
-                                if restaurant["cuisine2"] is not None:
-                                    for tmp_cuisine in restaurant["cuisine2"]:
-                                        try:
-                                            new_cuisine,created = Cuisine.objects.get_or_create(name=str(tmp_cuisine))
-                                            print "adding cuisine: %s to %s" % ( tmp_cuisine, temp_restaurant.name)
-                                            new_cuisine.label = str(tmp_cuisine)
-                                            new_cuisine.save()
-
-                                            #now we associate a cuisine with a restaurant
-                                            temp_restaurant.cuisine.add(new_cuisine)
-                                        except:
-                                            print bail()
-                                #now lets save
-                                temp_restaurant.geom = new_point
-                                print "saving Restaurant: %s" % temp_restaurant.name
-                                temp_restaurant.save()
-
-                                found += 1
-                                print "Name matches & address matches via geocode ", found
+                            place, ( lat, lng ) = g.geocode( temp_restaurant.address + " " + temp_restaurant.city + "," + temp_restaurant.state, exactly_one=True )
+                            new_point =  geos.fromstr( 'POINT(' + str(lng)+ " " + str(lat) +')', srid = 4326)
+                            temp_restaurant.geom = new_point
+                            print "geocoding restaurant since it isn't tagged"
+                            temp_restaurant.save()
                         except:
                             print "error geocoding or multiple places found"
+                    #geocode the restaurant if the addresses don't match.
+                    try:
+                        place, ( lat, lng ) = g.geocode( restaurant["address"] + " " + restaurant["city"] + "," + restaurant["state"], exactly_one=True )
+                        new_point = ( lat, lng )
+                        temp_rest_point = (temp_restaurant.geom.y, temp_restaurant.geom.x)
+                        d = geopy_distance( temp_rest_point, new_point )
+                        new_point =  geos.fromstr( 'POINT(' + str(lng)+ " " + str(lat) +')', srid = 4326 )
+                        #temp_restaurant.geom.transform(32610)
+                        #new_point.transform(32610)
+
+                        #distance = new_point.distance(temp_restaurant.geom)
+                        #distance = D( distance).ft
+
+                        print "Distance between addresses: %s miles" % str(d.miles)
+                        if d.miles <= 0.1:
+                            #if its less than 0.1 miles i'm going assume it is the same restaurant with the same name
+                            temp_restaurant.name = str(restaurant["name"])
+                            temp_restaurant.description = str(restaurant["description"])
+                            temp_restaurant.address = str(restaurant["address"])
+                            temp_restaurant.city = str(restaurant["city"])
+                            temp_restaurant.state = str(restaurant["state"])
+                            temp_restaurant.zip_code = str(restaurant["zip_code"])
+                            temp_restaurant.photo_url = str(restaurant["photo"])
+
+                            if restaurant["hours"] is not None:
+                                temp_restaurant.hours = restaurant["hours"]
+
+                            print "saving restaurant: %s" % temp_restaurant.name
+                            temp_restaurant.save()
+                            print "Cuisine: %s" % restaurant["cuisine2"]
+                            if restaurant["cuisine2"] is not None:
+                                for tmp_cuisine in restaurant["cuisine2"]:
+                                    try:
+                                        new_cuisine,created = Cuisine.objects.get_or_create(name=str(tmp_cuisine))
+                                        print "adding cuisine: %s to %s" % ( tmp_cuisine, temp_restaurant.name)
+                                        new_cuisine.label = str(tmp_cuisine)
+                                        new_cuisine.save()
+
+                                        #now we associate a cuisine with a restaurant
+                                        temp_restaurant.cuisine.add(new_cuisine)
+                                    except:
+                                        print bail()
+                            #now lets save
+                            temp_restaurant.geom = new_point
+                            print "saving Restaurant: %s" % temp_restaurant.name
+                            temp_restaurant.save()
+                            
+                            #now we work on adding our attributes
+                            if restaurant["attributes"] is not None:
+                                print "looping through attributes"
+                                for key in restaurant["attributes"].keys():
+                                    if len(restaurant["attributes"][key]) > 1:
+                                        tmp_attr = ""
+                                        for var in restaurant["attributes"][key]:
+                                            tmp_attr += var + ", "
+                                        comma_delimited = True
+                                        new_attribute,created = Attribute.objects.get_or_create( restaurant=temp_restaurant,name=str(key), value=str(tmp_attr), comma_delimited = True)
+                                        if created:
+                                            new_attribute.save()
+                                            print "Saving attribute: %s" % key
+                                    else:
+                                        if restaurant["attributes"][key] is not None:
+                                            try:
+                                                new_attribute,created = Attribute.objects.get_or_create( restaurant=temp_restaurant,name=str(key),value=str(restaurant["attributes"][key][0]), comma_delimited = False)
+                                                if created:
+                                                    new_attribute.save()
+                                                    print "Saving attribute: %s" % key
+                                            except IndexError:
+                                                print "Empty Attribute: %s" % key
+
+
+
+                            found += 1
+                            print "Name matches & address matches via geocode ", found
+                    except:
+                        print "error geocoding or multiple places found"
             else:
                 print "No address!"
                 #skip for now....
@@ -280,8 +340,34 @@ for restaurant in restaurants:
             #now lets save
             print "saving Restaurant: %s" % new_restaurant.name
             new_restaurant.save()
-             #bump up our counter
+            #now we work on adding our attributes
+            if restaurant["attributes"] is not None:
+                print "looping through attributes"
+                for key in restaurant["attributes"].keys():
+                    if len(restaurant["attributes"][key]) > 1:
+                        tmp_attr = ""
+                        for var in restaurant["attributes"][key]:
+                            tmp_attr += var + ", "
+                        comma_delimited = True
+                        new_attribute,created = Attribute.objects.get_or_create( restaurant=temp_restaurant,name=str(key), value=str(tmp_attr), comma_delimited = True)
+                        if created:
+                            new_attribute.save()
+                            print "Saving attribute: %s" % key
+                    else:
+                        if restaurant["attributes"][key] is not None:
+                            try:
+                                new_attribute,created = Attribute.objects.get_or_create( restaurant=temp_restaurant,name=str(key),value=str(restaurant["attributes"][key][0]), comma_delimited = False)
+                                if created:
+                                    new_attribute.save()
+                                    print "Saving attribute: %s" % key
+                            except IndexError:
+                                print "Empty Attribute: %s" % key
+
+
+            #bump up our counter
             new_count +=1
+
+
 
     except:
         print bail()
@@ -294,4 +380,3 @@ print "Found: %d" % found
 print "Not Found: %d" % not_found
 print "New Restaurants: %d" % new_count
 print "Total Restaurants: %d" % count
-"""
