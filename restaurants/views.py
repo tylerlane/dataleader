@@ -309,3 +309,11 @@ def list_restaurants_neighborhood(request, neighborhood):
     return render_to_response('restaurants/restaurantListing.html',
             {'restaurants': restaurants},
             context_instance=RequestContext(request))
+
+def record_rating_vote(request, restaurant, rating):
+    #function to records the votes. should only be called via ajax.
+    restaurant = Restaurant.objects.get(restaurant = restaurant)
+    restaurant.rating_sum += rating
+    restaurant.rating_total_votes += 1
+    restaurant.save()
+    
