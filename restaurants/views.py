@@ -35,10 +35,11 @@ def detail(request, restaurant_id):
     restaurant.attributes = Attribute.objects.filter(restaurant=restaurant,active=True)
     for attribute in restaurant.attributes:
         #replacing "_" with " "
-        attribute.name = " ".join(attribute.name.split("_"))
-        attribute.value = " ".join(attribute.value.split("_"))
+        #attribute.name = " ".join(attribute.name.split("_"))
+        #attribute.value = " ".join(attribute.value.split("_"))
         if attribute.comma_delimited:
-            attribute.value = attribute.value[0:-2]
+            if attribute.value[-1:] == ",":
+                attribute.value = attribute.value[0:-2]
 
 
 
@@ -277,16 +278,6 @@ def list_restaurants_cuisine(request,cuisine):
 
 @never_cache
 def list_recent_inspections(request):
-    #days_since = request.GET.get('days', 30)
-
-    #going to show the last 30 days worth of inspections on the index page
-    #restaurants = Restaurant.objects.all()
-    #days_since_delta = datetime.timedelta(days=int(days_since))
-    #inspections = Inspection.objects.select_related().filter(
-    #    date__gt=datetime.datetime.today() - days_since_delta)
-
-    #violations = inspections.order_by('-critical')[:10]
-
     inspections = Inspection.objects.select_related().all().order_by('-date')[:50]
 
     return render_to_response('restaurants/inspectionListing.html',
@@ -309,11 +300,30 @@ def list_restaurants_neighborhood(request, neighborhood):
     return render_to_response('restaurants/restaurantListing.html',
             {'restaurants': restaurants},
             context_instance=RequestContext(request))
-
+@never_cache
 def record_rating_vote(request, restaurant, rating):
     #function to records the votes. should only be called via ajax.
     restaurant = Restaurant.objects.get(restaurant = restaurant)
     restaurant.rating_sum += rating
     restaurant.rating_total_votes += 1
     restaurant.save()
-    
+
+@never_cache
+def list_attribute_values(request, attribute):
+    attributes = Attribute.objects.filter(name=attribute).values("value").distinct()
+
+    return render_to_response('restaurants/listattributevalues.html',
+            {'attributes':attributes},
+            context_instance=RequestContext(request))
+
+@never_cache
+def list_restaurants_attribute(request, attribute):
+    attributes = Attribute.objects.filter(value=attribute)
+    restaurants = []
+    for attribute in attributes:
+        restaurants.append(attribute)
+    restaurants = Restaurant.objects.filter(id__in=restaurants)
+
+    return render_to_response('restaurants/restaurantListing.html',
+            {'restaurants': restaurants},
+            context_instance=RequestContext(request))

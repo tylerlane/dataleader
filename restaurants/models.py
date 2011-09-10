@@ -26,7 +26,7 @@ class Restaurant(models.Model):
 
     #geocoder stuff
     geocoder = models.CharField(max_length=25, null=True)
-    geom = models.PointField(srid=4326, null=True)
+    geom = models.PointField(srid=4326, blank=True,null=True)
 
     #many to many relationship for cuisines
     cuisine = models.ManyToManyField("Cuisine", related_name="Cuisines", null=True)

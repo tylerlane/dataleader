@@ -22,7 +22,7 @@ else:
 os.environ['DJANGO_SETTINGS_MODULE'] = 'settings'
 from restaurants.models import Restaurant
 
-restaurants = Restaurant.objects.filter(geom__isnull=False).exclude(address__isnull=True,city__isnull=True,state__isnull=True)
+restaurants = Restaurant.objects.filter(geom__isnull=True).exclude(address__isnull=True,city__isnull=True,state__isnull=True)
 count = 0
 for restaurant in restaurants:
   count += 1
@@ -41,8 +41,9 @@ for restaurant in restaurants:
         print "ERROR!!"
     else:
       print "unable to geocode"
-  except ValueError:
+  except Exception, e:
     print restaurant.name  + " multiple places!"
+    print "Exception: %s" % e
 
   print "Sleeping a second"
   time.sleep(1)
