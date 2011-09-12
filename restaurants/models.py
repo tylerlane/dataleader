@@ -118,9 +118,21 @@ class Featured(models.Model):
     photo_url = models.URLField()
     title = models.CharField(max_length=100)
     summary = models.TextField()
-    date = models.DateTimeField("Inspection Date", auto_now=True,
+    date = models.DateTimeField("Date", auto_now=True,
             auto_now_add=True)
-    objects = models.GeoManager()
+    objects = models.Manager()
 
     def __unicode__(self):
         return u"%s" % self.restaurant.name
+
+
+class Gallery(models.Model):
+    restaurant = models.ForeignKey('Restaurant')
+    gallery_url = models.URLField()
+    thumbnail_url = models.URLField()
+    date = models.DateTimeField("Date", auto_now=True, auto_now_add=True)
+
+    objects = models.Manager()
+    
+    def __unicode__(self):
+        return u"%s - Gallery: %s" % ( self.restaurant.name, self.date)

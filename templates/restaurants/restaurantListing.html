@@ -46,7 +46,7 @@
                 <p class="restaurantListingInfo">{{restaurant.address}}, {{restaurant.city}}, {{restaurant.state|default:"MO"}} {{restaurant.phone|default:""}}</p>
                 <p class="restauraltListingSummary">{{restaurant.description|default:""|safe}}</p>
                 {% if restaurant.cuisine.all %}
-                    <p class="restaurantListingSummary"><b>Cuisines:</b> {% for cuisine in restaurant.cuisine.all %}<i>{{cuisine.name}}</i>, {% endfor %}</p>
+                    <p class="restaurantListingSummary"><b>Cuisines:</b> {% for cuisine in restaurant.cuisine.all %}<i>{{cuisine.name}}</i>{% if forloop.last %}{% else %}, {% endif %}{% endfor %}</p>
                 {% endif %}
             </div>
         {% endfor %}

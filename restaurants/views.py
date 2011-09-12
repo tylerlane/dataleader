@@ -9,7 +9,7 @@ from django.shortcuts import render_to_response
 #from django.template.loader import render_to_string
 from django.template import RequestContext
 from django.views.decorators.cache import never_cache
-from restaurants.models import Restaurant, Inspection,Cuisine,Attribute,Neighborhood,Featured
+from restaurants.models import Restaurant, Inspection,Cuisine,Attribute,Neighborhood,Featured, Gallery
 from restaurants.forms import SearchForm
 #import re
 #import simplejson
@@ -21,9 +21,13 @@ ITEMS_PER_PAGE = 25
 
 @never_cache
 def index(request):
-    featured = Featured.objects.all()
+    main_featured = Featured.objects.all().order_by("-date")[0]
+    main_featured.galleries = Gallery.objects.filter( restaurant = main_featured.restaurant )
+    features = Featured.objects.all().order_by("?").exclude(restaurant=main_featured.restaurant)[0:1]
+    for feature in features:
+        feature.galleries = Gallery.objects.filter( restaurant=feature.restaurant )
     return render_to_response('restaurants/landingPage.html',
-            {'featured':featured},
+            {'features':features,"main_featured":main_featured},
             context_instance=RequestContext(request))
 
 
@@ -249,7 +253,8 @@ def final_merge(request):
                 inspection.restaurant = main_restaurant
                 #save the inspection
                 inspection.save()
-            #now we delete the old restaurant
+            #now we delete the old restaurant<h2>Inside Details</h2>
+
             restaurant.delete()
 
     #get the letter of the main restaurant to redirect us to the first page of

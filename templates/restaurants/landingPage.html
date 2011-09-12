@@ -22,13 +22,28 @@
         <div id="MouseoverContentContainer_">
             <img id="InsideTitle" src="{{MEDIA_URL}}/images/InsideTitle.gif" width="169" height="62" alt="" />
             <br />
-            <div id="featured" style="background:white; text-decoration:none">
-                {% for restaurant in featured %}
-                    <a href="{{restaurant.external_url}}">
-                    <h3>{{restaurant.title}}</h3>
-                    <img src="{{restaurant.photo_url}}" width="250 px" height="250 px" />
-                    {{restaurant.summary}}
+            <div id="featured" style="background:white; text-decoration:none; border-bottom:1px dotted black;">
+                <div><a href="{{main_featured.external_url}}">
+                    <h3>{{main_featured.title}}</h3>
+                    <img src="{{main_featured.photo_url}}" width="250 px" height="250 px" />
                     </a>
+                    {{main_featured.summary}}
+                    {% for gallery in main_featured.galleries %}
+                        <br /><a href="{{gallery.gallery_url}}">{{main_featured.restaurant.name}} - Gallery: {{gallery.date|date:"m/d/Y"}}</a>
+                    {% endfor %}
+                    <br /><a href="{% url restaurant-detail main_featured.restaurant.id %}">{{main_featured.restaurant.name}} - Profile Page</a>
+
+                </div>
+                {% for feature in features %}
+                    <div><a href="{{feature.external_url}}">
+                        <h3>{{feature.title}}</h3>
+                        <img src="{{feature.photo_url}}" width="250 px" height="250 px" />
+                        </a>
+                        {{feature.summary}}
+                        {% for gallery in feature.galleries %}
+                        <a href="{{gallery.gallery_url}}">{{feature.restaurant.name}} - Gallery: {{gallery.date|naturalday}}</a>
+                        {% endfor %}
+                    </div>
                 {% endfor %}
             </div>
         </div>

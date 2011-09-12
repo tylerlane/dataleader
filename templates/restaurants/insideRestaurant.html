@@ -6,8 +6,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <link rel="stylesheet" href="{{MEDIA_URL}}/landingPage.css" type="text/css" />
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}/css/jquery.lightbox-0.5.css" media="screen" />
+<script type="text/javascript" src="{{MEDIA_URL}}/js/jquery.lightbox-0.5.js"></script>
 {% endblock %}
 {% block content %}
+<script>
+    $(document).ready(function(){
+        $(".lightbox").lightBox({"imageBtnClose":"{{MEDIA_URL}}/images/lightbox-btn-close.gif"});
+    });
+</script>
 <!-- ImageReady Slices (INSIDE.REST.psd) -->
 <div id="MainContainer">
     <div id="insideTopHeader_">
@@ -22,11 +29,13 @@
             <img id="insideMainHeader" src="{{MEDIA_URL}}/images/insideMainHeader.gif" width="375" height="63" alt="" />
     </div>
     <div id="insideRightGradient_">
+        {% if restaurant.photo_url and restaurant.photo_url != "None" %}
+            <a href="{{restaurant.photo_url}}" class="lightbox"><img src="{{restaurant.photo_url}}" style="width:225px; margin-top:25px;margin-left:5px;" /></a>
+        {% endif %}
         {% if restaurant.geom %}
             <div style="margin-left: 5px;">
                 <h5 style="color:white;margin-top:25px;">Map</h5>
-                <img src="http://maps.googleapis.com/maps/api/staticmap?zoom=13&size=150x250&scale=1&maptype=roadmap&markers=color:red%7Clabel:A%7C{{restaurant.geom.y}},{{restaurant.geom.x}}&sensor=false" />
-                <div style="color:white;float:left;clear:both;margin-top:5px;">{{restaurant.name}}</div>
+                <img src="http://maps.googleapis.com/maps/api/staticmap?zoom=13&size=225x225&scale=1&maptype=roadmap&markers=color:red%7Clabel:A%7C{{restaurant.geom.y}},{{restaurant.geom.x}}&sensor=false" />
                 <div style="color:white;float:left;clear:both;margin-top:5px;">{{restaurant.address}}, {{restaurant.city}} {{restaurant.state}} {{restaurant.zip_code|default_if_none:""}}</div>
                 <div style="color:white;float:left;clear:both:margin-top:5px;">{{restaurant.phone|default_if_none:""}}</div>
             </div>
@@ -36,39 +45,49 @@
         <div id="restaurant_main">
             <h2>Restaurant Detail</h2>
             <h3><a href="{{restaurant.get_absolute_url}}">{{restaurant.name}}</a></h3>
-            <div style="margin-bottom:5px;"><b>Address:</b> {{restaurant.address}}, {{restaurant.city}}, {{restaurant.state|default:"MO"}} {{restaurant.zip_code|default_if_none:""}}</div>
+            <div>
+            </div><br />
+            <p><b>Address:</b> {{restaurant.address}}, {{restaurant.city}}, {{restaurant.state|default:"MO"}} {{restaurant.zip_code|default_if_none:""}}</p>
             {% if restaurant.phone %}
-                <div style="margin-bottom:5px;"><b>Phone:</b> {{restaurant.phone}}</div>
+                <p><b>Phone:</b> {{restaurant.phone|default_if_none:"N/A"}}</p>
             {% endif %}
-            <div>{{restaurant.description|safe|default:""|linebreaksbr}}</div>
+            <p>{{restaurant.description|safe|default:""|linebreaksbr}}</p>
             {% if restaurant.cuisine.all %}
-            <div><b>Cuisine:</b> {% for cuisine in restaurant.cuisine.all %}{% firstof cuisine.label|title cuisine.name|title %}{% if forloop.last %}{% else %}, {% endif %}{% endfor %}</div>
+            <p><b>Cuisine:</b> {% for cuisine in restaurant.cuisine.all %}{% firstof cuisine.label|title cuisine.name|title %}{% if forloop.last %}{% else %}, {% endif %}{% endfor %}</p>
             {% endif %}
             {% if restaurant.hours and restaurant.hours != "None" %}
-                <div><b>Hours:</b> {{restaurant.hours}}</div>
+                <p><b>Hours:</b> {{restaurant.hours}}</p>
             {% endif %}
-            {% if restaurant.photo_url and restaurant.photo_url != "None" %}
-                <img src="{{restaurant.photo_url}}" />
+            {% if restaurant.website %}
+                <p><b>Website:</b> <a href="{{restaurant.website}}" target="_new">{{restaurant.website}}</a></p>
             {% endif %}
         </div>
-        <div id="restaurant_detail">
+        <div id="restaurant_details">
+            <h2>Inside Details</h2>
             {% if restaurant.attributes %}
-                <h2>Inside Details</h2>
                 {% for attribute in restaurant.attributes %}
                     <b>{{ attribute.name|title }}</b>: {{attribute.value|title}}<br />
                 {% endfor %}
+            {% else %}
+                No information available for this restaurant yet. <a href="#">Click here</a> to give us some info about "{{restaurant.name}}"
             {% endif %}
         </div>
-        <div id="inspections">
+        <div id="restaurant_inspections">
             <h2>Inspections</h2>
             {% for inspection in inspections %}
-                <p><b>Date:</b>{{inspection.date|naturalday}}</p>
-                <p><i>Critical Violations:</i> {{inspection.critical}}</p>
-                <p><i>Noncritical Violations:</i> {{inspection.noncritical}}</p>
-                <p><b>Notes:</b> {{inspection.notes}}</p>
-                {% if inspection.critical > 0 %}
-                    <p><b>Details:</b>&nbsp;&nbsp;{{inspection.critical_violations|safe}}</p>
-                {% endif %}
+                <div style="border-bottom:1px dotted black;">
+                    <p><span style:"float-left;"><h4>{% if inspection.reinspection %}Reinspection:{% else %}Inspection:{% endif %}</h4>{{inspection.date|naturalday}}</span>
+                    <br />
+                    <span style=""><b>Violations</b><br />
+                        <i>Critical:</i> {{inspection.critical}} <br />
+                        <i>Noncritical:</i> {{inspection.noncritical}}
+                    </span>
+                    </p>
+                    {% if inspection.critical > 0 %}
+                        <p><b>Details:</b>&nbsp;&nbsp;{{inspection.critical_violations|safe}}</p>
+                    {% endif %}
+                    {% if inspection.notes != "" %}<p><b>Notes:</b> {{inspection.notes}}</p>{% endif %}
+                </div>
             {% endfor %}
             <span style="border-bottom: 1px solid black;">&nbsp;</span>
         </div>

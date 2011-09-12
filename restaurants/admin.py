@@ -1,5 +1,5 @@
 from django.contrib.gis import admin
-from models import Restaurant, Inspection, Cuisine, Attribute, Neighborhood, Featured
+from models import Restaurant, Inspection, Cuisine, Attribute, Neighborhood, Featured,Gallery
 
 
 class InspectionInline(admin.TabularInline):
@@ -43,11 +43,17 @@ class NeighborhoodAdmin(admin.OSMGeoAdmin):
 
 
 class FeaturedAdmin(admin.ModelAdmin):
-    list_display = ('restaurant','title',)
+    list_display = ('restaurant','title', )
+
+
+class GalleryAdmin(admin.ModelAdmin):
+    list_display = ('restaurant','gallery_url', )
+
 
 admin.site.register(Restaurant, RestaurantAdmin)
 admin.site.register(Inspection, InspectionAdmin)
 admin.site.register(Cuisine, CuisineAdmin)
 admin.site.register(Attribute, AttributeAdmin)
-admin.site.register(Neighborhood,NeighborhoodAdmin)
-admin.site.register(Featured,FeaturedAdmin)
+admin.site.register(Neighborhood, NeighborhoodAdmin)
+admin.site.register(Featured, FeaturedAdmin)
+admin.site.register(Gallery,GalleryAdmin)
