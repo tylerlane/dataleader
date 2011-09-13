@@ -19,6 +19,8 @@ urlpatterns = patterns('restaurants.views',
     #list attribute values
     url(r'^restaurants/attribute/(?P<attribute>.*)$', 'list_attribute_values', name='list_attribute_values'),
     url(r'^restaurants/attribute/(?P<attribute>.*)/restaurants$','list_restaurants_attribute', name='list_restaurants_attribute'),
+    #url to record votes
+    url(r'^restaurants/record_rating','record_rating',name='record_rating'),
 
     )
 

@@ -8,12 +8,51 @@
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}/css/jquery.lightbox-0.5.css" media="screen" />
 <script type="text/javascript" src="{{MEDIA_URL}}/js/jquery.lightbox-0.5.js"></script>
+<script type="text/javascript" src="{{MEDIA_URL}}/jquery.raty.js"></script>
+
 {% endblock %}
 {% block content %}
 <script>
     $(document).ready(function(){
         $(".lightbox").lightBox({"imageBtnClose":"{{MEDIA_URL}}/images/lightbox-btn-close.gif"});
+
+        $("#avgrating").raty(
+        {
+            noRatedMsg: 'no one has rated this restaurant yet!',
+            hintList: ['bad', 'poor', 'okay', 'good', 'great'],
+            path:'{{MEDIA_URL}}/img/',
+            readOnly:true,
+            half: true,
+            start: {{restaurant.rating}}
+         });
+        $("#userrating").raty(
+        {
+            noRatedMsg: 'no one has rated this restaurant yet!',
+            hintList: ['bad', 'poor', 'okay', 'good', 'great'],
+            path:'{{MEDIA_URL}}/img/',
+            readOnly: false,
+            half: false,
+            start: 0,
+            click: function(score, evt) {
+                alert('ID: ' + this.attr('id') + '\nscore: ' + score + '\nevent: ' + evt);
+                $.post("{% url record_rating %}", {
+                    restaurant: {{restaurant.id}},
+                    rating: score,
+
+                    },
+                    function(data) {
+                        //this will start the last
+                        $.fn.raty.start(data.rating,"#avgrating");
+                    }
+                );
+                //this will set our userrating to readonly.
+                $.fn.raty.readOnly(true, '#userrating');
+            }
+        });
     });
+
+    <!--  Votes Sum: {{restaurant.rating_sum}} -->
+    <!--  Total Votes: {{restaurant.rating_total_votes}} -->
 </script>
 <!-- ImageReady Slices (INSIDE.REST.psd) -->
 <div id="MainContainer">
@@ -45,7 +84,27 @@
         <div id="restaurant_main">
             <h2>Restaurant Detail</h2>
             <h3><a href="{{restaurant.get_absolute_url}}">{{restaurant.name}}</a></h3>
-            <div>
+            <div id="socialbar" style="float:right;width:125px; height:150px;border:1px dotted grey;margin:5px;padding:5px;">
+                <div id="fb-like" >
+                    <div id="fb-root"></div>
+                    <script>(function(d){
+                    var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
+                    js = d.createElement('script'); js.id = id; js.async = true;
+                    js.src = "//connect.facebook.net/en_US/all.js#appId=254392584600879&xfbml=1";
+                    d.getElementsByTagName('head')[0].appendChild(js);
+                    }(document));</script>
+                    <fb:like send="false" layout="box_count" width="100" show_faces="false" font="verdana"></fb:like>
+                                    
+                </div>
+                <!-- Matt this css hack is soo ugly!! please make my 2 buttons align without this hack" -->
+                <div id="twitter" style="float: right; width:55px;margin-top: -62px;">
+                    <a href="http://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="springfieldnl">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+                </div>
+                <strong>Your Rating</strong>
+                <div id="userrating"></div>
+                <strong>Average Rating</strong>
+                <div id="avgrating"></div>
+                </div>
             </div><br />
             <p><b>Address:</b> {{restaurant.address}}, {{restaurant.city}}, {{restaurant.state|default:"MO"}} {{restaurant.zip_code|default_if_none:""}}</p>
             {% if restaurant.phone %}

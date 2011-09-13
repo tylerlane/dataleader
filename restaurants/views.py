@@ -4,11 +4,13 @@
 #from django.contrib.gis.measure import D
 from django.core.paginator import Paginator
 from django.db.models import Q
-from django.http import HttpResponseRedirect, Http404
+from django.http import HttpResponseRedirect, Http404, HttpResponse
 from django.shortcuts import render_to_response
 #from django.template.loader import render_to_string
 from django.template import RequestContext
+from django.utils import simplejson
 from django.views.decorators.cache import never_cache
+from django.views.decorators.csrf import csrf_exempt
 from restaurants.models import Restaurant, Inspection,Cuisine,Attribute,Neighborhood,Featured, Gallery
 from restaurants.forms import SearchForm
 #import re
@@ -332,3 +334,30 @@ def list_restaurants_attribute(request, attribute):
     return render_to_response('restaurants/restaurantListing.html',
             {'restaurants': restaurants},
             context_instance=RequestContext(request))
+
+@csrf_exempt
+@never_cache
+def record_rating(request):
+    if request.is_ajax():
+        if request.method == 'POST':
+            print "restaurant: %s" % request.POST.get("restaurant")
+            print "rating: %s" %request.POST.get("rating")
+            restaurant = Restaurant.objects.get(id=request.POST.get("restaurant"))
+            print "restaurant: %s" % restaurant
+            if restaurant.rating_sum is None:
+                restaurant.rating_sum = float(request.POST.get("rating"))
+            else:
+                restaurant.rating_sum = restaurant.rating_sum + float(request.POST.get("rating"))
+            if restaurant.rating_total_votes is None:
+                restaurant.rating_total_votes = 1
+            else:
+                restaurant.rating_total_votes += 1
+            restaurant.save()
+            #print "saving vote"
+            #print "Sum: %s" % restaurant.rating_sum
+            #print "Total Votes: %s" % restaurant.rating_total_votes
+            rating = (float(restaurant.rating_sum) / float(restaurant.rating_total_votes) )
+            rating_dict = {"rating":rating}
+            return HttpResponse(simplejson.dumps(rating_dict))
+    else:
+        return HttpResponse(status="400")

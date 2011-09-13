@@ -47,10 +47,16 @@ class Restaurant(models.Model):
     def get_absolute_url(self):
         return ('restaurants.views.detail', self.id )
 
-    def get_rating(self):
+    def rating(self):
         #returning my rating which is an average of the votes.
         #avg = sum of votes/totals
-        return round( self.rating_sum / self.rating_total_votes, 1 )
+        #converting the numbers to float so that it will give us a proper average.
+        if self.rating_total_votes is not None:
+            retval = "%f" % ( float(self.rating_sum) / float(self.rating_total_votes)  )
+        else:
+            retval = "0"
+
+        return retval
 
 
     class Meta:
