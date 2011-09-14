@@ -364,3 +364,15 @@ def record_rating(request):
             return HttpResponse(rating)
     else:
         return HttpResponse(status="400")
+
+@never_cache
+def display_top_rated(request):
+    restaurants = Restaurant.objects.filter(active=True).order_by('-rating')
+    restaurants = restaurants[0:20]
+
+    return render_to_response('restaurants/restaurantListing.html',
+            {'restaurants': restaurants},
+            context_instance=RequestContext(request))
+@never_cache
+def display_most_viewed(request):
+    pass
