@@ -14,8 +14,41 @@
 {% block content %}
 <script>
     $(document).ready(function(){
+        function set_cookie ( name, value, path, domain )
+        {
+            var cookie_string = name + "=" + escape ( value );
+            date = new Date();
+            date.setTime( date.getTime() + ( 30 * 24 * 60 * 60 * 1000 ) );
+            cookie_string += "; expires=" + date.toGMTString();
+            if ( path )
+                    cookie_string += "; path=" + escape ( path );
+            if ( domain )
+                    cookie_string += "; domain=" + escape ( domain );
+            document.cookie = cookie_string;
+        }
+
+        //pretty self explanatory, get a cookie
+        function get_cookie ( cookie_name )
+        {
+            var results = document.cookie.match ( '(^|;) ?' + cookie_name + '=([^;]*)(;|$)' );
+            if ( results )
+                    return ( unescape ( results[2] ) );
+            else
+                    return null;
+        }
+
+        //function to delete a cookie
+        function delete_cookie ( cookie_name )
+        {
+                var cookie_date = new Date ( );  // current date & time
+                cookie_date.setTime ( cookie_date.getTime() - 1 );
+                document.cookie = cookie_name += "=; expires=" + cookie_date.toGMTString();
+        }
+
+        //settting our lightbox with a custom close button path
         $(".lightbox").lightBox({"imageBtnClose":"{{MEDIA_URL}}/images/lightbox-btn-close.gif"});
 
+        //setting up our average rating object
         $("#avgrating").raty(
         {
             noRatedMsg: 'no one has rated this restaurant yet!',
@@ -24,27 +57,54 @@
             readOnly:true,
             half: true,
             start: {{restaurant.rating}}
-         });
+        });
+
+        //set our variables to hold our rating and readonly stuf
+        var user_rating_var;
+        var user_rating_readonly;
+        var restaurant_cookie = get_cookie( "restaurant" );
+        var rating_cookie = get_cookie("rating")
+        //if the restaurant cookie = the restaurant.id it means they voted
+        if( restaurant_cookie == {{restaurant.id}} )
+        {
+            //so we set our rating var to the cookie value
+            user_rating_var = rating_cookie;
+            //and readonly to true
+            user_rating_readonly = true;
+        }
+        else
+        {
+            //else they haven't voted and we start at 0 and let the user vote.
+            user_rating_var = 0
+            user_rating_readonly = false;
+        }
+        //settting up our user rating object
         $("#userrating").raty(
         {
             noRatedMsg: 'no one has rated this restaurant yet!',
             hintList: ['bad', 'poor', 'okay', 'good', 'great'],
             path:'{{MEDIA_URL}}/img/',
-            readOnly: false,
+            readOnly: user_rating_readonly,
             half: false,
-            start: 0,
+            start: user_rating_var,
             click: function(score, evt) {
-                alert('ID: ' + this.attr('id') + '\nscore: ' + score + '\nevent: ' + evt);
+                //alert('ID: ' + this.attr('id') + '\nscore: ' + score + '\nevent: ' + evt);
                 $.post("{% url record_rating %}", {
                     restaurant: {{restaurant.id}},
                     rating: score,
-
                     },
                     function(data) {
                         //this will start the last
-                        $.fn.raty.start(data.rating,"#avgrating");
-                    }
-                );
+                        //alert(data);
+                        //set the average rating to our updated average
+                        $.fn.raty.start(data, "#avgrating");
+                        //set the restaurant and rating cookies
+                        set_cookie('restaurant', {{restaurant.id}} );
+                        set_cookie('rating', score );
+
+                });
+                //
+                
                 //this will set our userrating to readonly.
                 $.fn.raty.readOnly(true, '#userrating');
             }
@@ -94,18 +154,18 @@
                     d.getElementsByTagName('head')[0].appendChild(js);
                     }(document));</script>
                     <fb:like send="false" layout="box_count" width="100" show_faces="false" font="verdana"></fb:like>
-                                    
                 </div>
                 <!-- Matt this css hack is soo ugly!! please make my 2 buttons align without this hack" -->
                 <div id="twitter" style="float: right; width:55px;margin-top: -62px;">
                     <a href="http://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="springfieldnl">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
                 </div>
+                <br />
                 <strong>Your Rating</strong>
                 <div id="userrating"></div>
                 <strong>Average Rating</strong>
                 <div id="avgrating"></div>
                 </div>
-            </div><br />
+            <br />
             <p><b>Address:</b> {{restaurant.address}}, {{restaurant.city}}, {{restaurant.state|default:"MO"}} {{restaurant.zip_code|default_if_none:""}}</p>
             {% if restaurant.phone %}
                 <p><b>Phone:</b> {{restaurant.phone|default_if_none:"N/A"}}</p>
@@ -132,23 +192,38 @@
             {% endif %}
         </div>
         <div id="restaurant_inspections">
-            <h2>Inspections</h2>
-            {% for inspection in inspections %}
-                <div style="border-bottom:1px dotted black;">
-                    <p><span style:"float-left;"><h4>{% if inspection.reinspection %}Reinspection:{% else %}Inspection:{% endif %}</h4>{{inspection.date|naturalday}}</span>
-                    <br />
-                    <span style=""><b>Violations</b><br />
-                        <i>Critical:</i> {{inspection.critical}} <br />
-                        <i>Noncritical:</i> {{inspection.noncritical}}
-                    </span>
-                    </p>
-                    {% if inspection.critical > 0 %}
-                        <p><b>Details:</b>&nbsp;&nbsp;{{inspection.critical_violations|safe}}</p>
-                    {% endif %}
-                    {% if inspection.notes != "" %}<p><b>Notes:</b> {{inspection.notes}}</p>{% endif %}
-                </div>
-            {% endfor %}
-            <span style="border-bottom: 1px solid black;">&nbsp;</span>
+            {% if inspections %}
+                <h2>Inspections</h2>
+                {% for inspection in inspections %}
+                    <div style="border-bottom:1px dotted black;">
+                        <p><span style:"float-left;"><h4>{% if inspection.reinspection %}Reinspection:{% else %}Inspection:{% endif %}</h4>{{inspection.date|naturalday}}</span>
+                        <br />
+                        <span style=""><b>Violations</b><br />
+                            <i>Critical:</i> {{inspection.critical}} <br />
+                            <i>Noncritical:</i> {{inspection.noncritical}}
+                        </span>
+                        </p>
+                        {% if inspection.critical > 0 %}
+                            <p><b>Details:</b>&nbsp;&nbsp;{{inspection.critical_violations|safe}}</p>
+                        {% endif %}
+                        {% if inspection.notes != "" %}<p><b>Notes:</b> {{inspection.notes}}</p>{% endif %}
+                    </div>
+                {% endfor %}
+                <span style="border-bottom: 1px solid black;">&nbsp;</span>
+            {% endif %}
+
+        </div>
+        <div id="fb_comments">
+            <h2>Comments</h2>
+            <div id="fb-root"></div>
+            <script>(function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {return;}
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+            fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));</script>
+            <fb:comments href="{{restaurant.absolute_uri}}" num_posts="2" width="370"></fb:comments>
         </div>
     </div>
     <div id="insideBottomNav_">

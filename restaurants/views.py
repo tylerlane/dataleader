@@ -11,7 +11,7 @@ from django.template import RequestContext
 from django.utils import simplejson
 from django.views.decorators.cache import never_cache
 from django.views.decorators.csrf import csrf_exempt
-from restaurants.models import Restaurant, Inspection,Cuisine,Attribute,Neighborhood,Featured, Gallery
+from restaurants.models import Restaurant, Inspection, Cuisine, Attribute, Neighborhood, Featured, Gallery,Pageview
 from restaurants.forms import SearchForm
 #import re
 #import simplejson
@@ -39,6 +39,7 @@ def detail(request, restaurant_id):
     inspections = Inspection.objects.filter(restaurant=restaurant)
     #pull in our attributes
     restaurant.attributes = Attribute.objects.filter(restaurant=restaurant,active=True)
+    restaurant.absolute_uri = request.build_absolute_uri()
     for attribute in restaurant.attributes:
         #replacing "_" with " "
         #attribute.name = " ".join(attribute.name.split("_"))
@@ -47,6 +48,8 @@ def detail(request, restaurant_id):
             if attribute.value[-1:] == ",":
                 attribute.value = attribute.value[0:-2]
 
+    pageview = Pageview(restaurant=restaurant)
+    pageview.save()
 
 
 
@@ -357,7 +360,7 @@ def record_rating(request):
             #print "Sum: %s" % restaurant.rating_sum
             #print "Total Votes: %s" % restaurant.rating_total_votes
             rating = (float(restaurant.rating_sum) / float(restaurant.rating_total_votes) )
-            rating_dict = {"rating":rating}
-            return HttpResponse(simplejson.dumps(rating_dict))
+            #rating_dict = {"rating":rating}
+            return HttpResponse(rating)
     else:
         return HttpResponse(status="400")

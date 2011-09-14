@@ -139,6 +139,16 @@ class Gallery(models.Model):
     date = models.DateTimeField("Date", auto_now=True, auto_now_add=True)
 
     objects = models.Manager()
-    
+
     def __unicode__(self):
         return u"%s - Gallery: %s" % ( self.restaurant.name, self.date)
+
+
+class Pageview( models.Model ):
+    restaurant = models.ForeignKey( Restaurant, null=True, blank=True )
+    time_init = models.DateTimeField( auto_now_add=True, blank=False )
+
+    objects = models.Manager()
+
+    class Meta:
+       ordering = ("-restaurant","-time_init",)
