@@ -40,16 +40,43 @@
             {% endfor %}
             {% endspaceless %}
         </div>
-        {% for restaurant in restaurants %}
-            <div class="restaurantListing">
-                <h3 class="restaurantListingName"><a href="{%url restaurant-detail restaurant.id %}">{{restaurant.name}}</a></h3>
-                <p class="restaurantListingInfo">{{restaurant.address}}, {{restaurant.city}}, {{restaurant.state|default:"MO"}} {{restaurant.phone|default:""}}</p>
-                <p class="restauraltListingSummary">{{restaurant.description|default:""|safe}}</p>
-                {% if restaurant.cuisine.all %}
-                    <p class="restaurantListingSummary"><b>Cuisines:</b> {% for cuisine in restaurant.cuisine.all %}<i>{{cuisine.name}}</i>{% if forloop.last %}{% else %}, {% endif %}{% endfor %}</p>
-                {% endif %}
-            </div>
-        {% endfor %}
+        {% if mostviewed %}
+            {% for restaurant in restaurants|dictsortreversed:"pageviews" %}
+                <div class="restaurantListing">
+                    <h3 class="restaurantListingName"><a href="{%url restaurant-detail restaurant.id %}">{{restaurant.name}}</a></h3>
+                    <p class="restaurantListingInfo">{{restaurant.address}}, {{restaurant.city}}, {{restaurant.state|default:"MO"}} {{restaurant.phone|default:""}}</p>
+                    <p class="restauraltListingSummary">{{restaurant.description|default:""|safe}}</p>
+                    {% if restaurant.cuisine.all %}
+                        <p class="restaurantListingSummary"><b>Cuisines:</b> {% for cuisine in restaurant.cuisine.all %}<i>{{cuisine.name}}</i>{% if forloop.last %}{% else %}, {% endif %}{% endfor %}</p>
+                    {% endif %}
+                </div>
+             {% endfor %}
+        {% else %}
+            {% if toprated %}
+                {% for restaurant in restaurants|dictsortreversed:"rating" %}
+                    <div class="restaurantListing">
+                        <h3 class="restaurantListingName"><a href="{%url restaurant-detail restaurant.id %}">{{restaurant.name}}</a></h3>
+                        <p class="restaurantListingInfo">{{restaurant.address}}, {{restaurant.city}}, {{restaurant.state|default:"MO"}} {{restaurant.phone|default:""}}</p>
+                        <p class="restauraltListingSummary">{{restaurant.description|default:""|safe}}</p>
+                        {% if restaurant.cuisine.all %}
+                            <p class="restaurantListingSummary"><b>Cuisines:</b> {% for cuisine in restaurant.cuisine.all %}<i>{{cuisine.name}}</i>{% if forloop.last %}{% else %}, {% endif %}{% endfor %}</p>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            {% else %}
+                {% for restaurant in restaurants|dictsort:"name" %}
+                    <div class="restaurantListing">
+                        <h3 class="restaurantListingName"><a href="{%url restaurant-detail restaurant.id %}">{{restaurant.name}}</a> </h3>
+                        <p class="restaurantListingInfo">{{restaurant.address}}, {{restaurant.city}}, {{restaurant.state|default:"MO"}} {{restaurant.phone|default:""}}</p>
+                        <p class="restauraltListingSummary">{{restaurant.description|default:""|safe}}</p>
+                        {% if restaurant.cuisine.all %}
+                            <p class="restaurantListingSummary"><b>Cuisines:</b> {% for cuisine in restaurant.cuisine.all %}<i>{{cuisine.name}}</i>{% if forloop.last %}{% else %}, {% endif %}{% endfor %}</p>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endif %}
+
         <div id="listingPages">
              {% if has_previous %}
                 <a href="{% url restaurants-browse letter page.previous_page_number  %}">&laquo;prev</a>

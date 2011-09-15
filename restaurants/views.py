@@ -1,9 +1,9 @@
 # Create your views here
-#import datetime
+import datetime
 #from django.contrib.gis.geos import Point
 #from django.contrib.gis.measure import D
 from django.core.paginator import Paginator
-from django.db.models import Q
+from django.db.models import Avg,Min,Max,Count,F,Q
 from django.http import HttpResponseRedirect, Http404, HttpResponse
 from django.shortcuts import render_to_response
 #from django.template.loader import render_to_string
@@ -367,12 +367,29 @@ def record_rating(request):
 
 @never_cache
 def display_top_rated(request):
-    restaurants = Restaurant.objects.filter(active=True).order_by('-rating')
+    restaurants = Restaurant.objects.filter(active=True,rating__isnull=False).order_by('rating')
     restaurants = restaurants[0:20]
 
     return render_to_response('restaurants/restaurantListing.html',
-            {'restaurants': restaurants},
+            {'restaurants': restaurants,'toprated': True},
             context_instance=RequestContext(request))
 @never_cache
 def display_most_viewed(request):
-    pass
+    #get pageviews
+    pvs = Pageview.objects.filter( time_init__range = ( datetime.datetime.today() - datetime.timedelta( seconds=2592000 ), datetime.datetime.today() ) )
+    #then group and count them by restaurant and we are limiting it to the top 30
+    pvs = pvs.values('restaurant').annotate(pageviews=Count('id')).order_by('restaurant')[0:30]
+    #empty list to story our restaurants
+    restaurants = []
+    for pv in pvs:
+        #loop through pageviews and pull the restaurant for each pageview
+        #and stick it into our list
+        tmp = Restaurant.objects.get(id=pv['restaurant'])
+        tmp.pageviews = pv["pageviews"]
+        restaurants.append( tmp )
+
+    return  render_to_response('restaurants/restaurantListing.html',
+            {'restaurants': restaurants,'mostviewed': True },
+            context_instance=RequestContext(request))
+
+

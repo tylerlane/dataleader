@@ -37,9 +37,9 @@ class Restaurant(models.Model):
     #ratings support
     rating_sum = models.IntegerField(null=True, blank=True)
     rating_total_votes = models.IntegerField(null=True, blank=True)
-
+    rating = models.IntegerField(null=True, blank=True)
     objects = models.GeoManager()
-
+    
     def __unicode__(self):
         return u"%s" % self.name
 
@@ -47,17 +47,12 @@ class Restaurant(models.Model):
     def get_absolute_url(self):
         return ('restaurants.views.detail', self.id )
 
-    def rating(self):
-        #returning my rating which is an average of the votes.
-        #avg = sum of votes/totals
-        #converting the numbers to float so that it will give us a proper average.
+    def save(self, *args, **kwargs):
+        #if total votes is not None, then we calc our rating
         if self.rating_total_votes is not None:
-            retval = "%f" % ( float(self.rating_sum) / float(self.rating_total_votes)  )
-        else:
-            retval = "0"
+            self.rating = ( float(self.rating_sum) / float(self.rating_total_votes)  )
 
-        return retval
-
+        super(Restaurant, self).save(*args, **kwargs) # Call the "real" save() method.
 
     class Meta:
         ordering = ("name", "city", )
