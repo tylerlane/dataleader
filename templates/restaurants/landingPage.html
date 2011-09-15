@@ -63,7 +63,7 @@
                 <a href="{% url list_cuisines %}">Cuisine type</a>
             </li>
             <li>
-                <a href="#">Average price</a>
+                <a href="{% url list_attribute_values "average entree price" %}">Average price</a>
             </li>
             <li>
                 <a href="{% url list_neighborhoods %}">Neighborhood</a>
@@ -74,12 +74,12 @@
             <li>
                 <a href="#">Special Features</a>
             </li>
-            <li>
+            <!--<li>
                 <a href="#">Bars</a>
             </li>
             <li>
                 <a href="#">Specials</a>
-            </li>
+                </li>-->
         </ul>
         <h3><a href="{% url restaurants-search %}">Search</a></h3>
     </div>

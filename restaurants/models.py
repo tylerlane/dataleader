@@ -39,7 +39,7 @@ class Restaurant(models.Model):
     rating_total_votes = models.IntegerField(null=True, blank=True)
     rating = models.IntegerField(null=True, blank=True)
     objects = models.GeoManager()
-    
+
     def __unicode__(self):
         return u"%s" % self.name
 

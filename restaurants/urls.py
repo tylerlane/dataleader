@@ -17,14 +17,13 @@ urlpatterns = patterns('restaurants.views',
     #inspections
     url(r'^restaurants/inspections', 'list_recent_inspections', name='list_recent_inspections'),
     #list attribute values
+    url(r'^restaurants/attributes$', 'list_attributes', name='list_attributes'),
+    url(r'^restaurants/attribute/(?P<attribute>.*)/(?P<value>.*)$','list_restaurants_attribute', name='list_restaurants_attribute'),
     url(r'^restaurants/attribute/(?P<attribute>.*)$', 'list_attribute_values', name='list_attribute_values'),
-    url(r'^restaurants/attribute/(?P<attribute>.*)/restaurants$','list_restaurants_attribute', name='list_restaurants_attribute'),
     #url to record votes
     url(r'^restaurants/record_rating','record_rating', name='record_rating'),
     #top rated
     url(r'^restaurants/toprated','display_top_rated', name='display_top_rated'),
     #mostviewed
     url(r'^restaurants/mostviewed','display_most_viewed', name='display_most_viewed'),
-
     )
-

@@ -26,6 +26,7 @@
     </div>
 
     <div id="ListingsContentWell">
+        {% if title %}<h2>{{title|safe|title}}</h2><br />{% endif %}
         {% for cuisine in cuisines|dictsort:"name" %}
             <div class="restaurantListing">
                 <h3 class="restaurantListingName"><a href="{% url list_restaurants_cuisine cuisine.name %}">{% firstof cuisine.label|title cuisine.name|title %}</a></h3>

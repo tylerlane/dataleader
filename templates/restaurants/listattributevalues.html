@@ -26,9 +26,10 @@
     </div>
 
     <div id="ListingsContentWell">
-        {% for attribute in attributes %}
+        {% if title %}<h2>{{title|safe|title}}</h2><br />{% endif %}
+        {% for attribute in attributes|dictsort:"order" %}
             <div class="restaurantListing">
-                <h3 class="restaurantListingName"><a href="{% url list_restaurants_attribute attribute.value %}">{{attribute.value|title}}</a></h3>
+                <h3 class="restaurantListingName"><a href="{% url list_restaurants_attribute attribute.name attribute.value %}">{{attribute.value|title}}</a></h3>
             </div>
         {% endfor %}
    </div>

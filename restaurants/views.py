@@ -44,9 +44,9 @@ def detail(request, restaurant_id):
         #replacing "_" with " "
         #attribute.name = " ".join(attribute.name.split("_"))
         #attribute.value = " ".join(attribute.value.split("_"))
-        if attribute.comma_delimited:
-            if attribute.value[-1:] == ",":
-                attribute.value = attribute.value[0:-2]
+        #if attribute.comma_delimited:
+        if attribute.value[-1:] == ",":
+            attribute.value = attribute.value[0:-2]
 
     pageview = Pageview(restaurant=restaurant)
     pageview.save()
@@ -208,7 +208,7 @@ def merge(request,letter=None, page=None):
     if page is None:
         #set it to 1
         page = 1
-    if letter != "#":
+    if letter != "%23":
         #get the restaurants startign with letter
         restaurants = Restaurant.objects.select_related().filter(name__istartswith=letter)
     else:
@@ -265,22 +265,21 @@ def final_merge(request):
     #get the letter of the main restaurant to redirect us to the first page of
     #listings
     letter = main_restaurant.name[0].upper()
-    return HttpResponseRedirect('/restaurants/browse/' + letter + '/1')
+    return HttpResponseRedirect('/restaurants/merge/' + letter + '/1')
 
 
 @never_cache
 def list_cuisines(request):
     cuisines = Cuisine.objects.all()
-
+    title = "Cuisines"
     return render_to_response('restaurants/listcuisines.html',
-            {'cuisines': cuisines},
+            {'cuisines': cuisines, "title": title},
             context_instance=RequestContext(request))
 
 @never_cache
 def list_restaurants_cuisine(request,cuisine):
     cuisine = Cuisine.objects.get(name=cuisine)
     restaurants = Restaurant.objects.filter(cuisine = cuisine )
-
 
     return render_to_response('restaurants/restaurantListing.html',
             {'restaurants': restaurants},
@@ -310,6 +309,7 @@ def list_restaurants_neighborhood(request, neighborhood):
     return render_to_response('restaurants/restaurantListing.html',
             {'restaurants': restaurants},
             context_instance=RequestContext(request))
+
 @never_cache
 def record_rating_vote(request, restaurant, rating):
     #function to records the votes. should only be called via ajax.
@@ -319,23 +319,47 @@ def record_rating_vote(request, restaurant, rating):
     restaurant.save()
 
 @never_cache
-def list_attribute_values(request, attribute):
-    attributes = Attribute.objects.filter(name=attribute).values("value").distinct()
-
-    return render_to_response('restaurants/listattributevalues.html',
-            {'attributes':attributes},
+def list_attributes(request):
+    attributes = Attribute.objects.values("name").distinct()
+    
+    return render_to_response('restaurants/listattributes.html',
+            {'attributes':attributes,'title':'Browse By:'},
             context_instance=RequestContext(request))
 
 @never_cache
-def list_restaurants_attribute(request, attribute):
-    attributes = Attribute.objects.filter(value=attribute)
+def list_attribute_values(request, attribute):
+    attributes = Attribute.objects.filter(name=attribute).values("name","value").distinct()
+    title = "<b>%s</b>" % attribute
+    for attribute in attributes:
+        if attribute["name"] =="average entree price":
+            if attribute["value"] == "very inexpensive":
+                attribute["order"] = 1
+            elif attribute["value"]  == "inexpensive":
+                attribute["order"] = 2
+            elif attribute["value"]  == "moderate":
+                attribute["order"] = 3
+            elif attribute["value"]  == "expensive":
+                attribute["order"] = 4
+            elif attribute["value"]  == "very expensive":
+                attribute["order"] = 5
+        else:
+            attribute["order"] = 1
+
+    return render_to_response('restaurants/listattributevalues.html',
+            {'attributes':attributes, "title":title},
+            context_instance=RequestContext(request))
+
+@never_cache
+def list_restaurants_attribute(request, attribute, value):
+    attributes = Attribute.objects.filter(name=attribute, value=value)
     restaurants = []
     for attribute in attributes:
-        restaurants.append(attribute)
-    restaurants = Restaurant.objects.filter(id__in=restaurants)
-
+        tmp = Restaurant.objects.get(id=attribute.restaurant.id)
+        restaurants.append(tmp)
+    #restaurants = Restaurant.objects.filter(id__in=restaurants)
+    title = "<b>%s</b> : <i>%s</i>" % (attribute, value)
     return render_to_response('restaurants/restaurantListing.html',
-            {'restaurants': restaurants},
+            {'restaurants': restaurants,'title':title},
             context_instance=RequestContext(request))
 
 @csrf_exempt
@@ -369,10 +393,12 @@ def record_rating(request):
 def display_top_rated(request):
     restaurants = Restaurant.objects.filter(active=True,rating__isnull=False).order_by('rating')
     restaurants = restaurants[0:20]
-
+    title = "Top Rated Restaurants"
+    
     return render_to_response('restaurants/restaurantListing.html',
-            {'restaurants': restaurants,'toprated': True},
+            {'restaurants': restaurants,'title': title},
             context_instance=RequestContext(request))
+
 @never_cache
 def display_most_viewed(request):
     #get pageviews
@@ -387,9 +413,7 @@ def display_most_viewed(request):
         tmp = Restaurant.objects.get(id=pv['restaurant'])
         tmp.pageviews = pv["pageviews"]
         restaurants.append( tmp )
-
+    title = "Most Viewed Restaurants"
     return  render_to_response('restaurants/restaurantListing.html',
-            {'restaurants': restaurants,'mostviewed': True },
+            {'restaurants': restaurants,'title': title },
             context_instance=RequestContext(request))
-
-

@@ -40,7 +40,10 @@
             {% endfor %}
             {% endspaceless %}
         </div>
+        {% if title %}<h2>{{title|safe|title}}</h2><br />{% endif %}
+
         {% if mostviewed %}
+            <h2>Most Viewed Restaurants</h2>
             {% for restaurant in restaurants|dictsortreversed:"pageviews" %}
                 <div class="restaurantListing">
                     <h3 class="restaurantListingName"><a href="{%url restaurant-detail restaurant.id %}">{{restaurant.name}}</a></h3>
@@ -53,6 +56,7 @@
              {% endfor %}
         {% else %}
             {% if toprated %}
+                <h2>Top Rated Restaurants</h2>
                 {% for restaurant in restaurants|dictsortreversed:"rating" %}
                     <div class="restaurantListing">
                         <h3 class="restaurantListingName"><a href="{%url restaurant-detail restaurant.id %}">{{restaurant.name}}</a></h3>
@@ -64,7 +68,7 @@
                     </div>
                 {% endfor %}
             {% else %}
-                {% for restaurant in restaurants|dictsort:"name" %}
+                    {% for restaurant in restaurants|dictsort:"name" %}
                     <div class="restaurantListing">
                         <h3 class="restaurantListingName"><a href="{%url restaurant-detail restaurant.id %}">{{restaurant.name}}</a> </h3>
                         <p class="restaurantListingInfo">{{restaurant.address}}, {{restaurant.city}}, {{restaurant.state|default:"MO"}} {{restaurant.phone|default:""}}</p>
