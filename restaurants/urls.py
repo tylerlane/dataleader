@@ -26,4 +26,6 @@ urlpatterns = patterns('restaurants.views',
     url(r'^restaurants/toprated','display_top_rated', name='display_top_rated'),
     #mostviewed
     url(r'^restaurants/mostviewed','display_most_viewed', name='display_most_viewed'),
+    #admin pages
+    url(r'^restaurants/admin_new_restaurants','new_restaurants', name='new_restaurants'),
     )

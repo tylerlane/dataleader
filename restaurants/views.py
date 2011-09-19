@@ -402,7 +402,9 @@ def display_top_rated(request):
 @never_cache
 def display_most_viewed(request):
     #get pageviews
-    pvs = Pageview.objects.filter( time_init__range = ( datetime.datetime.today() - datetime.timedelta( seconds=2592000 ), datetime.datetime.today() ) )
+    pvs = Pageview.objects.filter(time_init__range =
+            (datetime.datetime.today() - datetime.timedelta(seconds=2592000),
+            datetime.datetime.today()))
     #then group and count them by restaurant and we are limiting it to the top 30
     pvs = pvs.values('restaurant').annotate(pageviews=Count('id')).order_by('restaurant')[0:30]
     #empty list to story our restaurants
@@ -417,3 +419,6 @@ def display_most_viewed(request):
     return  render_to_response('restaurants/restaurantListing.html',
             {'restaurants': restaurants,'title': title },
             context_instance=RequestContext(request))
+
+def new_restaurants(request):
+    pass
