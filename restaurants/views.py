@@ -47,7 +47,8 @@ def detail(request, restaurant_id):
         #if attribute.comma_delimited:
         if attribute.value[-1:] == ",":
             attribute.value = attribute.value[0:-2]
-
+    if restaurant.rating is None:
+        restaurant.rating = "0"
     pageview = Pageview(restaurant=restaurant)
     pageview.save()
 
@@ -420,5 +421,6 @@ def display_most_viewed(request):
             {'restaurants': restaurants,'title': title },
             context_instance=RequestContext(request))
 
+@never_cache
 def new_restaurants(request):
     pass
