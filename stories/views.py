@@ -97,7 +97,8 @@ def story_pageview( request, story_id, headline=None ):
         if headline is not None:
             story.headline = headline
         if "HTTP_REFERER" in request.META.keys():
-            story.long_url = request.META["HTTP_REFERER"]
+            if len(request.META["HTTP_REFERER"]) < 200:
+                story.long_url = request.META["HTTP_REFERER"]
         story.short_url = "http://www.news-leader.com/article/%s" % ( story_id )
         #print "Story %s created" % story_id
         story.save()

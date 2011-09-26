@@ -1,9 +1,9 @@
 #/usr/bin/env python
 import datetime
 import ftplib
-import os
-import sys
-import time
+#import os
+#import sys
+#import time
 import random
 #setting my django environment
 from django.core.management import setup_environ
@@ -11,7 +11,7 @@ import settings
 setup_environ(settings)
 
 #django specific modules
-from django.db.models import Avg,Min,Max,Count,F,Q
+#from django.db.models import Avg,Min,Max,Count,F,Q
 from django.template.loader import render_to_string
 from scheduler.models import Position,Banner, Schedule
 
