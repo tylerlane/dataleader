@@ -16,9 +16,6 @@ class BannerAdmin(admin.ModelAdmin):
 		ScheduleInlineAdmin,
 	]
 	
-	link.allow_tags = True
-	link.short_description = "Preview"
-	
 	list_display = ('name','active',)
 
 
