@@ -1,16 +1,16 @@
 from django.db import models
 
-EMPLOYMENT_TYPES = (
-	'Full-Time',
-	'Part-Time',
-	'Contract',
-	'Freelance',
-	)
+EMPLOYMENT_CHOICES = (
+	('fulltime', 'Full-Time'),
+	('parttime', 'Part-Time'),
+	('contract', 'Contract'),
+	('freelance', 'Freelance'),
+)
 
-COMPENSATION_TYPES = (
-	'HOURLY',
-	'SALARY',
-	'OTHER',
+COMPENSATION_CHOICES = (
+	('hourly', 'HOURLY'),
+	('salary', 'SALARY'),
+	('other', 'OTHER'),
 )
 
 
@@ -58,4 +58,4 @@ class Salary(models.Model):
 	objects = models.Manager()
 
 	def __unicode__(self):
-		return u"%s - %f" % (self.person.name, self.year)
+		return u"%s - %d" % (self.person.name, self.year)

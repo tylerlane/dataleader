@@ -17,7 +17,7 @@ urlpatterns = patterns('',
     (r'', include('census.urls')),
     (r'', include('feedback.urls')),
     (r'', include('restaurants.urls')),
-    (r'', include('salaries.url')),
+    (r'', include('salaries.urls')),
     #dirty dirty hack but i have to do this to make the schools stuff serve properly
     (r'schools/(?P<path>.*)$', 
         'django.views.static.serve', 
