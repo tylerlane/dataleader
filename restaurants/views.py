@@ -422,5 +422,28 @@ def display_most_viewed(request):
             context_instance=RequestContext(request))
 
 @never_cache
-def new_restaurants(request):
-    pass
+def new_restaurants(request, page=None):
+    restaurants = Restaurant.objects.filter(status="NEW")
+    pages = Paginator(restaurants, ITEMS_PER_PAGE)
+    if page is None:
+        #set it to 1
+        page = 1
+    
+    #get the page from the paginator
+    try:
+        p = pages.page(page)
+    except:
+        raise Http404
+
+    return render_to_response('restaurants/admin_new_restaurants.html',
+            {'restaurants': p.object_list,
+            'page_range': pages.page_range,
+            'num_pages': pages.num_pages, 'page': p,
+            'has_pages': pages.num_pages > 1,
+            'has_previous': p.has_previous(),
+            'has_next': p.has_next(),
+            'previous_page': p.previous_page_number(),
+            'next_page': p.next_page_number(),
+            'is_first': p == 1,
+            'is_last': p == pages.num_pages},
+            context_instance=RequestContext(request))

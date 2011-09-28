@@ -3,6 +3,10 @@
 from django.contrib.gis.db import models
 #import datetime
 
+STATUS_CHOICES = (
+    ('NEW', 'New'),
+    ('UPDATED','Updated'),
+)
 
 # Create your models here
 class Restaurant(models.Model):
@@ -38,6 +42,7 @@ class Restaurant(models.Model):
     rating_sum = models.IntegerField(null=True, blank=True)
     rating_total_votes = models.IntegerField(null=True, blank=True)
     rating = models.IntegerField(null=True, blank=True)
+    status = models.CharField(max_length=25,default="NEW",choices=STATUS_CHOICES)
     objects = models.GeoManager()
 
     def __unicode__(self):

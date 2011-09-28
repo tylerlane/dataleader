@@ -6,6 +6,10 @@ class InspectionInline(admin.TabularInline):
     model = Inspection
 
 
+class AttributeInline(admin.TabularInline):
+    model = Attribute
+
+
 class RestaurantAdmin(admin.OSMGeoAdmin):
     field = (None, {'fields': ('name')})
     field = (None, {'fields': ('address')})
@@ -17,7 +21,7 @@ class RestaurantAdmin(admin.OSMGeoAdmin):
     order_by = ('name', 'address')
     search_fields = ('name', )
     #inline for inspections
-    inlines = [ InspectionInline, ]
+    inlines = [ AttributeInline, InspectionInline, ]
 
 
 class InspectionAdmin(admin.ModelAdmin):
