@@ -27,6 +27,9 @@ urlpatterns = patterns('restaurants.views',
     #mostviewed
     url(r'^restaurants/mostviewed','display_most_viewed', name='display_most_viewed'),
     #admin pages
-    url(r'^restaurants/admin_new_restaurants/$','new_restaurants', name='new_restaurants'),
-    url(r'^restaurants/admin_new_restaurants/(?P<page>\d+)/$','new_restaurants', name='new_restaurants_admin'),
+    url(r'^restaurants/admin/new_restaurants/$','new_restaurants', name='new_restaurants'),
+    url(r'^restaurants/admin/new_restaurants/(?P<page>\d+)/$','new_restaurants', name='new_restaurants_admin'),
+    url(r'^restaurants/admin/updated_restaurants/$','restaurants_not_updated',name='restaurants_not_updated'),
+    url(r'^restaurants/admin/updated_restaurants/(?P<page>\d+)$','restaurants_not_updated',name='restaurants_not_updated'),
+    url(r'^restaurants/admin/mark_updated/(?P<restaurant>\d+)/(?P<to>\w+)/(?P<page>\d+)$','mark_restaurant_updated',name='mark_restaurant_updated'),
     )

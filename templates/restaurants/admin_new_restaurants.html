@@ -2,7 +2,7 @@
 {% load unquote %}
 {% load humanize %}
 {% block headers %}
-<title>News-Leader.com Restaurants</title>
+<title>News-Leader.com Restaurants: {{title|safe|title}}</title>
 <link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}/restaurants.css"></link>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <link rel="stylesheet" href="{{MEDIA_URL}}/landingPage.css" type="text/css" />
@@ -35,7 +35,10 @@
 	            {% if restaurant.cuisine.all %}
 	                <p class="restaurantListingSummary"><b>Cuisines:</b> {% for cuisine in restaurant.cuisine.all %}<i>{{cuisine.name}}</i>{% if forloop.last %}{% else %}, {% endif %}{% endfor %}</p>
 	            {% endif %}
-	            <p class="restauraltListingSummary"><a href="{% url admin:restaurants_restaurant_delete restaurant.id %}">Delete Restaurant</a></p>
+	            <p class="restaurantListingSummary">
+                <a href="{% url admin:restaurants_restaurant_delete restaurant.id %}">Delete Restaurant</a>&nbsp;&nbsp;|
+                &nbsp;&nbsp;<a href="{% url mark_restaurant_updated restaurant.id,to,page.number %}">Mark Updated</a>
+                </p>
 	        </div>
 	    {% endfor %}
         

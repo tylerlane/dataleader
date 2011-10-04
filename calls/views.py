@@ -401,4 +401,3 @@ def reversepub_calls( request ):
         calls = None
     
     return render_to_response( 'calls/reversepub.html', {'calls': calls, 'form': form }, context_instance = RequestContext( request ) )
-
