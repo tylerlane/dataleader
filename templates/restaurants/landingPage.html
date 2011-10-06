@@ -4,7 +4,7 @@
 <title>News-Leader.com Restaurants</title>
 <link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}/restaurants.css"></link>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<link rel="stylesheet" href="{{MEDIA_URL}}/landingPage.css" type="text/css" />
+<link rel="stylesheet" href="http://php.news-leader.com/css/landingPage.css" type="text/css" />
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
 {% endblock %}
 {% block content %}
@@ -13,7 +13,7 @@
         <img id="TopHeader" src="{{MEDIA_URL}}/images/TopHeader.gif" width="960" height="33" alt="" />
     </div>
     <div id="LeftGradientSpacer_">
-        <img id="LeftGradientSpacer" src="{{MEDIA_URL}}/images/gradient1px.jpg" width="107" height="735" alt="" />
+        
     </div>
     <div id="DineDrinkTitle_">
         <img id="DineDrinkTitle" src="{{MEDIA_URL}}/images/DineDrinkTitle.gif" width="311" height="45" alt="" />
@@ -21,13 +21,17 @@
     <div id="MouseoverContentWell_">
         <div id="MouseoverContentContainer_">
             <img id="InsideTitle" src="{{MEDIA_URL}}/images/InsideTitle.gif" width="169" height="62" alt="" />
-            <br />
-            <div id="featured" style="background:white; text-decoration:none; border-bottom:1px dotted black;">
-                <div><a href="{{main_featured.external_url}}">
-                    <h3>{{main_featured.title}}</h3>
+            <br /><br />
+            <div id="featured">
+                <div id="featureSummary">
+                    <a href="{{main_featured.external_url}}">
+                    <h3 style="margin: 5px 0;">{{main_featured.title}}</h3>
                     <img src="{{main_featured.photo_url}}" width="250 px" height="250 px" />
                     </a>
+                    <br /><br />
                     {{main_featured.summary}}
+                     <br /><br />
+
                     {% for gallery in main_featured.galleries %}
                         <br /><a href="{{gallery.gallery_url}}">{{main_featured.restaurant.name}} - Gallery: {{gallery.date|date:"m/d/Y"}}</a>
                     {% endfor %}
@@ -35,7 +39,8 @@
 
                 </div>
                 {% for feature in features %}
-                    <div><a href="{{feature.external_url}}">
+                    <div id="featureSpecials">
+                        <a href="{{feature.external_url}}">
                         <h3>{{feature.title}}</h3>
                         <img src="{{feature.photo_url}}" width="250 px" height="250 px" />
                         </a>
@@ -82,12 +87,6 @@
                 </li>-->
         </ul>
         <h3><a href="{% url restaurants-search %}">Search</a></h3>
-    </div>
-    <div id="SearchBar_">
-        <img id="SearchBar" src="{{MEDIA_URL}}/images/SearchBar.gif" width="960" height="54" alt="" />
-    </div>
-    <div id="BottomContent_">
-        <img id="BottomContent" src="{{MEDIA_URL}}/images/BottomContent.gif" width="960" height="425" alt="" />
     </div>
 </div>
 <!-- End ImageReady Slices -->

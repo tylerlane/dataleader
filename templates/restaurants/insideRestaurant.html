@@ -2,9 +2,8 @@
 {% load humanize %}
 {% block headers %}
 <title>News-Leader.com Restaurants</title>
-<link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}/restaurants.css"></link>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<link rel="stylesheet" href="{{MEDIA_URL}}/landingPage.css" type="text/css" />
+<link rel="stylesheet" href="http://php.news-leader.com/css/landingPage.css" type="text/css" />
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}/css/jquery.lightbox-0.5.css" media="screen" />
 <script type="text/javascript" src="{{MEDIA_URL}}/js/jquery.lightbox-0.5.js"></script>
@@ -14,6 +13,38 @@
 {% block content %}
 <script>
     $(document).ready(function(){
+        $("#details").click(function () 
+        {
+            $("#restaurant_details").show("slow");
+            $("#restaurant_inspections").hide("slow");
+            $("#fb_comments").hide("slow");
+
+            $("#details").removeClass("inactiveTab").addClass("activeTab");
+            $("#inspections").removeClass("activeTab").addClass("inactiveTab");
+            $("#comments").removeClass("activeTab").addClass("inactiveTab");
+        });  
+            
+        $("#inspections").click(function () {
+            $("#restaurant_details").hide("slow");
+            $("#restaurant_inspections").show("slow");
+            $("#fb_comments").hide("slow");
+
+            $("#details").removeClass("activeTab").addClass("inactiveTab");
+            $("#inspections").removeClass("inactiveTab").addClass("activeTab");
+            $("#comments").removeClass("activeTab").addClass("inactiveTab");
+        });  
+        
+        $("#comments").click(function () {
+            $("#restaurant_details").hide("slow");
+            $("#restaurant_inspections").hide("slow");
+            $("#fb_comments").show("slow");
+
+            $("#details").removeClass("activeTab").addClass("inactiveTab");
+            $("#inspections").removeClass("activeTab").addClass("inactiveTab");
+            $("#comments").removeClass("inactiveTab").addClass("activeTab");
+        });
+
+
         function set_cookie ( name, value, path, domain )
         {
             var cookie_string = name + "=" + escape ( value );
@@ -181,54 +212,64 @@
                 <p><b>Website:</b> <a href="{{restaurant.website}}" target="_new">{{restaurant.website}}</a></p>
             {% endif %}
         </div>
-        <div id="restaurant_details">
-            <h2>Inside Details</h2>
-            {% if restaurant.attributes %}
-                {% for attribute in restaurant.attributes %}
-                    <b>{{ attribute.name|title }}</b>: {{attribute.value|title}}<br />
-                {% endfor %}
-            {% else %}
-                No information available for this restaurant yet. <a href="#">Click here</a> to give us some info about "{{restaurant.name}}"
-            {% endif %}
-        </div>
-        <div id="restaurant_inspections">
-            {% if inspections %}
-                <h2>Inspections</h2>
-                {% for inspection in inspections %}
-                    <div style="border-bottom:1px dotted black;">
-                        <p><span style:"float-left;"><h4>{% if inspection.reinspection %}Reinspection:{% else %}Inspection:{% endif %}</h4>{{inspection.date|naturalday}}</span>
-                        <br />
-                        <span style=""><b>Violations</b><br />
-                            <i>Critical:</i> {{inspection.critical}} <br />
-                            <i>Noncritical:</i> {{inspection.noncritical}}
-                        </span>
-                        </p>
-                        {% if inspection.critical > 0 %}
-                            <p><b>Details:</b>&nbsp;&nbsp;{{inspection.critical_violations|safe}}</p>
-                        {% endif %}
-                        {% if inspection.notes != "" %}<p><b>Notes:</b> {{inspection.notes}}</p>{% endif %}
-                    </div>
-                {% endfor %}
-                <span style="border-bottom: 1px solid black;">&nbsp;</span>
-            {% endif %}
+        <div id="bottomTabs">
 
+            <span class="activeTab" id="details"><h2>Inside Details</h2></span>
+
+            <span class="inactiveTab" id="inspections"><h2>Inspections</h2></span>
+
+            <span class="inactiveTab" id="comments"><h2>Comments</h2></span>
+            
         </div>
-        <div id="fb_comments">
-            <h2>Comments</h2>
-            <div id="fb-root"></div>
-            <script>(function(d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) {return;}
-            js = d.createElement(s); js.id = id;
-            js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-            fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'facebook-jssdk'));</script>
-            <fb:comments href="{{restaurant.absolute_uri}}" num_posts="2" width="370"></fb:comments>
+
+        <div id="bottomTabsContent">
+
+            <div id="restaurant_details">
+               
+                {% if restaurant.attributes %}
+                    {% for attribute in restaurant.attributes %}
+                        <b>{{ attribute.name|title }}</b>: {{attribute.value|title}}<br />
+                    {% endfor %}
+                {% else %}
+                    No information available for this restaurant yet. <a href="#">Click here</a> to give us some info about "{{restaurant.name}}"
+                {% endif %}
+            </div>
+            <div id="restaurant_inspections">
+                {% if inspections %}
+                    
+                    {% for inspection in inspections %}
+                        <div style="border-bottom:1px dotted black;">
+                            <p><span style:"float-left;"><h4>{% if inspection.reinspection %}Reinspection:{% else %}Inspection:{% endif %}</h4>{{inspection.date|naturalday}}</span>
+                            <br />
+                            <span style=""><b>Violations</b><br />
+                                <i>Critical:</i> {{inspection.critical}} <br />
+                                <i>Noncritical:</i> {{inspection.noncritical}}
+                            </span>
+                            </p>
+                            {% if inspection.critical > 0 %}
+                                <p><b>Details:</b>&nbsp;&nbsp;{{inspection.critical_violations|safe}}</p>
+                            {% endif %}
+                            {% if inspection.notes != "" %}<p><b>Notes:</b> {{inspection.notes}}</p>{% endif %}
+                        </div>
+                    {% endfor %}
+                    <span style="border-bottom: 1px solid black;">&nbsp;</span>
+                {% endif %}
+
+            </div>
+            <div id="fb_comments">
+                
+                <div id="fb-root"></div>
+                <script>(function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) {return;}
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+                fjs.parentNode.insertBefore(js, fjs);
+                }(document, 'script', 'facebook-jssdk'));</script>
+                <fb:comments href="{{restaurant.absolute_uri}}" num_posts="2" width="370"></fb:comments>
+            </div>
         </div>
-    </div>
-    <div id="insideBottomNav_">
-        <img id="insideBottomNav" src="{{MEDIA_URL}}/images/insideBottomNav.gif" width="652" height="63" alt="" />
-    </div>
+   
 </div>
 <!-- End ImageReady Slices -->
 {% endblock  %}
