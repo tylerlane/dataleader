@@ -12,7 +12,7 @@ from django.utils import simplejson
 from django.views.decorators.cache import never_cache
 from django.views.decorators.csrf import csrf_exempt
 from restaurants.models import Restaurant, Inspection, Cuisine, Attribute, Neighborhood, Featured, Gallery,Pageview
-from restaurants.forms import SearchForm
+from restaurants.forms import SearchForm,FeedbackForm
 #import re
 #import simplejson
 #from calls.textutils import *
@@ -37,9 +37,21 @@ def index(request):
 def detail(request, restaurant_id):
     restaurant = Restaurant.objects.select_related().get(id=restaurant_id)
     inspections = Inspection.objects.filter(restaurant=restaurant)
+
+    
     #pull in our attributes
     restaurant.attributes = Attribute.objects.filter(restaurant=restaurant,active=True)
     restaurant.absolute_uri = request.build_absolute_uri()
+    message = ""
+    message += "Name: " + restaurant.name + "\r\n"
+    message += "Address: " + restaurant.address  + "\r\n"
+    message += "City: " + restaurant.city + "\r\n"
+    message += "State: " + restaurant.state + "\r\n"
+    message += "Zip: " + restaurant.zip_code + "\r\n"
+    message += "Website: " + restaurant.zip_code + "\r\n"
+    message += "Phone: " + restaurant.phone + "\r\n"
+    message += "Description: " + restaurant.description + "\r\n"
+    message += "-----------------\r\n"
     for attribute in restaurant.attributes:
         #replacing "_" with " "
         #attribute.name = " ".join(attribute.name.split("_"))
@@ -47,8 +59,11 @@ def detail(request, restaurant_id):
         #if attribute.comma_delimited:
         if attribute.value[-1:] == ",":
             attribute.value = attribute.value[0:-2]
+        message += attribute.name + ": " + attribute.value + "\r\n"
     if restaurant.rating is None:
         restaurant.rating = "0"
+    form = FeedbackForm(initial=[{'restaurant':restaurant.id,'message':message}])
+
     pageview = Pageview(restaurant=restaurant)
     pageview.save()
 
