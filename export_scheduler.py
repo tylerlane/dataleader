@@ -17,7 +17,9 @@ from scheduler.models import Position,Banner, Schedule
 
 #config variables for uploading the most viewed widget file
 UPLOAD_HOST = "ftp3.moc.gbahn.net"
-UPLOAD_PATH = "/moc.news-leader.com/home/includes/scheduler"
+#using cmsdev for now. i'll move to live once i have this working.
+#UPLOAD_PATH = "/moc.cmsdev.gdn.news-leader.com/home/templates/macros/"
+UPLOAD_PATHS = ("/moc.cmsdev.gdn.news-leader.com/home/templates/macros/", "/moc.news-leader.com/home/templates/macros",)
 UPLOAD_USERNAME = "springfield-cms"
 UPLOAD_PASSWORD = "b17biuT$"
 
@@ -27,50 +29,53 @@ print "making our FTP connection"
 ftp = ftplib.FTP()
 ftp.connect( UPLOAD_HOST, 21 )
 ftp.login( UPLOAD_USERNAME, UPLOAD_PASSWORD )
-# move to the desired upload directory
-ftp.cwd( UPLOAD_PATH )
+for UPLOAD_PATH in UPLOAD_PATHS:
+	# move to the desired upload directory
+	ftp.cwd( UPLOAD_PATH )
 
-#get our positions first
-positions = Position.objects.all()
-for position in positions: 
-	
-	banners = Banner.objects.filter( position = position )
-
-	display_banner = False
-
-	now = datetime.datetime.today()
-	temp = []
-	for banner in banners:
-		schedules = Schedule.objects.filter( banner = banner, start_time__lte = now, end_time__gte = now )
-	
-		if len( schedules ) >= 	1:
-			temp.append( banner )
+	#get our positions first
+	positions = Position.objects.all()
+	for position in positions: 
 		
-	if len( temp ) > 0:
-		banner = temp[ random.randrange( 0, len( temp ) ) ]
-	else:
-		banner = Banner()
-		banner.content = "<!-- This space intentionally left blank....... -->"
-	
-	
-	print "Generating html for banner @ position: %s " % position
-	banner = render_to_string("scheduler/banner.html", {'banner': banner } )
-	
-	print "Opening file"
-	file_name = position.file_name
-	fh = open( '/opt/django/data.news-leader.com/dataleader/temp/%s' % file_name, 'w' )
-	
-	print "Writing the html to our file"
-	fh.write( banner )
-	
-	print "Closing our file handler"
-	fh.close()
-	
-	#opening the file handler
-	fh = open( '/opt/django/data.news-leader.com/dataleader/temp/%s' % file_name , 'rb' )
-	print "uploading the file to the ftp server"
-	ftp.storbinary( 'STOR %s' % position.file_name, fh )
-	fh.close()
-	print "File Uploaded Successfully"
-#closing the ftp connection
+		banners = Banner.objects.filter(position=position, active=True)
+
+		display_banner = False
+
+		now = datetime.datetime.today()
+		temp = []
+		for banner in banners:
+			schedules = Schedule.objects.filter( banner = banner, start_time__lte = now, end_time__gte = now )
+		
+			if len( schedules ) >= 	1:
+				temp.append( banner )
+			
+		if len( temp ) > 0:
+			banner = temp[ random.randrange( 0, len( temp ) ) ]
+		else:
+			banner = Banner()
+			banner.content = "<!-- This space intentionally left blank....... -->"
+		
+		
+		print "Generating html for banner @ position: %s " % position
+		banner = render_to_string("scheduler/banner.html", {'banner': banner } )
+		try:
+			print "Opening file"
+			file_name = position.file_name
+			fh = open( '/opt/django/data.news-leader.com/dataleader/temp/%s' % file_name, 'w' )
+			
+			print "Writing the html to our file"
+			fh.write( banner )
+			
+			print "Closing our file handler"
+			fh.close()
+			
+			#opening the file handler
+			fh = open( '/opt/django/data.news-leader.com/dataleader/temp/%s' % file_name , 'rb' )
+			print "uploading the file to the ftp server"
+			ftp.storbinary( 'STOR %s' % position.file_name, fh )
+			fh.close()
+			print "File Uploaded Successfully"
+		except:
+			print "Failed creating file for banner @ position: %s" % position
+	#closing the ftp connection
 ftp.close()

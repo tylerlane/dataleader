@@ -35,7 +35,7 @@
     float: left;
     width:107px;
     min-height:490px;
-    background: url("http://10.37.76.155:8000/static/images/gradient1px.jpg") repeat-x;
+    background: url("http://10.37.76.226:8000/static/images/gradient1px.jpg") repeat-x;
 }
 
 #DineDrinkTitle_ {
@@ -48,7 +48,7 @@
     float: right;
     width:542px;
     min-height:490px;
-    background: url("http://10.37.76.155:8000/static/images/gradient1px.jpg") repeat-x;
+    background: url("http://10.37.76.226:8000/static/images/gradient1px.jpg") repeat-x;
 }
 
 #InsideTitle_ {
@@ -144,7 +144,7 @@
     float: left;
     width:44px;
     height:554px;
-    background: url("http://10.37.76.155:8000/static/images/gradient1px.jpg") repeat-x;
+    background: url("http://10.37.76.226:8000/static/images/gradient1px.jpg") repeat-x;
 }
 
 #ListingsTitle_ {
@@ -157,7 +157,7 @@
     float: right;
     width:88px;
     height:554px;
-    background: url("http://10.37.76.155:8000/static/images/gradient1px.jpg") repeat-x;
+    background: url("http://10.37.76.226:8000/static/images/gradient1px.jpg") repeat-x;
     
 }
 
@@ -216,7 +216,7 @@
     float:left;
     width:44px;
     height:551px;
-    background: url("http://10.37.76.155:8000/static/images/gradient1px.jpg") repeat-x;
+    background: url("http://10.37.76.226:8000/static/images/gradient1px.jpg") repeat-x;
 
 }
 
@@ -230,7 +230,7 @@
     float:right;
     width:233px;
     min-height:551px;
-    background: url("http://10.37.76.155:8000/static/images/gradient1px.jpg") repeat-x;
+    background: url("http://10.37.76.226:8000/static/images/gradient1px.jpg") repeat-x;
 }
 
 #insideMainContent_ {

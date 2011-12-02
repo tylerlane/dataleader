@@ -1,67 +1,6 @@
 {% extends "cobrand_template.html" %}
 {% block headers %}
-<title>Contact Form</title>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
-<script type="text/javascript" src="http://www.news-leader.com/scripts/custom/jquery.counter-1.0.min.js"></script>
-
-<script type="text/javascript">
-  $(document).ready(function(){
-      var $num_words = 300;
-      if( $("#id_feedback_type").val() == 'letter_to_editor' )
-        {
-           $num_words = 300;
-        }
-        if( $("#id_feedback_type").val() == 'to_the_point' )
-        {
-           $num_words = 100;
-        }
-        if( $("#id_feedback_type").val() == 'rose_thorn' )
-        {
-           $num_words = 100;
-        }
-
-        if( $("#id_feedback_type").val() == 'voice_of_day' )
-        {
-           $num_words = 500;
-        }
-      $("#id_message").counter({
-        type: 'word',
-        goal: $num_words
-        });
-      $("#id_feedback_type").change(function(){
-        $("#id_message_counter").html(" ");
-        if( $(this).val() == 'letter_to_editor' )
-        {
-           $("#id_message").counter({
-              type: 'word',
-              goal: 300
-           });
-        }
-        if( $(this).val() == 'to_the_point' )
-        {
-           $("#id_message").counter({
-              type: 'word',
-              goal: 100
-           });
-        }
-        if( $(this).val() == 'rose_thorn' )
-        {
-           $("#id_message").counter({
-              type: 'word',
-              goal: 100
-           });
-        }
-
-        if( $(this).val() == 'voice_of_day' )
-        {
-           $("#id_message").counter({
-              type: 'word',
-              goal: 500
-           });
-        }
-      });
-    });
-</script>
+<title>Worker of the Week</title>
 <style>
 	body {
 		margin-left: auto;
@@ -77,7 +16,6 @@
 	
 	.fieldWrapper {
 		min-height: 40px;
-		border-bottom: solid 1px #CACACA; 
 		padding: 8px 0 8px 0;
 	}
 	
@@ -124,32 +62,24 @@
   again.
   </p>
 {% endif %}
-<form method="POST" action="{% url feedback-index %}">
+<form enctype="multipart/form-data" method="POST" action="{% url worker-form %}">
 {% csrf_token %}
-<h2>Contact Form</h2>
-   <div class="fieldWrapper">
-       <div style="margin-bottom: -6px;"><label for="id_name">I'd like to submit a: </label></div><br />
-       {{ form.feedback_type }} {{ form.feedback_type.errors }}	
-   </div>
+<h2>Worker of the Week Entry Form</h2>
    <div class="fieldWrapper">
         <label for="id_name">Name</label><br />
         {{ form.name }} {{ form.name.errors }}
     </div>
     <div class="fieldWrapper">
-        <label for="id_address">Address</label><br />
-        {{ form.address }} {{ form.address.errors }}
+        <label for="id_company">Company</label><br />
+        {{ form.company }} {{ form.company.errors }}
     </div>
     <div class="fieldWrapper">
-        <label for="id_city">City</label><br />
-        {{ form.city }} {{ form.city.errors }}
+        <label for="id_nominated_by">Nominated By</label><br />
+        {{ form.nominated_by }} {{ form.nominated_by.errors }}
     </div>
     <div class="fieldWrapper">
-        <label for="id_state">State</label><br />
-        {{ form.state }} {{ form.state.errors }}
-    </div>
-    <div class="fieldWrapper">
-        <label for="id_zip_code">Zip Code</label><br />
-        {{ form.zip_code }} {{ form.zip_code.errors }}
+        <label for="id_business_name">Business Name</label><br />
+        {{ form.business_name }} {{ form.business_name.errors }}
     </div>
     <div class="fieldWrapper">
         <label for="id_phone_number">Phone Number</label><br />
@@ -160,16 +90,33 @@
         {{ form.email }} {{ form.email.errors }}
     </div>
     <div class="fieldWrapper">
-        <label for="id_coppa">Age</label><br />
-        {{ form.coppa }} {{ form.coppa.errors }}<br />
-        <br /><span class="EmailLegal">COPPA: The Children's Online Privacy Protection Act (COPPA) requires us to ask the following question. If you have any questions about COPPA, see our <a href="http://www.news-leader.com/apps/pbcs.dll/section?Category=PRIVACY" target="_blank">Privacy Statement</a>.</span>
+        <label for="id_nominee_do">What does your nominee do?</label><br />
+		    {{ form.nominee_do.errors }}<br />
+        {{ form.nominee_do }}
+     </div>
+     <div class="fieldWrapper">
+        <label for="id_nominee_special">What makes your nominee special?</label><br />
+	    	{{ form.nominee_special.errors }}<br />
+        {{ form.nominee_special }}
+    </div>
+    <div class="fieldWrapper">
+        <label for="id_nominee_worked">How long has this worker been with your company?</label><br />
+		    {{ form.nominee_worked.errors }}<br />
+        {{ form.nominee_worked }}
+     </div>
+     <div class="fieldWrapper">
+        <label for="id_nominee_addl_comments">Additional Comments</label><br />
+    		{{ form.nominee_addl_comments.errors }}<br />
+        {{ form.nominee_addl_comments }}
+    </div>
+    <div class="fieldWrapper">
+        <label for="id_image">Image</label><br />
+          {{ form.image}} {{ form.image.errors }}
     </div>
 
-    <div class="fieldWrapper">
-        <label for="id_message">Message:</label><br />
-		{{ form.message.errors }}<br />
-        {{ form.message }}
-    </div>
+
+
+
 
 
     <p><button type="submit" class="search_btn">Send message</button></p>

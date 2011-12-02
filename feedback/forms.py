@@ -38,3 +38,28 @@ class ContactForm(forms.Form):
 
     return self.cleaned_data["coppa"]
 
+
+class WorkerForm( forms.Form ):
+  name = forms.CharField( max_length=150, required=True )
+  company = forms.CharField( max_length=150, required = True )
+  nominated_by = forms.CharField( max_length = 150, required = True,label="Nominated By" )
+  business_name = forms.CharField( max_length = 150, required = False, label="Name of Business")
+  phone_number = USPhoneNumberField( required = True )
+  email = forms.EmailField( required = True )
+  nominee_do = forms.CharField( label='What does your nominee do?',widget=forms.Textarea(attrs={'rows':5,'cols':60}),required=True)
+  nominee_special = forms.CharField( label='What makes your nominee special?',widget=forms.Textarea(attrs={'rows':8,'cols':60}),required=True)
+  nominee_worked = forms.CharField( label='How long has this worker been with your company?',widget=forms.Textarea(attrs={'rows':2,'cols':60}),required=True)
+  nominee_addl_comments = forms.CharField( label='Additional comments',widget=forms.Textarea(attrs={'rows':5,'cols':60}), required=False)
+  image = forms.ImageField( label="Picture of Nominee" )
+
+ 
+class ChristmasForm( forms.Form ):
+  name = forms.CharField( max_length=150, required=True )
+  address = forms.CharField( max_length=255, required=False )
+  city = forms.CharField( max_length=100, required=True )
+  state = USStateField( required=True, widget=forms.Select(choices = STATE_CHOICES))
+  zip_code = USZipCodeField(required=False )
+  phone_number = USPhoneNumberField( required=True )
+  email = forms.EmailField( required=False )
+  story = forms.CharField( label='What\'s special about your display?', widget=forms.Textarea(attrs={'rows':5,'cols':60}),required=True)
+  image = forms.ImageField( label="Picture of your display", required=True )

@@ -15,12 +15,13 @@ class BannerAdmin(admin.ModelAdmin):
 	inlines = [
 		ScheduleInlineAdmin,
 	]
-	
+	list_filter = ( 'position', 'active',)
 	list_display = ('name','active',)
 
 
 class ScheduleAdmin(admin.ModelAdmin):
-	pass
+	#list_filter = ( 'banner__position', )
+	list_display = ('banner', 'start_time','end_time',)
 
 
 admin.site.register(Position, PositionAdmin)

@@ -26,6 +26,9 @@ class Schedule( models.Model ):
 	banner = models.ForeignKey( Banner )
 	start_time = models.DateTimeField( blank = False )
 	end_time = models.DateTimeField( blank = False )
+
+	def position( self ):
+		return self.banner.position
 	
 	def __unicode__( self ):
 		return u'%s  - %s to %s' % (self.banner.name, self.start_time,self.end_time )

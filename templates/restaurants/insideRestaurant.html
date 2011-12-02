@@ -231,7 +231,7 @@
                         <b>{{ attribute.name|title }}</b>: {{attribute.value|title}}<br />
                     {% endfor %}
                 {% else %}
-                    No information available for this restaurant yet. <a href="#">Click here</a> to give us some info about "{{restaurant.name}}"
+                    No information available for this restaurant yet. <a href="mailto:online@news-leader.com?subject=Updated Info: {{restaurant.name}}">Click here</a> to give us some info about "{{restaurant.name}}"
                 {% endif %}
             </div>
             <div id="restaurant_inspections">

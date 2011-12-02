@@ -1,16 +1,20 @@
 # Create your views here
 import datetime
-from django.core.mail import send_mail
-#from django.template.loader import render_to_string
+from django.core.files.uploadedfile import SimpleUploadedFile
+from django.core.mail import send_mail,EmailMultiAlternatives
+from django.template.loader import render_to_string
 from django.http import Http404,HttpResponse,HttpResponseRedirect
 from django import forms
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-from forms import ContactForm
-from models import FEEDBACK_TYPE_CHOICES
-from feedback.models import Feedback
 from django.views.decorators.cache import never_cache
+from email.mime.image import MIMEImage
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from feedback.models import Feedback
+from forms import ContactForm,WorkerForm,ChristmasForm
 import logging
+from models import FEEDBACK_TYPE_CHOICES
 
 @never_cache
 def index( request ):
@@ -36,6 +40,7 @@ def index( request ):
         message += u'IP Address: ' + request.META['REMOTE_ADDR'] +'\r\n' 
         message += u'Referer: ' + request.META['HTTP_REFERER'] +'\r\n'
         message += u'Number of Words: ' + str( len(cd['message'].split()) ) +'\r\n'
+        message += u'COPPA: ' + cd['coppa'] +'\r\n'
         #saving feedback in the database
         feedback = Feedback()
         feedback.feedback_type = cd['feedback_type']
@@ -88,7 +93,9 @@ def index( request ):
             )
 
         #secondary message to the user without the debug
-        message = u'Name: ' + cd['name'] + '\r\n'
+        message = u'Thank you for submitting your feedback. It has been sent to editors for evaluation.\r\n'
+        message += u'Below is a copy for your records:\r\n'
+        message += u'Name: ' + cd['name'] + '\r\n'
         message += u'Address: ' + cd['address'] +'\r\n'
         message += u'City: ' + cd['city'] +'\r\n'
         message += u'State: ' + cd['state'] +'\r\n'
@@ -126,3 +133,112 @@ def thanks( request ):
 def error( request ):
   #a function to show an error page
   return render_to_response('feedback/error.html',context_instance=RequestContext(request))
+
+
+def worker_form( request ):
+  if request.method == "POST":
+    form = WorkerForm(request.POST,request.FILES)
+    if form.is_valid():
+      cd = form.cleaned_data
+      #Load the image you want to send at bytes
+      #utf8_file = codecs.EncodedFile(request.FILES['file_field'],"utf-8")
+      img_data = request.FILES["image"].open()
+      # Create a "related" message container that will hold the HTML 
+      # message and the image
+      #msg = MIMEMultipart(_subtype='related')
+      # Create the body with HTML. Note that the image, since it is inline, is 
+      # referenced with the URL cid:myimage... you should take care to make
+      # "myimage" unique
+      message_text = u'<b>Name:</b> ' + cd['name'] + '<br />'
+      message_text += u'<b>Company:</b> ' + cd['company'] +'<br />'
+      message_text += u'<b>Nominated By:</b> ' + cd['nominated_by'] +'<br />'
+      message_text += u'<b>Business Name:</b> ' + cd['business_name'] +'<br />'
+      message_text += u'<b>Phone:</b> ' + cd['phone_number'] +'<br />'
+      message_text += u'<b>Email:</b> ' + cd['email'] +'<br />'
+      message_text += u'<b>What does your nominee do?:</b> ' + cd['nominee_do'] +'<br />'
+      message_text += u'<b>What makes your nominee special?:</b> ' + cd['nominee_special'] +'<br />'
+      message_text += u'<b>How long has this worker been with your company?:</b> ' + cd['nominee_worked'] +'<br />'
+      message_text += u'<b>Additional Comments: </b>' + cd['nominee_addl_comments'] +'<br />'
+      message_text += u'<b>Image</b>: attached '
+      #body = MIMEText( message_text , _subtype='html')
+      #msg.attach(body)
+
+      # Now create the MIME container for the image
+      #img = MIMEImage(img_data, 'jpeg')
+      #img.add_header('Content-Id', '<myimage>')  # angle brackets are important
+      #msg.attach(img)
+      msg = EmailMultiAlternatives('Worker of the Week Submission: ' + cd['name'],'some text here','online@news-leader.com', ['csain@gannett.com','tlane2@gannett.com','mpeterson4@gannett.com'],)
+      msg.attach_alternative( message_text, 'text/html')
+      msg.attach(request.FILES["image"].name,request.FILES["image"].read())
+      msg.send()
+      
+      #send_mail("Worker of the week Submission", msg.as_string(),"online@news-leader.com",['csain@gannett.com','tlane2@gannett.com','mpeterson4@gannett.com'],)
+
+      return HttpResponseRedirect('/feedback/worker/thanks')
+
+      #except:
+      #  #there was an error.. send to the error page.
+      #  return HttpResponseRedirect('/feedback/worker/error')
+  else:
+    form = WorkerForm()
+
+  return render_to_response( 'feedback/worker/form.html', {'form':form}, context_instance = RequestContext(request))
+
+def worker_thanks( request ):
+  return render_to_response('feedback/worker/thanks.html', context_instance=RequestContext(request))
+
+def worker_error( request ):
+  return render_to_response('feedback/worker/error.html', context_instance=RequestContext(request))
+
+def christmas_form( request ):
+  if request.method == "POST":
+    form = ChristmasForm(request.POST,request.FILES)
+    if form.is_valid():
+      cd = form.cleaned_data
+      #Load the image you want to send at bytes
+      #utf8_file = codecs.EncodedFile(request.FILES['file_field'],"utf-8")
+      img_data = request.FILES["image"].open()
+      # Create a "related" message container that will hold the HTML 
+      # message and the image
+      #msg = MIMEMultipart(_subtype='related')
+      # Create the body with HTML. Note that the image, since it is inline, is 
+      # referenced with the URL cid:myimage... you should take care to make
+      # "myimage" unique
+      message_text = u'<b>Name:</b> ' + cd['name'] + '<br />'
+      message_text += u'<b>Address:</b>' + cd['address'] +'<br />'
+      message_text += u'<b>City:</b>' + cd['city'] +'<br />'
+      message_text += u'<b>State:</b>' + cd['state'] +'<br />'
+      message_text += u'<b>Address:</b>' + cd['address'] +'<br />'
+      message_text += u'<b>Phone:</b> ' + cd['phone_number'] +'<br />'
+      message_text += u'<b>Email:</b> ' + cd['email'] +'<br />'
+      message_text += u'<b>Story:</b> ' + cd['story'] +'<br />'
+      message_text += u'<b>Image</b>: attached '
+      #body = MIMEText( message_text , _subtype='html')
+      #msg.attach(body)
+
+      # Now create the MIME container for the image
+      #img = MIMEImage(img_data, 'jpeg')
+      #img.add_header('Content-Id', '<myimage>')  # angle brackets are important
+      #msg.attach(img)
+      msg = EmailMultiAlternatives('Christmas Lights Submission: ' + cd['name'],'some text here','online@news-leader.com', ['aolding@gannett.com','tlane2@gannett.com','mpeterson4@gannett.com','ggarrison@News-Leader.com'],)
+      msg.attach_alternative( message_text, 'text/html')
+      msg.attach(request.FILES["image"].name,request.FILES["image"].read())
+      msg.send()
+      
+      #send_mail("Worker of the week Submission", msg.as_string(),"online@news-leader.com",['csain@gannett.com','tlane2@gannett.com','mpeterson4@gannett.com'],)
+
+      return HttpResponseRedirect('/feedback/christmas/thanks')
+
+      #except:
+      #  #there was an error.. send to the error page.
+      #  return HttpResponseRedirect('/feedback/worker/error')
+  else:
+    form = ChristmasForm(initial={'state':'MO'})
+
+  return render_to_response( 'feedback/christmas/form.html', {'form':form}, context_instance = RequestContext(request))
+
+def christmas_thanks( request ):
+  return render_to_response('feedback/christmas/thanks.html', context_instance=RequestContext(request))
+
+def christmas_error( request ):
+  return render_to_response('feedback/christmas/error.html', context_instance=RequestContext(request))

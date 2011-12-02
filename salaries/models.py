@@ -5,6 +5,8 @@ EMPLOYMENT_CHOICES = (
 	('parttime', 'Part-Time'),
 	('contract', 'Contract'),
 	('freelance', 'Freelance'),
+	('temp', 'Temp/Seasonal'),
+	('other', 'other'),
 )
 
 COMPENSATION_CHOICES = (

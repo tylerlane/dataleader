@@ -5,18 +5,17 @@ import datetime
 from django.core.paginator import Paginator
 from django.db.models import Avg,Min,Max,Count,F,Q
 from django.http import HttpResponseRedirect, Http404, HttpResponse
-from django.shortcuts import render_to_response,redirect
+from django.shortcuts import render_to_response, redirect
 #from django.template.loader import render_to_string
 from django.template import RequestContext
 from django.utils import simplejson
 from django.views.decorators.cache import never_cache
 from django.views.decorators.csrf import csrf_exempt
-from restaurants.models import Restaurant, Inspection, Cuisine, Attribute, Neighborhood, Featured, Gallery,Pageview
+from restaurants.models import Restaurant, Inspection, Cuisine, Attribute, Neighborhood, Featured, Gallery, Pageview
 from restaurants.forms import SearchForm,FeedbackForm
 #import re
 #import simplejson
 #from calls.textutils import *
-
 #variable for items per page
 ITEMS_PER_PAGE = 25
 
@@ -24,7 +23,7 @@ ITEMS_PER_PAGE = 25
 @never_cache
 def index(request):
     main_featured = Featured.objects.all().order_by("-date")[0]
-    main_featured.galleries = Gallery.objects.filter( restaurant = main_featured.restaurant )
+    main_featured.galleries = Gallery.objects.filter(restaurant=main_featured.restaurant)
     features = Featured.objects.all().order_by("?").exclude(restaurant=main_featured.restaurant)[0:1]
     for feature in features:
         feature.galleries = Gallery.objects.filter( restaurant=feature.restaurant )
@@ -42,15 +41,24 @@ def detail(request, restaurant_id):
     #pull in our attributes
     restaurant.attributes = Attribute.objects.filter(restaurant=restaurant,active=True)
     restaurant.absolute_uri = request.build_absolute_uri()
+    
     message = ""
-    message += "Name: " + restaurant.name + "\r\n"
-    message += "Address: " + restaurant.address  + "\r\n"
-    message += "City: " + restaurant.city + "\r\n"
-    message += "State: " + restaurant.state + "\r\n"
-    message += "Zip: " + restaurant.zip_code + "\r\n"
-    message += "Website: " + restaurant.zip_code + "\r\n"
-    message += "Phone: " + restaurant.phone + "\r\n"
-    message += "Description: " + restaurant.description + "\r\n"
+    if restaurant.name is not None:
+        message += "Name: " + restaurant.name + "\r\n"
+    if restaurant.address is not None:
+        message += "Address: " + restaurant.address  + "\r\n"
+    if restaurant.city is not None:
+        message += "City: " + restaurant.city + "\r\n"
+    if restaurant.state is not None:
+        message += "State: " + restaurant.state + "\r\n"
+    if restaurant.zip_code is not None:
+        message += "Zip: " + restaurant.zip_code + "\r\n"
+    if restaurant.website is not None:
+        message += "Website: " + restaurant.website + "\r\n"
+    if restaurant.phone is not None:
+        message += "Phone: " + restaurant.phone + "\r\n"
+    if restaurant.description is not None:
+        message += "Description: " + restaurant.description + "\r\n"
     message += "-----------------\r\n"
     for attribute in restaurant.attributes:
         #replacing "_" with " "
@@ -494,8 +502,9 @@ def restaurants_not_updated(request, page=None):
             'is_first': p == 1,
             'is_last': p == pages.num_pages},
             context_instance=RequestContext(request))
+
 @never_cache
-def mark_restaurant_updated(request, restaurant,to, page=None):
+def mark_restaurant_updated(request, restaurant, to, page=None):
     restaurant = Restaurant.objects.get(id=restaurant)
     restaurant.status = "UPDATED"
     restaurant.last_updated = datetime.datetime.today()
