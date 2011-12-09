@@ -4,7 +4,7 @@
 <title>News-Leader.com Restaurants</title>
 <link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}/restaurants.css"></link>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<link rel="stylesheet" href="{{MEDIA_URL}}/landingPage.css" type="text/css" />
+<link rel="stylesheet" href="http://php.news-leader.com/css/landingPage.css" type="text/css" />
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
 {% endblock %}
 {% block content %}
@@ -25,12 +25,13 @@
     </div>
 
     <div id="ListingsContentWell">
+        <h2>Most recent Greene County restaurant inspections</h2>
        {% for inspection in inspections %}
             <div class="restaurantListing">
                 <h3 class="restaurantListingName"><a href="{%url restaurant-detail inspection.restaurant.id %}">{{inspection.restaurant.name}}</a></h3>
                 <p class="restaurantListingInfo">{{inspection.restaurant.address}}, {{inspection.restaurant.city}}, {{inspection.restaurant.state|default:"MO"}} {{inspection.restaurant.phone|default:""}}</p>
                 <p class="restaurantListingSummary"><b>Most Recent Inspection</b>: {{inspection.date|naturalday}}</p>
-                <p class="restaurantListingSummary"><b>Critical Violations</b>: {{inspection.critical|apnumber}}</p>
+                <p class="restaurantListingSummary"><b>Critical Violations</b>: {{inspection.critical}}</p>
             </div>
         {% endfor %}
         <div id="listingPages">

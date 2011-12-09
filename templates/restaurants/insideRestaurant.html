@@ -163,13 +163,14 @@
             <a href="{{restaurant.photo_url}}" class="lightbox"><img src="{{restaurant.photo_url}}" style="width:225px; margin-top:25px;margin-left:5px;" /></a>
         {% endif %}
         {% if restaurant.geom %}
-            <div style="margin-left: 5px;">
-                <h5 style="color:white;margin-top:25px;">Map</h5>
+            <div style="margin-left: 5px;padding-bottom: 10px; height:245px;margin-top:25px;">
+                <h5 style="color:white">Map</h5>
                 <img src="http://maps.googleapis.com/maps/api/staticmap?zoom=13&size=225x225&scale=1&maptype=roadmap&markers=color:red%7Clabel:A%7C{{restaurant.geom.y}},{{restaurant.geom.x}}&sensor=false" />
                 <div style="color:white;float:left;clear:both;margin-top:5px;">{{restaurant.address}}, {{restaurant.city}} {{restaurant.state}} {{restaurant.zip_code|default_if_none:""}}</div>
                 <div style="color:white;float:left;clear:both:margin-top:5px;">{{restaurant.phone|default_if_none:""}}</div>
             </div>
         {% endif %}
+      
     </div>
     <div id="insideMainContent_">
         <div id="restaurant_main">
@@ -203,13 +204,28 @@
             {% endif %}
             <p>{{restaurant.description|safe|default:""|linebreaksbr}}</p>
             {% if restaurant.cuisine.all %}
-            <p><b>Cuisine:</b> {% for cuisine in restaurant.cuisine.all %}{% firstof cuisine.label|title cuisine.name|title %}{% if forloop.last %}{% else %}, {% endif %}{% endfor %}</p>
+            <p><b>Cuisine:</b> {% for cuisine in restaurant.cuisine.all %}<a href="{% url list_restaurants_cuisine cuisine.name 1 %}">{% firstof cuisine.label|title cuisine.name|title %}</a>{% if forloop.last %}{% else %}, {% endif %}{% endfor %}</p>
             {% endif %}
             {% if restaurant.hours and restaurant.hours != "None" %}
                 <p><b>Hours:</b> {{restaurant.hours}}</p>
             {% endif %}
             {% if restaurant.website %}
                 <p><b>Website:</b> <a href="{{restaurant.website}}" target="_new">{{restaurant.website}}</a></p>
+            {% endif %}
+            {% if galleries %}
+                <p><b>Galler{{galleries|pluralize:"y,ies"}}:</b>
+                    {% for gallery in galleries %}
+                        <a href="{{gallery.gallery_url}}">{{gallery.date|date:"F j, Y"}}</a>
+                    {% endfor %}
+                </p>
+            {% endif %}
+            {% if featureds %}
+                <p><b>Profile{{galleries|pluralize}}:</b>
+                    {% for featured in featureds %}
+                        <a href="{{featured.external_url}}">{{featured.title|title}} - {{featured.date|date:"F j, Y"}}</a>
+                        <br />
+                    {% endfor %}
+                <p>
             {% endif %}
         </div>
         <div id="bottomTabs">
@@ -223,9 +239,7 @@
         </div>
 
         <div id="bottomTabsContent">
-
             <div id="restaurant_details">
-               
                 {% if restaurant.attributes %}
                     {% for attribute in restaurant.attributes %}
                         <b>{{ attribute.name|title }}</b>: {{attribute.value|title}}<br />
@@ -236,7 +250,6 @@
             </div>
             <div id="restaurant_inspections">
                 {% if inspections %}
-                    
                     {% for inspection in inspections %}
                         <div style="border-bottom:1px dotted black;">
                             <p><span style:"float-left;"><h4>{% if inspection.reinspection %}Reinspection:{% else %}Inspection:{% endif %}</h4>{{inspection.date|naturalday}}</span>
@@ -254,7 +267,6 @@
                     {% endfor %}
                     <span style="border-bottom: 1px solid black;">&nbsp;</span>
                 {% endif %}
-
             </div>
             <div id="fb_comments">
                 
@@ -268,6 +280,9 @@
                 }(document, 'script', 'facebook-jssdk'));</script>
                 <fb:comments href="{{restaurant.absolute_uri}}" num_posts="2" width="370"></fb:comments>
             </div>
+            <br />
+            <br />
+            <br />
         </div>
    
 </div>

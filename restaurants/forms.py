@@ -12,4 +12,4 @@ class SearchForm(forms.Form):
 class FeedbackForm(forms.Form):
 	restaurant = forms.CharField(max_length=100,required=True)
 	email = forms.CharField(max_length=200, required=True)
-	message = forms.CharField()
+	

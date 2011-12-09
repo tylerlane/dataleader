@@ -24,7 +24,7 @@ ITEMS_PER_PAGE = 25
 def index(request):
     main_featured = Featured.objects.all().order_by("-date")[0]
     main_featured.galleries = Gallery.objects.filter(restaurant=main_featured.restaurant)
-    features = Featured.objects.all().order_by("?").exclude(restaurant=main_featured.restaurant)[0:1]
+    features = Featured.objects.all().order_by("?").exclude(restaurant=main_featured.restaurant)[0:2]
     for feature in features:
         feature.galleries = Gallery.objects.filter( restaurant=feature.restaurant )
     return render_to_response('restaurants/landingPage.html',
@@ -36,7 +36,8 @@ def index(request):
 def detail(request, restaurant_id):
     restaurant = Restaurant.objects.select_related().get(id=restaurant_id)
     inspections = Inspection.objects.filter(restaurant=restaurant)
-
+    galleries = Gallery.objects.filter(restaurant=restaurant)
+    featureds = Featured.objects.filter(restaurant=restaurant)
     
     #pull in our attributes
     restaurant.attributes = Attribute.objects.filter(restaurant=restaurant,active=True)
@@ -78,7 +79,10 @@ def detail(request, restaurant_id):
 
 
     return render_to_response('restaurants/insideRestaurant.html',
-        {'restaurant': restaurant, 'inspections': inspections},
+        {
+         'restaurant': restaurant, 'inspections': inspections,
+         'galleries': galleries, 'featureds': featureds
+        },
         context_instance=RequestContext(request))
 
 
@@ -300,14 +304,41 @@ def list_cuisines(request):
             {'cuisines': cuisines, "title": title},
             context_instance=RequestContext(request))
 
+
 @never_cache
-def list_restaurants_cuisine(request,cuisine):
+def list_restaurants_cuisine(request,cuisine,page=None):
+    #if no page is set
+    if page is None:
+        #set it to 1
+        page = 1
     cuisine = Cuisine.objects.get(name=cuisine)
     restaurants = Restaurant.objects.filter(cuisine = cuisine )
 
+    #pass to paginator
+    pages = Paginator(restaurants, ITEMS_PER_PAGE)
+    #get the page from the paginator
+    try:
+        p = pages.page(page)
+    except:
+        raise Http404
+    
+    path = 'list_restaurants_cuisine'
     return render_to_response('restaurants/restaurantListing.html',
-            {'restaurants': restaurants},
+            {'restaurants': p.object_list,
+            'page_range': pages.page_range,
+            'num_pages': pages.num_pages, 'page': p,
+            'has_pages': pages.num_pages > 1,
+            'has_previous': p.has_previous(),
+            'has_next': p.has_next(),
+            'previous_page': p.previous_page_number(),
+            'next_page': p.next_page_number(),
+            'is_first': p == 1,
+            'is_last': p == pages.num_pages,
+            'search_cuisine': cuisine,
+            'path': path
+            },
             context_instance=RequestContext(request))
+
 
 @never_cache
 def list_recent_inspections(request):
@@ -326,13 +357,41 @@ def list_neighborhoods(request):
             context_instance=RequestContext(request))
 
 @never_cache
-def list_restaurants_neighborhood(request, neighborhood):
+def list_restaurants_neighborhood(request, neighborhood,page=None):
+    #if no page is set
+    if page is None:
+        #set it to 1
+        page = 1
+
     neighborhood = Neighborhood.objects.get(name=neighborhood)
     restaurants = Restaurant.objects.filter(geom__within=neighborhood.geom)
 
+
+    #pass to paginator
+    pages = Paginator(restaurants, ITEMS_PER_PAGE)
+    #get the page from the paginator
+    try:
+        p = pages.page(page)
+    except:
+        raise Http404
+    path = 'list_restaurants_neighborhood'
+
     return render_to_response('restaurants/restaurantListing.html',
-            {'restaurants': restaurants},
+            {'restaurants': p.object_list,
+            'page_range': pages.page_range,
+            'num_pages': pages.num_pages, 'page': p,
+            'has_pages': pages.num_pages > 1,
+            'has_previous': p.has_previous(),
+            'has_next': p.has_next(),
+            'previous_page': p.previous_page_number(),
+            'next_page': p.next_page_number(),
+            'is_first': p == 1,
+            'is_last': p == pages.num_pages,
+            'neighborhood': neighborhood,
+            'path': list_restaurants_neighborhood
+            },
             context_instance=RequestContext(request))
+
 
 @never_cache
 def record_rating_vote(request, restaurant, rating):
@@ -351,7 +410,11 @@ def list_attributes(request):
             context_instance=RequestContext(request))
 
 @never_cache
-def list_attribute_values(request, attribute):
+def list_attribute_values(request, attribute,page=None):
+    #if no page is set
+    if page is None:
+        #set it to 1
+        page = 1
     attributes = Attribute.objects.filter(name=attribute).values("name","value").distinct()
     title = "<b>%s</b>" % attribute
     for attribute in attributes:
@@ -374,7 +437,11 @@ def list_attribute_values(request, attribute):
             context_instance=RequestContext(request))
 
 @never_cache
-def list_restaurants_attribute(request, attribute, value):
+def list_restaurants_attribute(request, attribute, value, page=None):
+    #if no page is set
+    if page is None:
+        #set it to 1
+        page = 1
     attributes = Attribute.objects.filter(name=attribute, value=value)
     restaurants = []
     for attribute in attributes:
@@ -382,9 +449,34 @@ def list_restaurants_attribute(request, attribute, value):
         restaurants.append(tmp)
     #restaurants = Restaurant.objects.filter(id__in=restaurants)
     title = "<b>%s</b> : <i>%s</i>" % (attribute, value)
+
+    #pass to paginator
+    pages = Paginator(restaurants, ITEMS_PER_PAGE)
+    #get the page from the paginator
+    try:
+        p = pages.page(page)
+    except:
+        raise Http404
+    
+    path = "list_restaurants_attribute"
     return render_to_response('restaurants/restaurantListing.html',
-            {'restaurants': restaurants,'title':title},
+            {'restaurants': p.object_list,
+            'page_range': pages.page_range,
+            'num_pages': pages.num_pages, 'page': p,
+            'has_pages': pages.num_pages > 1,
+            'has_previous': p.has_previous(),
+            'has_next': p.has_next(),
+            'previous_page': p.previous_page_number(),
+            'next_page': p.next_page_number(),
+            'is_first': p == 1,
+            'is_last': p == pages.num_pages,
+            'title': title,
+            'path': path,
+            'attribute': attribute,
+            'value': value
+            },
             context_instance=RequestContext(request))
+
 
 @csrf_exempt
 @never_cache
@@ -418,6 +510,29 @@ def display_top_rated(request):
     restaurants = Restaurant.objects.filter(active=True,rating__isnull=False).order_by('rating')
     restaurants = restaurants[0:20]
     title = "Top Rated Restaurants"
+
+     #pass to paginator
+    pages = Paginator(restaurants, ITEMS_PER_PAGE)
+    #get the page from the paginator
+    try:
+        p = pages.page(page)
+    except:
+        raise Http404
+
+    return render_to_response('restaurants/restaurantListing.html',
+            {'restaurants': p.object_list,
+            'page_range': pages.page_range,
+            'num_pages': pages.num_pages, 'page': p,
+            'has_pages': pages.num_pages > 1,
+            'has_previous': p.has_previous(),
+            'has_next': p.has_next(),
+            'previous_page': p.previous_page_number(),
+            'next_page': p.next_page_number(),
+            'is_first': p == 1,
+            'is_last': p == pages.num_pages,
+            'title': title
+            },
+            context_instance=RequestContext(request))
     
     return render_to_response('restaurants/restaurantListing.html',
             {'restaurants': restaurants,'title': title},

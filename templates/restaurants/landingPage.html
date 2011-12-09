@@ -1,7 +1,7 @@
 {% extends "cobrand_template.html" %}
 {% load humanize %}
 {% block headers %}
-<title>News-Leader.com Restaurants</title>
+<title>Restaurants and Dining | Springfield and the Ozarks - News-Leader.com</title>
 <link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}/restaurants.css"></link>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <link rel="stylesheet" href="http://php.news-leader.com/css/landingPage.css" type="text/css" />
@@ -24,37 +24,45 @@
             <br /><br />
             <div id="featured">
                 <div id="featureSummary">
-                    <a href="{{main_featured.external_url}}">
+                    <h4>Most recent profile</h4>
+                    <a href="{{main_featured.external_url}}" target="blank">
                     <h3 style="margin: 5px 0;">{{main_featured.title}}</h3>
-                    <img src="{{main_featured.photo_url}}" width="250 px" height="250 px" />
+                    <img src="{{main_featured.photo_url}}" width="250 px" height="250 px" style="margin: 0 10px; width: 250px; float: left;"/>
                     </a>
                     <br /><br />
-                    {{main_featured.summary}}
+                    {{main_featured.summary|safe}}
                      <br /><br />
 
                     {% for gallery in main_featured.galleries %}
-                        <br /><a href="{{gallery.gallery_url}}">{{main_featured.restaurant.name}} - Gallery: {{gallery.date|date:"m/d/Y"}}</a>
+                        <br /><a href="{{gallery.gallery_url}}" target="blank">{{main_featured.restaurant.name}} - Gallery: {{gallery.date|date:"m/d/Y"}}</a>
                     {% endfor %}
-                    <br /><a href="{% url restaurant-detail main_featured.restaurant.id %}">{{main_featured.restaurant.name}} - Profile Page</a>
+                    <br /><a href="{% url restaurant-detail main_featured.restaurant.id %}">{{main_featured.restaurant.name}} details page</a>
 
                 </div>
+
+                <h4>More profiles</h4>
+
                 {% for feature in features %}
-                    <div id="featureSpecials">
-                        <a href="{{feature.external_url}}">
-                        <h3>{{feature.title}}</h3>
-                        <img src="{{feature.photo_url}}" width="250 px" height="250 px" />
+                    <div class="featureSpecials{% if forloop.first %} featureSpecialsFirst {% endif %}">
+                        <a href="{{feature.external_url}}" target="blank">
+                        <h4>{{feature.title}}</h4>
+                        <img src="{{feature.photo_url}}" width="200px" />
                         </a>
-                        {{feature.summary}}
+                        <br style="clear: left;"/>
+                        {{feature.summary|safe}}
                         {% for gallery in feature.galleries %}
-                        <a href="{{gallery.gallery_url}}">{{feature.restaurant.name}} - Gallery: {{gallery.date|naturalday}}</a>
+                            <br /><br />
+                            <a href="{{gallery.gallery_url}}" target="blank">{{feature.restaurant.name}} - Gallery: {{gallery.date|naturalday}}</a>
                         {% endfor %}
+                        <br /><br />
+                        <a href="{% url restaurant-detail feature.restaurant.id %}">{{feature.restaurant.name}} details page</a>
                     </div>
                 {% endfor %}
             </div>
         </div>
     </div>
     <div id="MenuListing_">
-        <h3>Featured</h3>
+        <h3 class="highlighted">Profiles</h3>
         <h3><a href="{% url list_recent_inspections %}">Inspections</a></h3>
         <h3><a href="{% url display_top_rated %}">Top Rated</a></h3>
         <h3><a href="{% url display_most_viewed %}">Most Viewed</a></h3>

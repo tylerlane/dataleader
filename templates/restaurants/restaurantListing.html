@@ -4,8 +4,8 @@
 {% block headers %}
 <title>News-Leader.com Restaurants</title>
 <link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}/restaurants.css"></link>
+<link rel="stylesheet" href="http://php.news-leader.com/css/landingPage.css" type="text/css" />
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<link rel="stylesheet" href="{{MEDIA_URL}}/landingPage.css" type="text/css" />
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
 {% endblock %}
 {% block content %}
@@ -24,7 +24,6 @@
     </div>
     <div id="ListingsRightGradient_">
     </div>
-
     <div id="ListingsContentWell">
         <div id="listingAlphabet">
             {% spaceless %}
@@ -50,7 +49,7 @@
                     <p class="restaurantListingInfo">{{restaurant.address}}, {{restaurant.city}}, {{restaurant.state|default:"MO"}} {{restaurant.phone|default:""}}</p>
                     <p class="restauraltListingSummary">{{restaurant.description|default:""|safe}}</p>
                     {% if restaurant.cuisine.all %}
-                        <p class="restaurantListingSummary"><b>Cuisines:</b> {% for cuisine in restaurant.cuisine.all %}<i>{{cuisine.name}}</i>{% if forloop.last %}{% else %}, {% endif %}{% endfor %}</p>
+                        <p class="restaurantListingSummary"><b>Cuisines:</b> {% for cuisine in restaurant.cuisine.all %}<i><a href="{% url list_restaurants_cuisine cuisine.name 1 %}">{{cuisine.name}}</a></i>{% if forloop.last %}{% else %}, {% endif %}{% endfor %}</p>
                     {% endif %}
                 </div>
              {% endfor %}
@@ -63,7 +62,7 @@
                         <p class="restaurantListingInfo">{{restaurant.address}}, {{restaurant.city}}, {{restaurant.state|default:"MO"}} {{restaurant.phone|default:""}}</p>
                         <p class="restauraltListingSummary">{{restaurant.description|default:""|safe}}</p>
                         {% if restaurant.cuisine.all %}
-                            <p class="restaurantListingSummary"><b>Cuisines:</b> {% for cuisine in restaurant.cuisine.all %}<i>{{cuisine.name}}</i>{% if forloop.last %}{% else %}, {% endif %}{% endfor %}</p>
+                            <p class="restaurantListingSummary"><b>Cuisines:</b> {% for cuisine in restaurant.cuisine.all %}<i><a href="{% url list_restaurants_cuisine cuisine.name 1 %}">{{cuisine.name}}</a></i>{% if forloop.last %}{% else %}, {% endif %}{% endfor %}</p>
                         {% endif %}
                     </div>
                 {% endfor %}
@@ -74,7 +73,7 @@
                         <p class="restaurantListingInfo">{{restaurant.address}}, {{restaurant.city}}, {{restaurant.state|default:"MO"}} {{restaurant.phone|default:""}}</p>
                         <p class="restauraltListingSummary">{{restaurant.description|default:""|safe}}</p>
                         {% if restaurant.cuisine.all %}
-                            <p class="restaurantListingSummary"><b>Cuisines:</b> {% for cuisine in restaurant.cuisine.all %}<i>{{cuisine.name}}</i>{% if forloop.last %}{% else %}, {% endif %}{% endfor %}</p>
+                            <p class="restaurantListingSummary"><b>Cuisines:</b>{% for cuisine in restaurant.cuisine.all %}{% if cuisine != search_cuisine %}<i><a href="{% url list_restaurants_cuisine cuisine.name 1 %}">{% else %}<b>{% endif%}{{cuisine.name}}{% if cuisine != search_cuisine %}</i></a>{% else %}</b>{% endif %}{% if forloop.last %}{% else %}, {% endif %}{% endfor %}</p>
                         {% endif %}
                     </div>
                 {% endfor %}
@@ -82,8 +81,9 @@
         {% endif %}
 
         <div id="listingPages">
-             {% if has_previous %}
-                <a href="{% url restaurants-browse letter page.previous_page_number  %}">&laquo;prev</a>
+        {% if path == "list_restaurants_cuisine" %}
+            {% if has_previous %}
+                <a href="{% url list_restaurants_cuisine cuisine page.previous_page_number  %}">&laquo;prev</a>
             {% else %}
                 <span class="disabled">&laquo; prev</span>
             {% endif %}
@@ -91,14 +91,73 @@
                 {% if num == page.number %}
                     <span class="current">{{num}}</span>
                 {% else %}
-                    <a href="{% url restaurants-browse letter num %}">{{num}}</a>
+                    <a href="{% url list_restaurants_cuisine cuisine num %}">{{num}}</a>
                 {% endif %}
             {% endfor %}
             {% if has_next %}
-                <a href="{% url restaurants-browse letter page.next_page_number  %}">next &raquo;</a>
+                <a href="{% url list_restaurants_cuisine cuisine page.next_page_number  %}">next &raquo;</a>
             {% else %}
                 <span class="disabled">next &raquo;</span>
             {% endif %}
+        {% else %}
+            {% if path == "list_restaurants_neighborhood" %}
+                {% if has_previous %}
+                    <a href="{% url list_restaurants_neighborhood neighborhood page.previous_page_number  %}">&laquo;prev</a>
+                {% else %}
+                    <span class="disabled">&laquo; prev</span>
+                {% endif %}
+                {% for num in page_range %}
+                    {% if num == page.number %}
+                        <span class="current">{{num}}</span>
+                    {% else %}
+                        <a href="{% url list_restaurants_neighborhood neighborhood num %}">{{num}}</a>
+                    {% endif %}
+                {% endfor %}
+                {% if has_next %}
+                    <a href="{% url list_restaurants_neighborhood neighborhood page.next_page_number  %}">next &raquo;</a>
+                {% else %}
+                    <span class="disabled">next &raquo;</span>
+                {% endif %}
+            {% else %}
+                {% if path == "list_restaurants_attribute" %}
+                    {% if has_previous %}
+                        <a href="{% url list_restaurants_attribute attribute value page.previous_page_number  %}">&laquo;prev</a>
+                    {% else %}
+                        <span class="disabled">&laquo; prev</span>
+                    {% endif %}
+                    {% for num in page_range %}
+                        {% if num == page.number %}
+                            <span class="current">{{num}}</span>
+                        {% else %}
+                            <a href="{% url list_restaurants_attribute attribute value num %}">{{num}}</a>
+                        {% endif %}
+                    {% endfor %}
+                    {% if has_next %}
+                        <a href="{% url list_restaurants_attribute attribute value page.next_page_number  %}">next &raquo;</a>
+                    {% else %}
+                        <span class="disabled">next &raquo;</span>
+                    {% endif %}
+                {% else %}
+                    {% if has_previous %}
+                        <a href="{% url restaurants-browse letter page.previous_page_number  %}">&laquo;prev</a>
+                    {% else %}
+                        <span class="disabled">&laquo; prev</span>
+                    {% endif %}
+                    {% for num in page_range %}
+                        {% if num == page.number %}
+                            <span class="current">{{num}}</span>
+                        {% else %}
+                            <a href="{% url restaurants-browse letter num %}">{{num}}</a>
+                        {% endif %}
+                    {% endfor %}
+                    {% if has_next %}
+                        <a href="{% url restaurants-browse letter page.next_page_number  %}">next &raquo;</a>
+                    {% else %}
+                        <span class="disabled">next &raquo;</span>
+                    {% endif %}
+                {% endif %}
+            {% endif %}
+        {% endif %}
 
         </div>
     </div>
