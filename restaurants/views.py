@@ -669,3 +669,60 @@ def mark_restaurant_updated(request, restaurant, to, page=None):
         page = 1
 
     return redirect(to, page=page)
+
+@never_cache
+def update_restaurant_form(request, restaurant_id):
+    restaurant = Restaurant.objects.get(id=restaurant_id)
+    if request.method != "POST":
+        form = RestaurantForm(instance=restaurant)
+        submit = "no"
+    else:
+        submit = "yes"
+        form = RestaurantForm( request.POST )
+        if form.is_valid():
+            cd = form_cleaned_data
+            message = u'Name: ' + cd['name'] + '(' + restaurant.id +')\r\n'
+            message += u'Address: ' + cd['address'] +'\r\n'
+            message += u'City: ' + cd['city'] +'\r\n'
+            message += u'State: ' + cd['state'] +'\r\n'
+            message += u'Zip Code: ' + cd['zip_code'] +'\r\n'
+            message += u'Website: ' + cd['website'] +'\r\n'
+            message += u'Phone: ' + cd['phone'] +'\r\n'
+            message += u'Hours: ' + cd['hours'] + '\r\n'
+            message += u'Description: ' + cd['description'] + '\r\n'
+            message += u'\r\n\r\n\r\nDebug Information\r\rUser Agent: ' + request.META['HTTP_USER_AGENT'] +'\r\n' 
+            message += u'IP Address: ' + request.META['REMOTE_ADDR'] +'\r\n' 
+            message += u'Referer: ' + request.META['HTTP_REFERER'] +'\r\n'
+            #saving feedback in the database
+            #feedback = Feedback()
+            #feedback.feedback_type = cd['feedback_type']
+            #feedback.name = cd['name']
+            #feedback.address = cd['address']
+            #feedback.city = cd['city']
+            #feedback.state = cd['state']
+            #feedback.zip_code = cd['zip_code']
+            #feedback.phone_number = cd['phone_number']
+            #feedback.email = cd['email']
+            #feedback.message = message
+            #saving the feedback
+            #feedback.save()
+
+            #setting where the email goes
+            #by default everything goes to letters UNLESS specified
+            #to = "letters@news-leader.com"
+            #sending the email
+            send_mail(
+                'News-Leader.com Restaurant:' +  restaurant.name + ' Submission: ' + str(cd['name']),
+                message,
+                'online@news-leader.com',
+                [to,'tlane2@gannett.com','mpeterson4@gannett.com',],
+                )
+
+    return render_to_response('restaurants/update_restaurant_form.html',
+        {
+            'restaurant': restaurant,
+            'form': form,
+            'submit': submit 
+        }, context_instance=RequestContext(request))
+
+    

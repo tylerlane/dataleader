@@ -250,11 +250,8 @@
                         <b>{{ attribute.name|title }}</b>: {{attribute.value|title}}<br />
                     {% endfor %}
                 {% else %}
-                    No information available for this restaurant yet. <a href="mailto:online@news-leader.com?subject=Updated Info: {{restaurant.name}}">Click here</a> to give us some info about "{{restaurant.name}}"
-                    <hr />
-                    <ul>
-                    {{rest_form.as_ul}}
-                    </ul>
+                    No information available for this restaurant yet. Feel free to give us some info about "{{restaurant.name}}" by clicking <a href="{% url update_restaurant_form restaurant.id %}">here</a>
+              
                 {% endif %}
             </div>
             <div id="restaurant_inspections">

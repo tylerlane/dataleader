@@ -3,6 +3,7 @@ from django.conf.urls.defaults import *
 urlpatterns = patterns('restaurants.views',
     url(r'^restaurants/$', 'index', name='restaurants-index' ),
     url(r'^restaurants/detail/(?P<restaurant_id>.*)$', 'detail', name='restaurant-detail' ),
+    url(r'^restaurants/update/(?P<restaurant_id>.*)$','update_restaurant_form',name='update_restaurant_form'),
     url(r'^restaurants/browse/(?P<letter>\#|.*)/(?P<page>\d+)/$', 'browse', name='restaurants-browse' ),
     #cuisines
     url(r'^restaurants/cuisines$', 'list_cuisines', name='list_cuisines'),
