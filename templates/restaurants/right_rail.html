@@ -17,13 +17,13 @@
         <a href="{% url list_neighborhoods %}">Neighborhood</a>
     </li>
     <li>
-        <a href="{% url list_recent_inspections %}">Health inspections</a>
+        <a href="{% url list_recent_inspections '1' %}">Health inspections</a>
     </li>
     <li>
         <a href="{% url list_attributes %}">Special Features</a>
     </li>
 </ul>
-<h3><a href="{% url list_recent_inspections %}">Inspections</a></h3>
+<h3><a href="{% url list_recent_inspections 1 %}">Inspections</a></h3>
 <h3><a href="{% url restaurants-search %}">Search</a></h3>
 
 

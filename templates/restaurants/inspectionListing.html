@@ -25,6 +25,20 @@
     </div>
 
     <div id="ListingsContentWell">
+        {% if top_violators %}
+            <div id="top_violators">
+                <h2>Top Violators</h2>
+                {% for violator in top_violators %}
+                    <div class="violator">
+                        <h3><a href="{% url restaurant-detail violator.restaurant.id %}">{{violator.restaurant.name}}</a></h3>
+                        <p><b>Critical Violations:</b> &nbsp; {{violator.critical|apnumber}}</p>
+                    </div>
+                {% endfor %}
+            </div>
+            <hr />
+        {% endif %}
+        <div id="top_violators">
+        </div>
         <h2>Most recent Greene County restaurant inspections</h2>
        {% for inspection in inspections %}
             <div class="restaurantListing">
@@ -36,7 +50,7 @@
         {% endfor %}
         <div id="listingPages">
              {% if has_previous %}
-                <a href="{% url restaurants-browse letter page.previous_page_number  %}">&laquo;prev</a>
+                <a href="{% url list_recent_inspections page.previous_page_number  %}">&laquo;prev</a>
             {% else %}
                 <span class="disabled">&laquo; prev</span>
             {% endif %}
@@ -44,11 +58,11 @@
                 {% if num == page.number %}
                     <span class="current">{{num}}</span>
                 {% else %}
-                    <a href="{% url restaurants-browse letter num %}">{{num}}</a>
+                    <a href="{% url list_recent_inspections num %}">{{num}}</a>
                 {% endif %}
             {% endfor %}
             {% if has_next %}
-                <a href="{% url restaurants-browse letter page.next_page_number  %}">next &raquo;</a>
+                <a href="{% url list_recent_inspections page.next_page_number  %}">next &raquo;</a>
             {% else %}
                 <span class="disabled">next &raquo;</span>
             {% endif %}

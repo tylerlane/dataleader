@@ -174,7 +174,6 @@
     </div>
     <div id="insideMainContent_">
         <div id="restaurant_main">
-            <h2>Restaurant Detail</h2>
             <h3><a href="{{restaurant.get_absolute_url}}">{{restaurant.name}}</a></h3>
             <div id="socialbar" style="float:right;width:125px; height:150px;border:1px dotted grey;margin:5px;padding:5px;">
                 <div id="fb-like" >
@@ -197,7 +196,8 @@
                 <strong>Average Rating</strong>
                 <div id="avgrating"></div>
                 </div>
-            <br />
+            <h4>Restaurant Details</h4>
+           
             <p><b>Address:</b> {{restaurant.address}}, {{restaurant.city}}, {{restaurant.state|default:"MO"}} {{restaurant.zip_code|default_if_none:""}}</p>
             {% if restaurant.phone %}
                 <p><b>Phone:</b> {{restaurant.phone|default_if_none:"N/A"}}</p>
@@ -220,12 +220,17 @@
                 </p>
             {% endif %}
             {% if featureds %}
-                <p><b>Profile{{galleries|pluralize}}:</b>
+                <br />
+                <h4>Profile{{galleries|pluralize}}</h4>
+                    <ul>
                     {% for featured in featureds %}
-                        <a href="{{featured.external_url}}">{{featured.title|title}} - {{featured.date|date:"F j, Y"}}</a>
-                        <br />
+                        <li>
+                            <a href="{{featured.external_url}}">{{featured.title|title}} - {{featured.date|date:"F j, Y"}}</a>
+                            <br />
+                        </li>
                     {% endfor %}
-                <p>
+                    </ul>
+                
             {% endif %}
         </div>
         <div id="bottomTabs">
@@ -246,6 +251,10 @@
                     {% endfor %}
                 {% else %}
                     No information available for this restaurant yet. <a href="mailto:online@news-leader.com?subject=Updated Info: {{restaurant.name}}">Click here</a> to give us some info about "{{restaurant.name}}"
+                    <hr />
+                    <ul>
+                    {{rest_form.as_ul}}
+                    </ul>
                 {% endif %}
             </div>
             <div id="restaurant_inspections">

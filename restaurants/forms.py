@@ -1,6 +1,6 @@
 from django import forms
 #from django.db.models import Avg,Min,Max,Count,F,Q
-#from restaurants.models import Restaurant,Inspection
+from restaurants.models import Restaurant,Inspection
 
 
 class SearchForm(forms.Form):
@@ -12,4 +12,10 @@ class SearchForm(forms.Form):
 class FeedbackForm(forms.Form):
 	restaurant = forms.CharField(max_length=100,required=True)
 	email = forms.CharField(max_length=200, required=True)
+
+
+class RestaurantForm(forms.ModelForm):
+	class Meta:
+		model = Restaurant
+		fields = ['name', 'address','city','state','zip_code','website','phone','description','hours','cuisine']
 	

@@ -12,7 +12,7 @@ from django.utils import simplejson
 from django.views.decorators.cache import never_cache
 from django.views.decorators.csrf import csrf_exempt
 from restaurants.models import Restaurant, Inspection, Cuisine, Attribute, Neighborhood, Featured, Gallery, Pageview
-from restaurants.forms import SearchForm,FeedbackForm
+from restaurants.forms import SearchForm,FeedbackForm,RestaurantForm
 #import re
 #import simplejson
 #from calls.textutils import *
@@ -76,12 +76,14 @@ def detail(request, restaurant_id):
     pageview = Pageview(restaurant=restaurant)
     pageview.save()
 
+    rest_form = RestaurantForm( instance=restaurant )
 
 
     return render_to_response('restaurants/insideRestaurant.html',
         {
          'restaurant': restaurant, 'inspections': inspections,
-         'galleries': galleries, 'featureds': featureds
+         'galleries': galleries, 'featureds': featureds,
+         'rest_form': rest_form
         },
         context_instance=RequestContext(request))
 
@@ -341,11 +343,50 @@ def list_restaurants_cuisine(request,cuisine,page=None):
 
 
 @never_cache
-def list_recent_inspections(request):
-    inspections = Inspection.objects.select_related().all().order_by('-date')[:50]
+def list_recent_inspections(request,page=None):
+    #if page isn't set, set it to 1
+    if page is None:
+        page = 1
+
+    inspections = Inspection.objects.select_related().all().order_by('-date')[:500]
+
+    #only show top violators if page is #1
+    if page == "1":
+        latest_inspection = inspections[0]
+        #now to get the highest violations over the last 30 days
+        top_violators = Inspection.objects.select_related().filter( date__range = ( latest_inspection.date - datetime.timedelta( days = 30 ) , latest_inspection.date )).order_by('-critical')[:10]
+    else:
+        top_violators = []
+    #pass to paginator
+    pages = Paginator(inspections, ITEMS_PER_PAGE)
+    #get the page from the paginator
+    try:
+        p = pages.page(page)
+    except:
+        raise Http404
+    path = 'list_restaurants_neighborhood'
 
     return render_to_response('restaurants/inspectionListing.html',
-            {'inspections': inspections},
+            {'inspections': p.object_list,
+            'page_range': pages.page_range,
+            'num_pages': pages.num_pages, 'page': p,
+            'has_pages': pages.num_pages > 1,
+            'has_previous': p.has_previous(),
+            'has_next': p.has_next(),
+            'previous_page': p.previous_page_number(),
+            'next_page': p.next_page_number(),
+            'is_first': p == 1,
+            'is_last': p == pages.num_pages,
+            'top_violators': top_violators,
+            'path': list_recent_inspections
+            },
+            context_instance=RequestContext(request))
+
+    return render_to_response('restaurants/inspectionListing.html',
+            {
+                'inspections': inspections,
+                'top_violators': top_violators
+            },
             context_instance=RequestContext(request))
 
 @never_cache

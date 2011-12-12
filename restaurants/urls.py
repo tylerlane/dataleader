@@ -15,7 +15,7 @@ urlpatterns = patterns('restaurants.views',
     url(r'^restaurants/confirm-merge', 'confirm_merge', name='restaurants-confirm-merge' ),
     url(r'^restaurants/final-merge', 'final_merge', name='restaurants-final-merge'),
     #inspections
-    url(r'^restaurants/inspections', 'list_recent_inspections', name='list_recent_inspections'),
+    url(r'^restaurants/inspections/(?P<page>\d+)$', 'list_recent_inspections', name='list_recent_inspections'),
     #list attribute values
     url(r'^restaurants/attributes$', 'list_attributes', name='list_attributes'),
     url(r'^restaurants/attribute/(?P<attribute>.*)/(?P<value>.*)/(?P<page>\d+)/$','list_restaurants_attribute', name='list_restaurants_attribute'),
