@@ -1,0 +1,290 @@
+{% extends "cobrand_template.html" %}
+{% load humanize %}
+{% block headers %}
+<title>News-Leader.com Restaurants</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link rel="stylesheet" href="http://php.news-leader.com/css/landingPage.css" type="text/css" />
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}/css/jquery.lightbox-0.5.css" media="screen" />
+<script type="text/javascript" src="{{MEDIA_URL}}/js/jquery.lightbox-0.5.js"></script>
+<script type="text/javascript" src="{{MEDIA_URL}}/jquery.raty.js"></script>
+
+{% endblock %}
+{% block content %}
+<script>
+    $(document).ready(function(){
+        $("#details").click(function () 
+        {
+            $("#restaurant_details").show("slow");
+            $("#restaurant_inspections").hide("slow");
+            $("#fb_comments").hide("slow");
+
+            $("#details").removeClass("inactiveTab").addClass("activeTab");
+            $("#inspections").removeClass("activeTab").addClass("inactiveTab");
+            $("#comments").removeClass("activeTab").addClass("inactiveTab");
+        });  
+            
+        $("#inspections").click(function () {
+            $("#restaurant_details").hide("slow");
+            $("#restaurant_inspections").show("slow");
+            $("#fb_comments").hide("slow");
+
+            $("#details").removeClass("activeTab").addClass("inactiveTab");
+            $("#inspections").removeClass("inactiveTab").addClass("activeTab");
+            $("#comments").removeClass("activeTab").addClass("inactiveTab");
+        });  
+        
+        $("#comments").click(function () {
+            $("#restaurant_details").hide("slow");
+            $("#restaurant_inspections").hide("slow");
+            $("#fb_comments").show("slow");
+
+            $("#details").removeClass("activeTab").addClass("inactiveTab");
+            $("#inspections").removeClass("activeTab").addClass("inactiveTab");
+            $("#comments").removeClass("inactiveTab").addClass("activeTab");
+        });
+
+
+        function set_cookie ( name, value, path, domain )
+        {
+            var cookie_string = name + "=" + escape ( value );
+            date = new Date();
+            date.setTime( date.getTime() + ( 30 * 24 * 60 * 60 * 1000 ) );
+            cookie_string += "; expires=" + date.toGMTString();
+            if ( path )
+                    cookie_string += "; path=" + escape ( path );
+            if ( domain )
+                    cookie_string += "; domain=" + escape ( domain );
+            document.cookie = cookie_string;
+        }
+
+        //pretty self explanatory, get a cookie
+        function get_cookie ( cookie_name )
+        {
+            var results = document.cookie.match ( '(^|;) ?' + cookie_name + '=([^;]*)(;|$)' );
+            if ( results )
+                    return ( unescape ( results[2] ) );
+            else
+                    return null;
+        }
+
+        //function to delete a cookie
+        function delete_cookie ( cookie_name )
+        {
+                var cookie_date = new Date ( );  // current date & time
+                cookie_date.setTime ( cookie_date.getTime() - 1 );
+                document.cookie = cookie_name += "=; expires=" + cookie_date.toGMTString();
+        }
+
+        //settting our lightbox with a custom close button path
+        $(".lightbox").lightBox({"imageBtnClose":"{{MEDIA_URL}}/images/lightbox-btn-close.gif"});
+
+        //setting up our average rating object
+        $("#avgrating").raty(
+        {
+            noRatedMsg: 'no one has rated this restaurant yet!',
+            hintList: ['bad', 'poor', 'okay', 'good', 'great'],
+            path:'{{MEDIA_URL}}/img/',
+            readOnly:true,
+            half: true,
+            start: {{restaurant.rating}}
+        });
+
+        //set our variables to hold our rating and readonly stuf
+        var user_rating_var;
+        var user_rating_readonly;
+        var restaurant_cookie = get_cookie( "restaurant" );
+        var rating_cookie = get_cookie("rating")
+        //if the restaurant cookie = the restaurant.id it means they voted
+        if( restaurant_cookie == {{restaurant.id}} )
+        {
+            //so we set our rating var to the cookie value
+            user_rating_var = rating_cookie;
+            //and readonly to true
+            user_rating_readonly = true;
+        }
+        else
+        {
+            //else they haven't voted and we start at 0 and let the user vote.
+            user_rating_var = 0
+            user_rating_readonly = false;
+        }
+        //settting up our user rating object
+        $("#userrating").raty(
+        {
+            noRatedMsg: 'no one has rated this restaurant yet!',
+            hintList: ['bad', 'poor', 'okay', 'good', 'great'],
+            path:'{{MEDIA_URL}}/img/',
+            readOnly: user_rating_readonly,
+            half: false,
+            start: user_rating_var,
+            click: function(score, evt) {
+                //alert('ID: ' + this.attr('id') + '\nscore: ' + score + '\nevent: ' + evt);
+                $.post("{% url record_rating %}", {
+                    restaurant: {{restaurant.id}},
+                    rating: score,
+                    },
+                    function(data) {
+                        //this will start the last
+                        //alert(data);
+                        //set the average rating to our updated average
+                        $.fn.raty.start(data, "#avgrating");
+                        //set the restaurant and rating cookies
+                        set_cookie('restaurant', {{restaurant.id}} );
+                        set_cookie('rating', score );
+
+                });
+                //
+                
+                //this will set our userrating to readonly.
+                $.fn.raty.readOnly(true, '#userrating');
+            }
+        });
+    });
+
+    <!--  Votes Sum: {{restaurant.rating_sum}} -->
+    <!--  Total Votes: {{restaurant.rating_total_votes}} -->
+</script>
+<!-- ImageReady Slices (INSIDE.REST.psd) -->
+<div id="MainContainer">
+    <div id="insideTopHeader_">
+        <img id="insideTopHeader" src="{{MEDIA_URL}}/images/insideTopHeader.gif" width="652" height="33" alt="" />
+    </div>
+    <div id="insideRightRail">
+        {% include "restaurants/right_rail.html" %}
+    </div>
+    <div id="insideLeftGradient_">
+    </div>
+    <div id="insideMainHeader_">
+            <img id="insideMainHeader" src="{{MEDIA_URL}}/images/insideMainHeader.gif" width="375" height="63" alt="" />
+    </div>
+    <div id="insideRightGradient_">
+    </div>
+    <div id="insideMainContent_">
+        <div id="restaurant_main">
+            <h3><a href="{{restaurant.get_absolute_url}}">{{restaurant.name}}</a></h3>
+                is our information out of date for this restaurant?. Feel free to give us some updated info about "{{restaurant.name}}"
+                {% if submit == "yes" %}
+                    <form method="POST" action="{% url update_restaurant_form restaurant.id %}">
+                    {% csrf_token %}
+                    <ul>
+                    {{form.as_ul}}
+                    </ul>
+                    <button type="submit" value="Send">Submit</button>
+                    </form>
+                {% else %}
+                    Information submitted.
+                {% endif %}
+
+                
+            </div>
+            <br />
+            <br />
+            <br />
+        </div>
+   
+</div>
+<!-- End ImageReady Slices -->
+{% endblock  %}
+{% block omniture %}
+    <script language="javascript" type="text/javascript" src="http://content.gannettonline.com/global/scripts/revsci.js"></script> 
+    <script type="text/javascript" src="http://js.revsci.net/gateway/gw.js?csid=J06575" charset="ISO-8859-1"></script> 
+    <script type="text/javascript" language="JavaScript"> 
+    <!--
+    s_account="gpaper171,gntbcstglobal";
+    //--> 
+    </script> 
+    <!-- SiteCatalyst code version: H.3.
+    Copyright 1997-2005 Omniture, Inc. More info available at
+    http://www.omniture.com --> 
+    <script src="http://content.gannettonline.com/global/s_code/s_code.js"></script> 
+    <script><!--
+    /* You may give each page an identifying name, server, and channel on
+    the next lines. */
+  s.pageName="data - restaurant inspections"
+  s.channel=""
+    s.pageType=""
+    s.pageValue=""
+    s.prop1=""
+    s.prop2="data"
+    s.prop3="data"
+    s.prop4=""
+    s.prop5=""
+    s.prop6="news"
+    s.prop7="local_news"
+    s.prop16="article"
+    s.prop25="Springfield:news-leader"
+    s.prop50="Newspaper";
+
+    var currentTime=new Date();
+    var gciYear = currentTime.getFullYear();
+    DM_addToLoc("zipcode", escape(s.prop30));
+    DM_addToLoc("age", escape((gciYear-s.prop31)));
+    DM_addToLoc("gender", escape(s.prop32));
+    var gci_ssts=OAS_sitepage;
+
+    gci_ssts=gci_ssts.replace(/\/article\.htm.*$/,'');
+    gci_ssts=gci_ssts.replace(/\/front\.htm.*$/,'');
+    gci_ssts=gci_ssts.replace(/\/index\.htm.*$/,'');
+    gci_ssts=gci_ssts.replace(/\@.*$/,'');
+    gci_ssts=gci_ssts.replace(/^.*\.com\//,'');
+
+    var gci_tempossts=gci_ssts; 
+    var gci_ossts=gci_tempossts.split("/")
+    gci_ssts=gci_ssts.replace(/\//g,' > ');
+    gci_ssts='newspaper > '+gci_ssts;
+
+    if
+    (  gci_ossts[0] == "life"
+    || gci_ossts[0] == "money"
+    || gci_ossts[0] == "news"
+    || gci_ossts[0] == "sports"
+    || gci_ossts[0] == "tech"
+    || gci_ossts[0] == "travel"
+    || gci_ossts[0] == "weather"
+    || gci_ossts[0] == "umbrella"
+    )
+
+    {
+      DM_cat(gci_ssts);
+    }
+    else
+    {
+      DM_cat('newspaper > other');
+    }
+
+    var gci_osstslen=gci_ossts.length;
+    for(var i=0; i<gci_osstslen; i++) {
+    if(i==0)
+    s.prop17=gci_ossts[i];   // section
+    if(i==1)
+    s.prop18=gci_ossts[i];   // subsection
+    if(i==2)
+    s.prop19=gci_ossts[i];   // topic
+    if(i==3)
+    s.prop20=gci_ossts[i];   // Subtopic
+    }
+    DM_tag();
+
+    // sets the RevSci cookie in GCION domain
+    if (rsinetsegs.length > 0)
+    {
+      if (!RevSci.HasSegmentCookie())
+      {
+        RevSci.Rpc.Send(RevSci.RequestUrl(rsinetsegs));
+        RevSci.Cookie.Set(revsci_Cookie, true);
+      }
+    }
+     if(typeof rsinetsegs!='undefined'){s.prop48=(rsinetsegs.join('|')).replace(/J06575_/g,'');}else{s.prop48='no segment';}
+
+    //-->
+    </script> 
+
+    <script><!--
+      /************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+        var s_code=s.t();if(s_code)document.write(s_code)//--></script> 
+    <script><!--
+    if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+    //--></script><noscript><img src="http://gntbcstglobal.112.2O7.net/b/ss/gntbcstglobal,gpaper171/1/H.3--NS/0" height="1" width="1" border="0" alt="" /></noscript><!--/DO NOT REMOVE/--> 
+    <!-- End SiteCatalyst code version: H.3. -->
+{% endblock %}
