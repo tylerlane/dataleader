@@ -1,1 +1,23 @@
 *.pyc
+
+census/views copy 2.py
+
+scheduler/tests copy.py
+
+stories/views copy.py
+
+temp/breakingnews.html
+
+temp/snl_sched_bottom_newswell.pbo
+
+temp/snl_sched_bottom_newswell_dev.pbo
+
+temp/snl_sched_breakingnews.pbo
+
+temp/snl_sched_breakingnews_dev.pbo
+
+temp/snl_sched_every_child.pbo
+
+temp/snl_sched_top_newswell.pbo
+
+temp/snl_sched_top_newswell_dev.pbo
