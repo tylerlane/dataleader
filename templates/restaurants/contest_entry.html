@@ -1,0 +1,170 @@
+{% extends "restaurants/blank_template.html" %}
+{% load unquote %}
+{% load humanize %}
+{% load url_target_blank %}
+{% block headers %}
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+<script>
+$(function() {
+	$( "#id_dob" ).datepicker();
+	function get_cookies_array() {
+
+	    var cookies = { };
+
+	    if (document.cookie && document.cookie != '') {
+	        var split = document.cookie.split(';');
+	        for (var i = 0; i < split.length; i++) {
+	            var name_value = split[i].split("=");
+	            name_value[0] = name_value[0].replace(/^ /, '');
+	            cookies[decodeURIComponent(name_value[0])] = decodeURIComponent(name_value[1]);
+	        }
+	    }
+	    return cookies;
+	   
+	}
+
+	var cookies = get_cookies_array();
+	for(var name in cookies) {
+	  if( name.match(/\brestaurant-\S*=/) )
+	  {
+	  	$("#submit").attr("disabled", "disabled");
+	    // alert( "no restaurants rated!");
+		}
+		else
+		{
+			// alert( "restaurants rated!");
+			$("#submit").removeAttr("disabled");
+		}
+	}
+});
+//   document.write( name + " : " + cookies[name] + "<br />" );
+// }
+// if (document.cookie.search(/\brestaurant-\S*=/) < 1) {
+//     // no cookie
+//     $("#submit").attr("disabled", "disabled");
+//     // alert( "no restaurants rated!");
+// }
+// else
+// {
+// 	// alert( "restaurants rated!");
+// 	$("#submit").removeAttr("disabled");
+// }
+</script>
+<style>
+	
+	#contact_form {
+		margin-left: auto;
+		margin-right: auto;
+		float: left;
+		width:450px;
+	}
+	
+	.fieldWrapper {
+		min-height: 25px;
+		/*border-bottom: solid 1px #CACACA; */
+		/*padding: 8px 0 8px 0;*/
+		clear:both;
+	}
+	
+	input {
+		float: left;
+	}
+	
+	.errorlist {
+		float: left;
+		padding-left: 20px;
+	}
+	
+	.errorlist li {
+		color: red;
+		font-weight: bold;
+		list-style-type: square;
+		margin-left: 20px;
+		margin-top: -15px;
+	}
+	
+	.error {
+		color: red;
+		font-size: 2em;
+		font-weight: bold;
+	}
+	
+	label {
+		font-family: arial;
+		height: 2em;
+		float:left;
+		max-width: 150px;
+		min-width: 115px;
+	}
+	
+	h2 {
+		font-family: arial;
+	}
+	button{
+		float:left;
+		padding-top:5px;
+	}
+</style>
+{% endblock %}
+{% block content %}
+<div>	
+<div id="contact_form">
+	{% if message %}
+		<h3 class="error">{{message}}</h3>
+	{% endif %}
+	<form action="{% url contest_entry %}" method="post">
+	{% csrf_token %}
+	<h2>Contest Entry Form</h2>
+	   <!-- <div class="fieldWrapper">
+	       <div style="margin-bottom: -6px;"><label for="id_name">I'd like to submit a: </label></div><br />
+	       {{ form.feedback_type }} {{ form.feedback_type.errors }}	
+	   </div> -->
+	   <div class="fieldWrapper">
+	        <label for="id_name">Name</label>
+	        {{ form.name }} {{ form.name.errors }}
+	    </div>
+	    <div class="fieldWrapper">
+	        <label for="id_address">Address</label>
+	        {{ form.address }} {{ form.address.errors }}
+	    </div>
+	    <div class="fieldWrapper">
+	        <label for="id_city">City</label>
+	        {{ form.city }} {{ form.city.errors }}
+	    </div>
+	    <div class="fieldWrapper">
+	        <label for="id_state">State</label>
+	        {{ form.state }} {{ form.state.errors }}
+	    </div>
+	    <div class="fieldWrapper">
+	        <label for="id_zip_code">Zip Code</label>
+	        {{ form.zip_code }} {{ form.zip_code.errors }}
+	    </div>
+	    <div class="fieldWrapper">
+	        <label for="id_phone_number">Phone Number</label>
+	        {{ form.phone_number }} {{ form.phone_number.errors }}
+	    </div>
+	    <div class="fieldWrapper">
+	        <label for="id_email">Email</label>
+	        {{ form.email }} {{ form.email.errors }}
+	    </div>
+	    <div class="fieldWrapper">
+	        <label for="id_dob">Date of Birth</label>
+	        {{ form.dob }} {{ form.dob.errors }}
+	    </div>
+	    <p><button type="submit" class="search_btn" id="submit">Send message</button></p>
+	    <br />
+	    <p>For official rules please <a href='http://www.news-leader.com/misc/dining_sweepstakes_official_rules.htm'>click here.</a></p>
+	</form>
+</div>
+<div style="float:left;margin-top:50px;width:270px">
+	<h3>Dining & Movie Sweepstakes</h3>
+	<div>
+		<img src="{{MEDIA_URL}}/restaurants/nakato_logo.jpg"  style="float:left;margin:0 5px 0 0; width:125px"/>
+		<h4>Win a $100 Dollar gift certificate.</h4>
+		<span style="float:left;">This week Nakato Japanese Restaurant plus four tickets to Hollywood Theater.</span>
+	</div>
+</div>
+</DIV>
+{% endblock %}

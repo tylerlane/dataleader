@@ -1,0 +1,138 @@
+Downloading/unpacking geocoders
+  Getting page http://pypi.python.org/simple/geocoders
+  Could not fetch URL http://pypi.python.org/simple/geocoders: HTTP Error 404: Not Found (geocoders does not have any releases)
+  Will skip URL http://pypi.python.org/simple/geocoders when looking for download links for geocoders
+  Getting page http://pypi.python.org/simple/
+  URLs to search for versions for geocoders:
+  * http://pypi.python.org/simple/geocoders/
+  Getting page http://pypi.python.org/simple/geocoders/
+  Could not fetch URL http://pypi.python.org/simple/geocoders/: HTTP Error 404: Not Found (geocoders does not have any releases)
+  Will skip URL http://pypi.python.org/simple/geocoders/ when looking for download links for geocoders
+  Could not find any downloads that satisfy the requirement geocoders
+No distributions at all found for geocoders
+Exception information:
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/pip-0.6.3-py2.6.egg/pip/basecommand.py", line 115, in main
+    self.run(options, args)
+  File "/usr/lib/python2.6/site-packages/pip-0.6.3-py2.6.egg/pip/commands/install.py", line 155, in run
+    requirement_set.install_files(finder, force_root_egg_info=self.bundle, bundle=self.bundle)
+  File "/usr/lib/python2.6/site-packages/pip-0.6.3-py2.6.egg/pip/req.py", line 823, in install_files
+    url = finder.find_requirement(req_to_install, upgrade=self.upgrade)
+  File "/usr/lib/python2.6/site-packages/pip-0.6.3-py2.6.egg/pip/index.py", line 117, in find_requirement
+    raise DistributionNotFound('No distributions at all found for %s' % req)
+DistributionNotFound: No distributions at all found for geocoders
+------------------------------------------------------------
+/usr/bin/pip run on Thu Jan 31 12:29:21 2013
+Downloading/unpacking geopy
+  Getting page http://pypi.python.org/simple/geopy
+  URLs to search for versions for geopy:
+  * http://pypi.python.org/simple/geopy/
+  Getting page http://exogen.case.edu/projects/geopy/
+  Could not fetch URL http://exogen.case.edu/projects/geopy/ (from http://pypi.python.org/simple/geopy/): <urlopen error [Errno -2] Name or service not known>
+  Will skip URL http://exogen.case.edu/projects/geopy/ when looking for download links for geopy
+  Getting page http://geopy.googlecode.com/svn/trunk/
+  Getting page http://www.geopy.org/
+  Could not fetch URL http://www.geopy.org/ (from http://pypi.python.org/simple/geopy/): <urlopen error [Errno -2] Name or service not known>
+  Will skip URL http://www.geopy.org/ when looking for download links for geopy
+  Getting page http://code.google.com/p/geopy/downloads/list
+  Skipping page http://geopy.googlecode.com/files/geopy-0.93.tar.gz (from http://pypi.python.org/simple/geopy/) because of Content-Type: 
+  Getting page http://code.google.com/p/geopy/
+  Skipping page http://geopy.googlecode.com/files/geopy-0.94.tar.gz (from http://pypi.python.org/simple/geopy/) because of Content-Type: 
+  Analyzing links from page http://pypi.python.org/simple/geopy/
+    Skipping link http://pypi.python.org/packages/2.4/g/geopy/geopy-0.92-py2.4.egg#md5=3366e3c2dee85dff7e76b4edc6747e01 (from http://pypi.python.org/simple/geopy/); unknown archive format: .egg
+    Skipping link http://pypi.python.org/packages/2.5/g/geopy/geopy-0.94-py2.5.egg#md5=37ecac0607a40c10950fb86b47c422d1 (from http://pypi.python.org/simple/geopy/); unknown archive format: .egg
+    Found link http://pypi.python.org/packages/source/g/geopy/geopy-0.94.1.tar.gz#md5=c619ab08bffd8d15f5eae4df69b18f5a (from http://pypi.python.org/simple/geopy/), version: 0.94.1
+    Found link http://pypi.python.org/packages/source/g/geopy/geopy-0.94.2.tar.gz#md5=a7f511e772af9f5d1075dd752d40430a (from http://pypi.python.org/simple/geopy/), version: 0.94.2
+    Skipping link http://pypi.python.org/packages/2.4/g/geopy/geopy-0.93-py2.4.egg#md5=d58cd18d99970966f1fb2f69645bc3c2 (from http://pypi.python.org/simple/geopy/); unknown archive format: .egg
+    Found link http://pypi.python.org/packages/source/g/geopy/geopy-0.94.tar.gz#md5=09c7f9e59136cec5db7d163e55d3bc68 (from http://pypi.python.org/simple/geopy/), version: 0.94
+    Skipping link http://pypi.python.org/packages/2.6/g/geopy/geopy-0.94-py2.6.egg#md5=5f6dd2200d6d4f64ae009318fca4f5ec (from http://pypi.python.org/simple/geopy/); unknown archive format: .egg
+    Skipping link http://pypi.python.org/packages/2.5/g/geopy/geopy-0.93-py2.5.egg#md5=f24c822fddf5926940c367d428b29166 (from http://pypi.python.org/simple/geopy/); unknown archive format: .egg
+    Skipping link http://exogen.case.edu/projects/geopy/ (from http://pypi.python.org/simple/geopy/); not a file
+    Skipping link http://geopy.googlecode.com/svn/trunk/ (from http://pypi.python.org/simple/geopy/); not a file
+    Skipping link http://www.geopy.org/ (from http://pypi.python.org/simple/geopy/); not a file
+    Skipping link http://code.google.com/p/geopy/downloads/list (from http://pypi.python.org/simple/geopy/); not a file
+    Found link http://geopy.googlecode.com/files/geopy-0.93.tar.gz (from http://pypi.python.org/simple/geopy/), version: 0.93
+    Skipping link http://code.google.com/p/geopy/ (from http://pypi.python.org/simple/geopy/); not a file
+    Found link http://geopy.googlecode.com/files/geopy-0.94.tar.gz (from http://pypi.python.org/simple/geopy/), version: 0.94
+    Skipping link http://groups.google.com/group/geopy (from http://pypi.python.org/simple/geopy/); not a file
+  Analyzing links from page http://geopy.googlecode.com/svn/trunk/
+    Skipping link http://geopy.googlecode.com/svn/ (from http://geopy.googlecode.com/svn/trunk/); not a file
+    Skipping link http://geopy.googlecode.com/svn/trunk/LICENSE (from http://geopy.googlecode.com/svn/trunk/); not a file
+    Skipping link http://geopy.googlecode.com/svn/trunk/MANIFEST.in (from http://geopy.googlecode.com/svn/trunk/); unknown archive format: .in
+    Skipping link http://geopy.googlecode.com/svn/trunk/RELEASES (from http://geopy.googlecode.com/svn/trunk/); not a file
+    Skipping link http://geopy.googlecode.com/svn/trunk/geopy/ (from http://geopy.googlecode.com/svn/trunk/); not a file
+    Skipping link http://geopy.googlecode.com/svn/trunk/setup.cfg (from http://geopy.googlecode.com/svn/trunk/); unknown archive format: .cfg
+    Skipping link http://geopy.googlecode.com/svn/trunk/setup.py (from http://geopy.googlecode.com/svn/trunk/); unknown archive format: .py
+    Skipping link http://code.google.com/ (from http://geopy.googlecode.com/svn/trunk/); not a file
+    Skipping link http://subversion.apache.org/ (from http://geopy.googlecode.com/svn/trunk/); not a file
+  Analyzing links from page http://code.google.com/p/geopy/downloads/list
+    Skipping link http://www.gstatic.com/codesite/ph/images/phosting.ico (from http://code.google.com/p/geopy/downloads/list); unknown archive format: .ico
+    Skipping link http://www.gstatic.com/codesite/ph/6441139730022036690/css/core.css (from http://code.google.com/p/geopy/downloads/list); unknown archive format: .css
+    Skipping link http://www.gstatic.com/codesite/ph/6441139730022036690/css/ph_list.css (from http://code.google.com/p/geopy/downloads/list); unknown archive format: .css
+    Skipping link http://code.google.com/feeds/p/geopy/downloads/basic (from http://code.google.com/p/geopy/downloads/list); not a file
+    Skipping link http://www.gstatic.com/codesite/ph/6441139730022036690/css/d_ie.css (from http://code.google.com/p/geopy/downloads/list); unknown archive format: .css
+    Skipping link https://www.google.com/accounts/ServiceLogin?service=code&amp;ltmpl=phosting&amp;continue=http%3A%2F%2Fcode.google.com%2Fp%2Fgeopy%2Fdownloads%2Flist&amp;followup=http%3A%2F%2Fcode.google.com%2Fp%2Fgeopy%2Fdownloads%2Flist (from http://code.google.com/p/geopy/downloads/list); not a file
+    Skipping link http://www.firefox.com (from http://code.google.com/p/geopy/downloads/list); not a file
+    Skipping link http://www.google.com/chrome (from http://code.google.com/p/geopy/downloads/list); not a file
+    Skipping link http://code.google.com/chrome/chromeframe/ (from http://code.google.com/p/geopy/downloads/list); not a file
+    Skipping link http://code.google.com/p/geopy (from http://code.google.com/p/geopy/downloads/list); not a file
+    Skipping link http://code.google.com/p/geopy/w/list (from http://code.google.com/p/geopy/downloads/list); not a file
+    Skipping link http://code.google.com/p/geopy/issues/list (from http://code.google.com/p/geopy/downloads/list); not a file
+    Skipping link http://code.google.com/p/geopy/wiki/Source?tm=4 (from http://code.google.com/p/geopy/downloads/list); not a file
+    Skipping link http://code.google.com/p/geopy/downloads/list#columnprefs (from http://code.google.com/p/geopy/downloads/list); not a file
+    Found link http://geopy.googlecode.com/files/geopy-0.94.2.tar.gz (from http://code.google.com/p/geopy/downloads/list), version: 0.94.2
+    Skipping link http://code.google.com/p/geopy/downloads/detail?name=geopy-0.94.2.tar.gz&amp;can=2&amp;q= (from http://code.google.com/p/geopy/downloads/list); not a file
+    Skipping link http://code.google.com/p/geopy/downloads/list?q=label:Featured (from http://code.google.com/p/geopy/downloads/list); not a file
+    Skipping link http://code.google.com/projecthosting/terms.html (from http://code.google.com/p/geopy/downloads/list); unknown archive format: .html
+    Skipping link http://www.google.com/privacy.html (from http://code.google.com/p/geopy/downloads/list); unknown archive format: .html
+    Skipping link http://code.google.com/p/support/ (from http://code.google.com/p/geopy/downloads/list); not a file
+    Skipping link http://code.google.com/projecthosting/ (from http://code.google.com/p/geopy/downloads/list); not a file
+  Analyzing links from page http://code.google.com/p/geopy/
+    Skipping link http://www.gstatic.com/codesite/ph/6441139730022036690/css/ph_detail.css (from http://code.google.com/p/geopy/); unknown archive format: .css
+    Skipping link https://www.google.com/accounts/ServiceLogin?service=code&amp;ltmpl=phosting&amp;continue=http%3A%2F%2Fcode.google.com%2Fp%2Fgeopy%2F&amp;followup=http%3A%2F%2Fcode.google.com%2Fp%2Fgeopy%2F (from http://code.google.com/p/geopy/); not a file
+    Skipping link http://code.google.com/p/geopy/people/list (from http://code.google.com/p/geopy/); not a file
+    Skipping link http://code.google.com/p/geopy/feeds (from http://code.google.com/p/geopy/); not a file
+    Skipping link http://www.opensource.org/licenses/mit-license.php (from http://code.google.com/p/geopy/); unknown archive format: .php
+    Skipping link http://code.google.com/hosting/search?q=label:python (from http://code.google.com/p/geopy/); not a file
+    Skipping link http://code.google.com/hosting/search?q=label:geocoding (from http://code.google.com/p/geopy/); not a file
+    Skipping link http://code.google.com/hosting/search?q=label:geocode (from http://code.google.com/p/geopy/); not a file
+    Skipping link http://code.google.com/hosting/search?q=label:wiki (from http://code.google.com/p/geopy/); not a file
+    Skipping link http://code.google.com/hosting/search?q=label:mediawiki (from http://code.google.com/p/geopy/); not a file
+    Skipping link http://code.google.com/hosting/search?q=label:gis (from http://code.google.com/p/geopy/); not a file
+    Skipping link http://code.google.com/hosting/search?q=label:earth (from http://code.google.com/p/geopy/); not a file
+    Skipping link http://code.google.com/hosting/search?q=label:distance (from http://code.google.com/p/geopy/); not a file
+    Skipping link http://code.google.com/u/exogen@gmail.com/ (from http://code.google.com/p/geopy/); unknown archive format: .com
+    Skipping link http://code.google.com/u/mike.tigas/ (from http://code.google.com/p/geopy/); unknown archive format: .tigas
+    Skipping link http://code.google.com/u/103273726779316340959/ (from http://code.google.com/p/geopy/); not a file
+    Found link http://geopy.googlecode.com/files/geopy-0.94.2.tar.gz (from http://code.google.com/p/geopy/), version: 0.94.2
+    Skipping link http://code.google.com/p/geopy/downloads/detail?name=geopy-0.94.2.tar.gz (from http://code.google.com/p/geopy/); not a file
+    Skipping link http://code.google.com/p/geopy/wiki/GettingStarted (from http://code.google.com/p/geopy/); not a file
+    Skipping link http://code.google.com/p/geopy/wiki/Installation (from http://code.google.com/p/geopy/); not a file
+    Skipping link http://code.google.com/p/geopy/wiki/ReverseGeocoding (from http://code.google.com/p/geopy/); not a file
+    Skipping link http://code.google.com/p/geopy/wiki/Roadmap (from http://code.google.com/p/geopy/); not a file
+    Skipping link http://blog.brianbeck.com (from http://code.google.com/p/geopy/); not a file
+    Skipping link http://mike.tig.as/blog/ (from http://code.google.com/p/geopy/); not a file
+    Skipping link http://developingupwards.com/ (from http://code.google.com/p/geopy/); not a file
+    Skipping link http://www.geopy.org (from http://code.google.com/p/geopy/); not a file
+    Skipping link http://pypi.python.org/pypi/geopy (from http://code.google.com/p/geopy/); not a file
+    Skipping link https://github.com/geopy/geopy (from http://code.google.com/p/geopy/); not a file
+    Skipping link http://code.google.com/p/geopy/#Introduction (from http://code.google.com/p/geopy/); not a file
+    Skipping link http://code.google.com/p/geopy/#Who&#x27;s_using_geopy? (from http://code.google.com/p/geopy/); not a file
+    Skipping link http://www.myapartmentmap.com (from http://code.google.com/p/geopy/); not a file
+  Using version 0.94.2 (newest of versions: 0.94.2, 0.94.2, 0.94.2, 0.94.1, 0.94, 0.94, 0.93)
+  Downloading geopy-0.94.2.tar.gz
+  Downloading from URL http://pypi.python.org/packages/source/g/geopy/geopy-0.94.2.tar.gz#md5=a7f511e772af9f5d1075dd752d40430a (from http://pypi.python.org/simple/geopy/)
+  Running setup.py egg_info for package geopy
+Exception:
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/pip-0.6.3-py2.6.egg/pip/basecommand.py", line 115, in main
+    self.run(options, args)
+  File "/usr/lib/python2.6/site-packages/pip-0.6.3-py2.6.egg/pip/commands/install.py", line 155, in run
+    requirement_set.install_files(finder, force_root_egg_info=self.bundle, bundle=self.bundle)
+  File "/usr/lib/python2.6/site-packages/pip-0.6.3-py2.6.egg/pip/req.py", line 854, in install_files
+    req_to_install.run_egg_info()
+  File "/usr/lib/python2.6/site-packages/pip-0.6.3-py2.6.egg/pip/req.py", line 205, in run_egg_info
+    command_desc='python setup.py egg_info')
+  File "/usr/lib/python2.6/site-packages/pip-0.6.3-py2.6.egg/pip/__init__.py", line 182, in call_subprocess
+    line = stdout.readline()
+KeyboardInterrupt

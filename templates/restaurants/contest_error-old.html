@@ -1,0 +1,108 @@
+{% extends "restaurants/blank_template.html" %}
+{% load unquote %}
+{% load humanize %}
+{% block headers %}
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+<script>
+$(function() {
+$( "#id_dob" ).datepicker();
+});
+</script>
+<style>
+	
+	#contact_form {
+		margin-left: auto;
+		margin-right: auto;
+		float: left;
+		width:600px;
+	}
+	
+	.fieldWrapper {
+		min-height: 40px;
+		border-bottom: solid 1px #CACACA; 
+		padding: 8px 0 8px 0;
+		clear:both;
+	}
+	
+	input {
+		float: left;
+	}
+	
+	.errorlist {
+		float: left;
+		padding-left: 20px;
+	}
+	
+	.errorlist li {
+		color: red;
+		font-weight: bold;
+		list-style-type: square;
+		margin-left: 20px;
+	}
+	
+	.error {
+		color: red;
+		font-size: 2em;
+		font-weight: bold;
+	}
+	
+	label {
+		font-family: arial;
+		height: 2em;
+		float:left;
+		width: 150px;
+	}
+	
+	h2 {
+		font-family: arial;
+	}
+</style>
+{% endblock %}
+{% block content %}	
+<div id="contact_form">
+	<h3>Sorry there was an error with your entry! Please try again</h3>
+	<form action="{% url contest_entry %}" method="post">
+	{% csrf_token %}
+	<h2>Contest Entry Form</h2>
+	   <!-- <div class="fieldWrapper">
+	       <div style="margin-bottom: -6px;"><label for="id_name">I'd like to submit a: </label></div><br />
+	       {{ form.feedback_type }} {{ form.feedback_type.errors }}	
+	   </div> -->
+	   <div class="fieldWrapper">
+	        <label for="id_name">Name</label>
+	        {{ form.name }} {{ form.name.errors }}
+	    </div>
+	    <div class="fieldWrapper">
+	        <label for="id_address">Address</label>
+	        {{ form.address }} {{ form.address.errors }}
+	    </div>
+	    <div class="fieldWrapper">
+	        <label for="id_city">City</label>
+	        {{ form.city }} {{ form.city.errors }}
+	    </div>
+	    <div class="fieldWrapper">
+	        <label for="id_state">State</label>
+	        {{ form.state }} {{ form.state.errors }}
+	    </div>
+	    <div class="fieldWrapper">
+	        <label for="id_zip_code">Zip Code</label>
+	        {{ form.zip_code }} {{ form.zip_code.errors }}
+	    </div>
+	    <div class="fieldWrapper">
+	        <label for="id_phone_number">Phone Number</label>
+	        {{ form.phone_number }} {{ form.phone_number.errors }}
+	    </div>
+	    <div class="fieldWrapper">
+	        <label for="id_email">Email</label>
+	        {{ form.email }} {{ form.email.errors }}
+	    </div>
+	    <div class="fieldWrapper">
+	        <label for="id_dob">Date of Birth</label>
+	        {{ form.dob }} {{ form.dob.errors }}
+	    </div>
+	    <p><button type="submit" class="search_btn">Send message</button></p>
+	</form>
+</div>
+{% endblock %}

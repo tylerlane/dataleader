@@ -1,0 +1,137 @@
+  body {
+    font-family:Verdana,Helvetica,sans-serif;
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0;
+    width: 95.5%;
+  }
+
+  
+  ul{
+    margin-left: -3px;
+    padding-left: -3px;
+    margin-top: 10px;
+    list-style-type: none;
+  }
+  li{
+    margin-left:-20px;
+    border:1px dotted black;
+    margin-bottom: 5px;
+    padding: 5px;
+    background-color: #CACACA;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+  }
+  #topcontainer{
+      font-size: 10px;
+      display: inline;
+  }
+  #mainbox1{
+  border: 1px solid;
+    width: 260px;
+    float: left;
+    margin-right: 5px;
+    padding: 5px;
+    min-height: 425px;
+}
+  #mainbox1_content{
+min-height: 350px;
+    /*padding-top: 15px;*/
+  }
+  #mainbox2{
+    border: 1px solid;
+    width: 260px;
+overflow: hidden;
+  float: left;
+clear: none;
+margin-right: 5px;
+padding: 5px;
+    min-height: 425px;
+}
+	#mainbox2_content{
+min-height: 350px;
+}
+	#mainbox3{
+border: 1px solid;
+width: 260px;
+overflow: hidden;
+padding: 5px;
+float:left;
+    min-height: 425px;
+}
+	#mainbox3_content{
+  min-height: 350px;
+}
+a{
+	color:black;
+	text-decoration: none;
+}
+
+#mainContainer {
+  width: 100%;
+  height: 100%;
+}
+
+#header {
+  width: 100%;
+  height: 53px;
+  background-color: #2B5460;
+  padding-left: 84px;
+}
+
+.columnHeader {
+  width: 32.7%;
+  height: 40px;
+  float: left;
+  padding-bottom: 17px;
+}
+
+.columnHeader h1 {
+  padding-left: 22px;
+}
+
+.minutesDisplay {
+  width: 32.5%;
+  height: 98%;
+  float: left;
+}
+
+.minutesDisplay li {
+  font-size: 32px;
+}
+
+.updateTimeDisplay {
+  width: 32.1%;
+  height: 2%;
+  float: left;
+  padding: 0 10px;
+}
+
+.cooldown {
+  background: url("http://data-media.news-leader.com/images/on_fire_small.png") no-repeat;
+  padding-left:40px;
+  color: #D21A23;
+  font-size: 24px;
+}
+
+.on_fire {
+  background: url("http://data-media.news-leader.com/images/on_fire_3.png") no-repeat;
+  padding-left:90px;
+  color: #D21A23;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.regular {
+  
+}
+
+#mins15 {
+  border-right: 2px solid black;
+  padding-right: 15px;
+}
+
+#mins30 {
+  border-right: 2px solid black;
+  padding-right: 15px;
+}

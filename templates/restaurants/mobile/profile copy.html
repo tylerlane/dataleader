@@ -1,0 +1,244 @@
+{% load humanize %}
+{% load url_target_blank %}
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1.0,width=device-width,user-scalable=0" />	
+
+	<link rel="shortcut icon" href="/link/to/favicon.ico"><!-- update this -->
+	<link rel="apple-touch-icon" href="/link/to/apple-touch-icon.png"><!-- update this -->
+
+
+	<link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}/restaurants/mobile/css/style.css" media="screen, handheld" />
+	<link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}/restaurants/mobile/css/enhanced.css" media="screen  and (min-width: 40.5em)" />
+
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.css" />
+	<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.js"></script>
+</head>
+<body>
+	<nav class="centered miniNav">
+		<div id="logoContainer miniNav" class="left">
+			<div id="mobileLogo" class="centered miniNav">
+				<img src="{{MEDIA_URL}}/restaurants/mobile/images/mobileLogo-full.png" alt="Dining logo">
+			</div>
+		</div>
+
+		<div id="miniNavWrapper">
+			<header  class="centered">
+				Browse by:
+			</header>
+			<br />
+			<div class="clear left"></div>
+			<div class="centered">
+				<ul class="centered">
+					<li>
+						<a href="{% url restaurants-browse 'A','1' %}"><p class="centeredText">Name</p></a>
+					</li>
+					<li>
+						<a href="{% url list_neighborhoods %}"><p class="centeredText">Areas</p></a>
+					</li>
+					<li>
+						<a href="{% url list_cuisines %}"><p class="centeredText">Cuisine</p></a>
+					</li>
+					<li>
+						<a href="{% url list_recent_inspections 1 %}"><p class="centeredText">Inspections</p></a>
+					</li>
+					<li>
+						<a href="{% url list_attributes %}"><p class="centeredText">Features</p></a>
+					</li>
+					<li>
+						<a href="#"><p class="centeredText">Near Me</p></a>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="clear"></div>
+
+		
+	</nav>
+
+	<div class="clear"></div>
+
+	<article>
+		<div id="restaurantNameContainer">
+				<h1>{{restaurant.name|title}}</h1>
+			</div>
+			<!-- <div id="ratingsContainer">
+				<div id="ratingNumber">
+					<p>3.79</p>
+				</div>
+				<div id="ratingStars">
+					<img src="http://data-media.news-leader.com/restaurants/images/ratingStars.jpg" />
+				</div>
+				<div id="ratingButton">
+					<img src="http://data-media.news-leader.com/restaurants/images/rateThisButton.jpg" />
+				</div>
+			</div> -->
+			<div id="restaurantDetailsContainer">
+				<div id="detailsAddress">
+					<p>
+						<span class="bolded">Address:</span>
+						<br />
+						{{restaurant.address|title}}, {{restaurant.city|title}}, {{restaurant.state|default:"MO"}} {{restaurant.zip_code|default_if_none:""}}
+						<br />
+						{% if neighborhoods %}
+							<span class="bolded">Neighborhood{{ neighborhoods|pluralize }}:</span>
+							{% spaceless %}
+							{% for neighborhood in neighborhoods %}
+								{{neighborhood.name|title}} {% if not forloop.last %}, {% endif %}
+							{% endfor %}
+							{% endspaceless %}
+						{% endif %}
+						
+					</p>
+				</div>
+				<div id="secondaryInfo">
+					<p>
+						{% if restaurant.hours and restaurant.hours != "None" %}
+							<span class="bolded">Hours: </span>{{restaurant.hours}}
+						{% endif %}
+						<br />
+						{% if restaurant.phone %}
+							<span class="bolded">Phone: </span>{{restaurant.phone|default_if_none:"N/A"}}
+						{% endif %}
+						<br />
+						{% if restaurant.website %}
+							<span class="bolded">Website: </span>{{restaurant.website|urlizetrunc:25|url_target_blank}}<br />
+						{% endif %}
+						{% if restaurant.url %}
+							<span class="bolded">Website: </span>{{restaurant.url|urlizetrunc:25|url_target_blank}}
+						{% endif %}         
+						                       
+					</p>
+				</div>
+				
+				<div style="clear:both;">
+					<p><b>Cuisine:</b> {% for cuisine in restaurant.cuisine.all %}<a href="{% url list_restaurants_cuisine cuisine.name 1 %}">{% firstof cuisine.label|title cuisine.name|title %}</a>{% if forloop.last %}{% else %}, {% endif %}{% endfor %}</p>
+				</div>
+				
+
+			</div>
+
+			
+
+			<div id="mainContentDisplay">
+				<div id="textContainer">
+					<div id="main_container">
+						<div id="mainContentImagesContainer">
+							{% if restaurant.photo_url and restaurant.photo_url != "None" %}
+								<div class="mainContentImage">
+									<img src="{{restaurant.photo_url}}" style="width:75%; margin-top:25px;margin-left:5px;" />
+								</div>
+							{% endif %}
+							{% if restaurant.geom %}
+								<div class="mainContentImage">
+									<img src="http://maps.googleapis.com/maps/api/staticmap?zoom=13&size=400x400&scale=1&maptype=roadmap&markers=color:red%7Clabel:A%7C{{restaurant.geom.y}},{{restaurant.geom.x}}&sensor=false" style="width:75%" />
+								</div>
+							{% endif %}
+							
+						</div>
+						<div class="detailsTab"><!-- Make this collapsible -->
+							<div class="detailsTabText" id="details_tab">
+								Details
+							</div>
+						</div>
+						<div class="mainContentText" id="restaurant_details" style='float:left;width:300px'>
+							<div id="attribs_text" >
+							{% if restaurant.attributes %}
+								<ul>
+								{% for attribute in restaurant.attributes %}
+									<li><b>{{ attribute.name|title }}</b>: {{attribute.value|title}}</li>
+								{% endfor %}
+								</ul>
+							{% endif %}
+								
+							<div id="contact">Is the information for this restaurant not correct? <a href="mailto:jbrinton@gannett.com?subject:Dining.news-leader.com">Email us!</a></div>
+						  	
+							</div>
+						</div>
+					</div>
+
+					<div class="detailsTab"><!-- Make this collapsible -->
+						<div class="detailsTabText" id="articles_tab">
+							Articles
+						</div>
+					</div>
+					<div>
+						{% for featured in featureds %}
+							<div id="featuredRestaurantTextContainer" style="clear:both;">
+								<a href="{{featured.external_url}}"><h3>{{featured.title}}</h3></a>
+								<p>{{featured.summary|safe}}</p>
+								<div id="featuredReadMoreButton_">
+									<a href="{{featured.external_url}}">
+										<img id="featuredReadMoreButton" src="{{MEDIA_URL}}/restaurants/images/featuredReadMoreButton.jpg" width="140" height="36" alt="" />
+									</a>
+								</div>
+							</div>
+						{% endfor %}
+					</div>
+
+
+					<div data-role="collapsible" data-collapsed="false"><!-- Make this collapsible -->
+						<h4>Health inspections</h4>
+						<p>
+							{% if inspections %}
+								<ul data-role="listview">
+								{% for inspection in inspections %}
+									<li>
+									<!-- <div class="inspectionsItem"> -->
+										<p><span style:"float-left;"><h4>{% if inspection.reinspection %}Reinspection:{% else %}Inspection:{% endif %}</h4>{{inspection.date|naturalday}}</span>
+										<br />
+										<span><b>Violations</b><br />
+											<i>Critical:</i> {{inspection.critical}} <br />
+											<i>Noncritical:</i> {{inspection.noncritical}}
+										</span>
+										</p>
+										{% if inspection.critical > 0 %}
+											<p><b>Details:</b>&nbsp;&nbsp;{{inspection.critical_violations|safe}}</p>
+										{% endif %}
+										{% if inspection.notes != "" %}<p><b>Notes:</b> {{inspection.notes}}</p>{% endif %}
+									<!-- </div> -->
+									</li>
+								{% endfor %}
+								</ul>
+							{% else %}
+								No Health Inspection information is available for this Near Me.
+							{% endif %}		
+						</p>
+
+					</div>
+					
+					
+
+
+					<div data-role="collapsible" data-collapsed="true"><!-- Make this collapsible -->
+						<h4>Comments</h4>
+						<p id="fb_comments">
+							<div id="fb-root"></div>
+							<script>(function(d, s, id) {
+								var js, fjs = d.getElementsByTagName(s)[0];
+								if (d.getElementById(id)) {return;}
+								js = d.createElement(s); js.id = id;
+								js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+								fjs.parentNode.insertBefore(js, fjs);
+								}(document, 'script', 'facebook-jssdk'));
+							</script>
+							<fb:comments href="{{restaurant.absolute_uri}}" num_posts="4" width="400"></fb:comments>
+						</p>
+					</div>
+					
+
+
+
+	</article>
+
+
+
+
+</body>
+
+
+</html>

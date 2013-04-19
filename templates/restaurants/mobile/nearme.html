@@ -1,0 +1,123 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	
+
+	<link rel="shortcut icon" href="/link/to/favicon.ico"><!-- update this -->
+	<link rel="apple-touch-icon" href="/link/to/apple-touch-icon.png"><!-- update this -->
+
+	<link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}/restaurants/mobile/css/style.css" media="screen, handheld" />
+	<link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}/restaurants/mobile/css/enhanced.css" media="screen  and (min-width: 40.5em)" />
+
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script type="text/javascript">
+		// Try W3C Geolocation (Preferred)
+		if( navigator.geolocation )
+		{
+			navigator.geolocation.getCurrentPosition( function( position )
+			{
+				var lat = position.coords.latitude;
+				var lng = position.coords.longitude;
+						
+			});
+			$.get( "{% url nearme %}", {'lat': lat,'lng': lng}, function( data ){
+					// $("#calls").html( data.content );
+					// CallsByID = data.CallsByID;
+					// activate_calls( mc, CallsByID,false,false );
+					// graph( data.categories );
+					// $("#summary").html( "Calls Returned by Search: " + markers.length );
+					// //set our filter content
+					// $("#filter_content").html( data.filter_content);
+					// //setting up the details about the map
+					// $("#details_content").html( data.details_content );
+					
+					// $("#info").html( "Start: <span class='bold'>" + data.from_date + "</span> End: <span class='bold'>" + data.to_date + "</span> Total Calls: <span class='bold'>" + data.total_calls + "</span>" );
+					$("#nearme_details").html(data);
+					});
+		}
+	</script>
+</head>
+
+<body>
+	<nav class="centered miniNav">
+		<div id="logoContainer miniNav" class="left">
+			<div id="mobileLogo" class="centered miniNav">
+				<img src="{{MEDIA_URL}}/restaurants/mobile/images/mobileLogo-full.png" alt="Dining logo">
+			</div>
+		</div>
+
+		<div id="miniNavWrapper">
+			<header  class="centered">
+				Browse by:
+			</header>
+			<br />
+			<div class="clear left"></div>
+			<div class="centered">
+				<ul class="centered">
+					<li>
+						<a href="{% url restaurants-browse 'A','1' %}"><p class="centeredText">Name</p></a>
+					</li>
+					<li>
+						<a href="{% url list_neighborhoods %}"><p class="centeredText">Areas</p></a>
+					</li>
+					<li>
+						<a href="{% url list_cuisines %}"><p class="centeredText">Cuisine</p></a>
+					</li>
+					<li>
+						<a href="{% url list_recent_inspections 1 %}"><p class="centeredText">Inspections</p></a>
+					</li>
+					<li>
+						<a href="{% url list_attributes %}"><p class="centeredText">Features</p></a>
+					</li>
+					<li>
+						<a href="{% url nearme %}"><p class="centeredText">Near Me</p></a>
+					</li>
+				</ul>				
+			</div>
+		</div>
+
+		<div class="clear"></div>
+
+	</nav>
+
+	<div class="clear"></div>
+
+	<article>
+		<section>Results list</section>
+	<!-- 
+
+			<div class="restaurantListing">
+				<h3 class="restaurantListingName"><a href="/restaurants/detail/6203">Ali&#39;s Family Restaurant</a> </h3>
+				<p class="restaurantListingInfo">4525 W. Chestnut Expressway, Springfield, MO 417-864-7378</p>
+				
+					<p class="restaurantListingSummary"><b>Cuisines: </b><i><a href="/restaurants/cuisine/american/1">american</i></a></p>
+				
+			</div>
+		
+			<div class="restaurantListing">
+				<h3 class="restaurantListingName"><a href="/restaurants/detail/8084">Amazin Asian</a> </h3>
+				<p class="restaurantListingInfo">2941 E. Battlefield Rd., Springfield, MO (417) 882-4000</p>
+				
+					<p class="restaurantListingSummary"><b>Cuisines: </b><i><a href="/restaurants/cuisine/asian/1">asian</i></a>, <i><a href="/restaurants/cuisine/chinese/1">chinese</i></a></p>
+				
+			</div>
+		
+			<div class="restaurantListing">
+				<h3 class="restaurantListingName"><a href="/restaurants/detail/6208">Amigos Mexican Restaurant</a> </h3>
+				<p class="restaurantListingInfo">2118 S. Campbell Ave., Springfield, MO 417-887-1401</p>
+				
+					<p class="restaurantListingSummary"><b>Cuisines: </b><i><a href="/restaurants/cuisine/mexican/1">mexican</i></a></p>
+				
+			</div>
+	 -->
+	 	<div id="nearme_details">
+	 	</div>
+	</article>
+
+
+
+
+</body>
+
+
+</html>

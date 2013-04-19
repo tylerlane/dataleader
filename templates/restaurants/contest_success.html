@@ -1,0 +1,57 @@
+{% extends "restaurants/blank_template.html" %}
+{% load unquote %}
+{% load humanize %}
+{% block headers %}
+<style>
+	
+	#contact_form {
+		margin-left: auto;
+		margin-right: auto;
+		float: left;
+		width:600px;
+	}
+	
+	.fieldWrapper {
+		min-height: 40px;
+		border-bottom: solid 1px #CACACA; 
+		padding: 8px 0 8px 0;
+		clear:both;
+	}
+	
+	input {
+		float: left;
+	}
+	
+	.errorlist {
+		float: left;
+		padding-left: 20px;
+	}
+	
+	.errorlist li {
+		color: red;
+		font-weight: bold;
+		list-style-type: square;
+		margin-left: 20px;
+	}
+	
+	.error {
+		color: red;
+		font-size: 2em;
+		font-weight: bold;
+	}
+	
+	label {
+		font-family: arial;
+		height: 2em;
+		float:left;
+		width: 150px;
+	}
+	
+	h2 {
+		font-family: arial;
+	}
+</style>
+{% endblock %}
+{% block content %}		
+<h3>Thank you for entering the contest!</h3>
+{% endblock %}

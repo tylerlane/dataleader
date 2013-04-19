@@ -1,0 +1,109 @@
+	<div id="headerContainer">
+			<div id="browseSection">
+				<div id="headerBrowse006_">
+					<img id="headerBrowse006" src="{{MEDIA_URL}}/restaurants/images/headerBrowse-06.jpg" width="357" height="50" alt="" />
+				</div>
+
+				<div id="dinedrink-layout-12_">
+					<img id="dinedrink_layout_12" src="{{MEDIA_URL}}/restaurants/images/dinedrink_layout_12.jpg" width="57" height="208" alt="" />
+				</div>
+				
+				
+				<div id="browseName_">
+					<a href="{% url restaurants-browse 'A','1' %}">
+						<img id="browseName" src="{{MEDIA_URL}}/restaurants/images/clearPixel.gif" width="150" height="30" alt="" />
+					</a>
+				</div>
+				<div id="browseNeighborhood_">
+					<a href="{% url list_neighborhoods %}">
+						<img id="browseNeighborhood" src="{{MEDIA_URL}}/restaurants/images/clearPixel.gif" width="150" height="30" alt="" />
+					</a>
+				</div>
+
+				<div id="browseCuisine_">
+					<a href="{% url list_cuisines %}">
+						<img id="browseCuisine" src="{{MEDIA_URL}}/restaurants/images/clearPixel.gif" width="150" height="27" alt="" />
+					</a>
+				</div>
+				<div id="browseInspections_">
+					<a href="{% url list_recent_inspections 1 %}">
+						<img id="browseInspections" src="{{MEDIA_URL}}/restaurants/images/clearPixel.gif" width="150" height="27" alt="" />
+					</a>
+				</div>
+
+				<div id="browsePrice_">
+					<a href="{% url list_attribute_values "average entree price" %}">
+						<img id="browsePrice" src="{{MEDIA_URL}}/restaurants/images/clearPixel.gif" width="150" height="30" alt="" />
+					</a>
+				</div>
+				<div id="browseFeatures_">
+					<a href="{% url list_attributes %}">
+						<img id="browseFeatures" src="{{MEDIA_URL}}/restaurants/images/clearPixel.gif" width="150" height="30" alt="" />
+					</a>
+				</div>
+
+				<div id="dinedrink-layout-23_">
+					<a href="http://www.news-leader.com"><img id="dinedrink_layout_23" src="{{MEDIA_URL}}/restaurants/images/dinedrink_layout_23.jpg" width="300" height="121" alt="Powered by news-leader.com" /></a>
+				</div>
+				
+
+			</div>
+
+			<div id="mainLogo_">
+				<a href="http://dining.news-leader.com">
+					<img id="mainLogo" src="{{MEDIA_URL}}/restaurants/images/mainLogo.jpg" width="263" height="258" alt="" />
+				</a>
+			</div>
+
+			<div id="profilesContainer">
+				<div id="headerBrowse008_">
+					<img id="headerBrowse008" src="{{MEDIA_URL}}/restaurants/images/headerBrowse-08.jpg" width="58" height="50" alt="" />
+				</div>
+
+				<div id="dinedrink-layout-09_">
+					<img id="dinedrink_layout_09" src="{{MEDIA_URL}}/restaurants/images/dinedrink_layout_09.jpg" width="302" height="21" alt="" />
+				</div>
+				
+
+				<div id="topRatedButton_">
+					<a href="{% url display_top_rated %}">
+						<img id="topRatedButton" src="{{MEDIA_URL}}/restaurants/images/clearPixel.gif" width="209" height="29" alt="" />
+					</a>
+				</div>
+
+				<div id="dinedrink-layout-11_">
+					<img id="dinedrink_layout_11" src="{{MEDIA_URL}}/restaurants/images/dinedrink_layout_11.jpg" width="93" height="120" alt="" />
+				</div>
+
+				<div id="dinedrink-layout-15_">
+					<img id="dinedrink_layout_15" src="{{MEDIA_URL}}/restaurants/images/dinedrink_layout_15.jpg" width="58" height="57" alt="" />
+				</div>
+				
+				
+
+				<div id="mostViewedButton_">
+					<a href="{% url display_most_viewed %}">
+						<img id="mostViewedButton" src="{{MEDIA_URL}}/restaurants/images/clearPixel.gif" width="209" height="36" alt="" />
+					</a>
+				</div>
+
+				<div id="dinedrink-layout-19_">
+					<img id="dinedrink_layout_19" src="{{MEDIA_URL}}/restaurants/images/dinedrink_layout_19.jpg" width="209" height="21" alt="" />
+				</div>
+				<div id="searchBox_">
+					<form action="{% url restaurants-search %}" method="post">
+						{% csrf_token %}
+						<input type="text" name="name" id="searchbox" size="31" />
+						<div name="searchButtonContainer">
+							<input type="image" name="searchButton" src="{{MEDIA_URL}}/restaurants/images/searchBoxButton.jpg" alt="Submit" width="51" height="34" />
+						</div>
+					</form>
+				</div>	
+			</div>
+			<div id="dinedrink-layout-24_">
+				<img id="dinedrink_layout_24" src="{{MEDIA_URL}}/restaurants/images/dinedrink_layout_24.jpg" width="360" height="46" alt="" />
+			</div>
+		<!-- 	<div id="sponsorAdSpot_">
+				<img id="sponsorAdSpot" src="{{MEDIA_URL}}/restaurants/images/sponsorAdSpot.jpg" width="360" height="108" alt="" />
+			</div> -->
+		</div>

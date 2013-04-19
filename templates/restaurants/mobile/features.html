@@ -1,0 +1,115 @@
+{% load unquote %}
+{% load humanize %}
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1.0,width=device-width,user-scalable=0" />
+
+	<link rel="shortcut icon" href="/link/to/favicon.ico"><!-- update this -->
+	<link rel="apple-touch-icon" href="/link/to/apple-touch-icon.png"><!-- update this -->
+
+	<link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}/restaurants/mobile/css/style.css" media="screen, handheld" />
+	<link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}/restaurants/mobile/css/enhanced.css" media="screen  and (min-width: 40.5em)" />
+
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="{{MEDIA_URL}}/restaurants/restaurant_attribute_values.json"></script>
+
+	<script>
+		$(document).ready( function(){
+			// $( "#neighborhoodsNav" ).accordion();
+		});
+	</script>
+</head>
+
+<body>
+	<nav class="centered miniNav">
+		<div id="logoContainer miniNav" class="left">
+			<div id="mobileLogo" class="centered miniNav">
+				<img src="{{MEDIA_URL}}/restaurants/mobile/images/mobileLogo-full.png" alt="Dining logo">
+			</div>
+		</div>
+
+		<div id="miniNavWrapper">
+			<header  class="centered">
+				Browse by:
+			</header>
+			<br />
+			<div class="clear left"></div>
+			<div class="centered">
+				<ul class="centered">
+					<li>
+						<a href="{% url restaurants-browse 'A','1' %}"><p class="centeredText">Name</p></a>
+					</li>
+					<li>
+						<a href="{% url list_neighborhoods %}"><p class="centeredText">Areas</p></a>
+					</li>
+					<li>
+						<a href="{% url list_cuisines %}"><p class="centeredText">Cuisine</p></a>
+					</li>
+					<li>
+						<a href="{% url list_recent_inspections 1 %}"><p class="centeredText">Inspections</p></a>
+					</li>
+					<li>
+						<a href="{% url list_attributes %}"><p class="centeredText">Features</p></a>
+					</li>
+					<li>
+						<a href="#"><p class="centeredText">Near Me</p></a>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="clear"></div>	
+	</nav>
+
+	
+	<article>
+		{% if attributes_list %}
+			
+			<nav>
+				<div id="neighborhoodsNav">
+					<ul class="centered">
+						{% for val in attributes_list %}
+					        {% if val != "" %}
+					        	<li>
+						            <a href="{% url list_restaurants_attribute orig_attribute.name val 1 %}">{{val|title}}</a>
+						        </li>
+						    {% endif %}
+					    {% endfor %}
+					</ul>
+				</div>
+			</nav>
+		{% endif %}
+		<div class="clear"></div>
+		{% if restaurants %}
+			{% if title %}
+				<header  class="centered">
+					{{title|title}}
+				</header>
+			{% endif %}
+			{% for restaurant in restaurants %}
+
+				<div class="restaurantListing">
+					<h3 class="restaurantListingName"><a href="{%url restaurant-detail restaurant.id %}">{{restaurant.name|title}}</a> </h3>
+					<p class="restaurantListingInfo">{{restaurant.address}}, {{restaurant.city|title}}, {{restaurant.state|default:"MO"}} {{restaurant.phone|default:""}}</p>
+					{% if restaurant.cuisine.all %}
+						<p class="restaurantListingSummary"><b>Cuisines: </b>{% for cuisine in restaurant.cuisine.all %}{% if cuisine != search_cuisine %}<i><a href="{% url list_restaurants_cuisine cuisine.name 1 %}">{% else %}<b>{% endif%}{{cuisine.name}}{% if cuisine != search_cuisine %}</i></a>{% else %}</b>{% endif %}{% if forloop.last %}{% else %}, {% endif %}{% endfor %}</p>
+					{% endif %}
+				</div>
+			{% endfor %}
+		{% endif %}
+		<nav>
+			<div id="neighborhoodsNav">
+				<ul class="centered">
+					{% for attribute in attributes|dictsort:"name" %}
+						<li>
+				            <a href="{% url list_attribute_values attribute.name %}">{{attribute.name|title}}</a>
+				        </li>
+				    {% endfor %}
+				</ul>
+			</div>
+		</nav>
+	</article>
+</body>
+</html>

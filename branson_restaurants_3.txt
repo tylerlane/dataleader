@@ -1,0 +1,360 @@
+1 - Restaurant Name: King Subs
+300 TANGER BLVD # 119 
+BRANSON MO 65616 
+Phone: 417-230-9303
+Smoking? no
+---------------------
+2 - Restaurant Name: LA IGUANA TACOS & BURRITOS
+3705 W HIGHWAY 76 # D 
+BRANSON MO 65616 
+Phone: 417-334-4833
+Smoking? no
+---------------------
+3 - Restaurant Name: La Iguana Tacos & Burritos
+1117 S HIGHWAY 165 
+BRANSON MO 65616 
+Phone: 417-334-4833
+Smoking? no
+---------------------
+4 - Restaurant Name: LA PIZZA CELLAR
+3015 E HIGHWAY 176 
+ROCKAWAY BEACH MO 65740 
+Phone: 417-561-4709
+Smoking? no
+---------------------
+5 - Restaurant Name: LA VERACRUZANA MEXICAN RESTAUR
+158 POINTE ROYALE DR 
+BRANSON MO 65616 
+Phone: 417-239-1348
+Smoking? no
+---------------------
+6 - Restaurant Name: LaiLai Aisian Buffet
+215 GAGE DR 
+HOLLISTER MO 65672 
+Phone: 417-489-6614
+Smoking? no
+---------------------
+7 - Restaurant Name: Lake Queen Cruises
+7 N BOARDWALK 
+BRANSON MO 65616 
+Phone: 417-239-3980
+Smoking? no
+---------------------
+8 - Restaurant Name: Landing Princess Cruises
+7 N BOARDWALK 
+BRANSON MO 65616 
+Phone: 417-239-3980
+Smoking? no
+---------------------
+9 - Restaurant Name: LANDRY'S SEAFOOD
+2900 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-339-1010
+Smoking? yes
+---------------------
+10 - Restaurant Name: LEVEL 2 STEAKHOUSE
+200 E MAIN 
+BRANSON MO 65616 
+Phone: 417-336-5500
+Smoking? no
+---------------------
+11 - Restaurant Name: LIONS CLUB-BRANSON-HOLLISTER
+1015 E HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-335-6618
+Smoking? no
+---------------------
+12 - Restaurant Name: Lions Club-Forsyth / VFW Hall
+113 COLUMBUS 
+FORSYTH MO 65653 
+Phone: 417-546-8175
+Smoking? no
+---------------------
+13 - Restaurant Name: LITTLE HACIENDA
+9 TREASURE LAKE RD 
+BRANSON MO 65616 
+Phone: 417-335-2008
+Smoking? no
+---------------------
+14 - Restaurant Name: LITTLE LA HACIENDA
+#9 DOWNING ST 
+HOLLISTER MO 65672 
+Phone: 417-337-9491
+Smoking? no
+---------------------
+15 - Restaurant Name: LONE STAR STEAKHOUSE
+201 S WILDWOOD DR 
+BRANSON MO 65616 
+Phone: 417-336-5030
+Smoking? yes
+---------------------
+16 - Restaurant Name: LOOSIE LOU'S
+203 S COMMERCIAL 
+BRANSON MO 65616 
+Phone: 417-230-5976
+Smoking? no
+---------------------
+17 - Restaurant Name: Los Limones of Forsyth LLC
+16039 HIGHWAY 160 
+FORSYTH MO 65653 
+Phone: 417-546-5001
+Smoking? yes
+---------------------
+18 - Restaurant Name: LOST BAYOU CAFE
+5631 HIGHWAY 165 
+BRANSON MO 65616 
+Phone: 417-379-3904
+Smoking? yes
+---------------------
+19 - Restaurant Name: MADE IN THE SHADE
+8608 STATE HWY 176 
+WALNUT SHADE MO 65771 
+Phone: 417-527-7088
+Smoking? no
+---------------------
+20 - Restaurant Name: MAIN STREET ALLEY
+113 W MAIN 
+BRANSON MO 65616 
+Phone: 417-699-0286
+Smoking? no
+---------------------
+21 - Restaurant Name: MARBLE SLAB CREAMERY
+2005 W HIGHWAY 76 # 207 
+BRANSON MO 65616 
+Phone: 417-336-6247
+Smoking? no
+---------------------
+22 - Restaurant Name: MARBLE SLAB CREAMERY 00609
+1107 BRANSON LANDING # 427 
+BRANSON MO 65616 
+Phone: 417-243-2663
+Smoking? no
+---------------------
+23 - Restaurant Name: MARRIOTT'S WILLOW RIDGE LODGE
+2929 GREEN MOUNTAIN DR 
+BRANSON MO 65616 
+Phone: 417-348-3100
+Smoking? no
+---------------------
+24 - Restaurant Name: MCDONALDS
+113 GAGE DR 
+HOLLISTER MO 65672 
+Phone: 417-332-0297
+Smoking? no
+---------------------
+25 - Restaurant Name: MCDONALDS
+15548 FOREST LANE 
+FORSYTH MO 65653 
+Phone: 417-546-3271
+Smoking? no
+---------------------
+26 - Restaurant Name: MCDONALDS #1
+515 W MAIN 
+BRANSON MO 65616 
+Phone: 417-334-1490
+Smoking? no
+---------------------
+27 - Restaurant Name: MCDONALDS #2
+2214 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-335-2505
+Smoking? no
+---------------------
+28 - Restaurant Name: MCDONALDS #3
+1361 STATE HIGHWAY 248 
+BRANSON MO 65616 
+Phone: 417-337-7744
+Smoking? no
+---------------------
+29 - Restaurant Name: McDonalds Restaurant
+1209 BRANSON HILLS PKWY 
+BRANSON MO 65616 
+Phone: 
+Smoking? no
+---------------------
+30 - Restaurant Name: MCFARLAIN'S REST&BAKERY;
+3562 SHEPHERD OF THE HILLS EXPY 
+BRANSON MO 65616 
+Phone: 417-336-4680
+Smoking? no
+---------------------
+31 - Restaurant Name: MEL'S HARD LUCK DINER
+2800 W HIGHWAY 76 # 103 
+BRANSON MO 65616 
+Phone: 417-332-0150
+Smoking? no
+---------------------
+32 - Restaurant Name: MICKEY GILLEY'S TX CAFE
+3457 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-335-2755
+Smoking? yes
+---------------------
+33 - Restaurant Name: MITSU NEKO
+1819 W HIGHWAY 76 # D 
+BRANSON MO 65616 
+Phone: 417-336-1819
+Smoking? no
+---------------------
+34 - Restaurant Name: Montana Mike's
+1464 HIGHWAY 248 
+BRANSON MO 65616 
+Phone: 417-334-5893
+Smoking? yes
+---------------------
+35 - Restaurant Name: MONTANA MIKES STEAKHOUSE
+3225 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-334-2766
+Smoking? yes
+---------------------
+36 - Restaurant Name: MOON RIVER THEATER
+2500 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-334-1800
+Smoking? no
+---------------------
+37 - Restaurant Name: MR B'S ICE CREAM PARLOR
+102 S BUSINESS HIGHWAY 65 
+BRANSON MO 65616 
+Phone: 417-336-5735
+Smoking? no
+---------------------
+38 - Restaurant Name: MR G'S PIZZA
+202.5 N COMMERCIAL ST 
+BRANSON MO 65616 
+Phone: 417-335-8156
+Smoking? yes
+---------------------
+39 - Restaurant Name: MULLIGAN'S REST
+245 S WILDWOOD DR 
+BRANSON MO 65616 
+Phone: 417-334-4553
+Smoking? no
+---------------------
+40 - Restaurant Name: Murder Rock Golf Club
+1250 GOLF CLUB RD 
+HOLLISTER MO 65672 
+Phone: 417-332-3259
+Smoking? no
+---------------------
+41 - Restaurant Name: Old Chicago
+801 BRANSON LANDING BLVD 
+BRANSON MO 65616 
+Phone: 417-332-2005
+Smoking? yes
+---------------------
+42 - Restaurant Name: OLIVE GARDEN #1447-GMRI INC
+3790 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-337-5811
+Smoking? yes
+---------------------
+43 - Restaurant Name: ORANGE LEAF FROZEN YOGURT
+335 BRANSON LANDING 
+BRANSON MO 65616 
+Phone: 417-332-0050
+Smoking? no
+---------------------
+44 - Restaurant Name: OSCARS FAMOUS RIBS @CEDAR JUNC
+1225 RIDGEDALE RD 
+RIDGEDALE MO 65739 
+Phone: 
+Smoking? no
+---------------------
+45 - Restaurant Name: OUTBACK PUB
+1924 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-334-7003
+Smoking? yes
+---------------------
+46 - Restaurant Name: OUTBACK RESTAURANT
+1914 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-334-6306
+Smoking? yes
+---------------------
+47 - Restaurant Name: OUTPOST GRILL
+5753 STATE HIGHWAY 165 
+BRANSON MO 65616 
+Phone: 417-332-3663
+Smoking? no
+---------------------
+48 - Restaurant Name: PANCHO VILLA TEX MEX
+2819 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-334-4548
+Smoking? yes
+---------------------
+49 - Restaurant Name: PANDA HOUSE
+2130 HWY 248 
+BRANSON MO 65616 
+Phone: 417-335-2770
+Smoking? no
+---------------------
+50 - Restaurant Name: PANERA BREAD
+2407 GREEN MOUNTAIN DR 
+BRANSON MO 65616 
+Phone: 417-336-4550
+Smoking? no
+---------------------
+51 - Restaurant Name: PAPA GRANDS
+1945 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-336-6709
+Smoking? no
+---------------------
+52 - Restaurant Name: Papa John's Pizza
+2715 W HIGHWAY 76 # 100 
+BRANSON MO 65616 
+Phone: 417-337-7272
+Smoking? no
+---------------------
+53 - Restaurant Name: PARADISE GRILL & BAR
+3250 SHEPHERD OF THE HILLS EXPY 
+BRANSON MO 65616 
+Phone: 417-334-5405
+Smoking? yes
+---------------------
+54 - Restaurant Name: PAYNE STEWART GOLF CLUB
+100 N PAYNE STEWART DR 
+BRANSON MO 65616 
+Phone: 417-337-2963
+Smoking? no
+---------------------
+55 - Restaurant Name: PEACH TREE YOGURT
+1077 BRANSON HILLS PARKWAY # F 
+BRANSON MO 65616 
+Phone: 417-230-9491
+Smoking? no
+---------------------
+56 - Restaurant Name: PIZZA BY THE CHEF
+180 MALL RD # D 
+HOLLISTER MO 65672 
+Phone: 417-239-1415
+Smoking? no
+---------------------
+57 - Restaurant Name: PIZZA HAUS
+4800 N GRETNA RD 
+BRANSON MO 65616 
+Phone: 417-544-1019
+Smoking? no
+---------------------
+58 - Restaurant Name: Pizza Hut
+3000 GREEN MOUNTAIN DR # 100 
+BRANSON MO 65616 
+Phone: 417-239-1111
+Smoking? no
+---------------------
+59 - Restaurant Name: Pizza Hut
+1050 BRANSON HILLS PKWY 
+BRANSON MO 65616 
+Phone: 417-332-2222
+Smoking? no
+---------------------
+60 - Restaurant Name: PIZZA WORLD
+1447F HWY 248 @ CEDAR RIDGE PLA 
+BRANSON MO 65616 
+Phone: 417-339-4544
+Smoking? no
+---------------------

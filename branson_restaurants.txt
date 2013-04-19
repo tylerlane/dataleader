@@ -1,0 +1,1800 @@
+1 - Restaurant Name: 248 TAKE & BAKE
+2722 STATE HIGHWAY 248 
+BRANSON MO 65616 
+Phone: 417-544-0206
+Smoking? no
+---------------------
+2 - Restaurant Name: A&W; ROOTBEER @ TANGER MALL
+300 TANGER BLVD # 218 
+BRANSON MO 65616 
+Phone: 417-337-7112
+Smoking? no
+---------------------
+3 - Restaurant Name: ANDY'S FROZEN  CUSTARD
+3415 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-337-5501
+Smoking? no
+---------------------
+4 - Restaurant Name: APPLEBEE'S NEIGHBORHOOD B&G;
+1836 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-336-5053
+Smoking? yes
+---------------------
+5 - Restaurant Name: Arby's Roast Beef Restaurant
+1077 BRANSON HILLS PKWY # A & B 
+BRANSON MO 65616 
+Phone: 417-239-3066
+Smoking? no
+---------------------
+6 - Restaurant Name: ARNIE'S BARN RESTAURANT
+612 DEVILS POOL RD 
+RIDGEDALE MO 65739 
+Phone: 417-335-2777
+Smoking? no
+---------------------
+7 - Restaurant Name: AUDI'S  #1 PIZZA & MEXICAN FOO
+1865 S BUSINESS HIGHWAY 65 
+HOLLISTER MO 65672 
+Phone: 417-334-8684
+Smoking? yes
+---------------------
+8 - Restaurant Name: AWAKENING BRANSON
+3044 SHEPHERD OF THE HILLS EXP # 101 
+BRANSON MO 65616 
+Phone: 913-238-7058
+Smoking? no
+---------------------
+9 - Restaurant Name: B T BONES
+2280 SHEPHERD OF THE HILLS EXPY 
+BRANSON MO 65616 
+Phone: 417-335-2002
+Smoking? yes
+---------------------
+10 - Restaurant Name: BALDKNOBBER'S RESTAURANT & GIF
+2845 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-334-7202
+Smoking? no
+---------------------
+11 - Restaurant Name: Bear Creek(Ledgestone Food Com
+1320 KEITHLEY RD 
+WALNUT SHADE MO 65771 
+Phone: 417-443-0036
+Smoking? no
+---------------------
+12 - Restaurant Name: BELGIAN WAFFLE HOUSE
+3120 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-334-8484
+Smoking? no
+---------------------
+13 - Restaurant Name: BEVERLYS STEAKHOUSE & SALOON
+4182 E HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-331-1020
+Smoking? yes
+---------------------
+14 - Restaurant Name: Big Cedar Convention Center
+612 DEVILS POOL RD 
+RIDGEDALE MO 65739 
+Phone: 417-335-2777
+Smoking? no
+---------------------
+15 - Restaurant Name: BIG CEDAR TRUMAN SMOKEHOUSE
+612 DEVILS POOL RD 
+RIDGEDALE MO 65739 
+Phone: 417-335-2777
+Smoking? no
+---------------------
+16 - Restaurant Name: BIG CEDAR-DEVILS POOL REST
+612 DEVILS POOL RD 
+RIDGEDALE MO 65739 
+Phone: 417-335-2777
+Smoking? no
+---------------------
+17 - Restaurant Name: BIG CEDAR-WILDERNESS CLUB LAZY
+612 DEVILS POOL RD 
+RIDGEDALE MO 65739 
+Phone: 417-335-2777
+Smoking? no
+---------------------
+18 - Restaurant Name: BIG CEDAR-WORMAN HOUSE
+612 DEVILS POOL RD 
+RIDGEDALE MO 65739 
+Phone: 417-335-2777
+Smoking? no
+---------------------
+19 - Restaurant Name: BIG FAT BURGER BAR
+2001 HIGHWAY 248 # 1&2 
+BRANSON MO 65616 
+Phone: 417-343-1586
+Smoking? no
+---------------------
+20 - Restaurant Name: BILLY BOBS DAIRYLAND II 08401
+1901 W HIGHWAY 76 # B 
+BRANSON MO 65616 
+Phone: 417-337-9291
+Smoking? no
+---------------------
+21 - Restaurant Name: BLACK OAK GRILL
+601 BRANSON LANDING 
+BRANSON MO 65616 
+Phone: 972-888-4252
+Smoking? no
+---------------------
+22 - Restaurant Name: BLUE MAN GRILL
+2410 W HIGHWAY 76 # A 
+BRANSON MO 65616 
+Phone: 417-230-0284
+Smoking? no
+---------------------
+23 - Restaurant Name: BLUEMAN GRILL & ROADHOUSE
+3506 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-230-0284
+Smoking? no
+---------------------
+24 - Restaurant Name: BOB EVANS  #264
+801 W MAIN 
+BRANSON MO 65616 
+Phone: 417-336-2023
+Smoking? no
+---------------------
+25 - Restaurant Name: Botanas Restaurant & Bar
+3515 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-544-1924
+Smoking? no
+---------------------
+26 - Restaurant Name: BRANSON CAFE
+120 W MAIN 
+BRANSON MO 65616 
+Phone: 417-334-3021
+Smoking? no
+---------------------
+27 - Restaurant Name: Branson Central Theater
+625 S HIGHWAY 165 
+BRANSON MO 65616 
+Phone: 417-335-0541
+Smoking? no
+---------------------
+28 - Restaurant Name: BRANSON EVENTS CENTER
+2527 HIGHWAY 248 
+BRANSON MO 65616 
+Phone: 417-336-0219
+Smoking? no
+---------------------
+29 - Restaurant Name: Branson Grand Bar & Grill
+245 N WILDWOOD DR 
+BRANSON MO 65616 
+Phone: 417-336-6646
+Smoking? no
+---------------------
+30 - Restaurant Name: BRANSON HWY K MARINA
+727 WARREN RD 
+KIRBYVILLE RO 65679 
+Phone: 417-334-2880
+Smoking? no
+---------------------
+31 - Restaurant Name: BRANSON SCENIC RAILWAY
+206 E MAIN 
+BRANSON MO 65615-0924 
+Phone: 417-334-6110
+Smoking? no
+---------------------
+32 - Restaurant Name: BUCKINGHAM'S REST & OASIS
+2820 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-337-7777
+Smoking? no
+---------------------
+33 - Restaurant Name: BURGER SHACK
+1946 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-544-9856
+Smoking? no
+---------------------
+34 - Restaurant Name: CAKES & CREAM DESSERT PARLOR
+2805 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-334-4929
+Smoking? no
+---------------------
+35 - Restaurant Name: CANTINA LAREDO
+1001 BRANSON LANDING 
+BRANSON MO 65616 
+Phone: 417-334-6062
+Smoking? no
+---------------------
+36 - Restaurant Name: CASA FUENTES #1
+1107 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-339-3888
+Smoking? no
+---------------------
+37 - Restaurant Name: Castle Rock Resort & Waterpark
+3005 GREEN MOUNTAIN DR 
+BRANSON MO 65616 
+Phone: 417-336-2913
+Smoking? no
+---------------------
+38 - Restaurant Name: CHARLEYS GRILLED SUBS BP#06-65
+331 BRANSON LANDING 
+BRANSON MO 65616 
+Phone: 417-337-7334
+Smoking? no
+---------------------
+39 - Restaurant Name: Charlie's Steaks Ribs & Ale
+139 HIGHWAY Y 
+FORSYTH MO 65653 
+Phone: 417-546-2011
+Smoking? yes
+---------------------
+40 - Restaurant Name: CHATEAU ON THE LAKE
+415 N HIGHWAY 265 
+BRANSON MO 65616 
+Phone: 417-334-1161 Ext 200
+Smoking? no
+---------------------
+41 - Restaurant Name: CHERRYBERRY
+3000 GREEN MOUNTAIN DR. # 101 
+BRANSON MO 65616 
+Phone: 417-544-9069
+Smoking? no
+---------------------
+42 - Restaurant Name: CHILI'S GRILL & BAR BP#06-408
+1150 BRANSON HILLS PKWY 
+BRANSON MO 65616 
+Phone: 417-239-0992
+Smoking? yes
+---------------------
+43 - Restaurant Name: Chinese Mexican Burrito
+15709 HIGHWAY 160 
+FORSYTH MO 65653 
+Phone: 417-546-2778
+Smoking? no
+---------------------
+44 - Restaurant Name: CIRCLE B SUPPER SHOW
+625 S HIGHWAY 165 
+BRANSON MO 65616 
+Phone: 417-335-0541
+Smoking? no
+---------------------
+45 - Restaurant Name: CLAY COOPER  DINNER THEATER
+3216 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-332-2529
+Smoking? no
+---------------------
+46 - Restaurant Name: Clay Cooper Theater
+3216 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-332-2529
+Smoking? no
+---------------------
+47 - Restaurant Name: CLOCKERS CAFE
+103 S COMMERCIAL 
+BRANSON MO 65616 
+Phone: 417-335-2328
+Smoking? no
+---------------------
+48 - Restaurant Name: COLD STONE CREAMERY
+3600 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-294-0057
+Smoking? no
+---------------------
+49 - Restaurant Name: COLD STONE CREAMERY
+1615 W HIGHWAY 76 # K 
+BRANSON MO 65616 
+Phone: 417-239-0801
+Smoking? no
+---------------------
+50 - Restaurant Name: COLLEGE OF OZARKS CAFETERIA
+1 HIGHWAY V 
+POINT LOOKOUT MO 65726 
+Phone: 417-334-6411 Ext 335
+Smoking? no
+---------------------
+51 - Restaurant Name: COLLEGE OF OZARKS DOBYN'S DINI
+1 HIGHWAY V 
+POINT LOOKOUT MO 65726 
+Phone: 417-334-6411 Ext 335
+Smoking? no
+---------------------
+52 - Restaurant Name: CORDOVANO JOE'S AUTHENTIC NY S
+2201 ROARK VALLEY RD 
+BRANSON MO 65616 
+Phone: 417-334-2324 Ext 172
+Smoking? no
+---------------------
+53 - Restaurant Name: COSMOPOLITAN THE
+2900 GREEN MOUNTAIN DR # 201 
+BRANSON MO 65616 
+Phone: 417-335-6035
+Smoking? no
+---------------------
+54 - Restaurant Name: COUNTRY CAFE
+409 GRAND AVE 
+TANEYVILLE MO 65759 
+Phone: 417-546-4609
+Smoking? no
+---------------------
+55 - Restaurant Name: COUNTRY CORNER CAFE
+6672 HIGHWAY M 
+CEDAR CREEK MO 65627 
+Phone: 417-794-3758
+Smoking? no
+---------------------
+56 - Restaurant Name: CRACKER BARREL
+3765 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-335-3003
+Smoking? yes
+---------------------
+57 - Restaurant Name: CULVERS OF BRANSON
+1309 HIGHWAY 248 
+BRANSON MO 65616 
+Phone: 417-334-4494
+Smoking? no
+---------------------
+58 - Restaurant Name: D'MONACO REST
+4125 HIGHWAY 86 
+RIDGEDALE MO 65739 
+Phone: 866-472-8430
+Smoking? no
+---------------------
+59 - Restaurant Name: D.Q. Grill & Chill
+1530 HIGHWAY 248 
+BRANSON MO 65616 
+Phone: 417-544-1980
+Smoking? no
+---------------------
+60 - Restaurant Name: DAIRY QUEEN GRILL & CHILL
+2620 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-335-8974
+Smoking? no
+---------------------
+1 - Restaurant Name: 248 TAKE & BAKE
+2722 STATE HIGHWAY 248 
+BRANSON MO 65616 
+Phone: 417-544-0206
+Smoking? no
+---------------------
+2 - Restaurant Name: A&W; ROOTBEER @ TANGER MALL
+300 TANGER BLVD # 218 
+BRANSON MO 65616 
+Phone: 417-337-7112
+Smoking? no
+---------------------
+3 - Restaurant Name: ANDY'S FROZEN  CUSTARD
+3415 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-337-5501
+Smoking? no
+---------------------
+4 - Restaurant Name: APPLEBEE'S NEIGHBORHOOD B&G;
+1836 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-336-5053
+Smoking? yes
+---------------------
+5 - Restaurant Name: Arby's Roast Beef Restaurant
+1077 BRANSON HILLS PKWY # A & B 
+BRANSON MO 65616 
+Phone: 417-239-3066
+Smoking? no
+---------------------
+6 - Restaurant Name: ARNIE'S BARN RESTAURANT
+612 DEVILS POOL RD 
+RIDGEDALE MO 65739 
+Phone: 417-335-2777
+Smoking? no
+---------------------
+7 - Restaurant Name: AUDI'S  #1 PIZZA & MEXICAN FOO
+1865 S BUSINESS HIGHWAY 65 
+HOLLISTER MO 65672 
+Phone: 417-334-8684
+Smoking? yes
+---------------------
+8 - Restaurant Name: AWAKENING BRANSON
+3044 SHEPHERD OF THE HILLS EXP # 101 
+BRANSON MO 65616 
+Phone: 913-238-7058
+Smoking? no
+---------------------
+9 - Restaurant Name: B T BONES
+2280 SHEPHERD OF THE HILLS EXPY 
+BRANSON MO 65616 
+Phone: 417-335-2002
+Smoking? yes
+---------------------
+10 - Restaurant Name: BALDKNOBBER'S RESTAURANT & GIF
+2845 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-334-7202
+Smoking? no
+---------------------
+11 - Restaurant Name: Bear Creek(Ledgestone Food Com
+1320 KEITHLEY RD 
+WALNUT SHADE MO 65771 
+Phone: 417-443-0036
+Smoking? no
+---------------------
+12 - Restaurant Name: BELGIAN WAFFLE HOUSE
+3120 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-334-8484
+Smoking? no
+---------------------
+13 - Restaurant Name: BEVERLYS STEAKHOUSE & SALOON
+4182 E HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-331-1020
+Smoking? yes
+---------------------
+14 - Restaurant Name: Big Cedar Convention Center
+612 DEVILS POOL RD 
+RIDGEDALE MO 65739 
+Phone: 417-335-2777
+Smoking? no
+---------------------
+15 - Restaurant Name: BIG CEDAR TRUMAN SMOKEHOUSE
+612 DEVILS POOL RD 
+RIDGEDALE MO 65739 
+Phone: 417-335-2777
+Smoking? no
+---------------------
+16 - Restaurant Name: BIG CEDAR-DEVILS POOL REST
+612 DEVILS POOL RD 
+RIDGEDALE MO 65739 
+Phone: 417-335-2777
+Smoking? no
+---------------------
+17 - Restaurant Name: BIG CEDAR-WILDERNESS CLUB LAZY
+612 DEVILS POOL RD 
+RIDGEDALE MO 65739 
+Phone: 417-335-2777
+Smoking? no
+---------------------
+18 - Restaurant Name: BIG CEDAR-WORMAN HOUSE
+612 DEVILS POOL RD 
+RIDGEDALE MO 65739 
+Phone: 417-335-2777
+Smoking? no
+---------------------
+19 - Restaurant Name: BIG FAT BURGER BAR
+2001 HIGHWAY 248 # 1&2 
+BRANSON MO 65616 
+Phone: 417-343-1586
+Smoking? no
+---------------------
+20 - Restaurant Name: BILLY BOBS DAIRYLAND II 08401
+1901 W HIGHWAY 76 # B 
+BRANSON MO 65616 
+Phone: 417-337-9291
+Smoking? no
+---------------------
+21 - Restaurant Name: BLACK OAK GRILL
+601 BRANSON LANDING 
+BRANSON MO 65616 
+Phone: 972-888-4252
+Smoking? no
+---------------------
+22 - Restaurant Name: BLUE MAN GRILL
+2410 W HIGHWAY 76 # A 
+BRANSON MO 65616 
+Phone: 417-230-0284
+Smoking? no
+---------------------
+23 - Restaurant Name: BLUEMAN GRILL & ROADHOUSE
+3506 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-230-0284
+Smoking? no
+---------------------
+24 - Restaurant Name: BOB EVANS  #264
+801 W MAIN 
+BRANSON MO 65616 
+Phone: 417-336-2023
+Smoking? no
+---------------------
+25 - Restaurant Name: Botanas Restaurant & Bar
+3515 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-544-1924
+Smoking? no
+---------------------
+26 - Restaurant Name: BRANSON CAFE
+120 W MAIN 
+BRANSON MO 65616 
+Phone: 417-334-3021
+Smoking? no
+---------------------
+27 - Restaurant Name: Branson Central Theater
+625 S HIGHWAY 165 
+BRANSON MO 65616 
+Phone: 417-335-0541
+Smoking? no
+---------------------
+28 - Restaurant Name: BRANSON EVENTS CENTER
+2527 HIGHWAY 248 
+BRANSON MO 65616 
+Phone: 417-336-0219
+Smoking? no
+---------------------
+29 - Restaurant Name: Branson Grand Bar & Grill
+245 N WILDWOOD DR 
+BRANSON MO 65616 
+Phone: 417-336-6646
+Smoking? no
+---------------------
+30 - Restaurant Name: BRANSON HWY K MARINA
+727 WARREN RD 
+KIRBYVILLE RO 65679 
+Phone: 417-334-2880
+Smoking? no
+---------------------
+31 - Restaurant Name: BRANSON SCENIC RAILWAY
+206 E MAIN 
+BRANSON MO 65615-0924 
+Phone: 417-334-6110
+Smoking? no
+---------------------
+32 - Restaurant Name: BUCKINGHAM'S REST & OASIS
+2820 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-337-7777
+Smoking? no
+---------------------
+33 - Restaurant Name: BURGER SHACK
+1946 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-544-9856
+Smoking? no
+---------------------
+34 - Restaurant Name: CAKES & CREAM DESSERT PARLOR
+2805 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-334-4929
+Smoking? no
+---------------------
+35 - Restaurant Name: CANTINA LAREDO
+1001 BRANSON LANDING 
+BRANSON MO 65616 
+Phone: 417-334-6062
+Smoking? no
+---------------------
+36 - Restaurant Name: CASA FUENTES #1
+1107 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-339-3888
+Smoking? no
+---------------------
+37 - Restaurant Name: Castle Rock Resort & Waterpark
+3005 GREEN MOUNTAIN DR 
+BRANSON MO 65616 
+Phone: 417-336-2913
+Smoking? no
+---------------------
+38 - Restaurant Name: CHARLEYS GRILLED SUBS BP#06-65
+331 BRANSON LANDING 
+BRANSON MO 65616 
+Phone: 417-337-7334
+Smoking? no
+---------------------
+39 - Restaurant Name: Charlie's Steaks Ribs & Ale
+139 HIGHWAY Y 
+FORSYTH MO 65653 
+Phone: 417-546-2011
+Smoking? yes
+---------------------
+40 - Restaurant Name: CHATEAU ON THE LAKE
+415 N HIGHWAY 265 
+BRANSON MO 65616 
+Phone: 417-334-1161 Ext 200
+Smoking? no
+---------------------
+41 - Restaurant Name: CHERRYBERRY
+3000 GREEN MOUNTAIN DR. # 101 
+BRANSON MO 65616 
+Phone: 417-544-9069
+Smoking? no
+---------------------
+42 - Restaurant Name: CHILI'S GRILL & BAR BP#06-408
+1150 BRANSON HILLS PKWY 
+BRANSON MO 65616 
+Phone: 417-239-0992
+Smoking? yes
+---------------------
+43 - Restaurant Name: Chinese Mexican Burrito
+15709 HIGHWAY 160 
+FORSYTH MO 65653 
+Phone: 417-546-2778
+Smoking? no
+---------------------
+44 - Restaurant Name: CIRCLE B SUPPER SHOW
+625 S HIGHWAY 165 
+BRANSON MO 65616 
+Phone: 417-335-0541
+Smoking? no
+---------------------
+45 - Restaurant Name: CLAY COOPER  DINNER THEATER
+3216 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-332-2529
+Smoking? no
+---------------------
+46 - Restaurant Name: Clay Cooper Theater
+3216 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-332-2529
+Smoking? no
+---------------------
+47 - Restaurant Name: CLOCKERS CAFE
+103 S COMMERCIAL 
+BRANSON MO 65616 
+Phone: 417-335-2328
+Smoking? no
+---------------------
+48 - Restaurant Name: COLD STONE CREAMERY
+3600 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-294-0057
+Smoking? no
+---------------------
+49 - Restaurant Name: COLD STONE CREAMERY
+1615 W HIGHWAY 76 # K 
+BRANSON MO 65616 
+Phone: 417-239-0801
+Smoking? no
+---------------------
+50 - Restaurant Name: COLLEGE OF OZARKS CAFETERIA
+1 HIGHWAY V 
+POINT LOOKOUT MO 65726 
+Phone: 417-334-6411 Ext 335
+Smoking? no
+---------------------
+51 - Restaurant Name: COLLEGE OF OZARKS DOBYN'S DINI
+1 HIGHWAY V 
+POINT LOOKOUT MO 65726 
+Phone: 417-334-6411 Ext 335
+Smoking? no
+---------------------
+52 - Restaurant Name: CORDOVANO JOE'S AUTHENTIC NY S
+2201 ROARK VALLEY RD 
+BRANSON MO 65616 
+Phone: 417-334-2324 Ext 172
+Smoking? no
+---------------------
+53 - Restaurant Name: COSMOPOLITAN THE
+2900 GREEN MOUNTAIN DR # 201 
+BRANSON MO 65616 
+Phone: 417-335-6035
+Smoking? no
+---------------------
+54 - Restaurant Name: COUNTRY CAFE
+409 GRAND AVE 
+TANEYVILLE MO 65759 
+Phone: 417-546-4609
+Smoking? no
+---------------------
+55 - Restaurant Name: COUNTRY CORNER CAFE
+6672 HIGHWAY M 
+CEDAR CREEK MO 65627 
+Phone: 417-794-3758
+Smoking? no
+---------------------
+56 - Restaurant Name: CRACKER BARREL
+3765 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-335-3003
+Smoking? yes
+---------------------
+57 - Restaurant Name: CULVERS OF BRANSON
+1309 HIGHWAY 248 
+BRANSON MO 65616 
+Phone: 417-334-4494
+Smoking? no
+---------------------
+58 - Restaurant Name: D'MONACO REST
+4125 HIGHWAY 86 
+RIDGEDALE MO 65739 
+Phone: 866-472-8430
+Smoking? no
+---------------------
+59 - Restaurant Name: D.Q. Grill & Chill
+1530 HIGHWAY 248 
+BRANSON MO 65616 
+Phone: 417-544-1980
+Smoking? no
+---------------------
+60 - Restaurant Name: DAIRY QUEEN GRILL & CHILL
+2620 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-335-8974
+Smoking? no
+---------------------
+1 - Restaurant Name: King Subs
+300 TANGER BLVD # 119 
+BRANSON MO 65616 
+Phone: 417-230-9303
+Smoking? no
+---------------------
+2 - Restaurant Name: LA IGUANA TACOS & BURRITOS
+3705 W HIGHWAY 76 # D 
+BRANSON MO 65616 
+Phone: 417-334-4833
+Smoking? no
+---------------------
+3 - Restaurant Name: La Iguana Tacos & Burritos
+1117 S HIGHWAY 165 
+BRANSON MO 65616 
+Phone: 417-334-4833
+Smoking? no
+---------------------
+4 - Restaurant Name: LA PIZZA CELLAR
+3015 E HIGHWAY 176 
+ROCKAWAY BEACH MO 65740 
+Phone: 417-561-4709
+Smoking? no
+---------------------
+5 - Restaurant Name: LA VERACRUZANA MEXICAN RESTAUR
+158 POINTE ROYALE DR 
+BRANSON MO 65616 
+Phone: 417-239-1348
+Smoking? no
+---------------------
+6 - Restaurant Name: LaiLai Aisian Buffet
+215 GAGE DR 
+HOLLISTER MO 65672 
+Phone: 417-489-6614
+Smoking? no
+---------------------
+7 - Restaurant Name: Lake Queen Cruises
+7 N BOARDWALK 
+BRANSON MO 65616 
+Phone: 417-239-3980
+Smoking? no
+---------------------
+8 - Restaurant Name: Landing Princess Cruises
+7 N BOARDWALK 
+BRANSON MO 65616 
+Phone: 417-239-3980
+Smoking? no
+---------------------
+9 - Restaurant Name: LANDRY'S SEAFOOD
+2900 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-339-1010
+Smoking? yes
+---------------------
+10 - Restaurant Name: LEVEL 2 STEAKHOUSE
+200 E MAIN 
+BRANSON MO 65616 
+Phone: 417-336-5500
+Smoking? no
+---------------------
+11 - Restaurant Name: LIONS CLUB-BRANSON-HOLLISTER
+1015 E HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-335-6618
+Smoking? no
+---------------------
+12 - Restaurant Name: Lions Club-Forsyth / VFW Hall
+113 COLUMBUS 
+FORSYTH MO 65653 
+Phone: 417-546-8175
+Smoking? no
+---------------------
+13 - Restaurant Name: LITTLE HACIENDA
+9 TREASURE LAKE RD 
+BRANSON MO 65616 
+Phone: 417-335-2008
+Smoking? no
+---------------------
+14 - Restaurant Name: LITTLE LA HACIENDA
+#9 DOWNING ST 
+HOLLISTER MO 65672 
+Phone: 417-337-9491
+Smoking? no
+---------------------
+15 - Restaurant Name: LONE STAR STEAKHOUSE
+201 S WILDWOOD DR 
+BRANSON MO 65616 
+Phone: 417-336-5030
+Smoking? yes
+---------------------
+16 - Restaurant Name: LOOSIE LOU'S
+203 S COMMERCIAL 
+BRANSON MO 65616 
+Phone: 417-230-5976
+Smoking? no
+---------------------
+17 - Restaurant Name: Los Limones of Forsyth LLC
+16039 HIGHWAY 160 
+FORSYTH MO 65653 
+Phone: 417-546-5001
+Smoking? yes
+---------------------
+18 - Restaurant Name: LOST BAYOU CAFE
+5631 HIGHWAY 165 
+BRANSON MO 65616 
+Phone: 417-379-3904
+Smoking? yes
+---------------------
+19 - Restaurant Name: MADE IN THE SHADE
+8608 STATE HWY 176 
+WALNUT SHADE MO 65771 
+Phone: 417-527-7088
+Smoking? no
+---------------------
+20 - Restaurant Name: MAIN STREET ALLEY
+113 W MAIN 
+BRANSON MO 65616 
+Phone: 417-699-0286
+Smoking? no
+---------------------
+21 - Restaurant Name: MARBLE SLAB CREAMERY
+2005 W HIGHWAY 76 # 207 
+BRANSON MO 65616 
+Phone: 417-336-6247
+Smoking? no
+---------------------
+22 - Restaurant Name: MARBLE SLAB CREAMERY 00609
+1107 BRANSON LANDING # 427 
+BRANSON MO 65616 
+Phone: 417-243-2663
+Smoking? no
+---------------------
+23 - Restaurant Name: MARRIOTT'S WILLOW RIDGE LODGE
+2929 GREEN MOUNTAIN DR 
+BRANSON MO 65616 
+Phone: 417-348-3100
+Smoking? no
+---------------------
+24 - Restaurant Name: MCDONALDS
+113 GAGE DR 
+HOLLISTER MO 65672 
+Phone: 417-332-0297
+Smoking? no
+---------------------
+25 - Restaurant Name: MCDONALDS
+15548 FOREST LANE 
+FORSYTH MO 65653 
+Phone: 417-546-3271
+Smoking? no
+---------------------
+26 - Restaurant Name: MCDONALDS #1
+515 W MAIN 
+BRANSON MO 65616 
+Phone: 417-334-1490
+Smoking? no
+---------------------
+27 - Restaurant Name: MCDONALDS #2
+2214 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-335-2505
+Smoking? no
+---------------------
+28 - Restaurant Name: MCDONALDS #3
+1361 STATE HIGHWAY 248 
+BRANSON MO 65616 
+Phone: 417-337-7744
+Smoking? no
+---------------------
+29 - Restaurant Name: McDonalds Restaurant
+1209 BRANSON HILLS PKWY 
+BRANSON MO 65616 
+Phone: 
+Smoking? no
+---------------------
+30 - Restaurant Name: MCFARLAIN'S REST&BAKERY;
+3562 SHEPHERD OF THE HILLS EXPY 
+BRANSON MO 65616 
+Phone: 417-336-4680
+Smoking? no
+---------------------
+31 - Restaurant Name: MEL'S HARD LUCK DINER
+2800 W HIGHWAY 76 # 103 
+BRANSON MO 65616 
+Phone: 417-332-0150
+Smoking? no
+---------------------
+32 - Restaurant Name: MICKEY GILLEY'S TX CAFE
+3457 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-335-2755
+Smoking? yes
+---------------------
+33 - Restaurant Name: MITSU NEKO
+1819 W HIGHWAY 76 # D 
+BRANSON MO 65616 
+Phone: 417-336-1819
+Smoking? no
+---------------------
+34 - Restaurant Name: Montana Mike's
+1464 HIGHWAY 248 
+BRANSON MO 65616 
+Phone: 417-334-5893
+Smoking? yes
+---------------------
+35 - Restaurant Name: MONTANA MIKES STEAKHOUSE
+3225 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-334-2766
+Smoking? yes
+---------------------
+36 - Restaurant Name: MOON RIVER THEATER
+2500 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-334-1800
+Smoking? no
+---------------------
+37 - Restaurant Name: MR B'S ICE CREAM PARLOR
+102 S BUSINESS HIGHWAY 65 
+BRANSON MO 65616 
+Phone: 417-336-5735
+Smoking? no
+---------------------
+38 - Restaurant Name: MR G'S PIZZA
+202.5 N COMMERCIAL ST 
+BRANSON MO 65616 
+Phone: 417-335-8156
+Smoking? yes
+---------------------
+39 - Restaurant Name: MULLIGAN'S REST
+245 S WILDWOOD DR 
+BRANSON MO 65616 
+Phone: 417-334-4553
+Smoking? no
+---------------------
+40 - Restaurant Name: Murder Rock Golf Club
+1250 GOLF CLUB RD 
+HOLLISTER MO 65672 
+Phone: 417-332-3259
+Smoking? no
+---------------------
+41 - Restaurant Name: Old Chicago
+801 BRANSON LANDING BLVD 
+BRANSON MO 65616 
+Phone: 417-332-2005
+Smoking? yes
+---------------------
+42 - Restaurant Name: OLIVE GARDEN #1447-GMRI INC
+3790 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-337-5811
+Smoking? yes
+---------------------
+43 - Restaurant Name: ORANGE LEAF FROZEN YOGURT
+335 BRANSON LANDING 
+BRANSON MO 65616 
+Phone: 417-332-0050
+Smoking? no
+---------------------
+44 - Restaurant Name: OSCARS FAMOUS RIBS @CEDAR JUNC
+1225 RIDGEDALE RD 
+RIDGEDALE MO 65739 
+Phone: 
+Smoking? no
+---------------------
+45 - Restaurant Name: OUTBACK PUB
+1924 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-334-7003
+Smoking? yes
+---------------------
+46 - Restaurant Name: OUTBACK RESTAURANT
+1914 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-334-6306
+Smoking? yes
+---------------------
+47 - Restaurant Name: OUTPOST GRILL
+5753 STATE HIGHWAY 165 
+BRANSON MO 65616 
+Phone: 417-332-3663
+Smoking? no
+---------------------
+48 - Restaurant Name: PANCHO VILLA TEX MEX
+2819 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-334-4548
+Smoking? yes
+---------------------
+49 - Restaurant Name: PANDA HOUSE
+2130 HWY 248 
+BRANSON MO 65616 
+Phone: 417-335-2770
+Smoking? no
+---------------------
+50 - Restaurant Name: PANERA BREAD
+2407 GREEN MOUNTAIN DR 
+BRANSON MO 65616 
+Phone: 417-336-4550
+Smoking? no
+---------------------
+51 - Restaurant Name: PAPA GRANDS
+1945 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-336-6709
+Smoking? no
+---------------------
+52 - Restaurant Name: Papa John's Pizza
+2715 W HIGHWAY 76 # 100 
+BRANSON MO 65616 
+Phone: 417-337-7272
+Smoking? no
+---------------------
+53 - Restaurant Name: PARADISE GRILL & BAR
+3250 SHEPHERD OF THE HILLS EXPY 
+BRANSON MO 65616 
+Phone: 417-334-5405
+Smoking? yes
+---------------------
+54 - Restaurant Name: PAYNE STEWART GOLF CLUB
+100 N PAYNE STEWART DR 
+BRANSON MO 65616 
+Phone: 417-337-2963
+Smoking? no
+---------------------
+55 - Restaurant Name: PEACH TREE YOGURT
+1077 BRANSON HILLS PARKWAY # F 
+BRANSON MO 65616 
+Phone: 417-230-9491
+Smoking? no
+---------------------
+56 - Restaurant Name: PIZZA BY THE CHEF
+180 MALL RD # D 
+HOLLISTER MO 65672 
+Phone: 417-239-1415
+Smoking? no
+---------------------
+57 - Restaurant Name: PIZZA HAUS
+4800 N GRETNA RD 
+BRANSON MO 65616 
+Phone: 417-544-1019
+Smoking? no
+---------------------
+58 - Restaurant Name: Pizza Hut
+3000 GREEN MOUNTAIN DR # 100 
+BRANSON MO 65616 
+Phone: 417-239-1111
+Smoking? no
+---------------------
+59 - Restaurant Name: Pizza Hut
+1050 BRANSON HILLS PKWY 
+BRANSON MO 65616 
+Phone: 417-332-2222
+Smoking? no
+---------------------
+60 - Restaurant Name: PIZZA WORLD
+1447F HWY 248 @ CEDAR RIDGE PLA 
+BRANSON MO 65616 
+Phone: 417-339-4544
+Smoking? no
+---------------------
+1 - Restaurant Name: Pizza World
+225 CROSS CREEK BLVD # F 
+BRANSON MO 65616 
+Phone: 417-334-4445
+Smoking? no
+---------------------
+2 - Restaurant Name: PIZZA WORLD BRANSON
+3405 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-337-7778
+Smoking? no
+---------------------
+3 - Restaurant Name: PLANTATION REST
+3460 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-334-7800
+Smoking? no
+---------------------
+4 - Restaurant Name: Plaza View Restaurant
+245 N WILDWOOD 
+BRANSON MO 65616 
+Phone: 417-335-2798 Ext 4
+Smoking? no
+---------------------
+5 - Restaurant Name: POINTE ROYALE BAR & GRILLE
+142 CLUBHOUSE DR 
+BRANSON MO 65616 
+Phone: 417-334-0634
+Smoking? no
+---------------------
+6 - Restaurant Name: RADISSON HOTEL REST & BAR
+120 S WILDWOOD DR 
+BRANSON MO 65616 
+Phone: 417-335-5767
+Smoking? no
+---------------------
+7 - Restaurant Name: RAFTER'S RESTAURANT
+3431 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-334-7535 Ext 600
+Smoking? yes
+---------------------
+8 - Restaurant Name: RED LOBSTER #6232
+3559 SHEPHERD OF THE HILLS EXPY 
+BRANSON MO 65615 
+Phone: 417-337-5988
+Smoking? yes
+---------------------
+9 - Restaurant Name: RESTURANT
+2909 S BUSINESS HIGHWAY 65 
+HOLLISTER MO 65673 
+Phone: 417-337-7788
+Smoking? no
+---------------------
+10 - Restaurant Name: RIB CRIB BBQ
+1855 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-337-7427
+Smoking? no
+---------------------
+11 - Restaurant Name: River Stone Restaurant
+24 DOWNING ST 
+HOLLISTER MO 65672 
+Phone: 417-335-5760
+Smoking? no
+---------------------
+12 - Restaurant Name: Rockaway Beach AMVETS Post 78
+3434 HIGHWAY 176 
+ROCKAWAY BEACH MO 65740 
+Phone: 417-559-6237
+Smoking? no
+---------------------
+13 - Restaurant Name: ROCKAWAY BEACH COMM CENTER/TEM
+2762 HIGHWAY 176 
+ROCKAWAY BEACH MO 65740 
+Phone: 417-561-4424
+Smoking? no
+---------------------
+14 - Restaurant Name: ROCKY MOUNTAIN CHOCOLATE FACT
+403 BRANSON LANDING 
+BRANSON MO 65616 
+Phone: 417-337-7623
+Smoking? 
+---------------------
+15 - Restaurant Name: ROCKY'S
+120 N SYCAMORE 
+BRANSON MO 65616 
+Phone: 417-335-4765
+Smoking? yes
+---------------------
+16 - Restaurant Name: Rowdy Beaver Restaurant
+1810 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-334-7409
+Smoking? no
+---------------------
+17 - Restaurant Name: Ruby Lena's Tearoom & Antiques
+224 W MAIN ST 
+BRANSON MO 65616 
+Phone: 417-239-2919
+Smoking? no
+---------------------
+18 - Restaurant Name: RUBY TUESDAY
+3316 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-335-5450
+Smoking? yes
+---------------------
+19 - Restaurant Name: SADIE'S SIDEBOARD
+2830 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-334-3619
+Smoking? no
+---------------------
+20 - Restaurant Name: SHACK CAFE
+108 S COMMERCIAL 
+BRANSON MO 65616 
+Phone: 417-334-3490
+Smoking? no
+---------------------
+21 - Restaurant Name: SHEP HILLS PAVILLION CHUCK WAG
+5586 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-334-4191
+Smoking? no
+---------------------
+22 - Restaurant Name: SHOGUN #1 LLC
+1972 S HIGHWAY 165 
+BRANSON MO 65616 
+Phone: 417-336-2244
+Smoking? no
+---------------------
+23 - Restaurant Name: SHOGUN JAPANESE STEAK & SUSHI
+3265 FALLS PKY 
+BRANSON MO 65616 
+Phone: 417-332-0260
+Smoking? no
+---------------------
+24 - Restaurant Name: SHORTY SMALL'S
+2600 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-337-9539
+Smoking? no
+---------------------
+25 - Restaurant Name: SIGHT & SOUND THEATER BP#06-59
+1001 SHEPHERD OF THE HILLS EXPY 
+BRANSON MO 65616 
+Phone: 
+Smoking? no
+---------------------
+26 - Restaurant Name: SKYE BAR & GRILLE
+3307 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-334-2669
+Smoking? no
+---------------------
+27 - Restaurant Name: SMACKER'S DELI & ICE CREAM
+104 W MAIN 
+BRANSON MO 65616 
+Phone: 573-280-3533
+Smoking? no
+---------------------
+28 - Restaurant Name: SONIC DRIVE IN
+125 MALL RD 
+HOLLISTER MO 65672 
+Phone: 417-332-0101
+Smoking? no
+---------------------
+29 - Restaurant Name: SONIC DRIVE-IN #4924
+15700 HIGHWAY 160 
+FORSYTH MO 65653 
+Phone: 417-546-6500
+Smoking? no
+---------------------
+30 - Restaurant Name: SONIC DRIVE-IN FALLS PKWY
+3250 FALLS PKY 
+BRANSON MO 65616 
+Phone: 417-335-5054
+Smoking? no
+---------------------
+31 - Restaurant Name: SPLASH COUNTRY(Mining Company
+1945 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-334-3919
+Smoking? no
+---------------------
+32 - Restaurant Name: Starbuck's Coffee
+201 E MAIN 
+BRANSON MO 65616 
+Phone: 417-334-1390
+Smoking? no
+---------------------
+33 - Restaurant Name: STARLITE THEATER FOOD SERVICE
+3115 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-337-9333
+Smoking? no
+---------------------
+34 - Restaurant Name: STARVIN MARVINS
+3404 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-334-7402
+Smoking? yes
+---------------------
+35 - Restaurant Name: STATE LINE DINER
+3799 RIDGEDALE RD 
+RIDGEDALE MO 65739 
+Phone: 417-544-0311
+Smoking? no
+---------------------
+36 - Restaurant Name: STATE PARK MARINA (BOAT HOUSE
+380 STATE PARK MARINA RD 
+BRANSON MO 65616 
+Phone: 417-336-5341
+Smoking? no
+---------------------
+37 - Restaurant Name: STEAK & SHAKE
+503 W MAIN ST 
+BRANSON MO 65616 
+Phone: 417-336-5303
+Smoking? no
+---------------------
+38 - Restaurant Name: STEAK & SHAKE  #2
+1386 HIGHWAY 376 
+BRANSON MO 65616 
+Phone: 417-336-2565
+Smoking? no
+---------------------
+39 - Restaurant Name: Subway
+1101 BRANSON HILLS PKWY 
+BRANSON MO 65616 
+Phone: 417-332-2991
+Smoking? no
+---------------------
+40 - Restaurant Name: SUBWAY
+190 MALL RD # B 
+HOLLISTER MO 65672 
+Phone: 417-334-2080
+Smoking? no
+---------------------
+41 - Restaurant Name: SUBWAY #2
+1494 HIGHWAY 248 # A 
+BRANSON MO 65616 
+Phone: 417-336-4418
+Smoking? no
+---------------------
+42 - Restaurant Name: SUBWAY #3 DOGWOOD PLAZA
+607 S HIGHWAY 165 
+BRANSON MO 65616 
+Phone: 417-336-2823
+Smoking? no
+---------------------
+43 - Restaurant Name: SUBWAY #32882
+14974 HIGHWAY 160 
+FORSYTH MO 65653 
+Phone: 417-546-2136
+Smoking? no
+---------------------
+44 - Restaurant Name: SUBWAY #38236 @WALMART
+2050 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 573-445-0015
+Smoking? no
+---------------------
+45 - Restaurant Name: SUBWAY #4
+1615 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-334-7827
+Smoking? no
+---------------------
+46 - Restaurant Name: SUBWAY BRAN LANDNG BP#06-343
+109 BRANSON LANDING 
+BRANSON MO 65616 
+Phone: 417-239-0772
+Smoking? no
+---------------------
+47 - Restaurant Name: SUGAR BOX EXPRESS DESSERTS & C
+15553 HIGHWAY 160 
+FORSYTH MO 65653 
+Phone: 417-251-5742
+Smoking? no
+---------------------
+48 - Restaurant Name: SUSHI HOUSE
+3310 W HIGHWAY 76 # C 
+BRANSON MO 65616 
+Phone: 417-336-3788
+Smoking? no
+---------------------
+49 - Restaurant Name: SWEET CAFE
+116 WILLOW LANE 
+FORSYTH MO 65653 
+Phone: 417-527-1780
+Smoking? no
+---------------------
+50 - Restaurant Name: TACO BELL  #519
+2000 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-335-2576
+Smoking? no
+---------------------
+51 - Restaurant Name: TACO BELL #558
+3511 SHEPHERD OF THE HILLS EXPY 
+BRANSON MO 65616 
+Phone: 417-336-5394
+Smoking? no
+---------------------
+52 - Restaurant Name: TARGET STORE #T-2098
+1200 BRANSON HILLS PKY 
+BRANSON MO 65616 
+Phone: 417-243-4500
+Smoking? no
+---------------------
+53 - Restaurant Name: Tequilas 2 Mexican Restaurant
+3300 N GRETNA # C 
+BRANSON MO 65616 
+Phone: 417-239-0099
+Smoking? no
+---------------------
+54 - Restaurant Name: TEXAS LAND & CATTLE STEAKHOUSE
+915 BRANSON LANDING 
+BRANSON MO 65616 
+Phone: 417-337-8200
+Smoking? no
+---------------------
+55 - Restaurant Name: Thai Thai Restaurant
+1615 W HIGHWAY 76 # H & I 
+BRANSON MO 65616 
+Phone: 417-334-9070
+Smoking? no
+---------------------
+56 - Restaurant Name: THE DIAMOND IMAGE THEATER KITC
+3440 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-335-8080
+Smoking? no
+---------------------
+57 - Restaurant Name: TIME OUT SPORTS BAR & GRILL
+3265 FALLS PKY # Z 
+BRANSON MO 65616 
+Phone: 417-337-8463
+Smoking? no
+---------------------
+58 - Restaurant Name: TONY'S PIZZA HOUSE
+1957 HIGHWAY 125 
+PROTEM MO 65733 
+Phone: 417-785-4405
+Smoking? no
+---------------------
+59 - Restaurant Name: Track Snack Shack
+3525 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-334-1619
+Smoking? no
+---------------------
+60 - Restaurant Name: Trasure Lakes Rock N Roll Cafe
+1 TREASURE LAKES DR 
+BRANSON MO 65616 
+Phone: 417-332-2573
+Smoking? no
+---------------------
+1 - Restaurant Name: TRI-LAKES MOOSE LODGE
+100 MOOSE RD 
+RIDGEDALE MO 65739 
+Phone: 417-335-2369
+Smoking? yes
+---------------------
+2 - Restaurant Name: Turkey Creek RV Park
+1376 BUSINESS HIGHWAY 65 
+HOLLISTER MO 65672 
+Phone: 417-335-8004
+Smoking? no
+---------------------
+3 - Restaurant Name: TWISTED SPOKE BAR & INN
+176 FORSYTH & TANEYVILLE RD 
+FORSYTH MO 65653 
+Phone: 417-251-9300
+Smoking? no
+---------------------
+4 - Restaurant Name: UPTOWN CAFE
+285 S HIGHWAY 165 
+BRANSON MO 65616 
+Phone: 417-336-3535
+Smoking? no
+---------------------
+5 - Restaurant Name: VASKEN'S DELI
+1015 HIGHWAY 248 # D 
+BRANSON MO 65616 
+Phone: 417-332-7503
+Smoking? no
+---------------------
+6 - Restaurant Name: VILLAGE EATERY THE
+5439 E HIGHWAY 76 
+KIRBYVILLE MO 65679 
+Phone: 417-294-9464
+Smoking? yes
+---------------------
+7 - Restaurant Name: Vintage Paris
+260 BIRDCAGE WLK 
+HOLLISTER MO 65672 
+Phone: 417-593-7952
+Smoking? no
+---------------------
+8 - Restaurant Name: WAGON WHEEL FAMILY DINNING
+20262 HIGHWAY 160 
+FORSYTH MO 65653 
+Phone: 417-546-4219
+Smoking? yes
+---------------------
+9 - Restaurant Name: Wakyoto
+2005 W HIGHWAY 76 # 201 
+BRANSON M0 65616 
+Phone: 417-336-1177
+Smoking? no
+---------------------
+10 - Restaurant Name: WAXY O'SHEA'S IRSH PUB BP# 06-
+235 BRANSON LANDING BLVD 
+BRANSON MO 65616 
+Phone: 417-348-1759
+Smoking? yes
+---------------------
+11 - Restaurant Name: WELK STAGE DOOR CANTEEN
+1984 S HIGHWAY 165 
+BRANSON MO 65616 
+Phone: 417-336-3575
+Smoking? no
+---------------------
+12 - Restaurant Name: WELK THEATER
+1984 S HIGHWAY 165 
+BRANSON MO 65616 
+Phone: 417-336-3575
+Smoking? no
+---------------------
+13 - Restaurant Name: WENDY'S # 19
+3504 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-334-1941
+Smoking? no
+---------------------
+14 - Restaurant Name: WENDY'S #11
+510 W MAIN ST 
+BRANSON MO 65616 
+Phone: 417-334-1414
+Smoking? no
+---------------------
+15 - Restaurant Name: WENDY'S - BRANSON HILLS
+1124 BRANSON HILLS PKWY 
+BRANSON MO 65616 
+Phone: 417-239-0835
+Smoking? no
+---------------------
+16 - Restaurant Name: WHEEL HOUSE CATFISH AND WING
+3100 GREEN MOUNTAIN DR 
+BRANSON MO 65616 
+Phone: 417-334-0044
+Smoking? no
+---------------------
+17 - Restaurant Name: WHIPPERSNAPPER'S
+2421 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-335-6699
+Smoking? no
+---------------------
+18 - Restaurant Name: WHITE HOUSE THEATER CONCESSION
+2255 GRETNA RD 
+BRANSON MO 65616 
+Phone: 417-335-2396
+Smoking? no
+---------------------
+19 - Restaurant Name: White Oak Station #20
+4017 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-339-3911
+Smoking? no
+---------------------
+20 - Restaurant Name: WHITE RIVER FISH CO
+5 BASS PRO DR 
+BRANSON MO 65616 
+Phone: 417-243-5100
+Smoking? no
+---------------------
+21 - Restaurant Name: WHITE RIVER GRILLE LLC
+2683 STATE HWY 176 
+ROCKAWAY BEACH MO 65740 
+Phone: 417-561-1313
+Smoking? no
+---------------------
+22 - Restaurant Name: WHITEWATER PIZZA
+3505 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 
+Smoking? no
+---------------------
+23 - Restaurant Name: WHITEWATER SANDWHICH ISLAND
+3505 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 
+Smoking? no
+---------------------
+24 - Restaurant Name: WOODY'S ISLAND
+4677 FALL CREEK RD 
+BRANSON MO 65616 
+Phone: 417-251-3494
+Smoking? no
+---------------------
+25 - Restaurant Name: YAKOV'S DINNER THEATER
+470 HIGHWAY 248 
+BRANSON MO 65616 
+Phone: 417-339-2568
+Smoking? no
+---------------------
+26 - Restaurant Name: Yummy Donuts
+15735 HIGHWAY 160 
+FORSYTH MO 65653 
+Phone: 417-546-8993
+Smoking? no
+---------------------
+27 - Restaurant Name: TRI-LAKES MOOSE LODGE
+100 MOOSE RD 
+RIDGEDALE MO 65739 
+Phone: 417-335-2369
+Smoking? yes
+---------------------
+28 - Restaurant Name: Turkey Creek RV Park
+1376 BUSINESS HIGHWAY 65 
+HOLLISTER MO 65672 
+Phone: 417-335-8004
+Smoking? no
+---------------------
+29 - Restaurant Name: TWISTED SPOKE BAR & INN
+176 FORSYTH & TANEYVILLE RD 
+FORSYTH MO 65653 
+Phone: 417-251-9300
+Smoking? no
+---------------------
+30 - Restaurant Name: UPTOWN CAFE
+285 S HIGHWAY 165 
+BRANSON MO 65616 
+Phone: 417-336-3535
+Smoking? no
+---------------------
+31 - Restaurant Name: VASKEN'S DELI
+1015 HIGHWAY 248 # D 
+BRANSON MO 65616 
+Phone: 417-332-7503
+Smoking? no
+---------------------
+32 - Restaurant Name: VILLAGE EATERY THE
+5439 E HIGHWAY 76 
+KIRBYVILLE MO 65679 
+Phone: 417-294-9464
+Smoking? yes
+---------------------
+33 - Restaurant Name: Vintage Paris
+260 BIRDCAGE WLK 
+HOLLISTER MO 65672 
+Phone: 417-593-7952
+Smoking? no
+---------------------
+34 - Restaurant Name: WAGON WHEEL FAMILY DINNING
+20262 HIGHWAY 160 
+FORSYTH MO 65653 
+Phone: 417-546-4219
+Smoking? yes
+---------------------
+35 - Restaurant Name: Wakyoto
+2005 W HIGHWAY 76 # 201 
+BRANSON M0 65616 
+Phone: 417-336-1177
+Smoking? no
+---------------------
+36 - Restaurant Name: WAXY O'SHEA'S IRSH PUB BP# 06-
+235 BRANSON LANDING BLVD 
+BRANSON MO 65616 
+Phone: 417-348-1759
+Smoking? yes
+---------------------
+37 - Restaurant Name: WELK STAGE DOOR CANTEEN
+1984 S HIGHWAY 165 
+BRANSON MO 65616 
+Phone: 417-336-3575
+Smoking? no
+---------------------
+38 - Restaurant Name: WELK THEATER
+1984 S HIGHWAY 165 
+BRANSON MO 65616 
+Phone: 417-336-3575
+Smoking? no
+---------------------
+39 - Restaurant Name: WENDY'S # 19
+3504 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-334-1941
+Smoking? no
+---------------------
+40 - Restaurant Name: WENDY'S #11
+510 W MAIN ST 
+BRANSON MO 65616 
+Phone: 417-334-1414
+Smoking? no
+---------------------
+41 - Restaurant Name: WENDY'S - BRANSON HILLS
+1124 BRANSON HILLS PKWY 
+BRANSON MO 65616 
+Phone: 417-239-0835
+Smoking? no
+---------------------
+42 - Restaurant Name: WHEEL HOUSE CATFISH AND WING
+3100 GREEN MOUNTAIN DR 
+BRANSON MO 65616 
+Phone: 417-334-0044
+Smoking? no
+---------------------
+43 - Restaurant Name: WHIPPERSNAPPER'S
+2421 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-335-6699
+Smoking? no
+---------------------
+44 - Restaurant Name: WHITE HOUSE THEATER CONCESSION
+2255 GRETNA RD 
+BRANSON MO 65616 
+Phone: 417-335-2396
+Smoking? no
+---------------------
+45 - Restaurant Name: White Oak Station #20
+4017 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-339-3911
+Smoking? no
+---------------------
+46 - Restaurant Name: WHITE RIVER FISH CO
+5 BASS PRO DR 
+BRANSON MO 65616 
+Phone: 417-243-5100
+Smoking? no
+---------------------
+47 - Restaurant Name: WHITE RIVER GRILLE LLC
+2683 STATE HWY 176 
+ROCKAWAY BEACH MO 65740 
+Phone: 417-561-1313
+Smoking? no
+---------------------
+48 - Restaurant Name: WHITEWATER PIZZA
+3505 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 
+Smoking? no
+---------------------
+49 - Restaurant Name: WHITEWATER SANDWHICH ISLAND
+3505 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 
+Smoking? no
+---------------------
+50 - Restaurant Name: WOODY'S ISLAND
+4677 FALL CREEK RD 
+BRANSON MO 65616 
+Phone: 417-251-3494
+Smoking? no
+---------------------
+51 - Restaurant Name: YAKOV'S DINNER THEATER
+470 HIGHWAY 248 
+BRANSON MO 65616 
+Phone: 417-339-2568
+Smoking? no
+---------------------
+52 - Restaurant Name: Yummy Donuts
+15735 HIGHWAY 160 
+FORSYTH MO 65653 
+Phone: 417-546-8993
+Smoking? no
+---------------------
+53 - Restaurant Name: TRI-LAKES MOOSE LODGE
+100 MOOSE RD 
+RIDGEDALE MO 65739 
+Phone: 417-335-2369
+Smoking? yes
+---------------------
+54 - Restaurant Name: Turkey Creek RV Park
+1376 BUSINESS HIGHWAY 65 
+HOLLISTER MO 65672 
+Phone: 417-335-8004
+Smoking? no
+---------------------
+55 - Restaurant Name: TWISTED SPOKE BAR & INN
+176 FORSYTH & TANEYVILLE RD 
+FORSYTH MO 65653 
+Phone: 417-251-9300
+Smoking? no
+---------------------
+56 - Restaurant Name: UPTOWN CAFE
+285 S HIGHWAY 165 
+BRANSON MO 65616 
+Phone: 417-336-3535
+Smoking? no
+---------------------
+57 - Restaurant Name: VASKEN'S DELI
+1015 HIGHWAY 248 # D 
+BRANSON MO 65616 
+Phone: 417-332-7503
+Smoking? no
+---------------------
+58 - Restaurant Name: VILLAGE EATERY THE
+5439 E HIGHWAY 76 
+KIRBYVILLE MO 65679 
+Phone: 417-294-9464
+Smoking? yes
+---------------------
+59 - Restaurant Name: Vintage Paris
+260 BIRDCAGE WLK 
+HOLLISTER MO 65672 
+Phone: 417-593-7952
+Smoking? no
+---------------------
+60 - Restaurant Name: WAGON WHEEL FAMILY DINNING
+20262 HIGHWAY 160 
+FORSYTH MO 65653 
+Phone: 417-546-4219
+Smoking? yes
+---------------------

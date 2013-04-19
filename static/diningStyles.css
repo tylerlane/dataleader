@@ -1,0 +1,694 @@
+body {
+	margin: 0;
+	background-color: #F7EBCC;
+}
+
+img {
+	border: 0;
+}
+
+#diningContainer {
+	left:0px;
+	top:0px;
+	width:980px;
+	margin:0 auto;
+	background-color: white;
+}
+
+#innerContainer {
+	width: 980px;
+	float:left;
+	background-color: white;
+}
+
+
+#dinedrink-layout-02_ {
+	float: left;
+	left:0px;
+	top:50px;
+	width:230px;
+	height:2564px;
+}
+
+#headerContainer {
+	float: left;
+}
+
+#browseSection {
+	width:357px;
+	float: left;
+}
+
+#browseName_ {
+	float: left;
+	left:287px;
+	top:101px;
+	width:150px;
+	height:30px;
+	background: url(http://data-media.news-leader.com/restaurants/images/menusImage.jpg) no-repeat 0 0 #F7EBCC;
+}
+
+#browseName_:hover {
+	background: url(http://data-media.news-leader.com/restaurants/images/menusImage.jpg) no-repeat 0 -30px #F7EBCC;
+}
+
+#browseNeighborhood_ {
+	float: left;
+	left:437px;
+	top:101px;
+	width:150px;
+	height:30px;
+	background: url(http://data-media.news-leader.com/restaurants/images/menusImage.jpg) no-repeat -150px 0 #F7EBCC;
+}
+
+#browseNeighborhood_:hover {
+	background: url(http://data-media.news-leader.com/restaurants/images/menusImage.jpg) no-repeat -150px -30px #F7EBCC;
+}
+
+#browseCuisine_ {
+	float: left;
+	left:287px;
+	top:131px;
+	width:150px;
+	height:27px;
+	background: url(http://data-media.news-leader.com/restaurants/images/menusImage.jpg) no-repeat -300px 0 #F7EBCC;
+}
+
+#browseCuisine_:hover {
+	background: url(http://data-media.news-leader.com/restaurants/images/menusImage.jpg) no-repeat -300px -27px #F7EBCC;
+}
+
+#browseInspections_ {
+	float: left;
+	left:437px;
+	top:131px;
+	width:150px;
+	height:27px;
+	background: url(http://data-media.news-leader.com/restaurants/images/menusImage.jpg) no-repeat -450px 0 #F7EBCC;
+}
+
+#browseInspections_:hover {
+	background: url(http://data-media.news-leader.com/restaurants/images/menusImage.jpg) no-repeat -450px -27px #F7EBCC;
+}
+
+#browsePrice_ {
+	float: left;
+	left:287px;
+	top:158px;
+	width:150px;
+	height:30px;
+	background: url(http://data-media.news-leader.com/restaurants/images/menusImage.jpg) no-repeat -600px 0 #F7EBCC;
+}
+
+#browsePrice_:hover {
+	background: url(http://data-media.news-leader.com/restaurants/images/menusImage.jpg) no-repeat -600px -30px #F7EBCC;
+}
+
+#browseFeatures_ {
+	float: left;
+	left:437px;
+	top:158px;
+	width:150px;
+	height:30px;
+	background: url(http://data-media.news-leader.com/restaurants/images/menusImage.jpg) no-repeat -750px 0 #F7EBCC;
+}
+
+#browseFeatures_:hover {
+	background: url(http://data-media.news-leader.com/restaurants/images/menusImage.jpg) no-repeat -750px -27px #F7EBCC;
+}
+
+
+#profilesContainer {
+	width:360px;
+	float: left;
+}
+
+#headerBrowse_ {
+	float: left;
+	left:230px;
+	top:50px;
+	width:678px;
+	height:1px;
+}
+
+#dinedrink-layout-04_ {
+	float: left;
+	left:908px;
+	top:50px;
+	width:302px;
+	height:1px;
+}
+
+#dinedrink-layout-05_ {
+	float: left;
+	left:1210px;
+	top:50px;
+	width:230px;
+	height:2564px;
+}
+
+#headerBrowse006_ {
+	float: left;
+	left:230px;
+	top:51px;
+	width:357px;
+	height:50px;
+}
+
+#mainLogo_ {
+	float: left;
+	left:587px;
+	top:51px;
+	width:263px;
+	height:258px;
+}
+
+#headerBrowse008_ {
+	float: left;
+	left:850px;
+	top:51px;
+	width:58px;
+	height:50px;
+}
+
+#dinedrink-layout-09_ {
+	float: left;
+	left:908px;
+	top:51px;
+	width:302px;
+	height:21px;
+}
+
+#topRatedButton_ {
+	float: left;
+	left:908px;
+	top:72px;
+	width:209px;
+	height:29px;
+	background: url(http://data-media.news-leader.com/restaurants/images/menusImage.jpg) no-repeat -900px 0 #F7EBCC;
+}
+
+#topRatedButton_:hover {
+	background: url(http://data-media.news-leader.com/restaurants/images/menusImage.jpg) no-repeat -900px -29px #F7EBCC;
+}
+
+#dinedrink-layout-11_ {
+	float: right;
+	left:1117px;
+	top:72px;
+	width:93px;
+	height:120px;
+}
+
+#dinedrink-layout-12_ {
+	float: left;
+	left:230px;
+	top:101px;
+	width:57px;
+	height:208px;
+}
+
+#dinedrink-layout-15_ {
+	float: left;
+	left:850px;
+	top:101px;
+	width:58px;
+	height:57px;
+}
+
+#mostViewedButton_ {
+	float: left;
+	left:908px;
+	top:101px;
+	width:209px;
+	height:36px;
+	background: url(http://data-media.news-leader.com/restaurants/images/menusImage.jpg) no-repeat -1109px 0 #F7EBCC;
+}
+
+#mostViewedButton_:hover {
+	background: url(http://data-media.news-leader.com/restaurants/images/menusImage.jpg) no-repeat -1109px -36px #F7EBCC;
+}
+
+#dinedrink-layout-19_ {
+	float: left;
+	left:908px;
+	top:137px;
+	width:209px;
+	height:21px;
+}
+
+
+
+#searchBox_ {
+	float: left;
+	left:850px;
+	top:158px;
+	width:267px;
+	height:34px;
+	background: #F7EBCC;
+	/*background: url(http://data-media.news-leader.com/restaurants/images/searchBox.jpg) no-repeat #F7EBCC;*/
+}
+
+#searchbox {
+	/*background-image: url(http://www.google.com/cse/intl/en/images/google_custom_search_watermark.gif); background-color: rgb(255, 255, 255); background-position: 0% 50%; background-repeat: no-repeat no-repeat; */
+	height: 28px;
+	width: 210px;
+	float: left;
+}
+
+#searchButton {
+	float: right;
+}
+
+#searchButtonContainer {
+	padding: 0;
+}
+
+#searchButtonContainer:hover {
+	padding: 2px 0 0 2px;
+}
+
+#dinedrink-layout-23_ {
+	float: left;
+	left:287px;
+	top:188px;
+	width:300px;
+	height:121px;
+}
+
+#dinedrink-layout-24_ {
+	float: left;
+	left:850px;
+	top:192px;
+	width:360px;
+	height:46px;
+}
+
+#sponsorAdSpot_ {
+	float: left;
+	left:850px;
+	top:238px;
+	width:360px;
+	height:108px;
+}
+
+#featuredHeader_ {
+	float: left;
+	left:230px;
+	top:309px;
+	width:980px;
+	height:73px;
+}
+
+#dinedrink-layout-27_ {
+	float: left;
+	left:850px;
+	top:346px;
+	width:360px;
+	height:36px;
+}
+
+#featuredSection_ {
+	float: left;
+	left:230px;
+	top:382px;
+	width:980px;
+
+}
+
+#featuredRestaurant {
+	width: 980px;
+	height: 300px;
+	float: left;
+}
+
+#featuredRestaurantImageContainer {
+	float: left;
+	width: 400px;
+	padding-left: 10px;
+}
+
+#featuredRestaurantTextContainer, #featuredRestaurantTextContainer a h3, #featuredRestaurantTextContainer a {
+	font-family: Arial, sans-serif;
+	font-size: 12pt;
+	color: #4C4C4C;
+	text-decoration: none;
+}
+
+#featuredRestaurantTextContainer h3, #featuredRestaurantTextContainer a h3 {
+	font-size: 24pt;
+	font-weight: bold;
+	margin:0;
+	text-decoration: none;
+}
+
+#featuredReadMoreButton_ {
+	float: left;
+	width:140px;
+	height:36px;
+
+}
+
+#featuredReadMoreButton_:hover {
+	padding: 2px 0 0 2px;
+}
+#featuredReadProfileButton_ {
+	float: left;
+	width:140px;
+	height:33px;
+
+}
+
+#featuredReadProfileButton_:hover {
+	padding: 2px 0 0 2px;
+}
+#fullAdSpot_ {
+	float: left;
+	left:230px;
+	top:661px;
+	width:980px;
+	height:123px;
+}
+
+#reviewsContainer {
+	float: left;
+}
+
+#reviewsHeader_ {
+	float: left;
+	left:230px;
+	top:784px;
+	width:588px;
+	height:92px;
+}
+
+#reviewsRightSide_ {
+	float: right;
+	/*left:818px;
+	top:784px;
+	width:392px;
+	height:1072px;*/
+	margin-left: 71px;
+	margin-right: 10px;
+}
+
+#reviewsListing_ {
+	float: left;
+	left:230px;
+	top:876px;
+	width:588px;
+	/*height:980px;*/
+}
+
+.restaurantReview {
+	border-bottom: 1px solid #CACACA;
+	float: left;
+	padding: 10px;
+	margin-left: 10px;
+}
+
+.reviewImageContainer {
+	width: 200px;
+	height: 125px;
+	float: left;
+	overflow: hidden;
+}
+
+.reviewImageContainer img {
+	max-width: 200px;
+	
+}
+
+.reviewTextContainer {
+	padding-left: 10px;
+}
+
+.reviewTextContainer, .reviewTextContainer a {
+	font-family: Arial, sans-serif;
+	float: left;
+	width: 345px;
+	font-size: 10pt;
+	color: #4C4C4C;
+	text-decoration: none;
+}
+
+.reviewTextContainer h3 {
+	font-weight: bold;
+	font-size: 15pt;
+	margin: 0;
+}
+
+#dinedrink-layout-37_ {
+	float: left;
+	left:230px;
+	top:1856px;
+	width:980px;
+	height:758px;
+}
+
+
+#restaurantContent {
+	width: 730px;
+	float: left;
+	padding-left: 40px;
+}
+
+#restaurantContent h2 {
+	color: #4C4C4C;
+	font-family: Arial, sans-serif;
+	text-decoration: none;
+	border-bottom: 1px solid #4C4C4C;
+}
+
+#restaurantNameContainer {
+	width: 580px;
+	float: left;
+	padding-top: 25px;
+	padding-bottom: 12px;
+}
+
+#restaurantNameContainer h1 {
+	font-family: Arial Black, Impact, sans-serif;
+	font-size: 25pt;
+	font-weight: 100;
+	margin:0;
+	color: #4C4C4C;
+}
+
+#restaurantNameContainer p {
+	font-family: Arial, sans-serif;
+	font-size: 14pt;
+	margin:0;
+	color: #4C4C4C;
+}
+
+#ratingsContainer {
+	width: 150px;
+	float: left;
+	position: relative;
+	z-index: 1;
+}
+
+#ratingNumber {
+	padding-left: 40px;
+}
+
+#ratingNumber p {
+	margin: 0;
+	font-family: Arial Black, Impact, sans-serif;
+	font-size: 40pt;
+	color: #4C4C4C;
+}
+
+#restaurantDetailsContainer {
+	width:100%;
+	margin: 10px 0 40px 0;
+	background-color: #F7EBCC;
+	border: 1px solid #F7EBCC;
+	float: left;
+	font-family: Arial, sans-serif;
+	font-size: 12pt;
+	color: #4C4C4C;
+	padding: 1px;
+	box-shadow: 5px 5px 4px #000000;
+	margin-top: -16px;
+}
+
+#detailsAddress {
+	width: 240px;
+	margin: 10px 0 0 25px;
+	float: left;
+}
+
+#rightSideAd {
+	width: 190px;
+	float: right;
+}
+
+#secondaryInfo {
+	float: left;
+	margin: 10px 0 0 50px;
+}
+
+#bottomTabs {
+	clear: both;
+	width: 99.7%;
+	background: #8AB8B1;
+	color: #F7EBCC;
+	height: 30px;
+	margin: 1px;
+}
+
+.detailsTab {
+	width: 181px;
+	font-size: 10pt;
+	font-family: Arial, sans-serif;
+	float: left;
+	text-transform: uppercase;
+	height: 30px;
+}
+.detailsTabText {
+	padding: 8px 0 0 5px;
+	height: 22px;
+	width: 175px;
+}
+
+.detailsTabText:hover {
+	color: #8AB8B1;
+	background: #F7EBCC;
+	border-top: 1px solid #8AB8B1;
+	border-bottom: 1px solid #8AB8B1;
+	border-left: 1px solid #8AB8B1;
+	height: 20px;
+}
+
+#mainContentDisplay {
+	float: left;
+}
+
+#mainContentImagesContainer {
+	width: 430px;
+	float: left;
+}
+
+.mainContentImage {
+	width: 430px;
+	overflow: hidden;
+	float: left;
+	padding-bottom: 10px;
+}
+
+#mainContentText {
+	width: 290px;
+	margin-left: 10px;
+	float: left;
+	font-family: Arial, sans-serif;
+	font-size: 11pt;
+	color: #4C4C4C;
+}
+
+#main_text, #attribs_text, #restaurant_inspections, #restaurant_inspections p {
+	color: #4C4C4C;
+	font-family: Arial, sans-serif;
+	text-decoration: none;
+}
+
+.rightBorder {
+	border-right: 1px solid #CACACA;
+}
+
+.bolded {
+	font-weight: bold;
+}
+
+.restaurantListing {
+	border-bottom: 1px solid #4C4C4C;
+}
+
+#listingPages{
+	margin-top: 10px;
+}
+
+#listingPages, #listingPages a, #listingAlphabet a, .current, .restaurantListingName, .restaurantListing p, .restaurantListingName a, .restaurantListingInfo, .restaurantListingSummary, .restaurantListingSummary a {
+	color: #4C4C4C;
+	font-family: Arial, sans-serif;
+	text-decoration: none;
+}
+
+.restaurantListingInfo, .restaurantListingSummary {
+	font-size: 12px;
+}
+
+.restaurantListing p {
+	font-size: 13px;
+}
+
+.current {
+	color: red;
+}
+.footer-container{ padding-top:20px;padding-left:0px;padding-right:0px;margin-right:0px;margin-left:0px;font:12px Helvetica,Arial,sans-serif; }
+.footer-container .pd-search #searchbox-footer{float:left;overflow:hidden;margin:0 5px 0 0;width:200px} 
+.leaderboard-container-top, .leaderboard-container{clear:both;padding:20px 0;margin:0 auto} 
+.advertisement{color:#b5b5b5;font-size:9px;line-height:15px;text-align:right;margin:0;clear:both;float:right} 
+.ody-wrapper .leaderboard-container.bottom{margin-bottom:0} 
+.ody-wrapper .leaderboard-container-top .launchpad{padding:0;margin:0 auto;background:#FFF} 
+.footer-container{font-size:12px;position:relative;clear:both} 
+.footer-container .footer-wrap{margin:0 auto;padding:0 10px;text-align:left;width:960px} 
+.footer-container .footer-content{border-top:1px solid #d0d2d3;margin:0;background:#fff} 
+.footer-container .footer-content ul{float:left;margin:5px 0;/*width:160px*/} 
+.footer-container .footer-content li{padding:0 0 5px;font-size:12px;line-height:16px} 
+.footer-container .footer-content h4{color:#2c2c2c;font-size:12px;font-weight:700;margin:10px 0 0;padding:0;text-transform:capitalize} 
+.footer-container .footer-content h4 a{color:#2c2c2c}
+.footer-container .footer-top{background:#fff;padding:10px 0} 
+.footer-container .footer-top .footer-logo{float:left} 
+.footer-container .footer-top .footer-logo a{display:block;width:280px;height:50px} 
+.footer-container .footer-top .right{width:200px;text-align:right} 
+.footer-container .footer-top .right a{display:inline-block;line-height:50px;color:#808184} 
+.footer-container .footer-top .right .backtotop{display:inline-block;width:11px;height:6px;font-size:1px;line-height:1;vertical-align:middle;margin:0 0 0 6px;background:url(http://www.news-leader.com/odygci/p5/spritesheet_nr2.png) no-repeat -612px -830px}
+.footer-container .footer-main{background:#f1f1f2;border-top:1px solid #d0d2d3;border-bottom:1px solid #d0d2d3}
+.footer-container .footer-main .right{width:320px}
+.footer-container .footer-main .right_row{float:right;width:160px}
+.footer-container .footer-main .right_row a{padding:2px 0 2px 30px;display:block;background:url(http://www.news-leader.com/odygci/p5/spritesheet_nr2.png) no-repeat}
+.footer-container .footer-main .pd-search{width:320px;margin:20px 0 0}
+.footer-container .right_row .icn_follow_rss a{background-position:-154px -530px}
+.footer-container .right_row .icn_follow_text a{background-position:-154px -580px}
+.footer-container .right_row .icn_follow_email a{background-position:-154px -630px}
+.footer-container .right_row .icn_follow_mobile a{background-position:-154px -680px}
+.footer-container .right_row .icn_follow_twitter a{background-position:-154px -730px}
+.footer-container .right_row .icn_follow_facebook a{background-position:-154px -780px}
+.footer-container .right_row .icn_follow_rss a:hover{background-position:-154px -555px}
+.footer-container .right_row .icn_follow_text a:hover{background-position:-154px -605px}
+.footer-container .right_row .icn_follow_email a:hover{background-position:-154px -655px}
+.footer-container .right_row .icn_follow_mobile a:hover{background-position:-154px -705px}
+.footer-container .right_row .icn_follow_twitter a:hover{background-position:-154px -755px}
+.footer-container .right_row .icn_follow_facebook a:hover{background-position:-154px -805px} 
+.footer-container .partners_text{background:#2c2c2c;color:#707070}
+.footer-container .partners_text a{color:#ccc}
+.footer-container .partners_text ul{float:none;margin:0 auto;padding:8px 0;text-align:center;width:960px}
+.footer-container .partners_text ul li{display:inline;padding:6px}
+.footer-container .footer-partners{border-bottom:1px solid #d0d2d3;background:#fff}
+.footer-container .footer-partners ul{float:left;margin:20px 0;width:960px;text-align:center}
+.footer-container .footer-partners li{display:inline;margin:0 14px 0 0;line-height:16px}
+.footer-container .footer-partners li a{display:inline-block}
+.footer-container .footer-partners a{background:url(http://www.news-leader.com/odygci/p5/spritesheet_nr2.png) no-repeat}
+.footer-container .footer-partners .footer-usatoday{margin:3px 0 0;width:82px;height:22px;background-position:-670px -400px}
+.footer-container .footer-partners .footer-metromix{margin:7px 0 0;width:97px;height:18px;background-position:-674px -280px} 
+.footer-container .footer-partners .footer-moms{margin:7px 0 0;width:78px;height:18px;background-position:-674px -320px}
+.footer-container .footer-partners .footer-paws{margin:1px 0 0;width:85px;height:24px;background-position:-674px -240px}
+.footer-container .footer-partners .footer-gannett{margin:11px 0 0;width:70px;height:14px;background-position:-674px -160px}
+.footer-container .footer-partners .footer-cars{margin:1px 0 0;width:53px;height:24px;background-position:-674px -40px}
+.footer-container .footer-partners .footer-homefind{margin:5px 0 0;width:72px;height:20px;background-position:-674px -200px}
+.footer-container .footer-partners .footer-shop{margin:3px 0 0;width:64px;height:22px;background-position:-674px -360px}
+.footer-container .footer-partners .footer-career{margin:11px 0 0;width:63px;height:14px;background-position:-674px -80px}
+.footer-container .footer-partners .footer-apts{width:77px;height:25px;background-position:-674px 0}
+.footer-container .footer-partners .footer-eharmony{margin:11px 0 0;width:68px;height:14px;background-position:-674px -120px}
+.footer-container .footer-partners .footer-homegain{margin:12px 0 0;width:75px;height:13px;background-position:-674px -440px}
+.footer-container .footer-gannett{padding:15px 0 5px;text-align:center}
+.footer-container .footer-bottom{margin:10px 0 0;text-align:center;color:#4a4a4a;font-size:11px;line-height:16px;background:#fff}
+.footer-container .footer-gannett{padding:15px 0 5px;text-align:center}
+.left{float:left}
+.right{float:right}
+.clear{clear:both}
+.footer-container a{outline:0;text-decoration: none;}
+.footer-container ul{ list-style:none;}
+.footer-container .footer-top .footer-logo a{background: url(http://www.news-leader.com/graphics/ody/footer_logo.gif) no-repeat;}

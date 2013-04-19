@@ -1,0 +1,111 @@
+{% load unquote %}
+{% load humanize %}
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1.0,width=device-width,user-scalable=0" />	
+
+	<link rel="shortcut icon" href="/link/to/favicon.ico"><!-- update this -->
+	<link rel="apple-touch-icon" href="/link/to/apple-touch-icon.png"><!-- update this -->
+
+
+	<link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}/restaurants/mobile/css/style.css" media="screen, handheld" />
+	<link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}/restaurants/mobile/css/enhanced.css" media="screen  and (min-width: 40.5em)" />
+
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.css" />
+	<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.js"></script>
+
+
+</head>
+
+<body>
+	<nav class="centered miniNav">
+		<div id="logoContainer miniNav" class="left">
+			<div id="mobileLogo" class="centered miniNav">
+				<img src="{{MEDIA_URL}}/restaurants/mobile/images/mobileLogo-full.png" alt="Dining logo">
+			</div>
+		</div>
+
+		<div id="miniNavWrapper">
+			<header  class="centered">
+				Browse by:
+			</header>
+			<br />
+			<div class="clear left"></div>
+			<div class="centered">
+				<ul class="centered">
+					<li>
+						<a href="{% url restaurants-browse 'A','1' %}"><p class="centeredText">Name</p></a>
+					</li>
+					<li>
+						<a href="{% url list_neighborhoods %}"><p class="centeredText">Areas</p></a>
+					</li>
+					<li>
+						<a href="{% url list_cuisines %}"><p class="centeredText">Cuisine</p></a>
+					</li>
+					<li>
+						<a href="{% url list_recent_inspections 1 %}"><p class="centeredText">Inspections</p></a>
+					</li>
+					<li>
+						<a href="{% url list_attributes %}"><p class="centeredText">Features</p></a>
+					</li>
+					<li>
+						<a href="#"><p class="centeredText">Near Me</p></a>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="clear"></div>
+
+		<div id="lettersNav">
+			{% spaceless %}
+			{% for char in alphabet %}
+				{% if char == letter %}
+					<span class="current">{{char|unquote}}</span> |
+				{% else %}
+					<a href="{% url restaurants-browse char,1 %}">{{char|unquote}}</a> 
+					{% if char != "Z" %}
+					|
+					{% endif %}
+				{% endif %}
+			{% endfor %}
+			{% endspaceless %}
+			<!-- <a href="">#</a> | <a href="">A</a> | <a href="">B</a> | <a href="">C</a> | <a href="">D</a> | <a href="">E</a> | <a href="">F</a> | <a href="">G</a> | <a href="">H</a> | <a href="">I</a> | <a href="">J</a> | <a href="">K</a> | <a href="">L</a> | <a href="">M</a> | <a href="">N</a> | <a href="">O</a> | <a href="">P</a> | <a href="">Q</a> | <a href="">R</a> | <a href="">S</a> | <a href="">T</a> | <a href="">U</a> | <a href="">V</a> | <a href="">W</a> | <a href="">X</a> | <a href="">Y</a> | <a href="">Z</a> -->
+		</div>
+	</nav>
+
+	<article>
+		<section>Results list</section>
+		{% for restaurant in restaurants|dictsort:"name" %}
+			<div class="restaurantListing">
+				<h3 class="restaurantListingName"><a href="{%url restaurant-detail restaurant.id %}">{{restaurant.name|title}}</a> </h3>
+				<p class="restaurantListingInfo">{{restaurant.address}}, {{restaurant.city|title}}, {{restaurant.state|default:"MO"}} {{restaurant.phone|default:""}}</p>
+				{% if restaurant.cuisine.all %}
+					<p class="restaurantListingSummary"><b>Cuisines: </b>{% for cuisine in restaurant.cuisine.all %}{% if cuisine != search_cuisine %}<i><a href="{% url list_restaurants_cuisine cuisine.name 1 %}">{% else %}<b>{% endif%}{{cuisine.name}}{% if cuisine != search_cuisine %}</i></a>{% else %}</b>{% endif %}{% if forloop.last %}{% else %}, {% endif %}{% endfor %}</p>
+				{% endif %}
+			</div>
+		{% endfor %}
+		{% if num_pages > 1 %}
+			{% if has_previous %}
+				<a href="{% url restaurants-browse letter page.previous_page_number  %}">&laquo;prev</a>
+			{% else %}
+				<span class="disabled">&laquo; prev</span>
+			{% endif %}
+			{% for num in page_range %}
+				{% if num == page.number %}
+					<span class="current">{{num}}</span>
+				{% else %}
+					<a href="{% url restaurants-browse letter num %}">{{num}}</a>
+				{% endif %}
+			{% endfor %}
+			{% if has_next %}
+				<a href="{% url restaurants-browse letter page.next_page_number  %}">next &raquo;</a>
+			{% else %}
+				<span class="disabled">next &raquo;</span>
+			{% endif %}
+		{% endif %}
+	</article>
+</body>
+</html>

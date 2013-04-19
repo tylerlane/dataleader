@@ -1,0 +1,236 @@
+{% load unquote %}
+{% load humanize %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+{% block title %}
+<title>Dining: {% if title %}{{title|safe|title}}{% endif %} - News-Leader.com</title>
+{% endblock %}
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}/diningStyles.css"/>
+{% block headers %}
+{% endblock %}
+<!--- OAS MACRO --->
+<script> 
+<!--
+//configuration
+OAS_listpos='728x90_1,88x31_1,160x600_1,728x90_2';
+OAS_query = ''+'&'+location.search.substring(1);
+OAS_target = '_top';
+OAS_url = 'http://gcirm.ozarksnow.gcion.com/RealMedia/ads/';
+//If OAS_sitepage is set to {SECTION}{pagetype} it means you did not set the value in the .ini file.
+OAS_sitepage='mo-springfield.ozarksnow.com/restaurants/front.htm';
+//endconfiguration
+OAS_version = 10;
+OAS_rn = '001234567890'; OAS_rns = '1234567890';
+OAS_rn = new String (Math.random()); OAS_rns = OAS_rn.substring (2, 11);
+function OAS_NORMAL(pos) {
+  document.write('<A HREF="' + OAS_url + 'click_nx.ads/' + OAS_sitepage + '/1' + OAS_rns + '@' + OAS_listpos + '!' + pos + '?' + OAS_query + '" TARGET=' + OAS_target + '>');
+  document.write('<IMG SRC="' + OAS_url + 'adstream_nx.ads/' + OAS_sitepage + '/1' + OAS_rns + '@' + OAS_listpos + '!' + pos + '?' + OAS_query + '" BORDER=0></A>');
+}
+//-->
+</script>
+<!-- Updated by GMTI for ad serving 04252008 -->
+<script>
+if(typeof adtech_global_control == 'undefined') {
+    document.writeln('<script type="text/javascript" src="http://news-leader.com/gcicommonfiles/sr/scripts/GDSRGlobalcontrol.js"></s' + 'cript>');
+}
+</script>
+<script type="text/javascript" src="http://springfi.ur.gcion.com/AD/DFPSiteSettings.js"></script>
+<script type="text/javascript" src="http://springfi.ur.gcion.com/Scripts/AD/DFPscript.js"></script>
+<!-- OAS SETUP end -->
+</head>
+<body>
+<div id="diningContainer">
+    <div id="innerContainer">
+        {% include "restaurants/menu.html" %}
+        <div id="restaurantContent">
+            <!-- Listing content goes here -->
+            {% block content %}
+            {% endblock %}
+             <!-- End listing content -->
+        </div>
+        <div id="rightSideAd" style="padding-left: 5px">
+            <script>
+            <!--
+            OAS_AD('160x600_1');
+            //-->
+            </script>
+        </div>
+        <div id="fullAdSpot_" style="margin-left:126px;margin-right:126px;margin-top:10px">
+            <script>
+            <!--
+            OAS_AD('728x90_1');
+            //-->
+            </script>
+        </div>
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-top">
+                    <div class="footer-wrap">
+                        <div class="footer-logo">
+                            <a href="http://www.news-leader.com" target="_parent"></a>
+                        </div>
+                        <div class="right"><a href="http://www.news-leader.com/section/sitemaphtml">Site Map</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#top">Back to Top</a><span class="backtotop">&nbsp;</span></div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+                <div class="footer-main">
+                    <div class="footer-wrap">
+                        <div class="left">
+                            <ul><li><h4><a href="http://www.news-leader.com/section/news">NEWS</a></h4></li><li><a href="http://www.news-leader.com/section/news">Ozarks News</a></li><li><a href="http://www.news-leader.com/section/7daysarchives">Latest Headlines</a></li><li><a href="http://www.news-leader.com/section/news12">Crime &amp; Courts</a></li><li><a href="http://www.news-leader.com/section/news06">Politics &amp; Government</a></li><li><a href="http://www.news-leader.com/section/watchdog">Watchdog</a></li><li><a href="http://www.news-leader.com/section/news04">Education</a></li><li><a href="http://www.news-leader.com/section/business">Business</a></li><li><a href="http://www.news-leader.com/section/news11">Around Missouri</a></li><li><a href="http://www.news-leader.com/section/news07">Nation/World</a></li><li><a href="http://www.news-leader.com/section/data">Data</a></li><li><h4><a href="http://www.news-leader.com/section/socialmedia">SOCIAL</a></h4></li><li><a href="http://www.news-leader.com/section/socialmedia">Staff</a></li><li><a href="http://www.news-leader.com/facebook">Facebook</a></li><li><a href="http://www.news-leader.com/twitter">Twitter</a></li><li><a href="http://www.news-leader.com/blogs">Blogs</a></li><li><a href="http://www.dealchicken.com/ozarks-mo">DealChicken</a></li></ul><ul><li><h4><a href="http://www.news-leader.com/section/sports">SPORTS</a></h4></li><li><a href="http://www.news-leader.com/section/sports0401">MSU Bears</a></li><li><a href="http://usatodayhss.com/springfield-mo/">High School Sports</a></li><li><a href="http://www.news-leader.com/section/sports02">Cardinals</a></li><li><a href="http://www.news-leader.com/section/sports05">TV/Radio listings</a></li><li><h4><a href="http://www.news-leader.com/section/galleriessectionfront">PHOTOS</a></h4></li><li><a href="http://www.news-leader.com/section/NEWS01&amp;template=gallerycategory">Ozarks News photos</a></li><li><a href="http://www.news-leader.com/section/LIFE05&amp;template=gallerycategory">Home of the Week</a></li><li><a href="http://www.news-leader.com/section/faces">Faces in the Crowd</a></li><li><a href="http://www.news-leader.com/section/NEWS07&amp;template=gallerycategory">National News</a></li><li><a href="http://www.news-leader.com/section/news0102">Ozarks Exposure</a></li><li><a href="http://php.news-leader.com/beforeafter/">History Revealed</a></li><li><a href="http://www.news-leader.com/section/videonetwork?odyssey=mod|video|news">Video</a></li></ul><ul><li><h4><a href="http://www.news-leader.com/section/life">LIFE</a></h4></li><li><a href="http://heymom.news-leader.com">Hey Mom!</a></li><li><a href="http://www.news-leader.com/outdoors">Get Outdoors</a></li><li><a href="http://www.news-leader.com/section/life05">Spaces</a></li><li><a href="http://www.news-leader.com/section/life02">Food</a></li><li><a href="http://www.news-leader.com/section/life04">Health</a></li><li><a href="http://www.news-leader.com/section/life07">Religion</a></li><li><a href="http://www.news-leader.com/calendar">Events Calendar</a></li><li><a href="http://www.news-leader.com/section/Announcements">Announcements</a></li><li><a href="http://www.news-leader.com/section/Comics">Comics</a></li><li><a href="http://www.news-leader.com/genealogy">Genealogy</a></li><li><h4><a href="http://www.news-leader.com/obits">OBITUARIES</a></h4></li><li><a href="https://ssl1.gmti.com/springfield/secure/ccsubscribers/obit_order.html">Submit an obituary</a></li><li><a href="http://www.news-leader.com/deathnotices">Latest Death Notices</a></li></ul><ul><li><h4><a href="http://www.news-leader.com/section/opinions">OPINIONS</a></h4></li><li><a href="http://www.news-leader.com/section/opinions01">Our Voice</a></li><li><a href="http://www.news-leader.com/section/opinions02">Local voices</a></li><li><a href="http://www.news-leader.com/section/opinions03">Readers' Letters</a></li><li><a href="http://www.news-leader.com/section/columnists">Columnists</a></li><li><h4><a href="http://www.news-leader.com/section/entertainment">ENTERTAINMENT</a></h4></li><li><a href="http://www.news-leader.com/calendar">Events Calendar</a></li><li><a href="http://www.news-leader.com/section/entertainment12">Dining</a></li><li><a href="http://www.news-leader.com/section/entertainment01">Weekend</a></li><li><a href="http://www.news-leader.com/section/entertainment09">People &amp; Celebrities</a></li><li><a href="http://www.news-leader.com/pets">Pet photos</a></li><li><a href="http://www.news-leader.com/section/Comics">Comics</a></li><li><a href="http://www.news-leader.com/section/Games">Games</a></li><li><a href="http://affiliate.zap2it.com/tvlistings/ZCGrid.do?aid=metozarks">TV listings</a></li></ul>
+                        </div>
+                        <div class="right">
+                            <ul>
+                                <li><h4><a href="http://www.news-leader.com/section/socialmedia">SOCIAL</a></h4></li><li><a href="http://www.news-leader.com/section/socialmedia">Staff</a></li><li><a href="http://www.news-leader.com/facebook">Facebook</a></li><li><a href="http://www.news-leader.com/twitter">Twitter</a></li><li><a href="http://www.news-leader.com/blogs">Blogs</a></li><li><a href="http://www.dealchicken.com/ozarks-mo">DealChicken</a></li>
+                            </ul>
+                            <ul class="right_row">
+                                <li><h4>FOLLOW US</h4></li>
+                                <li class="icn_follow_twitter"><a href="http://www.news-leader.com/twitter">Twitter</a></li>
+                                <li class="icn_follow_facebook"><a href="http://www.news-leader.com/facebook">Facebook</a></li>
+                                <li class="icn_follow_mobile"><a href="http://www.news-leader.com/mobile">Mobile</a></li>
+                                <li class="icn_follow_rss"><a href="http://www.news-leader.com/rss">RSS</a></li>
+                                <li class="icn_follow_email"><a href="http://www.news-leader.com/section/nlettersubscribe">E-mail Alerts</a></li>
+                            </ul>
+                                                <!-- pbs:macro name="ody_footermenupdsearch" -->
+                                            </div>
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+                                    <div class="clear"></div>
+                                    <div class="footer-partners">
+                                <div class="footer-wrap">
+                                    <ul>
+                                        <li><a class="footer-usatoday" href="http://www.usatoday.com" target="_blank"></a></li>
+                            <!--            <li><a class="footer-gannett" href="http://www.gannett.com" target="_blank"></a></li>-->
+                                        <li><a class="footer-cars" href="http://www.cars.com/?aff=spfield" target="_blank"></a></li>
+                                        <li><a class="footer-homefind" href="http://ozarksnow.gon.gannettonline.com/apps/pbcs.dll/section?Category=HOMES" target="_blank"></a></li>
+                                        <li><a class="footer-career" href="http://ozarksnow.gannettonline.com/careerbuilder/index.html" target="_blank"></a></li>
+                                        <li><a class="footer-apts" href="http://www.news-leader.com/apartments/" target="_blank"></a></li>
+                                        <li><a class="footer-homegain" href="http://www.homegain.com" target="_blank"></a></li>
+                                        <li><a class="footer-shop" href="http://www.shoplocal.com/ozarksnow/home.aspx" target="_blank"></a></li>
+                                        <li><a class="footer-eharmony" href="http://gannett.eharmony.com/dating&amp;cid=1046&amp;aid=3310&amp;cmd=registration-profile-opt" target="_blank"></a></li>           
+                                    </ul>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="footer-gannett">
+                                <a href="http://www.gannett.com" target="_blank"><img src="//www.news-leader.com/odygci/p5/ody_gannett_footer.gif" alt="Gannett" title="Gannett"></a>
+                            </div>
+                            <p class="footer-bottom">
+                                Copyright © 2013 www.news-leader.com. All rights reserved.<br>
+                                Users of this site agree to the <a href="http://www.news-leader.com/section/terms">Terms of Service</a>, <a href="http://www.news-leader.com/section/privacy">Privacy Notice/Your California Privacy Rights</a>, and <a href="http://www.news-leader.com/section/privacy#adchoices">Ad Choices</a>
+                            </p>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<!-- End ImageReady Slices -->
+{% block footer %}
+{% endblock %}
+<script language="javascript" type="text/javascript" src="http://content.gannettonline.com/global/scripts/revsci.js"></script>
+        <script type="text/javascript" src="http://js.revsci.net/gateway/gw.js?csid=J06575" charset="ISO-8859-1"></script>
+        <script type="text/javascript" language="JavaScript">
+        <!--
+        s_account="gpaper171,gntbcstglobal";
+        //--> 
+        </script>
+        <!-- SiteCatalyst code version: H.3.
+        Copyright 1997-2005 Omniture, Inc. More info available at
+        http://www.omniture.com -->
+        <script src="http://content.gannettonline.com/global/s_code/s_code.js"></script>
+        <script><!--
+        /* You may give each page an identifying name, server, and channel on
+        the next lines. */
+        s.pageName="Dining - Listing: {{title}}"
+        s.server=""     // Do Not Alter
+        s.channel=""
+        s.pageType=""
+        s.pageValue=""
+        s.prop1=""
+        s.prop2="data"
+        s.prop3="data"
+        s.prop4=""
+        s.prop5=""
+        s.prop6="news"
+        s.prop7="local_news"
+        s.prop16="article"
+        s.prop25="Springfield:news-leader"
+        s.prop50="Newspaper";
+
+        var currentTime=new Date();
+        var gciYear = currentTime.getFullYear();
+        DM_addToLoc("zipcode", escape(s.prop30));
+        DM_addToLoc("age", escape((gciYear-s.prop31)));
+        DM_addToLoc("gender", escape(s.prop32));
+        var gci_ssts=OAS_sitepage;
+
+        gci_ssts=gci_ssts.replace(/\/article\.htm.*$/,'');
+        gci_ssts=gci_ssts.replace(/\/front\.htm.*$/,'');
+        gci_ssts=gci_ssts.replace(/\/index\.htm.*$/,'');
+        gci_ssts=gci_ssts.replace(/\@.*$/,'');
+        gci_ssts=gci_ssts.replace(/^.*\.com\//,'');
+
+        var gci_tempossts=gci_ssts; 
+        var gci_ossts=gci_tempossts.split("/")
+        gci_ssts=gci_ssts.replace(/\//g,' > ');
+        gci_ssts='newspaper > '+gci_ssts;
+
+        if
+        (  gci_ossts[0] == "life"
+        || gci_ossts[0] == "money"
+        || gci_ossts[0] == "news"
+        || gci_ossts[0] == "sports"
+        || gci_ossts[0] == "tech"
+        || gci_ossts[0] == "travel"
+        || gci_ossts[0] == "weather"
+        || gci_ossts[0] == "umbrella"
+        )
+
+        {
+          DM_cat(gci_ssts);
+        }
+        else
+        {
+          DM_cat('newspaper > other');
+        }
+
+        var gci_osstslen=gci_ossts.length;
+        for(var i=0; i<gci_osstslen; i++) {
+        if(i==0)
+        s.prop17=gci_ossts[i];   // section
+        if(i==1)
+        s.prop18=gci_ossts[i];   // subsection
+        if(i==2)
+        s.prop19=gci_ossts[i];   // topic
+        if(i==3)
+        s.prop20=gci_ossts[i];   // Subtopic
+        }
+        DM_tag();
+
+        // sets the RevSci cookie in GCION domain
+        if (rsinetsegs.length > 0)
+        {
+          if (!RevSci.HasSegmentCookie())
+          {
+            RevSci.Rpc.Send(RevSci.RequestUrl(rsinetsegs));
+            RevSci.Cookie.Set(revsci_Cookie, true);
+          }
+        }
+         if(typeof rsinetsegs!='undefined'){s.prop48=(rsinetsegs.join('|')).replace(/J06575_/g,'');}else{s.prop48='no segment';}
+
+        //-->
+        </script>
+
+        <script><!--
+        /************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+        var s_code=s.t();if(s_code)document.write(s_code)//--></script>
+        <script><!--
+        if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+        //--></script><noscript><img src="http://gntbcstglobal.112.2O7.net/b/ss/gntbcstglobal,gpaper171/1/H.3--NS/0" height="1" width="1" border="0" alt="" /></noscript><!--/DO NOT REMOVE/-->
+        <!-- End SiteCatalyst code version: H.3. -->
+</body>
+</html>

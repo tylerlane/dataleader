@@ -1,0 +1,9 @@
+{% if restauants %}
+	 There are {{num_restaurants}} within 0.5 miles of you:<br />
+	 Including:<br />
+ 		{% for key,val in restaurants.items %}
+ 			{% if val > 0 %}
+ 				{{val}} {{key|title}} <br />
+ 			{% endif %}
+ 		{% endfor %}
+ {% endif %}

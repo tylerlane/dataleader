@@ -1,0 +1,360 @@
+1 - Restaurant Name: TRI-LAKES MOOSE LODGE
+100 MOOSE RD 
+RIDGEDALE MO 65739 
+Phone: 417-335-2369
+Smoking? yes
+---------------------
+2 - Restaurant Name: Turkey Creek RV Park
+1376 BUSINESS HIGHWAY 65 
+HOLLISTER MO 65672 
+Phone: 417-335-8004
+Smoking? no
+---------------------
+3 - Restaurant Name: TWISTED SPOKE BAR & INN
+176 FORSYTH & TANEYVILLE RD 
+FORSYTH MO 65653 
+Phone: 417-251-9300
+Smoking? no
+---------------------
+4 - Restaurant Name: UPTOWN CAFE
+285 S HIGHWAY 165 
+BRANSON MO 65616 
+Phone: 417-336-3535
+Smoking? no
+---------------------
+5 - Restaurant Name: VASKEN'S DELI
+1015 HIGHWAY 248 # D 
+BRANSON MO 65616 
+Phone: 417-332-7503
+Smoking? no
+---------------------
+6 - Restaurant Name: VILLAGE EATERY THE
+5439 E HIGHWAY 76 
+KIRBYVILLE MO 65679 
+Phone: 417-294-9464
+Smoking? yes
+---------------------
+7 - Restaurant Name: Vintage Paris
+260 BIRDCAGE WLK 
+HOLLISTER MO 65672 
+Phone: 417-593-7952
+Smoking? no
+---------------------
+8 - Restaurant Name: WAGON WHEEL FAMILY DINNING
+20262 HIGHWAY 160 
+FORSYTH MO 65653 
+Phone: 417-546-4219
+Smoking? yes
+---------------------
+9 - Restaurant Name: Wakyoto
+2005 W HIGHWAY 76 # 201 
+BRANSON M0 65616 
+Phone: 417-336-1177
+Smoking? no
+---------------------
+10 - Restaurant Name: WAXY O'SHEA'S IRSH PUB BP# 06-
+235 BRANSON LANDING BLVD 
+BRANSON MO 65616 
+Phone: 417-348-1759
+Smoking? yes
+---------------------
+11 - Restaurant Name: WELK STAGE DOOR CANTEEN
+1984 S HIGHWAY 165 
+BRANSON MO 65616 
+Phone: 417-336-3575
+Smoking? no
+---------------------
+12 - Restaurant Name: WELK THEATER
+1984 S HIGHWAY 165 
+BRANSON MO 65616 
+Phone: 417-336-3575
+Smoking? no
+---------------------
+13 - Restaurant Name: WENDY'S # 19
+3504 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-334-1941
+Smoking? no
+---------------------
+14 - Restaurant Name: WENDY'S #11
+510 W MAIN ST 
+BRANSON MO 65616 
+Phone: 417-334-1414
+Smoking? no
+---------------------
+15 - Restaurant Name: WENDY'S - BRANSON HILLS
+1124 BRANSON HILLS PKWY 
+BRANSON MO 65616 
+Phone: 417-239-0835
+Smoking? no
+---------------------
+16 - Restaurant Name: WHEEL HOUSE CATFISH AND WING
+3100 GREEN MOUNTAIN DR 
+BRANSON MO 65616 
+Phone: 417-334-0044
+Smoking? no
+---------------------
+17 - Restaurant Name: WHIPPERSNAPPER'S
+2421 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-335-6699
+Smoking? no
+---------------------
+18 - Restaurant Name: WHITE HOUSE THEATER CONCESSION
+2255 GRETNA RD 
+BRANSON MO 65616 
+Phone: 417-335-2396
+Smoking? no
+---------------------
+19 - Restaurant Name: White Oak Station #20
+4017 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-339-3911
+Smoking? no
+---------------------
+20 - Restaurant Name: WHITE RIVER FISH CO
+5 BASS PRO DR 
+BRANSON MO 65616 
+Phone: 417-243-5100
+Smoking? no
+---------------------
+21 - Restaurant Name: WHITE RIVER GRILLE LLC
+2683 STATE HWY 176 
+ROCKAWAY BEACH MO 65740 
+Phone: 417-561-1313
+Smoking? no
+---------------------
+22 - Restaurant Name: WHITEWATER PIZZA
+3505 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 
+Smoking? no
+---------------------
+23 - Restaurant Name: WHITEWATER SANDWHICH ISLAND
+3505 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 
+Smoking? no
+---------------------
+24 - Restaurant Name: WOODY'S ISLAND
+4677 FALL CREEK RD 
+BRANSON MO 65616 
+Phone: 417-251-3494
+Smoking? no
+---------------------
+25 - Restaurant Name: YAKOV'S DINNER THEATER
+470 HIGHWAY 248 
+BRANSON MO 65616 
+Phone: 417-339-2568
+Smoking? no
+---------------------
+26 - Restaurant Name: Yummy Donuts
+15735 HIGHWAY 160 
+FORSYTH MO 65653 
+Phone: 417-546-8993
+Smoking? no
+---------------------
+27 - Restaurant Name: TRI-LAKES MOOSE LODGE
+100 MOOSE RD 
+RIDGEDALE MO 65739 
+Phone: 417-335-2369
+Smoking? yes
+---------------------
+28 - Restaurant Name: Turkey Creek RV Park
+1376 BUSINESS HIGHWAY 65 
+HOLLISTER MO 65672 
+Phone: 417-335-8004
+Smoking? no
+---------------------
+29 - Restaurant Name: TWISTED SPOKE BAR & INN
+176 FORSYTH & TANEYVILLE RD 
+FORSYTH MO 65653 
+Phone: 417-251-9300
+Smoking? no
+---------------------
+30 - Restaurant Name: UPTOWN CAFE
+285 S HIGHWAY 165 
+BRANSON MO 65616 
+Phone: 417-336-3535
+Smoking? no
+---------------------
+31 - Restaurant Name: VASKEN'S DELI
+1015 HIGHWAY 248 # D 
+BRANSON MO 65616 
+Phone: 417-332-7503
+Smoking? no
+---------------------
+32 - Restaurant Name: VILLAGE EATERY THE
+5439 E HIGHWAY 76 
+KIRBYVILLE MO 65679 
+Phone: 417-294-9464
+Smoking? yes
+---------------------
+33 - Restaurant Name: Vintage Paris
+260 BIRDCAGE WLK 
+HOLLISTER MO 65672 
+Phone: 417-593-7952
+Smoking? no
+---------------------
+34 - Restaurant Name: WAGON WHEEL FAMILY DINNING
+20262 HIGHWAY 160 
+FORSYTH MO 65653 
+Phone: 417-546-4219
+Smoking? yes
+---------------------
+35 - Restaurant Name: Wakyoto
+2005 W HIGHWAY 76 # 201 
+BRANSON M0 65616 
+Phone: 417-336-1177
+Smoking? no
+---------------------
+36 - Restaurant Name: WAXY O'SHEA'S IRSH PUB BP# 06-
+235 BRANSON LANDING BLVD 
+BRANSON MO 65616 
+Phone: 417-348-1759
+Smoking? yes
+---------------------
+37 - Restaurant Name: WELK STAGE DOOR CANTEEN
+1984 S HIGHWAY 165 
+BRANSON MO 65616 
+Phone: 417-336-3575
+Smoking? no
+---------------------
+38 - Restaurant Name: WELK THEATER
+1984 S HIGHWAY 165 
+BRANSON MO 65616 
+Phone: 417-336-3575
+Smoking? no
+---------------------
+39 - Restaurant Name: WENDY'S # 19
+3504 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-334-1941
+Smoking? no
+---------------------
+40 - Restaurant Name: WENDY'S #11
+510 W MAIN ST 
+BRANSON MO 65616 
+Phone: 417-334-1414
+Smoking? no
+---------------------
+41 - Restaurant Name: WENDY'S - BRANSON HILLS
+1124 BRANSON HILLS PKWY 
+BRANSON MO 65616 
+Phone: 417-239-0835
+Smoking? no
+---------------------
+42 - Restaurant Name: WHEEL HOUSE CATFISH AND WING
+3100 GREEN MOUNTAIN DR 
+BRANSON MO 65616 
+Phone: 417-334-0044
+Smoking? no
+---------------------
+43 - Restaurant Name: WHIPPERSNAPPER'S
+2421 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-335-6699
+Smoking? no
+---------------------
+44 - Restaurant Name: WHITE HOUSE THEATER CONCESSION
+2255 GRETNA RD 
+BRANSON MO 65616 
+Phone: 417-335-2396
+Smoking? no
+---------------------
+45 - Restaurant Name: White Oak Station #20
+4017 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 417-339-3911
+Smoking? no
+---------------------
+46 - Restaurant Name: WHITE RIVER FISH CO
+5 BASS PRO DR 
+BRANSON MO 65616 
+Phone: 417-243-5100
+Smoking? no
+---------------------
+47 - Restaurant Name: WHITE RIVER GRILLE LLC
+2683 STATE HWY 176 
+ROCKAWAY BEACH MO 65740 
+Phone: 417-561-1313
+Smoking? no
+---------------------
+48 - Restaurant Name: WHITEWATER PIZZA
+3505 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 
+Smoking? no
+---------------------
+49 - Restaurant Name: WHITEWATER SANDWHICH ISLAND
+3505 W HIGHWAY 76 
+BRANSON MO 65616 
+Phone: 
+Smoking? no
+---------------------
+50 - Restaurant Name: WOODY'S ISLAND
+4677 FALL CREEK RD 
+BRANSON MO 65616 
+Phone: 417-251-3494
+Smoking? no
+---------------------
+51 - Restaurant Name: YAKOV'S DINNER THEATER
+470 HIGHWAY 248 
+BRANSON MO 65616 
+Phone: 417-339-2568
+Smoking? no
+---------------------
+52 - Restaurant Name: Yummy Donuts
+15735 HIGHWAY 160 
+FORSYTH MO 65653 
+Phone: 417-546-8993
+Smoking? no
+---------------------
+53 - Restaurant Name: TRI-LAKES MOOSE LODGE
+100 MOOSE RD 
+RIDGEDALE MO 65739 
+Phone: 417-335-2369
+Smoking? yes
+---------------------
+54 - Restaurant Name: Turkey Creek RV Park
+1376 BUSINESS HIGHWAY 65 
+HOLLISTER MO 65672 
+Phone: 417-335-8004
+Smoking? no
+---------------------
+55 - Restaurant Name: TWISTED SPOKE BAR & INN
+176 FORSYTH & TANEYVILLE RD 
+FORSYTH MO 65653 
+Phone: 417-251-9300
+Smoking? no
+---------------------
+56 - Restaurant Name: UPTOWN CAFE
+285 S HIGHWAY 165 
+BRANSON MO 65616 
+Phone: 417-336-3535
+Smoking? no
+---------------------
+57 - Restaurant Name: VASKEN'S DELI
+1015 HIGHWAY 248 # D 
+BRANSON MO 65616 
+Phone: 417-332-7503
+Smoking? no
+---------------------
+58 - Restaurant Name: VILLAGE EATERY THE
+5439 E HIGHWAY 76 
+KIRBYVILLE MO 65679 
+Phone: 417-294-9464
+Smoking? yes
+---------------------
+59 - Restaurant Name: Vintage Paris
+260 BIRDCAGE WLK 
+HOLLISTER MO 65672 
+Phone: 417-593-7952
+Smoking? no
+---------------------
+60 - Restaurant Name: WAGON WHEEL FAMILY DINNING
+20262 HIGHWAY 160 
+FORSYTH MO 65653 
+Phone: 417-546-4219
+Smoking? yes
+---------------------

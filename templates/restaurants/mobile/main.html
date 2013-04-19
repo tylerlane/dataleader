@@ -1,0 +1,54 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1.0,width=device-width,user-scalable=0" />
+	
+	<link rel="shortcut icon" href="/link/to/favicon.ico"><!-- update this -->
+	<link rel="apple-touch-icon" href="/link/to/apple-touch-icon.png"><!-- update this -->
+
+	<link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}/restaurants/mobile/css/style.css" media="screen, handheld" />
+	<link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}/restaurants/mobile/css/enhanced.css" media="screen  and (min-width: 40.5em)" />
+
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+</head>
+<body>
+	<div id="logoContainer" class="centered">
+		<div id="mobileLogo" class="centered">
+			<img src="{{MEDIA_URL}}/restaurants/mobile/images/mobileLogo-full.png" alt="Dining logo">
+		</div>
+	</div>
+	<nav class="centered">
+		<header  class="centered">
+			Browse by:
+		</header>
+		<br />
+		<div class="clear left"></div>
+		<div class="centered">
+			<ul class="centered">
+				<li>
+					<a href="{% url restaurants-browse 'A','1' %}"><p class="centeredText">Name</p></a>
+				</li>
+				<li>
+					<a href="{% url list_neighborhoods %}"><p class="centeredText">Areas</p></a>
+				</li>
+				<li>
+					<a href="{% url list_cuisines %}"><p class="centeredText">Cuisine</p></a>
+				</li>
+				<li>
+					<a href="{% url list_recent_inspections 1 %}"><p class="centeredText">Inspections</p></a>
+				</li>
+				<li>
+					<a href="{% url list_attributes %}"><p class="centeredText">Features</p></a>
+				</li>
+				<li>
+					<a href="./location.html"><p class="centeredText">Near Me</p></a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+
+
+</body>
+
+
+</html>

@@ -1,0 +1,229 @@
+{% extends "cobrand_template.html" %}
+{% block headers %}
+<title>Christmas Lights Nomination form</title>
+<style>
+	body {
+		margin-left: auto;
+		margin-right: auto;
+	}
+	
+	#contact_form {
+		margin-left: auto;
+		margin-right: auto;
+		float: left;
+		width:600px;
+	}
+	
+	.fieldWrapper {
+		min-height: 40px;
+		padding: 8px 0 8px 0;
+	}
+	
+	input {
+		float: left;
+	}
+	
+	.errorlist {
+		float: left;
+		padding-left: 20px;
+	}
+	
+	.errorlist li {
+		color: red;
+		font-weight: bold;
+		list-style-type: square;
+		margin-left: 20px;
+	}
+	
+	.error {
+		color: red;
+		font-size: 2em;
+		font-weight: bold;
+	}
+	
+	label {
+		font-family: arial;
+		height: 2em;
+		clear: both;
+		width: 90px;
+	}
+	
+	h2 {
+		font-family: arial;
+	}
+</style>
+
+<!-- test -->
+{% endblock %}
+{% block content %}
+<div id="contact_form">
+{% if form.errors %}
+  <p class="error">Sorry, the form was not filled out properly. Please try
+  again.
+  </p>
+{% endif %}
+<form enctype="multipart/form-data" method="POST" action="{% url christmas-form %}">
+{% csrf_token %}
+<br />
+<img src="http://www.news-leader.com/graphics/XMAS.LIGHTS.banner.jpg" />
+<h2>Christmas Lights Nomination Form</h2>
+	<h3>Tell us about special Christmas light shows</h3>
+	<p>Did you go all out this year on your home’s Christmas light display? Is your neighbor’s home all decked out for the holidays? Want to let everyone else know about it, too? <br /><br />
+	Submit your home or a friend’s home (ask first, please) to be included in our driving map of must-see light displays. </p>
+   <div class="fieldWrapper">
+        <label for="id_name">Name</label><br />
+        {{ form.name }} {{ form.name.errors }}
+    </div>
+    <div class="fieldWrapper">
+        <label for="id_address">Address</label><br />
+        {{ form.address }} {{ form.address.errors }}
+    </div>
+    <div class="fieldWrapper">
+        <label for="id_city">City</label><br />
+        {{ form.city }} {{ form.city.errors }}
+    </div>
+    <div class="fieldWrapper">
+        <label for="id_state">State</label><br />
+        {{ form.state }} {{ form.state.errors }}
+    </div>
+    <div class="fieldWrapper">
+        <label for="id_zip_code">Zip Code</label><br />
+        {{ form.zip_code }} {{ form.zip_code.errors }}
+    </div>
+    <div class="fieldWrapper">
+        <label for="id_phone_number">Phone Number</label><br />
+        {{ form.phone_number }} {{ form.phone_number.errors }}
+    </div>
+    <div class="fieldWrapper">
+        <label for="id_email">Email</label><br />
+        {{ form.email }} {{ form.email.errors }}
+    </div>
+    <div class="fieldWrapper">
+        <label for="id_story">Short story about your display, please include any special features and number of lights, etc.</label><br />
+    		{{ form.story.errors }}<br />
+        {{ form.story }}
+    </div>
+    <div class="fieldWrapper">
+        <label for="id_image">Image</label><br />
+          {{ form.image}} {{ form.image.errors }}
+    </div>
+
+
+
+
+
+
+    <p><button type="submit" class="search_btn">Send message</button></p>
+    <br />
+    <br />
+    <br />
+    <p>
+      <h6>Please note that if you paste text longer than the limit allowed, it
+      may not copy properly into the Message field.</h6>
+    </p>
+
+</div>
+{% endblock %}
+
+{% block omniture %}
+	<script language="javascript" type="text/javascript" src="http://content.gannettonline.com/global/scripts/revsci.js"></script> 
+	<script type="text/javascript" src="http://js.revsci.net/gateway/gw.js?csid=J06575" charset="ISO-8859-1"></script> 
+	<script type="text/javascript" language="JavaScript"> 
+	<!--
+	s_account="gpaper171,gntbcstglobal";
+	//--> 
+	</script> 
+	<!-- SiteCatalyst code version: H.3.
+	Copyright 1997-2005 Omniture, Inc. More info available at
+	http://www.omniture.com --> 
+	<script src="http://content.gannettonline.com/global/s_code/s_code.js"></script> 
+	<script><!--
+	/* You may give each page an identifying name, server, and channel on
+	the next lines. */
+    s.pageName="data - contact form"
+    s.channel=""
+	s.pageType=""
+	s.pageValue=""
+	s.prop1=""
+	s.prop2="data"
+	s.prop3="data"
+	s.prop4=""
+	s.prop5=""
+	s.prop6="news"
+	s.prop7="local_news"
+	s.prop16="article"
+	s.prop25="Springfield:news-leader"
+	s.prop50="Newspaper";
+
+	var currentTime=new Date();
+	var gciYear = currentTime.getFullYear();
+	DM_addToLoc("zipcode", escape(s.prop30));
+	DM_addToLoc("age", escape((gciYear-s.prop31)));
+	DM_addToLoc("gender", escape(s.prop32));
+	var gci_ssts=OAS_sitepage;
+
+	gci_ssts=gci_ssts.replace(/\/article\.htm.*$/,'');
+	gci_ssts=gci_ssts.replace(/\/front\.htm.*$/,'');
+	gci_ssts=gci_ssts.replace(/\/index\.htm.*$/,'');
+	gci_ssts=gci_ssts.replace(/\@.*$/,'');
+	gci_ssts=gci_ssts.replace(/^.*\.com\//,'');
+
+	var gci_tempossts=gci_ssts; 
+	var gci_ossts=gci_tempossts.split("/")
+	gci_ssts=gci_ssts.replace(/\//g,' > ');
+	gci_ssts='newspaper > '+gci_ssts;
+
+	if
+	(  gci_ossts[0] == "life"
+	|| gci_ossts[0] == "money"
+	|| gci_ossts[0] == "news"
+	|| gci_ossts[0] == "sports"
+	|| gci_ossts[0] == "tech"
+	|| gci_ossts[0] == "travel"
+	|| gci_ossts[0] == "weather"
+	|| gci_ossts[0] == "umbrella"
+	)
+
+	{
+	  DM_cat(gci_ssts);
+	}
+	else
+	{
+	  DM_cat('newspaper > other');
+	}
+
+	var gci_osstslen=gci_ossts.length;
+	for(var i=0; i<gci_osstslen; i++) {
+	if(i==0)
+	s.prop17=gci_ossts[i];   // section
+	if(i==1)
+	s.prop18=gci_ossts[i];   // subsection
+	if(i==2)
+	s.prop19=gci_ossts[i];   // topic
+	if(i==3)
+	s.prop20=gci_ossts[i];   // Subtopic
+	}
+	DM_tag();
+
+	// sets the RevSci cookie in GCION domain
+	if (rsinetsegs.length > 0)
+	{
+	  if (!RevSci.HasSegmentCookie())
+	  {
+	    RevSci.Rpc.Send(RevSci.RequestUrl(rsinetsegs));
+	    RevSci.Cookie.Set(revsci_Cookie, true);
+	  }
+	}
+	 if(typeof rsinetsegs!='undefined'){s.prop48=(rsinetsegs.join('|')).replace(/J06575_/g,'');}else{s.prop48='no segment';}
+
+	//-->
+	</script> 
+
+	<script><!--
+	/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+	var s_code=s.t();if(s_code)document.write(s_code)//--></script> 
+	<script><!--
+	if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+	//--></script><noscript><img src="http://gntbcstglobal.112.2O7.net/b/ss/gntbcstglobal,gpaper171/1/H.3--NS/0" height="1" width="1" border="0" alt="" /></noscript><!--/DO NOT REMOVE/--> 
+	<!-- End SiteCatalyst code version: H.3. -->
+{% endblock %}

@@ -1,0 +1,216 @@
+body {
+  background-color: #8DBCB7;
+  padding: 0;
+  margin: 0;
+}
+
+
+
+#mobileLogo {
+  max-width: 225px;
+}
+
+#mobileLogo img {
+  max-width: 225px;
+}
+
+
+#logoContainer.miniNav {
+  width: 33%;
+}
+
+#mobileLogo.miniNav {
+  max-width: 125px;
+}
+
+#mobileLogo.miniNav img {
+  max-width: 125px;
+}
+
+
+nav {
+  width: 100%;
+}
+
+#miniNavWrapper {
+  width: 66%;
+  float: right;
+}
+
+nav header {
+  display: none;
+  font-size: 3em;
+  width: 6em;
+  font-family: Verdana, Arial, Georgia, sans-serif;
+}
+
+nav ul {
+  padding: 0;
+}
+
+nav ul li {
+  float: left;
+  padding: 0px;
+  margin: 5px 5px 5px 0;
+  border: 2px solid #85A1A4;
+  width: 13em;
+  font-size: .9em;
+  font-family: Verdana, Arial, Georgia, sans-serif;
+  color: #F4EBCA;
+}
+
+nav.miniNav ul li {
+  float: left;
+  padding: 0px;
+  margin: 5px 1px 5px 0;
+  border: 2px solid #85A1A4;
+  width: 30%;
+  font-size: .7em;
+  font-family: Verdana, Arial, Georgia, sans-serif;
+  color: #F4EBCA;
+  overflow: hidden;
+}
+
+nav ul li a {
+  padding: .5em .5em;
+  background-color: #4D4D4D;
+  display: block;
+  color: #F4EBCA;
+  text-decoration: none;
+}
+nav ul li a p {
+  padding: 0;
+  margin: 0;
+}
+
+nav ul li a:hover {
+  background-color: #F4EBCA;
+  color: #4D4D4D;
+}
+
+nav ul li.hover {
+  background-color: #F4EBCA;
+  color: #4D4D4D;
+}
+
+
+section {
+  font-size: 2em;
+  font-family: Verdana, sans-serif;
+}
+
+.clear {clear:both;}
+.left {float: left;}
+.centered {margin: 0 auto;}
+.centeredText {text-align: center;}
+
+
+
+
+
+
+/* General restaurant listings display */
+.restaurantListing {
+  border-bottom: 1px solid #CACACA;
+}
+
+.restaurantListingName {
+
+}
+
+.restaurantListingInfo {
+
+}
+
+.restaurantListingSummary {
+
+}
+
+
+article {
+  padding: 5px;
+  font-family: Verdana, sans-serif;
+}
+
+article a {
+  text-decoration: none;
+  font-style: italic;
+  color: black;
+}
+
+
+
+
+/* Name page*/
+#lettersNav {
+  padding: 4px;
+
+  font-size: .9em;
+  font-family: Verdana, sans-serif;
+}
+
+#lettersNav a {
+  text-decoration: none;
+}
+
+
+
+/* Neighborhood page*/
+#neighborhoodsNav {
+  margin-top: 10px;
+}
+
+#neighborhoodsNav ul li {
+  float: left;
+  padding: 0px;
+  margin: 5px 1px 5px 0;
+  border: 2px solid #85A1A4;
+  width: 20%;
+  height: 3.5em;
+  font-size: .8em;
+  font-family: Verdana, Arial, Georgia, sans-serif;
+  color: #F4EBCA;
+  overflow: hidden;
+}
+
+
+#neighborhoodsNav ul li a {
+  height: 3.5em;
+
+}
+
+#mapImage {
+  width:98%;
+  max-width: 500px;
+}
+
+
+/* Profile page */
+.detailsTab {
+  height: 1.8em;
+  width: 100%;
+  margin: 10px 0 5px;
+  padding: 5px;
+  border: 2px solid #85A1A4;
+  font-size: .8em;
+  font-family: Verdana, Arial, Georgia, sans-serif;
+  color: #F4EBCA;
+  float: left;
+  background: #4D4D4D;
+}
+
+.inspectionsItem {
+  border-bottom:1px dotted black;
+  float: left;
+  clear: both;
+  min-width: 70%;
+}
+
+#attribs_text ul li {
+  float: left; min-width: 25%;
+  padding: 5px;
+}
+
+#contact {
+  float: left;
+}
