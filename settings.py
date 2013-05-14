@@ -15,6 +15,8 @@ TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
     ('Tyler Lane', 'tlane@news-leader.com'),
+    #('Tyler Lane', 'tyler@nolongervalid.com'),
+    ('Tyler Laen', 'tlane2@gannett.com'),
 )
 
 if socket.gethostname() == '2155529.pubip.peer1.net':
@@ -98,7 +100,7 @@ MIDDLEWARE_CLASSES = (
     #cache
     'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.common.CommonMiddleware',
-    #'django.middleware.common.CommonMiddleware',
+    'mobileesp.mobile.MobileDetectionMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -150,5 +152,4 @@ INSTALLED_APPS = (
     'schools',
     'census',
     'restaurants',
-    'salaries',
 )

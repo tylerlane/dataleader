@@ -16,6 +16,8 @@ from email.MIMEText import MIMEText
 from email.Utils import COMMASPACE, formatdate
 from email import Encoders
 
+
+
 def send_mail(send_from, send_to, subject, text, f=None, server="localhost"):
     # assert type(send_to)==list
     # assert type(files)==list
@@ -54,9 +56,8 @@ try:
     localFile.write(response.read())
     localFile.close()
 except:
-    send_mail('data@news-leader.com','webeditor@news-leader.com','SGF POlice - Media Report','No media report was found.\r\nContact the front desk of the Springfield Police Department at 864-1810. Paper copies are available at the front desk daily even if the online version is not updated. The front desk is open 7 a.m. to 11 p.m. daily.')
+    send_mail('data@news-leader.com','webeditor@news-leader.com;spokin@gannett.com','SGF Police - Media Report','No media report was found.\r\nContact the front desk of the Springfield Police Department at 864-1810. Paper copies are available at the front desk daily even if the online version is not updated. The front desk is open 7 a.m. to 11 p.m. daily.')
+    #pass
 else:
     # email_message('Online Staff','tlane@news-leader.com','911 Calls Importer','python@nolongervalid.com','911 Calls Import: ' + today.strftime("%m-%d-%Y %I:%M %p"), output)
-    send_mail('data@news-leader.com','webeditor@news-leader.com','SGF Police - Media Report','Here is the media report\r\nIf this report is not up to date, contact the front desk of the Springfield Police Department at 864-1810. Paper copies are avaliable at the front desk  daily even if the online version is not updated. The front desk is open from 7 a.m. to 11 p.m. daily.','/tmp/mediareport.pdf')
-
-
+    send_mail('data@news-leader.com','webeditor@news-leader.com;spokin@gannett.com','SGF Police - Media Report','Here is the media report\r\nIf this report is not up to date, contact the front desk of the Springfield Police Department at 864-1810. Paper copies are avaliable at the front desk  daily even if the online version is not updated. The front desk is open from 7 a.m. to 11 p.m. daily.','/tmp/mediareport.pdf')
