@@ -67,7 +67,7 @@ USE_I18N = True
 if DEBUG:
     MEDIA_ROOT = STATIC_PATH
 else:
-    MEDIA_ROOT = "/opt/django/data.news-leader.com/static/"
+    MEDIA_ROOT = "/opt/django/data.news-leader.com/dataleader/static/"
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
@@ -152,4 +152,5 @@ INSTALLED_APPS = (
     'schools',
     'census',
     'restaurants',
+    'trueozarks',
 )
