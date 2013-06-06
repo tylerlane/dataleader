@@ -23,3 +23,7 @@ temp/snl_sched_top_newswell.pbo
 temp/snl_sched_top_newswell_dev.pbo
 
 .DS_Store
+
+.project
+
+.pydevproject
