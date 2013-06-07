@@ -36,30 +36,30 @@ class InfoBoxAdmin(admin.ModelAdmin):
 	search_fields = ('story','text','headline',)
 
 class StoryAdmin(admin.OSMGeoAdmin):
-	field = (None,{'fields':('profile__name')})
+	field = (None,{'fields':('profile')})
 	field = (None,{'fields':('headline')})
 	field = (None,{'fields':('byline')})
 	field = (None,{'geom': ('geom')})
-	list_display = ('profile__name','headline','byline','geom',)
-	list_filter = ('active',)
+	list_display = ('profile','headline','byline',)
+	# list_filter = ('profile__active',)
 	default_lon = 37.214367
 	default_lat = -93.29313
-	order_by = ('profile__name', 'byline')
-	search_fields = ('profile__name','headline','subheadline','text','byline', )
+	order_by = ('profile', 'byline')
+	search_fields = ('profile','headline','subheadline','text','byline', )
 	inlines = [PullQuoteInline,InfoBoxInline,]
 
 class PhotoAdmin(admin.OSMGeoAdmin):
-	field = (None,{'fields':('profile__name')})
+	field = (None,{'fields':('profile')})
 	field = (None,{'fields':('picture')})
 	field = (None,{'fields':('cutline')})
 	field = (None,{'fields':('credit')})
 	field = (None,{'geom': ('geom')})
-	list_display = ('profile__name','picture','credit','cutline','geom',)
-	list_filter = ('active','credit',)
+	list_display = ('profile','picture','credit','cutline',)
+	list_filter = ('credit',)
 	default_lon = 37.214367
 	default_lat = -93.29313
-	order_by = ('profile__name', 'byline')
-	search_fields = ('profile__name','picture','credit','cutline' )
+	order_by = ('profile', 'byline')
+	search_fields = ('profile','picture','credit','cutline' )
 
 class PhotoInline(admin.TabularInline):
 	model = Photo
@@ -69,7 +69,7 @@ class ProfileAdmin(admin.OSMGeoAdmin):
 	field = (None,{'fields':('headline')})
 	field = (None,{'fields':('summary')})
 	field = (None,{'geom': ('geom')})
-	list_display = ('name','headline','summary','geom',)
+	list_display = ('name','headline','summary',)
 	list_filter = ('active',)
 	default_lon = 37.214367
 	default_lat = -93.29313

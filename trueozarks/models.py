@@ -78,7 +78,7 @@ class Profile(models.Model):
 	headline = models.CharField(blank=False,max_length=255)
 	main_photo = models.ImageField(default=None, blank=True, null=True, upload_to="trueozarks/images/")
 	summary = models.TextField(null=True)
-	user = models.ForeignKey(User,editable=False)
+	username = models.CharField(max_length=100,editable=True)
 	time_init = models.DateTimeField( "Date Added", auto_now =  False, auto_now_add = True )
 	last_updated = models.DateTimeField("Last Updated", auto_now=True,
             auto_now_add=False, null=True)
@@ -107,6 +107,7 @@ class Profile(models.Model):
 			else:
 				#else we save our geom
 				super(Profile,self).save(*args,**kwargs)
+		#self.user = current_user()
 
 	
 	def __unicode__( self ):
@@ -120,7 +121,7 @@ class Story(models.Model):
 	subheadline = models.CharField(max_length=255)
 	byline = models.CharField(max_length=255)
 	#photo = models.ImageField()
-	user = models.ForeignKey(User,editable=False)
+	#user = models.ForeignKey(User,editable=False)
 	time_init = models.DateTimeField( "Date Added", auto_now =  False, auto_now_add = True )
 	last_updated = models.DateTimeField("Last Updated", auto_now=True,
             auto_now_add=False, null=True)
@@ -151,7 +152,7 @@ class Story(models.Model):
 
 
 	def __unicode__( self ):
-		return u"%s" %( self.profile + " - " + self.headline) 
+		return u"%s" %( self.profile.name + " - " + self.headline) 
 
 class PullQuote(models.Model):
 	story = models.ForeignKey(Story)
