@@ -27,3 +27,19 @@ temp/snl_sched_top_newswell_dev.pbo
 .project
 
 .pydevproject
+
+.idea/.name
+
+.idea/dataleader.iml
+
+.idea/encodings.xml
+
+.idea/misc.xml
+
+.idea/modules.xml
+
+.idea/scopes/scope_settings.xml
+
+.idea/vcs.xml
+
+.idea/workspace.xml
