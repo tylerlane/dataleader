@@ -1,0 +1,147 @@
+{% extends "trueozarks/articlePage.html" %}
+{% load image_tags %}
+{% block header %}
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script src="{{MEDIA_URL}}/trueozarks/js/jquery.cookie.js"></script>
+<script type="text/javascript">
+	function getUrlVars()
+	{
+		var vars = [], hash;
+		var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+		for(var i = 0; i < hashes.length; i++)
+		{
+		    hash = hashes[i].split('=');
+		    vars.push(hash[0]);
+		    vars[hash[0]] = hash[1];
+		}
+		return vars;
+	}
+
+	$(document).ready(function() { 
+		if( $.cookie('atyponid'))
+		{
+			console.log( "user is logged in");
+			console.log( "deleting non logged in cookies");
+			//removing the old cookies
+			$.removeCookie('EMETA_NCLICK');
+			$.removeCookie('EMETA_EPOCH');
+			$.removeCookie('EMETA_COOKIE_CHECK');
+			$.removeCookie('EMETA_NCLICK_VISITED');
+			console.log("hiding the login prompt");
+			// $("#login_prompt").hide();
+			console.log("showing the thanks for loggin div");
+			// $("#logged_in").show();
+		}
+		else
+		{
+			//checking if the nclick cookie is set
+			if( $.cookie('EMETA_NCLICK'))
+			{
+				//setting max number of clicks
+				var max_clicks = 20;
+				console.log( "User not logged in. " + $.cookie('EMETA_NCLICK')  + "  article(s) read");
+				//if max clicks are less than how many clicks we have, we bump up our click counter	
+				if( parseInt($.cookie('EMETA_NCLICK')) < max_clicks )
+				{
+					//check to see what page we have visited last
+					//if it was this page, do NOT increment the counter
+					if($.cookie("EMETA_NCLICK_VISITED") != "{{tag.name}}")
+					{
+						console.log( "User not logged in. WAS: " + (20 - $.cookie('EMETA_NCLICK') ) + " free articles left");
+						//incrementing the counter
+						var nclick_value = parseInt($.cookie('EMETA_NCLICK'));
+						nclick_value = nclick_value + 1;
+						var milliseconds = (new Date).getTime();
+
+						$.cookie('EMETA_NCLICK', nclick_value, {domain: 'news-leader.com',expires:30, path: "/"});
+						$.cookie('EMETA_EPOCH', milliseconds, {domain: 'news-leader.com',expires:30, path: "/"} );
+						$.cookie('EMETA_COOKIE_CHECK', 1, {domain: 'news-leader.com',expires:30, path: "/"});
+						$.cookie('EMETA_NCLICK_VISITED', '{{tag.name}}', {domain: 'news-leader.com',expires:30, path: "/"});
+						console.log( "User not logged in. NOW: " + (20 - $.cookie('EMETA_NCLICK') ) + " free articles left");
+						//console.log( "EMETA_EPOCH: " + $.cookie("EMETA_EPOCH"));
+					}
+					
+				}
+				else
+				{
+					console.log( "User not logged in. " + $.cookie('EMETA_NCLICK')  + "  articles read");
+					console.log( "redirecting the user to a new window to login on main site");
+					// window.open('http://www.news-leader.com/section/como?screen=login','login_window',"height=768,width=1024,modal=yes,alwaysRaised=yes");
+					// $("#content").hide();
+					// $("#login_prompt").show();
+					window.location = "{% url login_page %}";
+
+				}
+			}
+			else
+			{
+				console.log( "User not logged in. create cookies");
+				nclick_value = 1
+				var milliseconds = (new Date).getTime();
+				$.cookie('EMETA_NCLICK', nclick_value );
+				$.cookie('EMETA_EPOCH', milliseconds );
+				$.cookie('EMETA_COOKIE_CHECK', 1);
+				$.cookie('EMETA_NCLICK_VISITED', 'TrueOzarksTest');
+				console.log( "User not logged in. " + (20 - $.cookie('EMETA_NCLICK') ) + " free articles left");
+				console.log( "EMETA_EPOCH: " + $.cookie("EMETA_EPOCH"));
+
+			}
+		}
+		
+	
+	});
+</script>
+{% endblock %}
+{% block content_header %}
+<h1>TAG: {{tag.name}}</h1>
+{% endblock %}
+{% block content %}
+		<div>
+			<h3>{{tag.address}}</h3>
+			{% if tag.geom %}
+				<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5/leaflet.css" />
+				<!--[if lte IE 8]>
+					<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5/leaflet.ie.css" />
+				<![endif]-->
+				<script src="http://cdn.leafletjs.com/leaflet-0.5/leaflet.js"></script>
+				<div id="tagmap"></div>
+				<script>
+				// create a map in the "map" div, set the view to a given place and zoom
+				var map = L.map('tagmap').setView([ {{tag.geom.y}},{{tag.geom.x}}], 13);
+				// add an OpenStreetMap tile layer
+				L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+					attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+				}).addTo(map);
+				L.marker([{{tag.geom.y}}, {{tag.geom.x}}]).addTo(map)
+						.bindPopup('TAG: {{tag.name|escapejs}}<br />')
+						.openPopup();
+				var popup = L.popup();
+				</script>
+			{% endif %}
+		</div>
+		<hr />
+		{% if profiles %}
+			<h3>Profiles</h3>
+			<div class="profiles">
+			{% for profile in profiles %}
+				<div class="profile">Profile: <a href="{% url trueozarks_profile profile.id,profile.name %}">{{profile.headline|escape}}</a></div>
+			{% endfor %}
+			</div>
+		{% endif %}
+		{% if photos %}
+			<h3>Photos</h3>
+			<div class="photos">
+			{% for photo in photos %}
+				{% ifchanged photo.profile %}
+					<div style="clear:both;"></div>
+					<h4>{{photo.profile.name}}</h4>
+				{% endifchanged %}
+				<div class="photo"><a href="{% url trueozarks_profile photo.profile.id,photo.profile.name %}"><img src="{{photo.picture|scale:"200x200"}}" /></a>
+				</div>
+			{% endfor %}
+			</div>
+		{% endif %}
+{% endblock %}
+{% block omniture %}
+Tag Detail: {{tag.name|escape}}
+{% endblock %}

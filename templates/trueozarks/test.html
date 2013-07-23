@@ -1,0 +1,33 @@
+{% for profile in profiles %}
+	<p>{{profile.story.headline}}</p>
+	<p>{{profile.story.subheadline}}</p>
+	{{profile.story.byline}}
+	<!--IMAGE = {{profile.main_photo}}-->
+	<div>
+		{{profile.story.text|safe|linebreaks}}
+	</div>
+	<div>
+		{% for photo in profile.photos %}
+			{{photo.picture.url}}
+			Height: {{photo.picture.height}}
+			Width: {{photo.picture.width}}
+		{% endfor %}
+	</div>
+	<div >
+		{% for infobox in profile.story.infoboxes %}
+			<div style="width:250px;float:left;border-bottom:1px dotted black;margin:5px">
+				<p>{{infobox.headline}}</p>
+				{{infobox.text|safe|linebreaks}}
+			</div>
+			
+		{% endfor %}
+	</div>
+	<div style="clear:both"></div>
+	<div>
+		{% for tag in profile.tags.all %}
+			<p>{{tag.name}</p>
+		{% endfor %}
+	</div>
+	<div style="clear:both;"></div>
+
+{% endfor %}

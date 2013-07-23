@@ -1,0 +1,70 @@
+
+
+body {
+	width: 740px;
+	margin: 10px auto;
+}
+
+div.headline {
+	font-size: 3em;
+	width:740px;
+}
+
+div.subhead {
+	width: 740px;
+	font-size: 2em;
+	color: rgb(96,96,96);
+	font-weight: bold;
+}
+
+div.img
+{
+  margin: 5px;
+  height: auto;
+  width: 740px;
+  float: center;
+  text-align: left;
+  padding-bottom: 1em;
+}	
+
+div.desc {
+	font-style: italic;
+}
+
+div.video
+{
+ margin: 5px;
+  height: auto;
+  width: 100%;
+  float: center;
+  text-align: left;
+  padding-bottom: 1em;
+}
+
+div.content 
+{
+float: auto;
+width:90%;
+padding:10px;
+margin:10px auto;
+}
+
+div.map
+{
+  padding: 1em;
+  margin-left:-40px;
+  height: auto;
+  width: 300px;
+  float: left;
+}	
+
+
+
+
+
+
+
+
+
+
+

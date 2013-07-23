@@ -1,0 +1,74 @@
+{% extends "trueozarks/articlePage.html" %}
+{% block header %}
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<link type="text/css" rel="stylesheet" href="{{MEDIA_URL}}/tn3/skins/tn3/tn3.css"></link>
+<script type="text/javascript" src="{{MEDIA_URL}}/tn3/js/jquery.tn3lite.min.js"></script>
+<script type="text/javascript">
+	function getUrlVars()
+	{
+		var vars = [], hash;
+		var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+		for(var i = 0; i < hashes.length; i++)
+		{
+		    hash = hashes[i].split('=');
+		    vars.push(hash[0]);
+		    vars[hash[0]] = hash[1];
+		}
+		return vars;
+	}
+
+	$(document).ready(function() { 
+		var $mytn3 = $('.tn3gallery').tn3({ 
+			autoplay:true,
+			responsive:true,
+			image:{
+			  transitions:[{
+				type: "grid",
+				partDirection: "left",
+				partEasing: "easeOutSine",
+				partDuration: 300,
+				method: "fade",
+				diagonalStart: "bl",
+				sortReverse: false,
+				sort: "random",
+				gridY: 5,
+				gridX: 7,
+				easing: "easeInQuad",
+				duration: 260
+			  }]
+			}
+		}).data('tn3'); 
+		if(getUrlVars()["image"] != NaN)
+		{
+			$mytn3.show(parseInt(getUrlVars()["image"]));	
+			$.fn.tn3.Gallery.config.autoplay = false;
+		
+		}
+		
+	
+	});
+
+
+	  </script>
+{% endblock %}
+{% block content_header %}
+<h1>Browse by Photos</h1>
+{% endblock %}
+{% block content %}
+	<div class="tn3gallery">
+		{% for photo in photos %}
+			{% ifchanged photo.profile %}
+				<div class="tn3 album">	
+					<h4>{{photo.profile.headline}}</h4>
+					<ul>
+			{% endifchanged %}
+			<li><a href="{{photo.picture.url}}"><img src="{{photo.picture.url}}" /></a></li>
+			
+			<!-- {{photo.picture}} <br />
+			Height:{{photo.picture.height}} Width:{{photo.picture.width}}<br />
+			{{photo.cutline}}/{{photo.credit}}<br />
+			Geom: {{photo.geom}}<br />
+			Tags: {{photo.tags.all}}<br /> -->
+		{% endfor %}
+	</div>
+{% endblock %}

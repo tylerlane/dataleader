@@ -1,0 +1,33 @@
+{% extends "trueozarks/articlePage.html" %}
+{% block content_header %}
+<h1>Browse by Tags</h1>
+{% endblock %}
+{% block content %}
+	<div id="tags_container">
+		{% for tag in tags %}
+			<span class="{% spaceless %}
+			{% if tag.count in largestTag %}
+				largestTag
+			{% endif %}
+			{% if tag.count in largeTag %}
+				largeTag
+			{% endif %}
+			{% if tag.count in mediumTag %}
+				mediumTag
+			{% endif %}
+			{% if tag.count in smallTag %}
+				smallTag
+			{% endif %}
+			{% if tag.count in smallestTag %}
+				smallestTag
+			{% endif %}
+			{% endspaceless %}"><a href="{% url tag_detail tag %}">{{tag.name}}</a></span>
+		{% endfor %}
+	</div>
+	<script>
+
+	</script>
+{% endblock %}
+{% block omniture %}
+Tags
+{% endblock %}

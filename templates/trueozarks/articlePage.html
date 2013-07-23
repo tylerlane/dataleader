@@ -1,0 +1,232 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Springfield Revealed - {% block title %}{% endblock %}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=720,maximum-scale=1.0" />
+<link href="{{MEDIA_URL}}/trueozarks/styles.css" media="all" rel="stylesheet" type="text/css" />
+<!-- header gel code start -->
+<!--- OAS MACRO --->
+<script> 
+<!--
+	//configuration
+	OAS_listpos='300x250_1,728x90_1,88x31_1,160x600_1,728x90_2';
+	OAS_query = ''+'&'+location.search.substring(1);
+	OAS_target = '_top';
+	OAS_url = 'http://gcirm.ozarksnow.gcion.com/RealMedia/ads/';
+	//If OAS_sitepage is set to {SECTION}{pagetype} it means you did not set the value in the .ini file.
+	OAS_sitepage='mo-springfield.ozarksnow.com/news/blogs/article.htm';
+	//endconfiguration
+	OAS_version = 10;
+	OAS_rn = '001234567890'; OAS_rns = '1234567890';
+	OAS_rn = new String (Math.random()); OAS_rns = OAS_rn.substring (2, 11);
+	function OAS_NORMAL(pos) {
+	  document.write('<A HREF="' + OAS_url + 'click_nx.ads/' + OAS_sitepage + '/1' + OAS_rns + '@' + OAS_listpos + '!' + pos + '?' + OAS_query + '" TARGET=' + OAS_target + '>');
+	  document.write('<IMG SRC="' + OAS_url + 'adstream_nx.ads/' + OAS_sitepage + '/1' + OAS_rns + '@' + OAS_listpos + '!' + pos + '?' + OAS_query + '" BORDER=0></A>');
+	}
+//-->
+</script>
+<!-- Updated by GMTI for ad serving 04252008 -->
+<script>
+if(typeof adtech_global_control == 'undefined') {
+	document.writeln('<script type="text/javascript" src="http://news-leader.com/gcicommonfiles/sr/scripts/GDSRGlobalcontrol.js"></s' + 'cript>');
+}
+</script>
+<script type="text/javascript" src="http://springfi.ur.gcion.com/AD/DFPSiteSettings.js"></script>
+<script type="text/javascript" src="http://springfi.ur.gcion.com/Scripts/AD/DFPscript.js"></script>
+<!-- OAS SETUP end -->
+<!--OMNITURE CODE-->
+<script type="text/javascript" language="JavaScript">
+<!--
+s_account="gpaper171,gntbcstglobal";
+//--> 
+</script>
+<script language="javascript" type="text/javascript" src="http://content.gannettonline.com/global/scripts/revsci.js"></script> 
+<script type="text/javascript" src="http://js.revsci.net/gateway/gw.js?csid=J06575" charset="ISO-8859-1"></script> 
+<script type="text/javascript" language="JavaScript"> 
+  <!--
+  s_account="gpaper171,gntbcstglobal";
+  //--> 
+  </script> 
+  <!-- SiteCatalyst code version: H.3.
+  Copyright 1997-2005 Omniture, Inc. More info available at
+  http://www.omniture.com --> 
+  <script src="http://content.gannettonline.com/global/s_code/s_code.js"></script> 
+  <script><!--
+  /* You may give each page an identifying name, server, and channel on
+  the next lines. */
+s.pageName="SGFREV - {% spaceless %}{% block omniture %}{% endblock %}{% endspaceless %}"
+s.channel=""
+  s.pageType=""
+  s.pageValue=""
+  s.prop1=""
+  s.prop2="data"
+  s.prop3="data"
+  s.prop4=""
+  s.prop5=""
+  s.prop6="news"
+  s.prop7="local_news"
+  s.prop16="article"
+  s.prop25="Springfield:news-leader"
+  s.prop50="Newspaper";
+
+	var currentTime=new Date();
+	var gciYear = currentTime.getFullYear();
+	DM_addToLoc("zipcode", escape(s.prop30));
+	DM_addToLoc("age", escape((gciYear-s.prop31)));
+	DM_addToLoc("gender", escape(s.prop32));
+	var gci_ssts=OAS_sitepage;
+
+	gci_ssts=gci_ssts.replace(/\/article\.htm.*$/,'');
+	gci_ssts=gci_ssts.replace(/\/front\.htm.*$/,'');
+	gci_ssts=gci_ssts.replace(/\/index\.htm.*$/,'');
+	gci_ssts=gci_ssts.replace(/\@.*$/,'');
+	gci_ssts=gci_ssts.replace(/^.*\.com\//,'');
+
+	var gci_tempossts=gci_ssts; 
+	var gci_ossts=gci_tempossts.split("/")
+	gci_ssts=gci_ssts.replace(/\//g,' > ');
+	gci_ssts='newspaper > '+gci_ssts;
+
+	if
+	(  gci_ossts[0] == "life"
+	|| gci_ossts[0] == "money"
+	|| gci_ossts[0] == "news"
+	|| gci_ossts[0] == "sports"
+	|| gci_ossts[0] == "tech"
+	|| gci_ossts[0] == "travel"
+	|| gci_ossts[0] == "weather"
+	|| gci_ossts[0] == "umbrella"
+	)
+
+	{
+	  DM_cat(gci_ssts);
+	}
+	else
+	{
+	  DM_cat('newspaper > other');
+	}
+
+	var gci_osstslen=gci_ossts.length;
+	for(var i=0; i<gci_osstslen; i++) {
+	if(i==0)
+	s.prop17=gci_ossts[i];   // section
+	if(i==1)
+	s.prop18=gci_ossts[i];   // subsection
+	if(i==2)
+	s.prop19=gci_ossts[i];   // topic
+	if(i==3)
+	s.prop20=gci_ossts[i];   // Subtopic
+	}
+	DM_tag();
+
+	// sets the RevSci cookie in GCION domain
+	if (rsinetsegs.length > 0)
+	{
+	  if (!RevSci.HasSegmentCookie())
+	  {
+	    RevSci.Rpc.Send(RevSci.RequestUrl(rsinetsegs));
+	    RevSci.Cookie.Set(revsci_Cookie, true);
+	  }
+	}
+	 if(typeof rsinetsegs!='undefined'){s.prop48=(rsinetsegs.join('|')).replace(/J06575_/g,'');}else{s.prop48='no segment';}
+
+	//-->
+	</script> 
+
+	<script><!--
+	/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+	var s_code=s.t();if(s_code)document.write(s_code)//--></script> 
+	<script><!--
+	if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+	//--></script><noscript><img src="http://gntbcstglobal.112.2O7.net/b/ss/gntbcstglobal,gpaper171/1/H.3--NS/0" height="1" width="1" border="0" alt="" /></noscript><!--/DO NOT REMOVE/--> 
+	<!-- End SiteCatalyst code version: H.3. -->
+{% block header %}
+{% endblock %}
+</head>
+<body>
+	<div id="headerWrapper">
+		<div id="News-Leaderx20header_">
+			<img id="News_Leaderx20header" src="{{MEDIA_URL}}/trueozarks/images/News-Leader-header.jpg" width="981" height="41" alt="" usemap="#News_Leaderx20header-map"/>
+			<map id="News_Leaderx20header-map" name="News_Leaderx20header-map">
+				<area shape="rect" coords="10,0,189,36" href="http://www.news-leader.com" alt="springfield news-leader" target="_blank" title="springfield news-leader"    />
+				<area shape="rect" coords="198,0,239,36" href="http://www.news-leader.com/jobs" alt="jobs" target="_blank" title="jobs"    />
+				<area shape="rect" coords="242,0,283,36" href="http://www.news-leader.com/cars" alt="cars" target="_blank" title="cars"    />
+				<area shape="rect" coords="291,0,339,36" href="http://www.news-leader.com/homes" alt="homes" target="_blank" title="homes"    />
+				<area shape="rect" coords="346,0,429,36" href="http://www.news-leader.com/apartments" alt="apartments" target="_blank" title="apartments"    />
+				<area shape="rect" coords="435,0,489,36" href="http://www.news-leader.com/dating" alt="dating" target="_blank" title="dating"    />
+				<area shape="rect" coords="493,0,565,36" href="http://www.news-leader.com/classifieds" alt="buy and sell" target="_blank" title="buy and sell"    />
+			</map>
+		</div>
+		<div id="Springfieldx20Revealedx20header_"><a href="{% url trueozarks-index %}"><img id="Springfieldx20Revealedx20header" src="{{MEDIA_URL}}/trueozarks/images/Springfield-Revealed-header.jpg" width="980" height="162" alt="" /></a></div><div id="menux20header_"><a href="{% url trueozarks-index %}"><img id="menux20header" src="{{MEDIA_URL}}/trueozarks/images/menu-header.jpg" width="252" height="45" alt="" /></a></div><div id="menu-tags"><a href="{% url trueozarks-browse-tags %}"><img id="menu_maps011" src="{{MEDIA_URL}}/trueozarks/images/menu-maps-11.jpg" width="203" height="45" alt="" /></a></div><div id="menu-photos"><a href="{% url trueozarks-browse-photos %}"><img id="menu-photos" src="{{MEDIA_URL}}/trueozarks/images/ozarks_layout-withSlices_12.jpg" width="199" height="45" alt="" /></a></div><div id="menu-maps_"><a href="{% url trueozarks-browse-maps %}"><img id="menu_maps" src="{{MEDIA_URL}}/trueozarks/images/menu-maps.jpg" width="192" height="45" alt="" /></a></div><div id="menu-fill_"><img id="menu_fill" src="{{MEDIA_URL}}/trueozarks/images/menu-fill.jpg" width="134" height="45" alt="" /></div>
+	</div>
+
+	<div id="contentWrapper">
+		<div id="innerContentWrapper">
+			{% block content_header %}
+			<h1>Article title</h1>
+			<div id="articleLocatorBar">
+				<div id="articleLocation">
+					Place
+				</div>
+				<div id="articleTags">
+					Tag 1, etc.
+				</div>
+			</div>
+			{% endblock %}
+			<div id="articleBodyWrapper">
+				{% block content %}
+				<img id="mainContent" src="{{MEDIA_URL}}/trueozarks/images/mainContent.jpg" width="647" height="453" alt="" />
+
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. </p>
+
+				<p>Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor. Morbi lectus risus, iaculis vel, suscipit quis, luctus non, massa. Fusce ac turpis quis ligula lacinia aliquet. Mauris ipsum. Nulla metus metus, ullamcorper vel, tincidunt sed, euismod in, nibh. </p>
+
+				<p>Quisque volutpat condimentum velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam nec ante. Sed lacinia, urna non tincidunt mattis, tortor neque adipiscing diam, a cursus ipsum ante quis turpis. Nulla facilisi. Ut fringilla. Suspendisse potenti. Nunc feugiat mi a tellus consequat imperdiet. Vestibulum sapien. Proin quam. Etiam ultrices. Suspendisse in justo eu magna luctus suscipit. </p>
+
+				<p>Sed lectus. Integer euismod lacus luctus magna. Quisque cursus, metus vitae pharetra auctor, sem massa mattis sem, at interdum magna augue eget diam. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Morbi lacinia molestie dui. Praesent blandit dolor. Sed non quam. In vel mi sit amet augue congue elementum. Morbi in ipsum sit amet pede facilisis laoreet. Donec lacus nunc, viverra nec, blandit vel, egestas et, augue. Vestibulum tincidunt malesuada tellus. Ut ultrices ultrices enim. Curabitur sit amet mauris. </p>
+
+				<p>Morbi in dui quis est pulvinar ullamcorper. Nulla facilisi. Integer lacinia sollicitudin massa. Cras metus. Sed aliquet risus a tortor. Integer id quam. Morbi mi. Quisque nisl felis, venenatis tristique, dignissim in, ultrices sit amet, augue. Proin sodales libero eget ante. Nulla quam. Aenean laoreet. </p>
+				
+				{% endblock %}
+			</div>
+			
+			<div id="articleRightRailWrapper">
+				{% block right_rail %}
+				<div id="topAd160x600">
+					<!-- <img id="topAd160x600" src="" width="160" height="600" alt="" /> -->
+					<script>
+					<!--
+					OAS_AD('160x600_1');
+					//-->
+					</script>
+				</div>
+				<div>
+					<a href="http://php.news-leader.com/beforeafter/"><img src="{{MEDIA_URL}}/trueozarks/history.promo.160.jpg" /></a>
+				</div>
+				{% endblock %}
+			</div>
+			<div id="footer_">
+				<div id="bottom_adwrapper">
+					<div id="advertismentBottom728x90_">
+							<script>
+								<!--
+								OAS_AD('728x90_1');
+								//-->
+							</script>
+					</div>
+
+				</div>
+				<img id="footer" src="{{MEDIA_URL}}/trueozarks/images/footer-new.jpg" width="980" height="166" alt="" usemap="#footer-map" />
+				<map id="footer-map" name="footer-map">
+					<area shape="rect" coords="10,5,311,62" href="http://www.news-leader.com" alt="Springfield News-Leader" title="Springfield News-Leader" target="_blank"  />
+					<area shape="rect" coords="429,62,548,107" href="http://www.gannett.com/" alt="Gannett" title="Gannett"  target="_blank"  />
+					<area shape="rect" coords="363,123,454,145" href="http://www.news-leader.com/section/terms" alt="Terms of Service" title="Terms of Service" target="_blank"   />
+					<area shape="rect" coords="451,123,677,145" href="http://www.news-leader.com/section/privacy" alt="Privacy Notice/Your California Privacy Rights" title="Privacy Notice/Your California Privacy Rights" target="_blank"   />
+					<area shape="rect" coords="695,123,762,144" href="http://www.news-leader.com/section/privacy#adchoices" alt="Ad Choices" title="Ad Choices"  target="_blank"  />
+				</map>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

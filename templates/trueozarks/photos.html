@@ -1,0 +1,70 @@
+{% extends "trueozarks/articlePage.html" %}
+{% load image_tags %}
+{% block header %}
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+	function getUrlVars()
+	{
+		var vars = [], hash;
+		var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+		for(var i = 0; i < hashes.length; i++)
+		{
+		    hash = hashes[i].split('=');
+		    vars.push(hash[0]);
+		    vars[hash[0]] = hash[1];
+		}
+		return vars;
+	}
+	$(document).ready(function(){
+		$(".photo img").click(function(){
+			// console.log( "clicked");
+			// console.log( $(this).attr("src"));
+			// console.log( $(this));
+			$("#main_photo a img").attr("src",($(this).attr("src")));
+			$("#main_photo a").attr("href",$(this).data("href"));
+			$("#main_photo_cutline").text($(this).data("cutline"));
+		});
+		$(".photo img").hover(
+			function () {
+			  $(this).width("150px");
+			  },
+			  function () {
+			    $(this).width("100px");
+			}
+		);
+		var random = Math.round(Math.random()*10);
+		$(".photo img").eq(random).click();
+		if(typeof(console) != "undefined")
+		{
+			console.log( "random = " + random );
+		}
+	});
+
+</script>
+{% endblock %}
+{% block content_header %}
+<h1>Browse by Photos</h1>
+{% endblock %}
+{% block content %}
+	<div id="main_photo">
+		<a href="{% url trueozarks_profile photos.0.profile.id,photos.0.profile.name %}"><img src="{{MEDIA_URL}}/trueozarks/images/ajax-loader.gif" /><div id="main_photo_cutline"></div></a>
+	</div>
+	<hr />
+	<div class="photos" id="photos-container">
+		<h5>Click on a thumbnail below to see full version</h5>
+		{% for photo in photos|dictsort:"profile" %}
+			{% ifchanged photo.profile %}
+				<div style="clear:both;"></div>
+				<h3><a href="{% url trueozarks_profile photo.profile.id,photo.profile.name|escapejs %}">{{photo.profile.headline|escape}}</a></h3>
+			{% endifchanged %}
+			<div class="photo">
+				<img src="{{photo.picture|scale:"600x450"}}" data-href="{% url trueozarks_profile photo.profile.id,photo.profile.name|escape %}"  data-cutline="{{photo.cutline|escape}}/{{photo.credit|escape}}" width="100px" title="{{photo.profile.name|escape}}"/>
+			</div>
+		{% endfor %}
+		<!--rest of the items-->
+	</div>
+{% endblock %}
+{% block omniture %}
+Photos page
+{% endblock %}

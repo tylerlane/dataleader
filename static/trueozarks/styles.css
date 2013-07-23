@@ -1,0 +1,720 @@
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,blockquote,th,td { 
+	padding: 0;
+	margin: 0;
+	}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+	}
+fieldset,img { 
+	border: 0;
+	}
+address,caption,cite,code,dfn,em,strong,th,var {
+	font-weight: normal;
+	font-style: normal;
+	}
+ol,ul {
+	list-style: none;
+	}
+caption,th {
+	text-align: left;
+	}
+h1,h2,h3,h4,h5,h6 {
+	font-weight: normal;
+	
+	}
+q:before,q:after {
+	content:'';
+	}
+abbr,acronym { border: 0;
+	}
+
+
+body {
+	background: black url("images/tiledImage.png") repeat-x;
+	padding: 0;
+	margin: 0;
+}
+
+a {
+	text-decoration: none;
+	color: #E4D4B3;
+	text-shadow: 1px 1px #CACACA;
+}
+
+h1, h3 {
+	font-family: Helvetica, Arial, sans-serif;
+	text-shadow: 1px 1px #CACACA;
+	
+}
+h3 a{
+	color: black;
+}
+
+p {
+	font-family: Helvetica, Arial, sans-serif;
+}
+
+img {
+	border: 0;
+	padding: 0;
+	margin: 0;
+	display: block;
+}
+
+
+.subhed {
+	font-size: 1.4em;
+	font-variant: italic;
+	font-weight: bold;
+}
+
+#socialsharetools{
+	width: 55px;
+	border-right: 1px dotted black;
+	padding-right: 10px;
+	float:left;
+	margin-right: 10px;
+
+}
+#socialsharetools div{
+	margin-bottom:10px;
+}
+#facebook-share{
+	margin-left:2px;
+}
+
+.byline {
+	font-weight: bold;
+	font-style: italic;
+	padding: 10px 0;
+}
+
+.ody-navLite{
+	border-bottom-color: #151515;
+	border-bottom:3px solid;
+	background:url(http://www.news-leader.com/odygci/p5/spritesheet_x.png) repeat-x 0 -332px;
+	color: #fff;
+}
+.ody-navLite-box{
+	width:960px;
+	height:40px;
+	margin:auto;
+}
+.ody-logoLite{
+	padding:5px 10px 5px 10px;
+	float:left;
+}
+.ody-navLite a{
+	background:url(http://www.news-leader.com/graphics/ody/cobrand_logo.gif) no-repeat;
+}
+#headerWrapper, #contentWrapper, #innerContentWrapper {
+	width: 980px;
+	margin: 0 auto;
+}
+
+#innerContentWrapper {
+	background-color: white;
+	float: left;
+}
+
+#innerContentWrapper h1, #innerContentWrapper h3 {
+	padding: 0 10px;
+}
+
+#innerContentWrapper h1 {
+	margin: 5px 0 0;
+}
+
+#innerContentWrapper h3 {
+	margin: 4px 0 15px 0;
+	color: #CACACA;
+	text-shadow: 1px 1px 1px black;
+}
+
+#innerContentWrapper .infobox h3 {
+	text-shadow: none;
+	color: black;
+}
+
+
+#bodyWrapper {
+	width: 660px;
+	float: left;
+	background-color: white;
+}
+
+#articleBodyWrapper {
+	width: 740px;
+	float: left;
+	background-color: white;	
+	padding: 10px;
+	font-family: Helvetica, Arial, sans-serif;
+}
+
+#articleBodyWrapper p {
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 12pt;
+	padding-left: 30px;
+}
+#articleBodyWrapper p img{
+	margin: 10px;
+}
+
+#articleBodyWrapper .infobox p {
+	padding: 2px;
+	word-wrap: break-word;
+}
+
+.tn3gallery, .tn3-gallery {
+	padding-bottom: 20px;
+	height: 530px;
+}
+
+#map {
+	clear: both;
+}
+
+#comments {
+	margin-top: 15px;
+}
+
+.infobox {
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 12pt;
+
+	border: 1px solid #CACACA;
+	margin: 6px;
+	padding: 15px;
+	width: 220px;
+}
+
+#innerContentWrapper .infobox h3 {
+	margin: 0 0 11px;
+	font-weight: bold;
+	padding-left: 0;
+}
+
+.pullquote {
+	width: 280px;
+	font-family: Georgia serif;
+	font-size: 35pt;
+	color: #E4D4B3;
+	padding: 15px;
+}
+
+.storyphoto {
+	width: 200px;
+	font-family: Georgia serif;
+	font-size: 35pt;
+	color: #E4D4B3;
+	padding: 0 15px;
+}
+
+#articleBodyWrapper .storyphoto p {
+	font-size: 10pt;
+	padding-left: 10px;
+	color: #CACACA;
+}
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
+.rightbig {
+	float: right;
+	width: 400px;
+}
+
+.leftbig {
+	float: left;
+	width: 400px;
+}
+
+.center {
+	
+	float: left;
+}
+
+#rightRailWrapper {
+	width: 300px;
+	float: right;
+	background-color: white;
+	padding-right: 20px;
+}
+
+#articleRightRailWrapper {
+	width: 200px;
+	float: right;
+	background-color: white;
+	padding-right: 20px;
+}
+
+#mostPopularWrapper {
+	width: 300px;
+	float: left;
+	background-color: #E4D4B1;
+	padding-bottom: 20px;
+	margin-bottom: 20px;
+}
+
+#articleLocatorBar {
+	width: 950.9px;
+	border: 1px solid #ECB87A;
+	outline: 4px solid #ECB87A;
+	outline-style: double;
+	background-color: #E4D4B3;
+	float: left;
+	margin-left: 4px;
+	padding: 4px 10px;
+	margin-bottom: 20px;
+
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 12px;
+}
+
+#articleLocatorBar a {
+	color: black;
+	text-decoration: underline;
+}
+
+#articleLocation {
+	float: left;
+}
+
+#articleTags {
+	float: right;
+	max-width: 400px;
+}
+
+.moreStoryContainer {
+	float: left;
+	clear: both;
+	margin: 0 10px 10px 10px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #CACACA; 
+}
+
+
+#News-Leaderx20header_ {
+	float: left;
+	width:981px;
+	height:41px;
+}
+
+#Springfieldx20Revealedx20header_ {
+	float: left;
+	width:980px;
+	height:162px;
+}
+
+#menux20header_ {
+	float: left;
+	width:252px;
+	height:45px;
+}
+
+#menu-maps_ {
+	float: left;
+	width:192px;
+	height:45px;
+}
+
+#menu-tags {
+	float: left;
+	width:203px;
+	height:45px;
+}
+
+#menu-photos {
+	float: left;
+	width:199px;
+	height:45px;
+	margin: 0;
+	display: block;
+}
+
+#menu-fill_ {
+	float: left;
+	width:134px;
+	height:45px;
+}
+
+#mainContent_ {
+	float: left;
+	width:640px;
+	background-color: white;
+	padding: 10px;
+}
+
+#mainContent_ a img {
+	width: 640px;
+}
+
+#mainContent_ h1 {
+	padding: 0;
+	text-shadow: 1px 1px #CACACA;
+	color: black;
+}
+
+#mainContent_ a h1 {
+	text-decoration: none;
+}
+
+#mainContent_ p {
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 12pt;
+}
+
+#main_photo_cutline {
+	margin-top: 5px;
+	text-shadow: none;
+	color: black;
+}
+
+#topAd300x250_ {
+	float: left;
+	width:320px;
+	height:268px;
+	margin-bottom: 20px;
+	padding-top: 10px;
+}
+
+#topAd160x600 {
+	padding-left: 10px;
+	margin-bottom: 20px;
+}
+
+
+#mostPopularHeader_ {
+	float: left;
+	width:300px;
+	height:49px;
+}
+
+
+#mostPopular1_ {
+	float: left;
+	width:119px;
+	height:120px;
+}
+
+
+
+#mostPopularHeader_ {
+	float: left;
+	width:300px;
+	height:49px;
+}
+
+
+#mostPopularTopBorder_ {
+	float: left;
+	width:300px;
+	height:22px;
+}
+
+#mostPop1left_ {
+	float: left;
+	width:21px;
+	height:134px;
+}
+
+#mostPopular1_ {
+	float: left;
+	width:119px;
+	height:120px;
+}
+
+#mostPop1right_ {
+	float: left;
+	width:27px;
+	height:134px;
+}
+
+#mostPopular2_ {
+	float: left;
+	width:120px;
+	height:120px;
+}
+
+#mostPopTopTitles_ {
+	background: url('http://data-media.news-leader.com/trueozarks/images//mostPopTopTitles.jpg') no-repeat;
+}
+
+#mostPopBottomTitles_ {
+	background: url('http://data-media.news-leader.com/trueozarks/images//mostPopBottomTitles.jpg') no-repeat;
+	background-repeat: no-repeat;
+}
+
+.mostPopTopTitle {
+	float: left;
+	font-family: Helvetica, Arial, sans-serif;
+	width: 115px;
+	margin-right: 4px;
+	padding: 5px 5px 5px 22px;
+	
+}
+
+.mostPopTopTitle a {
+	color: black;
+}
+
+#mostPop2right_ {
+	float: left;
+	width:13px;
+	height:134px;
+}
+
+
+#mostPop1bottom_ {
+	float: left;
+	width:119px;
+	height:14px;
+}
+
+#mostPop2bottom_ {
+	float: left;
+	width:120px;
+	height:14px;
+}
+
+
+#mostPopTopTitles_ {
+	float: left;
+	width:300px;
+	/*height:53px;*/
+}
+
+#mostPopRow2Top_ {
+	float: left;
+	width:300px;
+	height:16px;
+}
+
+#mostPop3left_ {
+	float: left;
+	width:21px;
+	height:134px;
+}
+
+#mostPopular3_ {
+	float: left;
+	width:119px;
+	height:120px;
+}
+
+#mostPop3right_ {
+	float: left;
+	width:28px;
+	height:134px;
+}
+
+#mostPopular4_ {
+	float: left;
+	width:119px;
+	height:120px;
+}
+
+#mostPop4right_ {
+	float: left;
+	width:13px;
+	height:134px;
+}
+
+#mostPop3Bottom_ {
+	float: left;
+	width:119px;
+	height:14px;
+}
+
+#mostPop4Bottom_ {
+	float: left;
+	width:119px;
+	height:14px;
+}
+
+#mostPopBottomTitles_ {
+	float: left;
+	width:300px;
+	height:41px;
+}
+
+#MostPopBottomSpacer_ {
+	float: left;
+	width:300px;
+	height:16px;
+}
+
+
+
+#seeMoreHeader_ {
+	float: left;
+	width:647px;
+	height:42px;
+	margin-bottom: 10px;
+	border-top: 1px solid #CACACA;
+}
+
+
+.moreStoryPhoto_ {
+	float: left;
+	width:252px;
+	height:164px;
+	margin-right: 10px;
+}
+
+.moreStoryTest_ {
+	float: left;
+	width: 378px;
+}
+
+.moreStoryTest_ p {
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 12pt;
+	padding-left: 10px;
+}
+
+.moreStoryTest_ h3 {
+	margin: 0;
+	text-shadow: 1px 1px #CACACA;
+}
+
+.moreStoryTest_ h3 a {
+	color: black;
+}
+
+.moreStoryButton_ {
+	float: right;
+	width:121px;
+	height:25px;
+}
+
+
+
+#submitYourPhoto_ {
+	float: left;
+	width:265px;
+	height:29px;
+	margin-bottom: 10px;
+}
+
+
+#submitPhotoClickButton_ {
+	float: left;
+	width:120px;
+	height:24px;
+	margin: 0 0 0 97px;
+}
+
+
+#viewByTagHeader_ {
+	float: left;
+	width:300px;
+	height:69px;
+}
+
+#tagCloudDisplay_ {
+	float: left;
+	width:300px;
+	/*height:262px;*/
+	/*border:1px solid black;*/
+	margin-bottom: 30px;	
+}
+
+#tagCloudDisplay_ a {
+	text-decoration: none;
+	margin: 0 5px;
+	font-family: Helvetica, Arial, sans-serif;
+	text-shadow: 1px 1px #CACACA;
+	color: black;
+}
+
+#facebookBox_ {
+	float: left;
+	width:300px;
+	height:316px;
+}
+
+#bottom_adwrapper {
+	width: 980px;
+	float: left;
+}
+
+#advertismentBottom728x90_ {
+	width:730px;
+	height:131px;
+	margin: 10px auto 0;
+}
+
+
+#footer_ {
+	float: left;
+	width:979px;
+	height:187px;
+}
+.photos{
+	/* trying to get a scrollable div */
+	max-height: 600px;
+	
+}
+#photos-container{
+	overflow: auto;
+}
+
+.photos .photo {
+	float: left;
+	margin: 0 10px 10px 0;
+	min-height: 150px;
+}
+
+#tagmap {
+	height: 280px;
+}
+
+#profilemap {
+	height: 150px;
+}
+#tags_container{
+	width: 600px;
+	margin: 0 auto;
+	/*font-size:2.5em;*/
+
+
+}
+#tags_container .smallestTag{
+	font-size: 1em;
+}
+#tags_container .smallTag{
+	font-size: 1.45em;
+}
+#tags_container .mediumTag{
+	font-size: 2.2em;
+}
+#tags_container .largeTag{
+	font-size: 2.95em;
+}
+#tags_container .largestTag{
+	font-size: 3.45em;
+}
+#tags_container a{
+	color: #0078A8;
+	padding: .2em 1.5em;
+	float: right;
+}
+#tags_container a:hover{
+	text-decoration:underline;
+}
+.smallestTag {font-size: xx-small;}
+.smallTag {font-size: small;}
+.mediumTag {font-size: medium;}
+.largeTag {font-size: large;}
+.largestTag {font-size: xx-large;}
+
+.profile a{
+	color: #0078A8;
+}

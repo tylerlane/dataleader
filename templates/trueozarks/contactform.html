@@ -1,0 +1,100 @@
+{% extends "trueozarks/articlePage.html" %}
+{% load image_tags %}
+{% block header %}
+<style>
+	#contact_form {
+		margin-left: auto;
+		margin-right: auto;
+		float: left;
+		width:600px;
+	}
+	.fieldWrapper {
+		min-height: 40px;
+		padding: 8px 0 8px 0;
+	}
+	input {
+		float: left;
+	}
+	
+	.errorlist {
+		float: left;
+		padding-left: 20px;
+	}
+	
+	.errorlist li {
+		color: red;
+		font-weight: bold;
+		list-style-type: square;
+		margin-left: 20px;
+	}
+	
+	.error {
+		color: red;
+		font-size: 2em;
+		font-weight: bold;
+	}
+	
+	label {
+		font-family: arial;
+		height: 2em;
+		clear: both;
+		width: 90px;
+	}
+	
+	h2 {
+		font-family: arial;
+	}
+</style>
+
+{% endblock %}
+{% block title %}
+	Springfield Revealed - Send us your Ideas
+{% endblock %}
+{% block content_header %}
+<h1>Contact Us</h1>
+<div id="articleLocatorBar">
+</div>
+{% endblock %}
+{% block content %}
+<div id="contact_form">
+{% if form.errors %}
+  <p class="error">Sorry, the form was not filled out properly. Please try
+  again.
+  </p>
+{% endif %}
+<form enctype="multipart/form-data" method="POST" action="{% url contactform %}">
+{% csrf_token %}
+<h2>Send us your Ideas</h2>
+   <div class="fieldWrapper">
+        <label for="id_name">Name</label><br />
+        {{ form.name }} {{ form.name.errors }}
+    </div>
+    <div class="fieldWrapper">
+        <label for="id_phone_number">Phone Number</label><br />
+        {{ form.phone_number }} {{ form.phone_number.errors }}
+    </div>
+    <div class="fieldWrapper">
+        <label for="id_email">Email</label><br />
+        {{ form.email }} {{ form.email.errors }}
+    </div>
+    <div class="fieldWrapper">
+        <label for="id_comments">Comments</label><br />
+    		{{ form.comments.errors }}<br />
+        {{ form.comments }}
+    </div>
+    <div class="fieldWrapper">
+        <label for="id_image">Image</label><br />
+          {{ form.image}} {{ form.image.errors }}
+    </div>
+
+	<p><button type="submit">Submit</button></p>
+    <br />
+    <br />
+    <br />
+
+
+</div>
+{% endblock %}
+{% block omniture %}
+Contact Form
+{% endblock %}

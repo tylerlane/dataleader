@@ -1,0 +1,216 @@
+{% extends "trueozarks/articlePage.html" %}
+{% load image_tags %}
+{% block header %}
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script src="{{MEDIA_URL}}/trueozarks/js/jquery.cookie.js"></script>
+<link type="text/css" rel="stylesheet" href="{{MEDIA_URL}}/tn3/skins/tn3/tn3.css"></link>
+<script type="text/javascript" src="{{MEDIA_URL}}/tn3/js/jquery.tn3lite.min.js"></script>
+<script type="text/javascript">
+	function getUrlVars()
+	{
+		var vars = [], hash;
+		var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+		for(var i = 0; i < hashes.length; i++)
+		{
+		    hash = hashes[i].split('=');
+		    vars.push(hash[0]);
+		    vars[hash[0]] = hash[1];
+		}
+		return vars;
+	}
+
+	$(document).ready(function() { 
+		var $mytn3 = $('.tn3gallery').tn3({ 
+			autoplay:true,
+			responsive:true,
+			image:{
+				stretch: true,
+			  transitions:[{
+				type: "grid",
+				partDirection: "left",
+				partEasing: "easeOutSine",
+				partDuration: 300,
+				method: "fade",
+				diagonalStart: "bl",
+				sortReverse: false,
+				sort: "random",
+				gridY: 5,
+				gridX: 7,
+				easing: "easeInQuad",
+				duration: 260
+			  }]
+			}
+		}).data('tn3'); 
+
+		if(getUrlVars()["image"] != NaN || getUrlVars()["image"] != null)
+		{
+			if($mytn3)
+			{
+				$mytn3.show(parseInt(getUrlVars()["image"]));	
+				$.fn.tn3.Gallery.config.autoplay = false;
+			}
+		
+		}
+		if( $.cookie('atyponid'))
+		{
+			console.log( "user is logged in");
+			console.log( "deleting non logged in cookies");
+			//removing the old cookies
+			$.removeCookie('EMETA_NCLICK');
+			$.removeCookie('EMETA_EPOCH');
+			$.removeCookie('EMETA_COOKIE_CHECK');
+			$.removeCookie('EMETA_NCLICK_VISITED');
+			console.log("hiding the login prompt");
+			// $("#login_prompt").hide();
+			console.log("showing the thanks for loggin div");
+			// $("#logged_in").show();
+		}
+		else
+		{
+			//checking if the nclick cookie is set
+			if( $.cookie('EMETA_NCLICK'))
+			{
+				//setting max number of clicks
+				var max_clicks = 20;
+				console.log( "User not logged in. " + $.cookie('EMETA_NCLICK')  + "  article(s) read");
+				//if max clicks are less than how many clicks we have, we bump up our click counter	
+				if( parseInt($.cookie('EMETA_NCLICK')) < max_clicks )
+				{
+					//check to see what page we have visited last
+					//if it was this page, do NOT increment the counter
+					if($.cookie("EMETA_NCLICK_VISITED") != "{{profile.name}}")
+					{
+						console.log( "User not logged in. WAS: " + (20 - $.cookie('EMETA_NCLICK') ) + " free articles left");
+						//incrementing the counter
+						var nclick_value = parseInt($.cookie('EMETA_NCLICK'));
+						nclick_value = nclick_value + 1;
+						var milliseconds = (new Date).getTime();
+
+						$.cookie('EMETA_NCLICK', nclick_value, {domain: 'news-leader.com',expires:30, path: "/"});
+						$.cookie('EMETA_EPOCH', milliseconds, {domain: 'news-leader.com',expires:30, path: "/"} );
+						$.cookie('EMETA_COOKIE_CHECK', 1, {domain: 'news-leader.com',expires:30, path: "/"});
+						$.cookie('EMETA_NCLICK_VISITED', '{{profile.name}}', {domain: 'news-leader.com',expires:30, path: "/"});
+						console.log( "User not logged in. NOW: " + (20 - $.cookie('EMETA_NCLICK') ) + " free articles left");
+						//console.log( "EMETA_EPOCH: " + $.cookie("EMETA_EPOCH"));
+					}
+					
+				}
+				else
+				{
+					console.log( "User not logged in. " + $.cookie('EMETA_NCLICK')  + "  articles read");
+					console.log( "redirecting the user to a new window to login on main site");
+					// window.open('http://www.news-leader.com/section/como?screen=login','login_window',"height=768,width=1024,modal=yes,alwaysRaised=yes");
+					// $("#content").hide();
+					// $("#login_prompt").show();
+					window.location ="{% url login_page %}";
+
+				}
+			}
+			else
+			{
+				console.log( "User not logged in. create cookies");
+				nclick_value = 1
+				var milliseconds = (new Date).getTime();
+				$.cookie('EMETA_NCLICK', nclick_value );
+				$.cookie('EMETA_EPOCH', milliseconds );
+				$.cookie('EMETA_COOKIE_CHECK', 1);
+				$.cookie('EMETA_NCLICK_VISITED', 'TrueOzarksTest');
+				console.log( "User not logged in. " + (20 - $.cookie('EMETA_NCLICK') ) + " free articles left");
+				console.log( "EMETA_EPOCH: " + $.cookie("EMETA_EPOCH"));
+
+			}
+		}
+		
+	
+	});
+
+
+	  </script>
+<link type="text/css" rel="stylesheet" src="{{profile.layout.stylesheet.url}}" /></link>
+{% endblock %}
+{% block content_header %}
+	<h1>{{profile.headline}}</h1>
+	<div id="articleLocatorBar">
+		<div id="articleLocation">
+			{{profile.address}}
+		</div>
+		<div id="articleTags">TAGS: 
+			{% for tag in profile.tags.all %}
+				<a href="{% url tag_detail tag.name %}">{{tag.name}}</a>{% if forloop.last %}{% else %}, {% endif %}
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}
+{% block content %}
+<div class="headline">{{profile.headline}}</div>
+{% if profile.story.subheadline %}
+	<div class="subhead">{{profile.story.subheadline}}</div>
+{% endif %}
+<div class="img"><img src="{{photos.0.picture}}">
+<div class="desc">{{photos.0.cutline}}|{{photos.0.credit}}</div>
+</div>
+<!-- video stuff goes here -->
+{% if profile.video_id %}
+<div class="video" width="740" height="555">
+	<!-- Start of Brightcove Player -->
+
+<div style="display:none">
+
+</div>
+
+<!--
+By use of this code snippet, I agree to the Brightcove Publisher T and C 
+found at https://accounts.brightcove.com/en/terms-and-conditions/. 
+-->
+
+<script language="JavaScript" type="text/javascript" src="http://admin.brightcove.com/js/BrightcoveExperiences.js"></script>
+
+<object id="myExperience2506413966001" class="BrightcoveExperience">
+  <param name="bgcolor" value="#FFFFFF" />
+  <param name="width" value="640" />
+  <param name="height" value="480" />
+  <param name="playerID" value="944343816001" />
+  <param name="playerKey" value="AQ~~,AAAACbzYVcE~,3W7kkkT03U8mb2yAtXrzvaQOnxd_Yb3U" />
+  <param name="isVid" value="true" />
+  <param name="isUI" value="true" />
+  <param name="dynamicStreaming" value="true" />
+  
+  <param name="@videoPlayer" value="{{profile.video_id}}" />
+</object>
+
+<!-- 
+This script tag will cause the Brightcove Players defined above it to be created as soon
+as the line is read by the browser. If you wish to have the player instantiated only after
+the rest of the HTML is processed and the page load is complete, remove the line.
+-->
+<script type="text/javascript">brightcove.createExperiences();</script>
+
+<!-- End of Brightcove Player -->
+<!-- <div class="desc">Bob Loblaw has a law blog.</div> -->
+</div>
+{% endif %}
+<div class="content">
+<div class="map" id="map"> </div>
+<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5/leaflet.css" />
+<!--[if lte IE 8]>
+	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5/leaflet.ie.css" />
+<![endif]-->
+<script src="http://cdn.leafletjs.com/leaflet-0.5/leaflet.js"></script>
+
+<div id="map"></div>
+<script>
+// create a map in the "map" div, set the view to a given place and zoom
+var map = L.map('map').setView([ {{profile.geom.y}},{{profile.geom.x}}], 14);
+
+// add an OpenStreetMap tile layer
+L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+	attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
+
+L.marker([{{profile.geom.y}}, {{profile.geom.x}}]).addTo(map)
+		.bindPopup('Profile: {{profile.headline}}<br />');
+			
+var popup = L.popup();
+</script>
+{{profile.story.text|safe|linebreaks}}
+{% endblock %}
