@@ -20,6 +20,7 @@ from models import Layout,Tag,Profile,Story,PullQuote,InfoBox,Photo
 import string
 import random
 from forms import ContactForm
+
 #function for tag cloud
 def getRanges(taglist):
 	mincount = taglist[0][1]

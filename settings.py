@@ -150,5 +150,6 @@ INSTALLED_APPS = (
     'schools',
     'census',
     'restaurants',
+    'things',
     'trueozarks',
 )

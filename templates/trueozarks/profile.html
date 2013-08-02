@@ -4,7 +4,7 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 <script src="{{MEDIA_URL}}/trueozarks/js/jquery.cookie.js"></script>
 <link type="text/css" rel="stylesheet" href="{{MEDIA_URL}}/tn3/skins/tn3/tn3.css"></link>
-<script type="text/javascript" src="{{MEDIA_URL}}/tn3/js/jquery.tn3lite.min.js"></script>
+<script type="text/javascript" src="{{MEDIA_URL}}/tn3/js/jquery.tn3.min.js"></script>
 <script type="text/javascript">
 
 	function getUrlVars()
@@ -34,21 +34,21 @@
 			},
 			image:{
 				stretch: true,
-				clickEvent: 'click',
-			  transitions:[{
-				type: "grid",
-				partDirection: "left",
-				partEasing: "easeOutSine",
-				partDuration: 300,
-				method: "fade",
-				diagonalStart: "bl",
-				sortReverse: false,
-				sort: "random",
-				gridY: 5,
-				gridX: 7,
-				easing: "easeInQuad",
-				duration: 260
-			  }]
+				clickEvent: 'click'
+			 //  transitions:[{
+				// type: "grid",
+				// partDirection: "left",
+				// partEasing: "easeOutSine",
+				// partDuration: 300,
+				// method: "fade",
+				// diagonalStart: "bl",
+				// sortReverse: false,
+				// sort: "random",
+				// gridY: 5,
+				// gridX: 7,
+				// easing: "easeInQuad",
+				// duration: 260
+			 //  }]
 			}
 		}).data('tn3'); 
 		/* function to record gallery clicks */
