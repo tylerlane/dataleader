@@ -45,7 +45,7 @@ def get_school_ayp_xml( request, district = None, school = None ):
     details = AYPDetail.objects.filter( school = school ).order_by( "year" )
 
     chart_string = "<chart>"
-    chart_string += "<license>ETA6GP4F771O.945CWK-2XOI1X0-7L</license>"
+    #chart_string += "<license>ETA6GP4F771O.945CWK-2XOI1X0-7L</license>"
     chart_string += "<chart_type>line</chart_type>"
     chart_string += "<chart_data>"
     chart_string += "<row>"
@@ -120,7 +120,7 @@ def get_school_ayp_xml( request, district = None, school = None ):
 
 def ayp_xml( request, school_type = None, district = None ):
     chart_string = "<chart>"
-    chart_string += "<license>ETA6GP4F771O.945CWK-2XOI1X0-7L</license>"
+    #chart_string += "<license>ETA6GP4F771O.945CWK-2XOI1X0-7L</license>"
     chart_string += "<chart_type>line</chart_type>"
     chart_string += "<chart_data>"
     chart_string += "<row>"
@@ -231,5 +231,4 @@ def ayp_xml( request, school_type = None, district = None ):
                    />"""
     chart_string += "<chart_label position='cursor' />"
     chart_string += "</chart>"
-
     return HttpResponse( chart_string, content_type='application/xml' )

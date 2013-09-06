@@ -16,8 +16,46 @@ var requiredMinorVersion = 0;
 var requiredRevision = 45;
 -->
 </script>
+<!--- OAS MACRO --->
+<script> 
+<!--
+//configuration
+OAS_listpos='728x90_1,88x31_1,160x600_1,728x90_2';
+OAS_query = ''+'&'+location.search.substring(1);
+OAS_target = '_top';
+OAS_url = 'http://gcirm.ozarksnow.gcion.com/RealMedia/ads/';
+//If OAS_sitepage is set to {SECTION}{pagetype} it means you did not set the value in the .ini file.
+OAS_sitepage='mo-springfield.ozarksnow.com/news/education/article.htm';
+//endconfiguration
+OAS_version = 10;
+OAS_rn = '001234567890'; OAS_rns = '1234567890';
+OAS_rn = new String (Math.random()); OAS_rns = OAS_rn.substring (2, 11);
+function OAS_NORMAL(pos) {
+    document.write('<A HREF="' + OAS_url + 'click_nx.ads/' + OAS_sitepage + '/1' + OAS_rns + '@' + OAS_listpos + '!' + pos + '?' + OAS_query + '" TARGET=' + OAS_target + '>');
+    document.write('<IMG SRC="' + OAS_url + 'adstream_nx.ads/' + OAS_sitepage + '/1' + OAS_rns + '@' + OAS_listpos + '!' + pos + '?' + OAS_query + '" BORDER=0></A>');
+}
+//-->
+</script>
+<!-- Updated by GMTI for ad serving 04252008 -->
+<script>
+if(typeof adtech_global_control == 'undefined') {
+        document.writeln('<script type="text/javascript" src="http://news-leader.com/gcicommonfiles/sr/scripts/GDSRGlobalcontrol.js"></s' + 'cript>');
+}
+</script>
+<script type="text/javascript" src="http://springfi.ur.gcion.com/AD/AdtechSiteSettings.js"></script>
+<script type="text/javascript" src="http://springfi.ur.gcion.com/Scripts/AD/Adtechscript.js"></script>
+<!-- OAS SETUP end -->
 {% endblock %}
 {% block content %}
+<div id="banner_ad_top" style=margin-top:25px;">
+    <div id="ad">
+        <script>
+        <!--
+        OAS_AD('728x90_1');
+        //-->
+        </script>
+    </div>
+</div>
 <div style="padding-top: 25px;">
         <h1>2011 MAP/AYP results: <span class="district_name">{{district}}</span></h1>
         <p>The database below contains MAP/AYP results for <span class="district_name">{{district}}</span> schools. Use the drop down menus to change the views, and move your mouse over the dots to see individual results for each school.</p>
@@ -61,8 +99,8 @@ if (AC_FL_RunContent == 0 || DetectFlashVer == 0) {
                         'bgcolor', '#777788',
                         'wmode', 'opaque',
                         'movie', 'charts',
-                        'src', 'charts',
-                        'FlashVars', 'timeout=10&retry=2&spinning_wheel=true&library_path=charts_library&xml_source={% url ayp_xml %}', 
+                        'src', '{{MEDIA_URL}}charts',
+                        'FlashVars', 'timeout=10&retry=2&spinning_wheel=true&library_path=charts_library&xml_source=http://data.news-leader.com{% url ayp_xml %}', 
                         'id', 'my_chart',
                         'name', 'my_chart',
                         'menu', 'true',
